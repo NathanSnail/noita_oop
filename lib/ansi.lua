@@ -1,6 +1,3 @@
----@class ansi.code
----@operator concat(ansi.code): ansi.code
-
 ---@class ansi
 local M = {
 	---@type ansi.code
@@ -106,6 +103,10 @@ local M = {
 	---@diagnostic disable-next-line: assign-type-mismatch
 	BRIGHT_WHITE_BG = 107,
 }
+
+---@class ansi.code
+---@operator concat(ansi.code): ansi.code
+
 for k, v in pairs(M) do
 	---@diagnostic disable-next-line: assign-type-mismatch
 	M[k] = ("%s[%dm"):format(string.char(27), v)

@@ -1,12 +1,12 @@
+---@class ECS.src.Entity
+local M = {}
+
 local typed = require "src.typed"
 
 ---@class (exact) Entity
 ---@field id entity_id
 ---@field name string
 ---@field file string
-
----@class ECS.src.Entity
-local M = {}
 
 ---@type table<string, fun(self: Entity): any>
 local index = {

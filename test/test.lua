@@ -1,11 +1,3 @@
-local ansi = require "lib.ansi"
-
-local FAIL = ansi.RED_FG .. ansi.BOLD
-local PASS = ansi.GREEN_FG .. ansi.BOLD
-local PARTIAL = ansi.YELLOW_FG .. ansi.BOLD
-
-TESTING = true
-
 ---@class tests
 local M = {
 	passed = true,
@@ -13,6 +5,14 @@ local M = {
 	errors = {},
 	rng = require "lib.random",
 }
+
+local ansi = require "lib.ansi"
+
+local FAIL = ansi.RED_FG .. ansi.BOLD
+local PASS = ansi.GREEN_FG .. ansi.BOLD
+local PARTIAL = ansi.YELLOW_FG .. ansi.BOLD
+
+TESTING = true
 
 ---@class (exact) tests.test
 ---@field name string
