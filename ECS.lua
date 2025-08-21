@@ -1,3 +1,5 @@
+local freeze = require "src.freeze"
+local metatable = require "src.metatable"
 if not TESTING then
 	local path = "data/noita_oop/temp.txt"
 	ModTextFileSetContent(path, "empty")
@@ -21,7 +23,7 @@ local typed = require "src.typed"
 local M = {}
 
 ---@type table<string, (fun(): any) | (fun(...): any)[]>
-local opts = {
+local index = {
 	me = function()
 		return Entity.from_id(GetUpdatedEntityID())
 	end,
@@ -41,25 +43,7 @@ local opts = {
 	},
 }
 
----@type metatable
-local mt = {
-	---@param self ECS
-	---@param k any
-	__index = function(self, k)
-		local field = opts[k]
-		if field then
-			if type(field) == "table" then return field[1] end
-			return opts[k]()
-		end
-		error(("Field '%s' does not exist in <class ECS>"):format(k))
-	end,
-	__newindex = function()
-		error("Cannot add fields to <class ECS>")
-	end,
-	__tostring = function()
-		error("<class ECS>")
-	end,
-}
+local mt = metatable.metatable(index, {}, "ECS")
 
-setmetatable(M, mt)
+freeze.freeze(M, "ECS", mt)
 return M
