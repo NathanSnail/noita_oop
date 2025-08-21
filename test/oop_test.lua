@@ -43,4 +43,12 @@ test.test {
 			test.eq(entity.transform.pos.x, 20)
 		end,
 	},
+	{
+		name = "Scale vec setting",
+		body = function()
+			local entity = ecs.load("something", 100, 200)
+			entity.transform.scale = Vec2 { x = 5, y = 4 }
+			test.eq(entity.transform.scale.x, 5)
+		end,
+	},
 }
