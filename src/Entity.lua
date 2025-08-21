@@ -13,8 +13,9 @@ local typed = require "src.typed"
 ---@field name string
 ---@field file string
 ---@field transform Transform
----@field x number equivalent to `transform.pos.x`
----@field y number equivalent to `transform.pos.y`
+---@field pos Vec2 equivalent to `transform.pos`
+---@field rotation number equivalent to `transform.rotation`
+---@field scale Vec2 equivalent to `transform.scale`
 
 ---@type table<string, fun(self: Entity): any>
 local index = {
@@ -40,9 +41,14 @@ local newindex = {
 	end,
 }
 
-local mt = metatable.metatable(index, newindex, "Entity", function(self)
-	return tostring(self.id)
-end)
+local mt = metatable.metatable(
+	{ index, "transform" },
+	{ newindex, "transform" },
+	"Entity",
+	function(self)
+		return tostring(self.id)
+	end
+)
 
 ---@param entity_id entity_id
 ---@return Entity
