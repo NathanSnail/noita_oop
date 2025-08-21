@@ -22,6 +22,10 @@ local index = {
 		---@cast self EntityTransform
 		if self.entity then return Vec2.from_entity(self.entity, "pos") end
 	end,
+	scale = function(self)
+		---@cast self EntityTransform
+		if self.entity then return Vec2.from_entity(self.entity, "scale") end
+	end,
 }
 
 ---@type table<string, fun(self: Transform, value: any)>
@@ -30,6 +34,11 @@ local newindex = {
 		typed.must(value, "table")
 		self.pos.x = value.x
 		self.pos.y = value.y
+	end,
+	scale = function(self, value)
+		typed.must(value, "table")
+		self.scale.x = value.x
+		self.scale.y = value.y
 	end,
 }
 
