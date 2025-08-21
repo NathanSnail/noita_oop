@@ -131,10 +131,15 @@ function M.test(tests)
 	end
 
 	if #failed == 0 then
-		print(("%sAll %d tests passed."):format(PASS, #tests))
+		print(("%sAll %d tests passed.%s"):format(PASS, #tests, ansi.RESET))
 	else
 		print(
-			("%s%d/%d tests passed"):format(num_passed ~= 0 and PARTIAL or FAIL, num_passed, #tests)
+			("%s%d/%d tests passed%s"):format(
+				num_passed ~= 0 and PARTIAL or FAIL,
+				num_passed,
+				#tests,
+				ansi.RESET
+			)
 		)
 		os.exit(1)
 	end
