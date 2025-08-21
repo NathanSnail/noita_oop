@@ -136,6 +136,7 @@ function M.test(tests)
 		print(
 			("%s%d/%d tests passed"):format(num_passed ~= 0 and PARTIAL or FAIL, num_passed, #tests)
 		)
+		os.exit(1)
 	end
 end
 
