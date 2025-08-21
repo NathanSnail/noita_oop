@@ -1,6 +1,7 @@
 local Vec2 = require "src.Vec2"
 local freeze = require "src.freeze"
 local metatable = require "src.metatable"
+local typed = require "src.typed"
 ---@class ECS.TransformLib
 local M = {}
 
@@ -19,12 +20,18 @@ local M = {}
 local index = {
 	pos = function(self)
 		---@cast self EntityTransform
-		if self.entity then return Vec2.from_entity(self.entity) end
+		if self.entity then return Vec2.from_entity(self.entity, "pos") end
 	end,
 }
 
 ---@type table<string, fun(self: Transform, value: any)>
-local newindex = {}
+local newindex = {
+	pos = function(self, value)
+		typed.must(value, "table")
+		self.pos.x = value.x
+		self.pos.y = value.y
+	end,
+}
 
 local mt = metatable.metatable(index, newindex, "Transform", function(self)
 	---@cast self EntityTransform

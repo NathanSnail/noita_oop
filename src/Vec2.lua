@@ -2,54 +2,102 @@ local freeze = require "src.freeze"
 local metatable = require "src.metatable"
 local typed = require "src.typed"
 ---@class ECS.Vec2Lib
+---@operator call(Vec2): Vec2
 local M = {}
 
 ---@class (exact) Vec2
 ---@field x number
 ---@field y number
 
----@class (exact) EntityVec2 : Vec2
+---@alias ECS.TransformVec2Variant "pos" | "scale"
+
+---@class (exact) ECS.EntityVec2 : Vec2
 ---@field entity Entity
+---@field variant ECS.TransformVec2Variant
 
 -- if the index is actually used we are secretly an EntityVec2
----@type table<string, fun(self: EntityVec2): any>
+---@type table<string, fun(self: ECS.EntityVec2): any>
 local index = {
 	x = function(self)
-		local x = EntityGetTransform(self.entity.id)
-		return x
+		if self.variant == "pos" then
+			local x = EntityGetTransform(self.entity.id)
+			return x
+		else
+			local _, _, _, scale_x = EntityGetTransform(self.entity.id)
+			return scale_x
+		end
 	end,
 	y = function(self)
-		local _, y = EntityGetTransform(self.entity.id)
-		return y
+		if self.variant == "pos" then
+			local _, y = EntityGetTransform(self.entity.id)
+			return y
+		else
+			local _, _, _, _, scale_y = EntityGetTransform(self.entity.id)
+			return scale_y
+		end
 	end,
 }
 
----@type table<string, fun(self: EntityVec2, value: any)>
+---@type table<string, fun(self: ECS.EntityVec2, value: any)>
 local newindex = {
-	x = function(self, x)
-		x = typed.must(x, "number")
-		local _, y, rotation, scale_x, scale_y = EntityGetTransform(self.entity.id)
-		EntitySetTransform(self.entity.id, x, y, rotation, scale_x, scale_y)
+	x = function(self, value)
+		value = typed.must(value, "number")
+		if self.variant == "pos" then
+			local _, y, rotation, scale_x, scale_y = EntityGetTransform(self.entity.id)
+			EntitySetTransform(self.entity.id, value, y, rotation, scale_x, scale_y)
+		else
+			local x, y, rotation, _, scale_y = EntityGetTransform(self.entity.id)
+			EntitySetTransform(self.entity.id, x, y, rotation, value, scale_y)
+		end
 	end,
-	y = function(self, y)
-		y = typed.must(y, "number")
-		local x, _, rotation, scale_x, scale_y = EntityGetTransform(self.entity.id)
-		EntitySetTransform(self.entity.id, x, y, rotation, scale_x, scale_y)
+	y = function(self, value)
+		value = typed.must(value, "number")
+		if self.variant == "pos" then
+			local x, _, rotation, scale_x, scale_y = EntityGetTransform(self.entity.id)
+			EntitySetTransform(self.entity.id, x, value, rotation, scale_x, scale_y)
+		else
+			local x, y, rotation, scale_x, _ = EntityGetTransform(self.entity.id)
+			EntitySetTransform(self.entity.id, x, y, rotation, scale_x, value)
+		end
 	end,
 }
 
 local mt = metatable.metatable(index, newindex, "Vec2", function(self)
-	---@cast self EntityVec2
+	---@cast self ECS.EntityVec2
 	local entity = ""
 	if self.entity then entity = " from " .. tostring(self.entity) end
 	return ("%d, %d%s"):format(self.x, self.y, entity)
 end)
 
+---For internal use only, use `entity.transform.*`
 ---@param entity Entity
+---@param variant ECS.TransformVec2Variant
 ---@return Vec2
-function M.from_entity(entity)
-	return setmetatable({ entity = entity }, mt)
+function M.from_entity(entity, variant)
+	return setmetatable({ entity = entity, variant = variant }, mt)
 end
 
-freeze.freeze(M, "ECS.Vec2Lib")
+---You can also do `Vec2{x = x, y = y}` instead of `Vec2.xy(x, y)`
+---@param x number
+---@param y number
+---@return Vec2
+function M.xy(x, y)
+	return setmetatable({ x = x, y = y }, mt)
+end
+
+---@type metatable
+local lib_mt = {
+	---@param self ECS.Vec2Lib
+	---@param arg any
+	---@return Vec2
+	__call = function(self, arg)
+		arg = typed.must(arg, "table")
+		local x, y = arg.x, arg.y
+		x = typed.must(x, "number")
+		y = typed.must(y, "number")
+		return self.xy(x, y)
+	end,
+}
+
+freeze.freeze(M, "ECS.Vec2Lib", lib_mt)
 return M
