@@ -34,6 +34,13 @@ local index = {
 	y = function(self)
 		return self.pos.y
 	end,
+	rotation = function(self)
+		---@cast self EntityTransform
+		if self.entity then
+			local _, _, rotation, _, _ = EntityGetTransform(self.entity.id)
+			return rotation
+		end
+	end,
 }
 
 ---@type table<string, fun(self: Transform, value: any)>
@@ -53,6 +60,16 @@ local newindex = {
 	end,
 	y = function(self, value)
 		self.pos.y = value
+	end,
+	rotation = function(self, value)
+		value = typed.must(value, "number")
+		---@cast self EntityTransform
+		if self.entity then
+			local x, y, _, scale_x, scale_y = EntityGetTransform(self.entity.id)
+			EntitySetTransform(self.entity.id, x, y, value, scale_x, scale_y)
+		else
+			self.rotation = value
+		end
 	end,
 }
 

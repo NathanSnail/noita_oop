@@ -2,7 +2,6 @@ local Vec2 = require "src.Vec2"
 local test = require "test.test"
 
 require "test.mock.ecs"
-
 local ecs = require "ECS"
 
 test.test {
@@ -79,6 +78,13 @@ test.test {
 			local entity = ecs.load("something", 100, 200)
 			entity.x = 0
 			test.eq(entity.transform.pos.x, 0)
+		end,
+	},
+	{
+		name = "Transform rotation getting",
+		body = function()
+			local entity = ecs.load("something", 100, 200, 180)
+			test.eq(entity.transform.rotation, 180)
 		end,
 	},
 }
