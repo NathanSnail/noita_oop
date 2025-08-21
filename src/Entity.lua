@@ -1,3 +1,5 @@
+local require = require
+
 ---@class ECS.EntityLib
 local M = {}
 

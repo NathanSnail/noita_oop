@@ -1,3 +1,5 @@
+local require = require
+
 ---@class typed
 local M = {}
 

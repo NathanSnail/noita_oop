@@ -1,3 +1,5 @@
+local require = require
+
 local freeze = require "src.freeze"
 local typed = require "src.typed"
 ---@class ECS.metatable
