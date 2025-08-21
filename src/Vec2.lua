@@ -1,3 +1,5 @@
+local require = require
+
 local freeze = require "src.freeze"
 local metatable = require "src.metatable"
 local typed = require "src.typed"

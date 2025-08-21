@@ -1,3 +1,5 @@
+local require = require
+
 local Vec2 = require "src.Vec2"
 local freeze = require "src.freeze"
 local metatable = require "src.metatable"

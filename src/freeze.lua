@@ -1,3 +1,5 @@
+local require = require
+
 local M = {}
 
 ---Freezes a table and returns it, table must not already have a metatable

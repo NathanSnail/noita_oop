@@ -2,7 +2,7 @@ local Vec2 = require "src.Vec2"
 local test = require "test.test"
 
 require "test.mock.ecs"
-local ecs = require "ECS"
+local ecs = require "src.ECS"
 
 test.test {
 	{
