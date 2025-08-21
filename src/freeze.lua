@@ -4,8 +4,10 @@ local M = {}
 ---@generic T : table
 ---@param t T
 ---@param name string
+---@param mt_defaults metatable?
 ---@return T
-function M.freeze(t, name)
+function M.freeze(t, name, mt_defaults)
+	mt_defaults = mt_defaults or {}
 	---@type metatable
 	local mt = {
 		__newindex = function()
@@ -15,6 +17,9 @@ function M.freeze(t, name)
 			return ("<class %s>"):format(name)
 		end,
 	}
+	for k, v in pairs(mt_defaults) do
+		if mt[k] == nil then mt[k] = v end
+	end
 	return setmetatable(t, mt)
 end
 
