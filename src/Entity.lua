@@ -42,14 +42,19 @@ local newindex = {
 	end,
 }
 
-local mt = metatable.metatable(
-	{ index, "transform" },
-	{ newindex, "transform" },
-	"Entity",
-	function(self)
-		return tostring(self.id)
+local transform_fields = { "pos", "rotation", "scale" }
+for _, v in ipairs(transform_fields) do
+	index[v] = function(self)
+		return self.transform[v]
 	end
-)
+	newindex[v] = function(self, value)
+		self.transform[v] = value
+	end
+end
+
+local mt = metatable.metatable(index, newindex, "Entity", function(self)
+	return tostring(self.id)
+end)
 
 ---@param entity_id entity_id
 ---@return Entity

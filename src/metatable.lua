@@ -9,8 +9,8 @@ local M = {}
 ---@alias ECS.metatable.newindex table<string, fun(self: table, value: any)>
 
 ---@generic T
----@param index ECS.metatable.index | {[1]: ECS.metatable.index, [integer]: string}
----@param newindex ECS.metatable.newindex | {[1]: ECS.metatable.newindex, [integer]: string}
+---@param index ECS.metatable.index
+---@param newindex ECS.metatable.newindex
 ---@param name `T`
 ---@param info (fun(self: T): string?)?
 ---@return metatable
@@ -47,40 +47,15 @@ function M.metatable(index, newindex, name, info)
 		---@param self table
 		---@param key any
 		__index = function(self, key)
-			if #index > 1 then
-				for k, index_subfield in ipairs(index) do
-					if k == 1 then
-						local result = do_index(index_subfield, self, key)
-						if result ~= nil then return result end
-					else
-						local result = self[index_subfield][key]
-						if result ~= nil then return result end
-					end
-				end
-			else
-				local result = do_index(index, self, key)
-				if result ~= nil then return result end
-			end
+			local result = do_index(index, self, key)
+			if result ~= nil then return result end
 			error(("Field %s does not exist in %s"):format(key, get_name(self)))
 		end,
 		---@param self table
 		---@param key any
 		---@param value any
 		__newindex = function(self, key, value)
-			if #newindex > 1 then
-				for k, newindex_subfield in ipairs(newindex) do
-					if k == 1 then
-						local first = newindex[1]
-						if first[key] then return first[key](self, value) end
-					else
-						-- TODO: make this work with more than 2, currently throws
-						self[newindex_subfield][key] = value
-						return
-					end
-				end
-			else
-				if newindex[key] then return newindex[key](self, value) end
-			end
+			if newindex[key] then return newindex[key](self, value) end
 			error(("Cannot add fields to %s"):format(get_name(self)))
 		end,
 		---@param self table
