@@ -1,3 +1,4 @@
+local Entity = require "src.Entity"
 local Vec2 = require "src.Vec2"
 local test = require "test.test"
 
@@ -78,6 +79,15 @@ test.test {
 			local entity = ecs.load("something", 100, 200, 180)
 			entity.rotation = 0
 			test.eq(entity.transform.rotation, 0)
+		end,
+	},
+	{
+		name = "Entity call constructor",
+		body = function()
+			local entity = ecs.load("something", 100, 200, 180)
+			local entity2 = Entity(entity.id)
+			entity2.pos.x = 0
+			test.eq(entity.pos.x, 0)
 		end,
 	},
 }

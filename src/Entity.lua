@@ -1,6 +1,7 @@
 local require = require
 
 ---@class ECS.EntityLib
+---@operator call(entity_id): Entity
 local M = {}
 
 local Transform = require "src.Transform"
@@ -53,9 +54,17 @@ local mt = metatable.metatable(
 ---@param entity_id entity_id
 ---@return Entity
 function M.from_id(entity_id)
+	typed.must(entity_id, "number")
 	return setmetatable({ id = entity_id }, mt)
 end
 
-freeze.freeze(M, "ECS.EntityLib")
+freeze.freeze(M, "ECS.EntityLib", {
+	---@param self ECS.EntityLib
+	---@param arg any
+	---@return Entity
+	__call = function(self, arg)
+		return self.from_id(arg)
+	end,
+})
 
 return M

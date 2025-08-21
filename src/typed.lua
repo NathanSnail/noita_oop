@@ -9,7 +9,13 @@ local M = {}
 ---@return T
 function M.must(value, ty)
 	if type(value) ~= ty then
-		error(("Attempt to assign value of type %s to field of type %s"):format(type(value), ty))
+		error(
+			("Attempt to assign value %s of type %s to field of type %s"):format(
+				tostring(value),
+				type(value),
+				ty
+			)
+		)
 	end
 	return value
 end
@@ -22,7 +28,8 @@ function M.maybe(value, default)
 	if value == nil then return default end
 	if type(value) ~= type(default) then
 		error(
-			("Attempt to assign value of type %s to field of type %s"):format(
+			("Attempt to assign value %s of type %s to field of type %s"):format(
+				tostring(value),
 				type(value),
 				type(default)
 			)
