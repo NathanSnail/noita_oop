@@ -27,12 +27,6 @@ local index = {
 	transform = function(self)
 		return Transform.from_entity(self)
 	end,
-	x = function(self)
-		return self.transform.x
-	end,
-	y = function(self)
-		return self.transform.y
-	end,
 }
 
 ---@type table<string, fun(self: Entity, value: any)>
@@ -43,12 +37,6 @@ local newindex = {
 	end,
 	file = function(_)
 		error("Entity file is readonly")
-	end,
-	x = function(self, value)
-		self.transform.x = value
-	end,
-	y = function(self, value)
-		self.transform.y = value
 	end,
 }
 
