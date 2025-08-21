@@ -1,3 +1,5 @@
+local typed = require "src.typed"
+
 ---@class (exact) Entity
 ---@field id entity_id
 ---@field name string
@@ -6,27 +8,24 @@
 ---@class ECS.src.Entity
 local M = {}
 
----@param value any
----@param ty type
-local function typed(value, ty)
-	if type(value) ~= ty then
-		error(("Attempt to assign value of type %s to field of type %s"):format(type(value), ty))
-	end
-end
-
 ---@type table<string, fun(self: Entity): any>
 local index = {
 	name = function(self)
 		return EntityGetName(self.id)
+	end,
+	file = function(self)
+		return EntityGetFilename(self.id)
 	end,
 }
 
 ---@type table<string, fun(self: Entity, value: any)>
 local newindex = {
 	name = function(self, value)
-		typed(value, "string")
-		---@cast value string
+		value = typed.must(value, "string")
 		EntitySetName(self.id, value)
+	end,
+	file = function(self)
+		error("Entity file is readonly")
 	end,
 }
 
@@ -46,7 +45,7 @@ local mt = {
 	end,
 	---@param self Entity
 	__tostring = function(self)
-		return ("Entity(%d)"):format(self.id)
+		return ("<class Entity(%d)>"):format(self.id)
 	end,
 }
 

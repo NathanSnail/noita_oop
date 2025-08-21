@@ -12,4 +12,11 @@ test.test {
 			test.eq(ecs.me.name, "fish")
 		end,
 	},
+	{
+		name = "Entity creation",
+		body = function()
+			local entity = ecs.load("something")
+			test.eq(entity.file, "something")
+		end,
+	},
 }
