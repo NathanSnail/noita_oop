@@ -11,6 +11,8 @@ local typed = require "src.typed"
 ---@field name string
 ---@field file string
 ---@field transform Transform
+---@field x number equivalent to `transform.pos.x`
+---@field y number equivalent to `transform.pos.y`
 
 ---@type table<string, fun(self: Entity): any>
 local index = {
@@ -23,6 +25,12 @@ local index = {
 	transform = function(self)
 		return Transform.from_entity(self)
 	end,
+	x = function(self)
+		return self.transform.x
+	end,
+	y = function(self)
+		return self.transform.y
+	end,
 }
 
 ---@type table<string, fun(self: Entity, value: any)>
@@ -31,8 +39,14 @@ local newindex = {
 		value = typed.must(value, "string")
 		EntitySetName(self.id, value)
 	end,
-	file = function(self)
+	file = function(_)
 		error("Entity file is readonly")
+	end,
+	x = function(self, value)
+		self.transform.x = value
+	end,
+	y = function(self, value)
+		self.transform.y = value
 	end,
 }
 
