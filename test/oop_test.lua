@@ -87,4 +87,12 @@ test.test {
 			test.eq(entity.transform.rotation, 180)
 		end,
 	},
+	{
+		name = "Transform rotation setting",
+		body = function()
+			local entity = ecs.load("something", 100, 200, 180)
+			entity.transform.rotation = 0
+			test.eq(entity.transform.rotation, 0)
+		end,
+	},
 }
