@@ -2,7 +2,7 @@ local test = require "test.test"
 
 require "test.mock.ecs"
 
-local ecs = require "lib"
+local ecs = require "ECS"
 
 test.test {
 	{
@@ -17,6 +17,13 @@ test.test {
 		body = function()
 			local entity = ecs.load("something")
 			test.eq(entity.file, "something")
+		end,
+	},
+	{
+		name = "Position getting",
+		body = function()
+			local entity = ecs.load("something", 100, 200)
+			test.eq(entity.transform.pos.x, 100)
 		end,
 	},
 }
