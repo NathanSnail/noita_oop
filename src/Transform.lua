@@ -30,12 +30,6 @@ local index = {
 		---@cast self EntityTransform
 		if self.entity then return Vec2.from_entity(self.entity, "scale") end
 	end,
-	x = function(self)
-		return self.pos.x
-	end,
-	y = function(self)
-		return self.pos.y
-	end,
 	rotation = function(self)
 		---@cast self EntityTransform
 		if self.entity then
@@ -56,12 +50,6 @@ local newindex = {
 		typed.must(value, "table")
 		self.scale.x = value.x
 		self.scale.y = value.y
-	end,
-	x = function(self, value)
-		self.pos.x = value
-	end,
-	y = function(self, value)
-		self.pos.y = value
 	end,
 	rotation = function(self, value)
 		value = typed.must(value, "number")
