@@ -4,7 +4,7 @@ local typed = require "src.typed"
 local M = {}
 
 ---@generic T
----@param index table<string, fun(self: T): any>
+---@param index table<string, (fun(self: T): any) | (fun(...): any)[]>
 ---@param newindex table<string, fun(self: T, value: any)>
 ---@param name `T`
 ---@param info (fun(self: T): string?)?
@@ -31,7 +31,14 @@ function M.metatable(index, newindex, name, info)
 		---@param self table
 		---@param key any
 		__index = function(self, key)
-			if index[key] then return index[key](self) end
+			if index[key] then
+				local indexed = index[key]
+				if type(indexed) == "function" then
+					return indexed(self)
+				else
+					return indexed[1]
+				end
+			end
 			error(("Field %s does not exist in %s"):format(key, get_name(self)))
 		end,
 		---@param self table
