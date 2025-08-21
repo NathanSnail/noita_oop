@@ -1,13 +1,18 @@
 local freeze = require "src.freeze"
 local metatable = require "src.metatable"
 if not TESTING then
-	local path = "data/noita_oop/temp.txt"
-	ModTextFileSetContent(path, "empty")
-	local whoami = ModTextFileWhoSetContent(path)
+	---@type string
+	local whoami = MODID
+	if not MODID then
+		local path = "data/noita_oop/temp.txt"
+		ModTextFileSetContent(path, "empty")
+		whoami = ModTextFileWhoSetContent(path)
+	end
+
 	---@param modname string
 	---@return any
 	function require(modname)
-		return dofile_once(("mods/%s/%s.lua"):format(whoami, (modname:gsub("%.", "/"))))
+		return dofile_once(("mods/%s/lib/ecs/%s.lua"):format(whoami, (modname:gsub("%.", "/"))))
 	end
 end
 
