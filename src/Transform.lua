@@ -7,6 +7,8 @@ local M = {}
 
 ---@class (exact) Transform
 ---@field pos Vec2
+---@field x number equivalent to `pos.x`
+---@field y number equivalent to `pos.y`
 ---@field rotation number
 ---@field scale Vec2
 
@@ -26,6 +28,12 @@ local index = {
 		---@cast self EntityTransform
 		if self.entity then return Vec2.from_entity(self.entity, "scale") end
 	end,
+	x = function(self)
+		return self.pos.x
+	end,
+	y = function(self)
+		return self.pos.y
+	end,
 }
 
 ---@type table<string, fun(self: Transform, value: any)>
@@ -39,6 +47,12 @@ local newindex = {
 		typed.must(value, "table")
 		self.scale.x = value.x
 		self.scale.y = value.y
+	end,
+	x = function(self, value)
+		self.pos.x = value
+	end,
+	y = function(self, value)
+		self.pos.y = value
 	end,
 }
 

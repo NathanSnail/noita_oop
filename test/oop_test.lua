@@ -51,4 +51,19 @@ test.test {
 			test.eq(entity.transform.scale.x, 5)
 		end,
 	},
+	{
+		name = "Transform pos field getting",
+		body = function()
+			local entity = ecs.load("something", 100, 200)
+			test.eq(entity.transform.x, 100)
+		end,
+	},
+	{
+		name = "Transform pos field setting",
+		body = function()
+			local entity = ecs.load("something", 100, 200)
+			entity.transform.x = 0
+			test.eq(entity.transform.pos.x, 0)
+		end,
+	},
 }
