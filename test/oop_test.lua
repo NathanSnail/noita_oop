@@ -26,4 +26,12 @@ test.test {
 			test.eq(entity.transform.pos.x, 100)
 		end,
 	},
+	{
+		name = "Position setting",
+		body = function()
+			local entity = ecs.load("something", 100, 200)
+			entity.transform.pos.x = -1
+			test.eq(entity.transform.pos.x, -1)
+		end,
+	},
 }
