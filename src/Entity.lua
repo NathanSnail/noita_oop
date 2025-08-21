@@ -1,12 +1,16 @@
----@class ECS.src.Entity
+---@class ECS.EntityLib
 local M = {}
 
+local Transform = require "src.Transform"
+local freeze = require "src.freeze"
+local metatable = require "src.metatable"
 local typed = require "src.typed"
 
 ---@class (exact) Entity
 ---@field id entity_id
 ---@field name string
 ---@field file string
+---@field transform Transform
 
 ---@type table<string, fun(self: Entity): any>
 local index = {
@@ -15,6 +19,9 @@ local index = {
 	end,
 	file = function(self)
 		return EntityGetFilename(self.id)
+	end,
+	transform = function(self)
+		return Transform.from_entity(self)
 	end,
 }
 
@@ -29,30 +36,16 @@ local newindex = {
 	end,
 }
 
----@type metatable
-local mt = {
-	---@param self Entity
-	---@param key any
-	__index = function(self, key)
-		if index[key] then return index[key](self) end
-	end,
-	---@param self Entity
-	---@param key any
-	---@param value any
-	__newindex = function(self, key, value)
-		if newindex[key] then return newindex[key](self, value) end
-		error("cannot add fields to Entity")
-	end,
-	---@param self Entity
-	__tostring = function(self)
-		return ("<class Entity(%d)>"):format(self.id)
-	end,
-}
+local mt = metatable.metatable(index, newindex, "Entity", function(self)
+	return tostring(self.id)
+end)
 
 ---@param entity_id entity_id
 ---@return Entity
 function M.from_id(entity_id)
 	return setmetatable({ id = entity_id }, mt)
 end
+
+freeze.freeze(M, "ECS.EntityLib")
 
 return M

@@ -74,6 +74,11 @@ function EntitySetTransform(eid, x, y, rotation, scale_x, scale_y)
 	entities[eid].scale_y = typed.maybe(scale_y, 1)
 end
 
+function EntityGetTransform(eid)
+	local entity = entities[eid]
+	return entity.x, entity.y, entity.rotation, entity.scale_x, entity.scale_y
+end
+
 ---@param entity_id entity_id
 ---@return string
 function EntityGetFilename(entity_id)

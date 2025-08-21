@@ -14,7 +14,7 @@ local typed = require "src.typed"
 
 ---@class (exact) ECS
 ---@field me Entity
----@field load fun(file: string, x: number?, y: number?): Entity
+---@field load fun(file: string, x: number?, y: number?, rotation: number?, scale_x: number?, scale_y: number?): Entity
 
 ---@type ECS
 ---@diagnostic disable-next-line: missing-fields
@@ -26,13 +26,16 @@ local opts = {
 		return Entity.from_id(GetUpdatedEntityID())
 	end,
 	load = {
-		function(filename, x, y)
+		function(filename, x, y, rotation, scale_x, scale_y)
 			filename = typed.must(filename, "string")
 			x = typed.maybe(x, 0)
 			y = typed.maybe(y, 0)
+			rotation = typed.maybe(rotation, 0)
+			scale_x = typed.maybe(scale_x, 1)
+			scale_y = typed.maybe(scale_y, 1)
 			local eid = EntityLoad(filename, x, y)
 			-- EntityLoad truncates
-			EntitySetTransform(eid, x, y)
+			EntitySetTransform(eid, x, y, rotation, scale_x, scale_y)
 			return Entity.from_id(eid)
 		end,
 	},
@@ -48,10 +51,10 @@ local mt = {
 			if type(field) == "table" then return field[1] end
 			return opts[k]()
 		end
-		error(("field '%s' does not exist in ECS"):format(k))
+		error(("Field '%s' does not exist in <class ECS>"):format(k))
 	end,
 	__newindex = function()
-		error("cannot add fields to ECS")
+		error("Cannot add fields to <class ECS>")
 	end,
 	__tostring = function()
 		error("<class ECS>")
