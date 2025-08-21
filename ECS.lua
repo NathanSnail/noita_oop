@@ -1,5 +1,3 @@
-local freeze = require "src.freeze"
-local metatable = require "src.metatable"
 if not TESTING then
 	---@type string
 	local whoami = MODID
@@ -17,6 +15,8 @@ if not TESTING then
 end
 
 local Entity = require "src.Entity"
+local freeze = require "src.freeze"
+local metatable = require "src.metatable"
 local typed = require "src.typed"
 
 ---@class (exact) ECS
