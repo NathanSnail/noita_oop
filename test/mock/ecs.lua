@@ -66,6 +66,12 @@ function EntityLoad(file, x, y)
 	return eid
 end
 
+---@param eid entity_id
+---@param x number
+---@param y number
+---@param rotation number
+---@param scale_x number
+---@param scale_y number
 function EntitySetTransform(eid, x, y, rotation, scale_x, scale_y)
 	entities[eid].x = x
 	entities[eid].y = typed.maybe(y, 0)
@@ -74,6 +80,12 @@ function EntitySetTransform(eid, x, y, rotation, scale_x, scale_y)
 	entities[eid].scale_y = typed.maybe(scale_y, 1)
 end
 
+---@param eid entity_id
+---@return number
+---@return number
+---@return number
+---@return number
+---@return number
 function EntityGetTransform(eid)
 	local entity = entities[eid]
 	return entity.x, entity.y, entity.rotation, entity.scale_x, entity.scale_y
@@ -97,6 +109,8 @@ function EntitySetName(entity_id, name)
 	entities[entity_id].name = name
 end
 
+---@param entity_id entity_id
+---@return entity_id | 0
 function EntityGetParent(entity_id)
 	for k, v in pairs(entities) do
 		for _, child in ipairs(v.children) do
@@ -106,6 +120,7 @@ function EntityGetParent(entity_id)
 	return 0
 end
 
+---@param entity_id entity_id
 function EntityRemoveFromParent(entity_id)
 	local old = EntityGetParent(entity_id)
 	if old ~= 0 then
@@ -116,9 +131,22 @@ function EntityRemoveFromParent(entity_id)
 	end
 end
 
+---@param parent_id entity_id
+---@param child_id entity_id
 function EntityAddChild(parent_id, child_id)
 	EntityRemoveFromParent(child_id)
 	table.insert(entities[parent_id].children, child_id)
+end
+
+---@param entity_id entity_id
+---@return entity_id
+function EntityGetRootEntity(entity_id)
+	local parent = EntityGetParent(entity_id)
+	if parent ~= 0 then
+		---@cast parent entity_id
+		return EntityGetRootEntity(parent)
+	end
+	return entity_id
 end
 
 local me = EntityCreateNew()

@@ -18,6 +18,9 @@ local typed = require "src.typed"
 ---@field rotation number equivalent to `transform.rotation`
 ---@field scale Vec2 equivalent to `transform.scale`
 ---@field parent Entity?
+---@field root Entity
+
+local readonly = { "file", "root" }
 
 ---@type table<string, fun(self: Entity): any>
 local index = {
@@ -34,6 +37,9 @@ local index = {
 		local parent_id = EntityGetParent(self.id)
 		if parent_id == 0 then return end
 		return M(parent_id)
+	end,
+	root = function(self)
+		return M(EntityGetRootEntity(self.id))
 	end,
 }
 
