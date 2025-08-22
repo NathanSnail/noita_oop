@@ -48,7 +48,7 @@ local index = {
 			return self.backing.rotation
 		end
 	end,
-	entity = function(self)
+	entity = function(_)
 		-- we can't have this as nil because then we try and print an error that the field doesn't exist
 		return false
 	end,

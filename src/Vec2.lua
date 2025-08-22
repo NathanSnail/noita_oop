@@ -10,6 +10,11 @@ local M = {}
 ---@class (exact) Vec2
 ---@field x number
 ---@field y number
+---@operator mul(number): Vec2
+---@operator div(number): Vec2
+---@operator add(Vec2): Vec2
+---@operator sub(Vec2): Vec2
+---@operator unm: Vec2
 
 ---@alias ECS.TransformVec2Variant "pos" | "scale"
 
@@ -38,6 +43,10 @@ local index = {
 			return scale_y
 		end
 	end,
+	entity = function(_)
+		-- same as transform, can't nil or field doesn't exist which is error
+		return false
+	end,
 }
 
 ---@type table<string, fun(self: ECS.EntityVec2, value: any)>
@@ -64,12 +73,51 @@ local newindex = {
 	end,
 }
 
+---@type metatable
+local arithmetic_mt = {
+	---@param self Vec2
+	---@param other Vec2
+	---@return Vec2
+	__add = function(self, other)
+		other = typed.must(other, "table")
+		local x, y = typed.must(other.x, "number"), typed.must(other.y, "number")
+		return M.xy(self.x + x, self.y + y)
+	end,
+	---@param self Vec2
+	---@param other Vec2
+	---@return Vec2
+	__sub = function(self, other)
+		other = typed.must(other, "table")
+		local x, y = typed.must(other.x, "number"), typed.must(other.y, "number")
+		return M.xy(self.x - x, self.y - y)
+	end,
+	---@param self Vec2
+	---@param other number
+	---@return Vec2
+	__mul = function(self, other)
+		other = typed.must(other, "number")
+		return M.xy(self.x * other, self.y * other)
+	end,
+	---@param self Vec2
+	---@param other number
+	---@return Vec2
+	__div = function(self, other)
+		other = typed.must(other, "number")
+		return M.xy(self.x / other, self.y / other)
+	end,
+	---@param self Vec2
+	---@return Vec2
+	__unm = function(self)
+		return M.xy(-self.x, -self.y)
+	end,
+}
+
 local mt = metatable.metatable(index, newindex, "Vec2", function(self)
 	---@cast self ECS.EntityVec2
 	local entity = ""
 	if self.entity then entity = " from " .. tostring(self.entity) end
 	return ("%d, %d%s"):format(self.x, self.y, entity)
-end)
+end, arithmetic_mt)
 
 ---For internal use only, use `entity.transform.*`
 ---@param entity Entity

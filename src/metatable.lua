@@ -13,9 +13,11 @@ local M = {}
 ---@param newindex ECS.metatable.newindex
 ---@param name `T`
 ---@param info (fun(self: T): string?)?
+---@param default_mt metatable?
 ---@return metatable
-function M.metatable(index, newindex, name, info)
-	typed.maybe(info, function() end)
+function M.metatable(index, newindex, name, info, default_mt)
+	info = typed.maybe(info, function() end)
+	default_mt = typed.maybe(default_mt, {})
 	-- luals cant handle my type nonsense :(
 	---@cast info fun(self: table): string?
 
@@ -63,6 +65,10 @@ function M.metatable(index, newindex, name, info)
 			return get_name(self)
 		end,
 	}
+
+	for k, v in pairs(default_mt) do
+		if mt[k] == nil then mt[k] = v end
+	end
 
 	return mt
 end

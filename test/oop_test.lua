@@ -111,4 +111,21 @@ test.test {
 			test.eq(entity.scale.x, 1)
 		end,
 	},
+	{
+		name = "Vector arithmetic",
+		body = function()
+			local v1 = Vec2.xy(3, 4)
+			local v2 = Vec2.xy(0, 1)
+			local v3 = v1 + v2
+			test.eq(v3.y, 5)
+			local v4 = v1 - v2
+			test.eq(v4.y, 3)
+			local v5 = v1 * 2
+			test.eq(v5.x, 6)
+			local v6 = v1 / 2
+			test.eq(v6.y, 2)
+			local v7 = -v1
+			test.eq(v7.y, -4)
+		end,
+	},
 }
