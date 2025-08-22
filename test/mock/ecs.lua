@@ -1,3 +1,4 @@
+local functional = require "src.functional"
 local typed = require "src.typed"
 
 ---@class (exact) mock.Entity
@@ -147,6 +148,18 @@ function EntityGetRootEntity(entity_id)
 		return EntityGetRootEntity(parent)
 	end
 	return entity_id
+end
+
+---@param entity_id entity_id
+---@param tag string?
+function EntityGetAllChildren(entity_id, tag)
+	local children = entities[entity_id].children
+	if tag then
+		return functional.filter(children, function(val)
+			return EntityHasTag(val, tag)
+		end)
+	end
+	return children
 end
 
 local me = EntityCreateNew()

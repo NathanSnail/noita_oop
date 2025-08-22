@@ -8,6 +8,7 @@ local Transform = require "src.Transform"
 local freeze = require "src.freeze"
 local metatable = require "src.metatable"
 local typed = require "src.typed"
+local EntityChildren = require "src.EntityChildren"
 
 ---@class (exact) Entity
 ---@field id entity_id
@@ -19,8 +20,9 @@ local typed = require "src.typed"
 ---@field scale Vec2 equivalent to `transform.scale`
 ---@field parent Entity?
 ---@field root Entity
+---@field children EntityChildren
 
-local readonly = { "file", "root" }
+local readonly = { "file", "root", "children" }
 
 ---@type table<string, fun(self: Entity): any>
 local index = {
@@ -41,6 +43,9 @@ local index = {
 	root = function(self)
 		return M(EntityGetRootEntity(self.id))
 	end,
+	children = function (self)
+		return EntityChildren.from_entity(self)
+	end
 }
 
 ---@type table<string, fun(self: Entity, value: any)>
