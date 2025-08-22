@@ -3,7 +3,7 @@ local require = require
 local M = {}
 
 ---Freezes a table and returns it, table must not already have a metatable
----@generic T : table
+---@generic T
 ---@param t T
 ---@param name string
 ---@param mt_defaults metatable?
