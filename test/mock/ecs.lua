@@ -187,7 +187,11 @@ end
 ---@param entity_id string
 ---@return string
 function EntityGetTags(entity_id)
-	return table.concat(entities[entity_id].tags, ",")
+	local s = ""
+	for tag, _ in pairs(entities[entity_id].tags) do
+		s = s .. "," .. tag
+	end
+	return s:sub(2)
 end
 
 local me = EntityCreateNew()

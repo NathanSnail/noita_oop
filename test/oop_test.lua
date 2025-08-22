@@ -210,4 +210,18 @@ test.test {
 			test.eq(entity.tags["foo"], true)
 		end,
 	},
+	{
+		name = "Tag iterate",
+		body = function()
+			local entity = ecs.load("file")
+			entity.tags["foo"] = true
+			entity.tags["bar"] = true
+			entity.tags["baz"] = true
+			local counter = 0
+			for _ in entity.tags do
+				counter = counter + 1
+			end
+			test.eq(counter, 3)
+		end,
+	},
 }
