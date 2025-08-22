@@ -128,4 +128,14 @@ test.test {
 			test.eq(v7.y, -4)
 		end,
 	},
+	{
+		name = "Entity parent get / set",
+		body = function()
+			local child = ecs.load("file")
+			local parent = ecs.load("file2")
+			test.eq(child.parent, nil)
+			child.parent = parent
+			test.eq(child.parent, parent)
+		end,
+	},
 }

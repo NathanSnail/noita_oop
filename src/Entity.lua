@@ -7,7 +7,6 @@ local M = {}
 local Transform = require "src.Transform"
 local freeze = require "src.freeze"
 local metatable = require "src.metatable"
-local null = require "src.null"
 local typed = require "src.typed"
 
 ---@class (exact) Entity
@@ -33,7 +32,8 @@ local index = {
 	end,
 	parent = function(self)
 		local parent_id = EntityGetParent(self.id)
-		if parent_id == 0 then return null end
+		if parent_id == 0 then return end
+		return M(parent_id)
 	end,
 }
 
@@ -51,6 +51,14 @@ local newindex = {
 		self.transform.pos = value.pos
 		self.transform.rotation = value.rotation
 		self.transform.scale = value.scale
+	end,
+	parent = function(self, value)
+		value = typed.must(value, "table")
+		---@cast value Entity
+		local parent_id = typed.must(value.id, "number")
+		---@diagnostic disable-next-line: cast-type-mismatch
+		---@cast parent_id entity_id
+		EntityAddChild(parent_id, self.id)
 	end,
 }
 
