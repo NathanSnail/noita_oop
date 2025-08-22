@@ -61,7 +61,7 @@ end
 ---@param y number?
 ---@return entity_id
 function EntityLoad(file, x, y)
-	local eid = EntityCreateNew("entity from file" .. file)
+	local eid = EntityCreateNew("entity from file " .. file)
 	EntitySetTransform(eid, typed.maybe(x, 0), typed.maybe(y, 0))
 	entities[eid].file = file
 	return eid

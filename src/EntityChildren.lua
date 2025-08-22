@@ -25,12 +25,14 @@ local index = {
 		function(self, name)
 			name = typed.must(name, "string")
 			self.name = name
+			return self
 		end,
 	},
 	tagged = {
 		function(self, tag)
 			tag = typed.must(tag, "string")
 			self.tag = tag
+			return self
 		end,
 	},
 }
