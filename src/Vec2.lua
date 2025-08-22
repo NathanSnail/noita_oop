@@ -4,7 +4,7 @@ local metatable = require "src.metatable"
 local typed = require "src.typed"
 
 ---@class ECS.Vec2Lib
----@operator call(Vec2): Vec2
+---@overload fun(Vec2): Vec2
 local M = {}
 
 ---@class (exact) Vec2
