@@ -1,4 +1,5 @@
 local Entity = require "src.Entity"
+local Transform = require "src.Transform"
 local Vec2 = require "src.Vec2"
 local test = require "test.test"
 
@@ -97,6 +98,17 @@ test.test {
 			local entity2 = ecs.load("something", 0, 0)
 			entity.transform = entity2.transform
 			test.eq(entity.pos.x, 0)
+		end,
+	},
+	{
+		name = "Transform construct",
+		body = function()
+			local entity = ecs.load("something", 100, 200, 180, 0, 0)
+			local transform = Transform { pos = { x = 0, y = 20 }, rotation = -1 }
+			entity.transform = transform
+			test.eq(entity.pos.x, 0)
+			test.eq(entity.rotation, -1)
+			test.eq(entity.scale.x, 1)
 		end,
 	},
 }
