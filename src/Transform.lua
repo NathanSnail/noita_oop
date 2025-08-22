@@ -89,6 +89,8 @@ function M.from_entity(entity)
 	return setmetatable({ entity = entity }, mt)
 end
 
+local backing_mt = metatable.metatable({}, {}, "ECS.BackingMT")
+
 ---@param pos Vec2? {x = 0, y = 0}
 ---@param rotation number? 0
 ---@param scale Vec2? {x = 1, y = 1}
@@ -96,7 +98,10 @@ function M.new(pos, rotation, scale)
 	pos = Vec2(typed.maybe(pos, { x = 0, y = 0 }))
 	rotation = typed.maybe(rotation, 0)
 	scale = Vec2(typed.maybe(scale, { x = 1, y = 1 }))
-	return setmetatable({ backing = { pos = pos, rotation = rotation, scale = scale } }, mt)
+	return setmetatable(
+		{ backing = setmetatable({ pos = pos, rotation = rotation, scale = scale }, backing_mt) },
+		mt
+	)
 end
 
 freeze.freeze(M, "ECS.TransformLib", {
