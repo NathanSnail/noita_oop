@@ -90,4 +90,13 @@ test.test {
 			test.eq(entity.pos.x, 0)
 		end,
 	},
+	{
+		name = "Entity transform assign",
+		body = function()
+			local entity = ecs.load("something", 100, 200, 180)
+			local entity2 = ecs.load("something", 0, 0)
+			entity.transform = entity2.transform
+			test.eq(entity.pos.x, 0)
+		end,
+	},
 }

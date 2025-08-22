@@ -40,6 +40,12 @@ local newindex = {
 	file = function(_)
 		error("Entity file is readonly")
 	end,
+	transform = function(self, value)
+		typed.must(value, "table")
+		self.transform.pos = value.pos
+		self.transform.rotation = value.rotation
+		self.transform.scale = value.scale
+	end,
 }
 
 local transform_fields = { "pos", "rotation", "scale" }
