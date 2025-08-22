@@ -43,6 +43,7 @@ function M.metatable(index, newindex, name, info, default_mt)
 				return indexed[1]
 			end
 		end
+		return null
 	end
 
 	---@type metatable
