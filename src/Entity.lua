@@ -1,14 +1,14 @@
 local require = require
 
 ---@class ECS.EntityLib
----@operator call(entity_id): Entity
+---@overload fun(entity_id): Entity
 local M = {}
 
+local EntityChildren = require "src.EntityChildren"
 local Transform = require "src.Transform"
 local freeze = require "src.freeze"
 local metatable = require "src.metatable"
 local typed = require "src.typed"
-local EntityChildren = require "src.EntityChildren"
 
 ---@class (exact) Entity
 ---@field id entity_id
@@ -43,9 +43,9 @@ local index = {
 	root = function(self)
 		return M(EntityGetRootEntity(self.id))
 	end,
-	children = function (self)
+	children = function(self)
 		return EntityChildren.from_entity(self)
-	end
+	end,
 }
 
 ---@type table<string, fun(self: Entity, value: any)>
