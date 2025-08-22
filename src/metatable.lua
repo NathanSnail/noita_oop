@@ -43,7 +43,6 @@ function M.metatable(index, newindex, name, info, default_mt)
 				return indexed[1]
 			end
 		end
-		return null
 	end
 
 	---@type metatable
@@ -59,7 +58,10 @@ function M.metatable(index, newindex, name, info, default_mt)
 		---@param key any
 		---@param value any
 		__newindex = function(self, key, value)
-			if newindex[key] then return newindex[key](self, value) end
+			if newindex[key] then
+				newindex[key](self, value)
+				return
+			end
 			error(("Cannot add fields to %s"):format(get_name(self)))
 		end,
 		---@param self table

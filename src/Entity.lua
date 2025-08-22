@@ -53,6 +53,10 @@ local newindex = {
 		self.transform.scale = value.scale
 	end,
 	parent = function(self, value)
+		if value == nil then
+			EntityRemoveFromParent(self.id)
+			return
+		end
 		value = typed.must(value, "table")
 		---@cast value Entity
 		local parent_id = typed.must(value.id, "number")

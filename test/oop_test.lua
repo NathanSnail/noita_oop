@@ -138,4 +138,14 @@ test.test {
 			test.eq(child.parent, parent)
 		end,
 	},
+	{
+		name = "Entity unparent",
+		body = function()
+			local child = ecs.load("file")
+			local parent = ecs.load("file2")
+			child.parent = parent
+			child.parent = nil
+			test.eq(child.parent, nil)
+		end,
+	},
 }

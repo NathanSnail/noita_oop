@@ -106,14 +106,18 @@ function EntityGetParent(entity_id)
 	return 0
 end
 
-function EntityAddChild(parent_id, child_id)
-	local old = EntityGetParent(child_id)
+function EntityRemoveFromParent(entity_id)
+	local old = EntityGetParent(entity_id)
 	if old ~= 0 then
 		local parent = entities[old]
 		for k, child in ipairs(parent.children) do
-			if child == child_id then table.remove(parent.children, k) end
+			if child == entity_id then table.remove(parent.children, k) end
 		end
 	end
+end
+
+function EntityAddChild(parent_id, child_id)
+	EntityRemoveFromParent(child_id)
 	table.insert(entities[parent_id].children, child_id)
 end
 
