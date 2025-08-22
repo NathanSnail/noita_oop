@@ -10,6 +10,7 @@ local typed = require "src.typed"
 ---@field rotation number
 ---@field scale_x number
 ---@field scale_y number
+---@field tags table<string, true>
 
 ---@class (exact) mock.EntityPartial
 ---@field children entity_id[]?
@@ -20,6 +21,7 @@ local typed = require "src.typed"
 ---@field rotation number?
 ---@field scale_x number?
 ---@field scale_y number?
+---@field tags table<string, true>?
 
 ---@type mock.Entity[]
 local entities = {}
@@ -39,6 +41,7 @@ local function entity_defaults(partial)
 		rotation = 0,
 		scale_x = 1,
 		scale_y = 1,
+		tags = {},
 	}
 	for k, v in pairs(defaults) do
 		if partial[k] == nil then partial[k] = v end
@@ -160,6 +163,31 @@ function EntityGetAllChildren(entity_id, tag)
 		end)
 	end
 	return children
+end
+
+---@param entity_id entity_id
+---@param tag string
+---return bool
+function EntityHasTag(entity_id, tag)
+	return entities[entity_id].tags[tag] == true
+end
+
+---@param entity_id entity_id
+---@param tag string
+function EntityAddTag(entity_id, tag)
+	entities[entity_id].tags[tag] = true
+end
+
+---@param entity_id entity_id
+---@param tag string
+function EntityRemoveTag(entity_id, tag)
+	entities[entity_id].tags[tag] = nil
+end
+
+---@param entity_id string
+---@return string
+function EntityGetTags(entity_id)
+	return table.concat(entities[entity_id].tags, ",")
 end
 
 local me = EntityCreateNew()

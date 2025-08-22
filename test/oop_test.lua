@@ -202,4 +202,12 @@ test.test {
 			test.eq(counter, 2)
 		end,
 	},
+	{
+		name = "Tag get / set",
+		body = function()
+			local entity = ecs.load("file")
+			entity.tags["foo"] = true
+			test.eq(entity.tags["foo"], true)
+		end,
+	},
 }
