@@ -1,6 +1,6 @@
 {
 	"diagnostics.globals": [
 		"MODID"
-	]
+	],
+	"completion.autoRequire": true
 }
-

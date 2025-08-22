@@ -175,5 +175,13 @@ test.test {
 			local transform2 = Transform(ctor)
 			test.eq(transform1 == transform2, true)
 		end,
-	},
+	},{
+		name = "Entity get child",
+		body = function()
+			local parent =ecs.load("file")
+			local child =ecs.load("file")
+			child.parent = parent
+			test.eq(parent.children(), child)
+		end,
+	}
 }
