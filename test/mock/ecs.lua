@@ -97,6 +97,26 @@ function EntitySetName(entity_id, name)
 	entities[entity_id].name = name
 end
 
+function EntityGetParent(entity_id)
+	for k, v in pairs(entities) do
+		for _, child in ipairs(v.children) do
+			if child == entity_id then return k end
+		end
+	end
+	return 0
+end
+
+function EntityAddChild(parent_id, child_id)
+	local old = EntityGetParent(child_id)
+	if old ~= 0 then
+		local parent = entities[old]
+		for k, child in ipairs(parent.children) do
+			if child == child_id then table.remove(parent.children, k) end
+		end
+	end
+	table.insert(entities[parent_id].children, child_id)
+end
+
 local me = EntityCreateNew()
 ---@return entity_id
 function GetUpdatedEntityID()

@@ -43,6 +43,7 @@ function M.metatable(index, newindex, name, info, default_mt)
 				return indexed[1]
 			end
 		end
+		return null
 	end
 
 	---@type metatable
@@ -51,8 +52,7 @@ function M.metatable(index, newindex, name, info, default_mt)
 		---@param key any
 		__index = function(self, key)
 			local result = do_index(index, self, key)
-			if result ~= nil then return result end
-			if result == null then return nil end
+			if result ~= null then return result end
 			error(("Field %s does not exist in %s"):format(key, get_name(self)))
 		end,
 		---@param self table
