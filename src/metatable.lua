@@ -1,4 +1,5 @@
 local require = require
+local null = require "src.null"
 
 local freeze = require "src.freeze"
 local typed = require "src.typed"
@@ -51,6 +52,7 @@ function M.metatable(index, newindex, name, info, default_mt)
 		__index = function(self, key)
 			local result = do_index(index, self, key)
 			if result ~= nil then return result end
+			if result == null then return nil end
 			error(("Field %s does not exist in %s"):format(key, get_name(self)))
 		end,
 		---@param self table
