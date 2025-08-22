@@ -7,6 +7,7 @@ local M = {}
 local Transform = require "src.Transform"
 local freeze = require "src.freeze"
 local metatable = require "src.metatable"
+local null = require "src.null"
 local typed = require "src.typed"
 
 ---@class (exact) Entity
@@ -17,6 +18,7 @@ local typed = require "src.typed"
 ---@field pos Vec2 equivalent to `transform.pos`
 ---@field rotation number equivalent to `transform.rotation`
 ---@field scale Vec2 equivalent to `transform.scale`
+---@field parent Entity?
 
 ---@type table<string, fun(self: Entity): any>
 local index = {
@@ -28,6 +30,10 @@ local index = {
 	end,
 	transform = function(self)
 		return Transform.from_entity(self)
+	end,
+	parent = function(self)
+		local parent_id = EntityGetParent(self.id)
+		if parent_id == 0 then return null end
 	end,
 }
 
@@ -41,7 +47,7 @@ local newindex = {
 		error("Entity file is readonly")
 	end,
 	transform = function(self, value)
-		typed.must(value, "table")
+		value = typed.must(value, "table")
 		self.transform.pos = value.pos
 		self.transform.rotation = value.rotation
 		self.transform.scale = value.scale

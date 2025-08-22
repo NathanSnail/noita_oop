@@ -1,9 +1,10 @@
 local require = require
-
 local Vec2 = require "src.Vec2"
 local freeze = require "src.freeze"
 local metatable = require "src.metatable"
+local null = require "src.null"
 local typed = require "src.typed"
+
 ---@class ECS.TransformLib
 local M = {}
 
@@ -22,7 +23,7 @@ local M = {}
 local index = {
 	pos = function(self)
 		---@cast self ECS.EntityTransform
-		if self.entity then
+		if self.entity ~= null then
 			return Vec2.from_entity(self.entity, "pos")
 		else
 			---@cast self ECS.CustomTransform
@@ -31,7 +32,7 @@ local index = {
 	end,
 	scale = function(self)
 		---@cast self ECS.EntityTransform
-		if self.entity then
+		if self.entity ~= null then
 			return Vec2.from_entity(self.entity, "scale")
 		else
 			---@cast self ECS.CustomTransform
@@ -40,7 +41,7 @@ local index = {
 	end,
 	rotation = function(self)
 		---@cast self ECS.EntityTransform
-		if self.entity then
+		if self.entity ~= null then
 			local _, _, rotation, _, _ = EntityGetTransform(self.entity.id)
 			return rotation
 		else
@@ -50,25 +51,25 @@ local index = {
 	end,
 	entity = function(_)
 		-- we can't have this as nil because then we try and print an error that the field doesn't exist
-		return false
+		return null
 	end,
 }
 
 ---@type table<string, fun(self: ECS.EntityTransform, value: any)>
 local newindex = {
 	pos = function(self, value)
-		typed.must(value, "table")
+		value = typed.must(value, "table")
 		self.pos.x = value.x
 		self.pos.y = value.y
 	end,
 	scale = function(self, value)
-		typed.must(value, "table")
+		value = typed.must(value, "table")
 		self.scale.x = value.x
 		self.scale.y = value.y
 	end,
 	rotation = function(self, value)
 		value = typed.must(value, "number")
-		if self.entity then
+		if self.entity ~= null then
 			local x, y, _, scale_x, scale_y = EntityGetTransform(self.entity.id)
 			EntitySetTransform(self.entity.id, x, y, value, scale_x, scale_y)
 		else
@@ -80,7 +81,7 @@ local newindex = {
 
 local mt = metatable.metatable(index, newindex, "Transform", function(self)
 	---@cast self ECS.EntityTransform
-	if self.entity then return tostring(self.entity) end
+	if self.entity ~= null then return tostring(self.entity) end
 end)
 
 ---For internal use only, use `entity.transform`

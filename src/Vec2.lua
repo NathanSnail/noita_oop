@@ -1,8 +1,9 @@
 local require = require
-
 local freeze = require "src.freeze"
 local metatable = require "src.metatable"
+local null = require "src.null"
 local typed = require "src.typed"
+
 ---@class ECS.Vec2Lib
 ---@operator call(Vec2): Vec2
 local M = {}
@@ -14,7 +15,6 @@ local M = {}
 ---@operator div(number): Vec2
 ---@operator add(Vec2): Vec2
 ---@operator sub(Vec2): Vec2
----@operator unm: Vec2
 
 ---@alias ECS.TransformVec2Variant "pos" | "scale"
 
@@ -45,7 +45,7 @@ local index = {
 	end,
 	entity = function(_)
 		-- same as transform, can't nil or field doesn't exist which is error
-		return false
+		return null
 	end,
 }
 
