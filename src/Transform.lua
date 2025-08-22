@@ -9,29 +9,27 @@ local M = {}
 
 ---@class (exact) Transform
 ---@field pos Vec2
----@field x number equivalent to `pos.x`
----@field y number equivalent to `pos.y`
 ---@field rotation number
 ---@field scale Vec2
 
----@class (exact) EntityTransform : Transform
+---@class (exact) ECS.EntityTransform : Transform
 ---@field entity Entity?
 
----@class (exact) CustomTransform : Transform
+---@class (exact) ECS.CustomTransform : Transform
 ---@field backing Transform?
 
 ---@type table<string, fun(self: Transform, value: any): any>
 local index = {
 	pos = function(self)
-		---@cast self EntityTransform
+		---@cast self ECS.EntityTransform
 		if self.entity then return Vec2.from_entity(self.entity, "pos") end
 	end,
 	scale = function(self)
-		---@cast self EntityTransform
+		---@cast self ECS.EntityTransform
 		if self.entity then return Vec2.from_entity(self.entity, "scale") end
 	end,
 	rotation = function(self)
-		---@cast self EntityTransform
+		---@cast self ECS.EntityTransform
 		if self.entity then
 			local _, _, rotation, _, _ = EntityGetTransform(self.entity.id)
 			return rotation
@@ -53,18 +51,19 @@ local newindex = {
 	end,
 	rotation = function(self, value)
 		value = typed.must(value, "number")
-		---@cast self EntityTransform
+		---@cast self ECS.EntityTransform
 		if self.entity then
 			local x, y, _, scale_x, scale_y = EntityGetTransform(self.entity.id)
 			EntitySetTransform(self.entity.id, x, y, value, scale_x, scale_y)
 		else
-			self.rotation = value
+			---@cast self ECS.CustomTransform
+			self.backing.rotation = value
 		end
 	end,
 }
 
 local mt = metatable.metatable(index, newindex, "Transform", function(self)
-	---@cast self EntityTransform
+	---@cast self ECS.EntityTransform
 	if self.entity then return tostring(self.entity) end
 end)
 
