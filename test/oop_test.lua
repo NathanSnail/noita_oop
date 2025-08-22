@@ -185,4 +185,21 @@ test.test {
 			test.eq(parent.children(), child)
 		end,
 	},
+	{
+		name = "Named children",
+		body = function()
+			local parent = ecs.load("file")
+			local child1 = ecs.load("a")
+			child1.parent = parent
+			local child2 = ecs.load("a")
+			child2.parent = parent
+			local child3 = ecs.load("b")
+			child3.parent = parent
+			local counter = 0
+			for _ in parent.children:named("entity from file a") do
+				counter = counter + 1
+			end
+			test.eq(counter, 2)
+		end,
+	},
 }
