@@ -167,4 +167,13 @@ test.test {
 			test.eq(child == copy, true)
 		end,
 	},
+	{
+		name = "Transform equality",
+		body = function()
+			local ctor = { pos = { x = 4, y = 3 }, rotation = 4, scale = { x = 4, y = 5 } }
+			local transform1 = Transform(ctor)
+			local transform2 = Transform(ctor)
+			test.eq(transform1 == transform2, true)
+		end,
+	},
 }

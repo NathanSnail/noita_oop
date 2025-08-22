@@ -80,7 +80,7 @@ function M.metatable(index, newindex, name, info, default_mt)
 	}
 
 	for k, v in pairs(default_mt) do
-		if mt[k] == nil then mt[k] = v end
+		mt[k] = v
 	end
 
 	return mt
