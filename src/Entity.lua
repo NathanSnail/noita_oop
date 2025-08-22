@@ -1,4 +1,5 @@
 local require = require
+local EntityTags = require "src.EntityTags"
 
 ---@class ECS.EntityLib
 ---@overload fun(entity_id): Entity
@@ -21,6 +22,7 @@ local typed = require "src.typed"
 ---@field parent Entity?
 ---@field root Entity
 ---@field children EntityChildren
+---@field tags EntityTags
 
 local readonly = { "file", "root", "children" }
 
@@ -45,6 +47,9 @@ local index = {
 	end,
 	children = function(self)
 		return EntityChildren.from_entity(self)
+	end,
+	tags = function(self)
+		return EntityTags.from_entity(self)
 	end,
 }
 
