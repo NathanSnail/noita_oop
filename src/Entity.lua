@@ -49,9 +49,6 @@ local newindex = {
 		value = typed.must(value, "string")
 		EntitySetName(self.id, value)
 	end,
-	file = function(_)
-		error("Entity file is readonly")
-	end,
 	transform = function(self, value)
 		value = typed.must(value, "table")
 		self.transform.pos = value.pos
@@ -71,6 +68,12 @@ local newindex = {
 		EntityAddChild(parent_id, self.id)
 	end,
 }
+
+for _, v in ipairs(readonly) do
+	newindex[v] = function(_)
+		error(("Entity %s is readonly"):format(v))
+	end
+end
 
 local transform_fields = { "pos", "rotation", "scale" }
 for _, v in ipairs(transform_fields) do
