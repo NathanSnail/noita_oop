@@ -159,4 +159,12 @@ test.test {
 			test.eq(child.root, parent2)
 		end,
 	},
+	{
+		name = "Entity equality",
+		body = function()
+			local child = ecs.load("file")
+			local copy = Entity(child.id)
+			test.eq(child == copy, true)
+		end,
+	},
 }

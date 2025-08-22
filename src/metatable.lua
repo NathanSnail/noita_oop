@@ -68,6 +68,15 @@ function M.metatable(index, newindex, name, info, default_mt)
 		__tostring = function(self)
 			return get_name(self)
 		end,
+		---@param self any
+		---@param other any
+		__eq = function(self, other)
+			if type(self) ~= type(other) then return false end
+			for k, v in pairs(self) do
+				if v ~= other[k] then return false end
+			end
+			return true
+		end,
 	}
 
 	for k, v in pairs(default_mt) do
