@@ -5,7 +5,7 @@ local typed = require "src.typed"
 
 ---@class (exact) EntityTags
 ---@overload fun(): string?
----@field [string] true
+---@field [string] boolean
 
 ---@class (exact) ECS.EntityTags : EntityTags
 ---@field [1] ECS.EntityTagsBacking

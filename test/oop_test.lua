@@ -223,5 +223,13 @@ test.test {
 			end
 			test.eq(counter, 3)
 		end,
-	},
+	},{
+		name = "Tag remove",
+		body = function()
+			local entity = ecs.load("file")
+			entity.tags["foo"] = true
+			entity.tags["foo"] = false
+			test.eq(entity.tags["foo"], false)
+		end,
+	}
 }
