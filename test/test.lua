@@ -3,10 +3,9 @@ local M = {
 	passed = true,
 	---@type string[]
 	errors = {},
-	rng = require "lib.random",
 }
 
-local ansi = require "lib.ansi"
+local ansi = require "test.ansi"
 
 local FAIL = ansi.RED_FG .. ansi.BOLD
 local PASS = ansi.GREEN_FG .. ansi.BOLD
