@@ -22,7 +22,7 @@ local typed = require "src.typed"
 ---@field parent Entity?
 ---@field root Entity
 ---@field children EntityChildren
----@field tags EntityTags
+---@field tags EntityTags | string can be assigned from a csv like `"mortal,enemy,human"`
 
 local readonly = { "file", "root", "children" }
 
@@ -76,6 +76,21 @@ local newindex = {
 		---@diagnostic disable-next-line: cast-type-mismatch
 		---@cast parent_id entity_id
 		EntityAddChild(parent_id, self.id)
+	end,
+	tags = function(self, value)
+		for tag in self.tags do
+			self.tags[tag] = false
+		end
+		if type(value) == "string" then
+			for tag in value:gmatch("[^,]+") do
+				self.tags[tag] = true
+			end
+			return
+		end
+		value = typed.must(value, "table")
+		for tag in value do
+			self.tags[tag] = true
+		end
 	end,
 }
 
