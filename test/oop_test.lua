@@ -223,7 +223,8 @@ test.test {
 			end
 			test.eq(counter, 3)
 		end,
-	},{
+	},
+	{
 		name = "Tag remove",
 		body = function()
 			local entity = ecs.load("file")
@@ -231,5 +232,27 @@ test.test {
 			entity.tags["foo"] = false
 			test.eq(entity.tags["foo"], false)
 		end,
-	}
+	},
+	{
+		name = "Tag copy",
+		body = function()
+			local entity = ecs.load("file")
+			local entity2 = ecs.load("file")
+			entity.tags["foo"] = true
+			entity2.tags = entity.tags
+			test.eq(entity2.tags["foo"], true)
+		end,
+	},
+	{
+		name = "Tag set",
+		body = function()
+			local entity = ecs.load("file")
+			entity.tags = "foo,bar,baz"
+			local counter = 0
+			for _ in entity.tags do
+				counter = counter + 1
+			end
+			test.eq(counter, 3)
+		end,
+	},
 }
