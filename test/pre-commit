@@ -1,2 +1,3 @@
 #!/bin/sh
 luajit test/oop_test.lua
+stylua $(find . -type f | rg \.lua$)
