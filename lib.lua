@@ -4,6 +4,7 @@ if not MODID then
 	local path = "data/noita_oop/temp.txt"
 	ModTextFileSetContent(path, "empty")
 	whoami = ModTextFileWhoSetContent(path)
+	MODID = whoami
 end
 
 local _require = require
