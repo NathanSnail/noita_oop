@@ -1,3 +1,4 @@
+local require = require
 local freeze = require "src.freeze"
 
 ---@type metatable
