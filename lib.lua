@@ -11,7 +11,7 @@ local _require = require
 ---@param modname string
 ---@return any
 function require(modname)
-	return dofile_once(("mods/%s/lib/ecs/%s.lua"):format(whoami, (modname:gsub("%.", "/"))))
+	return dofile_once(("mods/%s/lib/ecs/%s.lua"):format(whoami, modname:gsub("%.", "/")))
 end
 
 local ECS = require "src.ECS"
