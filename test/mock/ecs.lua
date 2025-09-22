@@ -1,5 +1,5 @@
-local functional = require "src.functional"
-local typed = require "src.typed"
+local functional = require "src.utils.functional"
+local typed = require "src.utils.typed"
 
 ---@class (exact) mock.Entity
 ---@field children entity_id[]
@@ -11,6 +11,7 @@ local typed = require "src.typed"
 ---@field scale_x number
 ---@field scale_y number
 ---@field tags table<string, true>
+---@field components table<string, component_id[]>
 
 ---@class (exact) mock.EntityPartial
 ---@field children entity_id[]?
@@ -22,9 +23,17 @@ local typed = require "src.typed"
 ---@field scale_x number?
 ---@field scale_y number?
 ---@field tags table<string, true>?
+---@field components component_id[]?
+
+---@class (exact) mock.EntityComponent
+---@field [string] any
+---@field _ty string
+---@field _tags table<string, true>
 
 ---@type mock.Entity[]
 local entities = {}
+---@type mock.EntityComponent[]
+local components = {}
 ---@type entity_id
 ---@diagnostic disable-next-line: assign-type-mismatch
 local entity_id_max = 1
@@ -42,6 +51,7 @@ local function entity_defaults(partial)
 		scale_x = 1,
 		scale_y = 1,
 		tags = {},
+		components = {},
 	}
 	for k, v in pairs(defaults) do
 		if partial[k] == nil then partial[k] = v end
@@ -54,7 +64,7 @@ end
 ---@param name string?
 ---@return entity_id
 function EntityCreateNew(name)
-	entities[entity_id_max] = entity_defaults { children = {}, name = name }
+	entities[entity_id_max] = entity_defaults { name = name }
 	entity_id_max = entity_id_max + 1
 	return entity_id_max - 1
 end
@@ -198,4 +208,19 @@ local me = EntityCreateNew()
 ---@return entity_id
 function GetUpdatedEntityID()
 	return me
+end
+
+---@param entity_id entity_id
+---@param component_type_name component_type
+---@param tag string? '""'
+---@return component_id[]|nil
+---@nodiscard
+function EntityGetComponent(entity_id, component_type_name, tag)
+	local entity = entities[entity_id]
+	local entity_components = entity.components[component_type_name]
+	local res = {}
+	for _, component in ipairs(entity_components) do
+		if tag == nil or components[component]._tags[tag] then table.insert(res, component) end
+	end
+	return res
 end

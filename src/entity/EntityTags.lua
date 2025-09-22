@@ -1,7 +1,7 @@
 local require = require
-local freeze = require "src.freeze"
-local metatable = require "src.metatable"
-local typed = require "src.typed"
+local freeze = require "src.utils.freeze"
+local metatable = require "src.utils.metatable"
+local typed = require "src.utils.typed"
 
 ---@class (exact) EntityTags
 ---@overload fun(): string?

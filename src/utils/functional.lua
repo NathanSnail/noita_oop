@@ -1,5 +1,5 @@
 local require = require
-local freeze = require "src.freeze"
+local freeze = require "src.utils.freeze"
 
 ---@class ECS.functional
 local M = {}

@@ -1,8 +1,8 @@
 local require = require
-local freeze = require "src.freeze"
-local functional = require "src.functional"
-local metatable = require "src.metatable"
-local typed = require "src.typed"
+local freeze = require "src.utils.freeze"
+local functional = require "src.utils.functional"
+local metatable = require "src.utils.metatable"
+local typed = require "src.utils.typed"
 
 ---@class (exact) EntityChildren
 ---@overload fun(): Entity?
@@ -60,7 +60,7 @@ end, {
 	__call = function(self)
 		if not self.children then
 			-- must lazy load because otherwise we have a cycle
-			local Entity = require "src.Entity"
+			local Entity = require "src.entity.Entity"
 			local children
 			if self.tag then
 				children = EntityGetAllChildren(self.entity_id, self.tag)

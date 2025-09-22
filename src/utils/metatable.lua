@@ -1,8 +1,8 @@
 local require = require
-local null = require "src.null"
+local null = require "src.utils.null"
 
-local freeze = require "src.freeze"
-local typed = require "src.typed"
+local freeze = require "src.utils.freeze"
+local typed = require "src.utils.typed"
 ---@class ECS.metatable
 local M = {}
 
