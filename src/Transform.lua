@@ -1,8 +1,8 @@
 local require = require
 local Vec2 = require "src.Vec2"
-local freeze = require "src.freeze"
-local metatable = require "src.metatable"
-local typed = require "src.typed"
+local freeze = require "src.utils.freeze"
+local metatable = require "src.utils.metatable"
+local typed = require "src.utils.typed"
 
 ---@class ECS.TransformLib
 local M = {}

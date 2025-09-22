@@ -1,30 +1,31 @@
 local require = require
-local EntityTags = require "src.EntityTags"
+local EntityTags = require "src.entity.EntityTags"
 
 ---@class ECS.EntityLib
 ---@overload fun(entity_id): Entity
 local M = {}
 
-local EntityChildren = require "src.EntityChildren"
+local EntityChildren = require "src.entity.EntityChildren"
 local Transform = require "src.Transform"
-local freeze = require "src.freeze"
-local metatable = require "src.metatable"
-local typed = require "src.typed"
+local freeze = require "src.utils.freeze"
+local metatable = require "src.utils.metatable"
+local typed = require "src.utils.typed"
 
 ---@class (exact) Entity
----@field id entity_id
+---@field id entity_id do not write to this!
 ---@field name string
----@field file string
+---@field file string readonly
 ---@field transform Transform
 ---@field pos Vec2 equivalent to `transform.pos`
 ---@field rotation number equivalent to `transform.rotation`
 ---@field scale Vec2 equivalent to `transform.scale`
 ---@field parent Entity?
----@field root Entity
----@field children EntityChildren
+---@field root Entity readonly
+---@field children EntityChildren readonly
 ---@field tags EntityTags | string can be assigned from a csv like `"mortal,enemy,human"`
+---@field components EntityComponents readonly
 
-local readonly = { "file", "root", "children" }
+local readonly = { "file", "root", "children", "components" }
 
 ---@type table<string, fun(self: Entity): any>
 local index = {

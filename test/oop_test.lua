@@ -1,4 +1,4 @@
-local Entity = require "src.Entity"
+local Entity = require "src.entity.Entity"
 local Transform = require "src.Transform"
 local Vec2 = require "src.Vec2"
 local test = require "test.test"

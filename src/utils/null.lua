@@ -1,5 +1,5 @@
 local require = require
-local freeze = require "src.freeze"
+local freeze = require "src.utils.freeze"
 
 ---@type metatable
 local mt = {
@@ -9,4 +9,7 @@ local mt = {
 	end,
 }
 
-return freeze.freeze({}, "null", mt)
+---@class (exact) ECS.null
+local M = {}
+freeze.freeze(M, "null", mt)
+return M

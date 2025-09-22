@@ -1,9 +1,9 @@
 local require = require
 
-local Entity = require "src.Entity"
-local freeze = require "src.freeze"
-local metatable = require "src.metatable"
-local typed = require "src.typed"
+local Entity = require "src.entity.Entity"
+local freeze = require "src.utils.freeze"
+local metatable = require "src.utils.metatable"
+local typed = require "src.utils.typed"
 
 ---@class (exact) ECS
 ---@field me Entity
