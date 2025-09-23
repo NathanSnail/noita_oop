@@ -224,3 +224,17 @@ function EntityGetComponent(entity_id, component_type_name, tag)
 	end
 	return res
 end
+
+---@param entity_id entity_id
+---@param component_type_name component_type
+---@param table_of_component_values {[string]:any}? nil
+---@return component_id
+function EntityAddComponent2(entity_id, component_type_name, table_of_component_values)
+	table_of_component_values._ty = component_type_name
+	table.insert(components, table_of_component_values)
+	local entity = entities[entity_id]
+	entity.components[component_type_name] = entity.components[component_type_name] or {}
+	table.insert(entity.components[component_type_name], #components)
+	---@diagnostic disable-next-line: return-type-mismatch
+	return #components
+end

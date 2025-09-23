@@ -5,7 +5,7 @@ local metatable = require "src.utils.metatable"
 local typed = require "src.utils.typed"
 
 ---@class (exact) EntityChildren
----@overload fun(): Entity?
+---@overload fun(): (fun(): Entity?)
 ---@field tagged fun(self: EntityChildren, tag: string): EntityChildren
 ---@field named fun(self: EntityChildren, name: string): EntityChildren
 
