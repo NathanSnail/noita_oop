@@ -5,7 +5,7 @@ local M = {}
 ---Freezes a table and returns it, table must not already have a metatable
 ---@generic T
 ---@param t T
----@param name string
+---@param name `T`
 ---@param mt_defaults metatable?
 ---@return T
 function M.freeze(t, name, mt_defaults)

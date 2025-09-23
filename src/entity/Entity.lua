@@ -1,4 +1,5 @@
 local require = require
+local EntityComponents = require "src.components.EntityComponents"
 local EntityTags = require "src.entity.EntityTags"
 
 ---@class ECS.EntityLib
@@ -23,7 +24,7 @@ local typed = require "src.utils.typed"
 ---@field root Entity readonly
 ---@field children EntityChildren readonly
 ---@field tags EntityTags | string can be assigned from a csv like `"mortal,enemy,human"`
----@field components EntityComponents readonly
+---@field components Components readonly
 
 local readonly = { "file", "root", "children", "components" }
 
@@ -51,6 +52,9 @@ local index = {
 	end,
 	tags = function(self)
 		return EntityTags.from_entity(self)
+	end,
+	components = function(self)
+		return EntityComponents.from_entity(self)
 	end,
 }
 
