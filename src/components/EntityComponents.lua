@@ -36,9 +36,23 @@ local specific_index = {
 	add = {
 		---@param self ECS.SpecificComponents
 		---@param fields table?
-		---@return ECS.SpecificComponents
+		---@return Component
 		function(self, fields)
-			EntityAddComponent2(self._entity.id, self._type, fields or {})
+			fields = typed.maybe(fields, {})
+			local comp = Component(EntityAddComponent2(self._entity.id, self._type, fields))
+			if fields.tags then
+				local tags = typed.must(fields.tags, "string")
+				comp.tags = tags
+			end
+			return comp
+		end,
+	},
+	tagged = {
+		---@param self ECS.SpecificComponents
+		---@param tag string
+		---@return ECS.SpecificComponents
+		function(self, tag)
+			self._tag = tag
 			return self
 		end,
 	},
@@ -47,7 +61,7 @@ local specific_index = {
 ---@type ECS.metatable.newindex
 local specific_newindex = {}
 
-local transparent = { "_components", "_index" }
+local transparent = { "_components", "_index", "_tag", "_enabled" }
 for _, v in pairs(transparent) do
 	specific_index[v] = function() end
 	specific_newindex[v] = function(self, value)
@@ -67,10 +81,14 @@ local specific_mt = metatable.metatable(
 		---@return fun(): Component?
 		__call = function(self)
 			if not self._components then
-				self._components = functional.map(
-					EntityGetComponent(self._entity.id, self._type) or {},
-					Component --[[@as function]]
-				)
+				local comps
+				if self._tag then
+					comps = EntityGetComponent(self._entity.id, self._type, self._tag) or {}
+				else
+					comps = EntityGetComponent(self._entity.id, self._type) or {}
+				end
+
+				self._components = functional.map(comps, Component --[[@as function]])
 				self._index = 0
 			end
 			self._index = self._index + 1
@@ -85,7 +103,7 @@ local components_mt = metatable.metatable({}, {}, "Components", nil, {
 	---@param index component_type
 	---@return ECS.SpecificComponents
 	__index = function(self, index)
-		return setmetatable({ _entity = self._entity, _type = index }, specific_mt)
+		return setmetatable({ _entity = self._entity, _type = index .. "Component" }, specific_mt)
 	end,
 })
 

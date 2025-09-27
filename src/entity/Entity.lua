@@ -1,6 +1,7 @@
 local require = require
 local EntityComponents = require "src.components.EntityComponents"
 local EntityTags = require "src.entity.EntityTags"
+local tags = require "src.utils.tags"
 
 ---@class ECS.EntityLib
 ---@overload fun(entity_id): Entity
@@ -82,21 +83,7 @@ local newindex = {
 		---@cast parent_id entity_id
 		EntityAddChild(parent_id, self.id)
 	end,
-	tags = function(self, value)
-		for tag in self.tags do
-			self.tags[tag] = false
-		end
-		if type(value) == "string" then
-			for tag in value:gmatch("[^,]+") do
-				self.tags[tag] = true
-			end
-			return
-		end
-		value = typed.must(value, "table")
-		for tag in value do
-			self.tags[tag] = true
-		end
-	end,
+	tags = tags.new_index,
 }
 
 for _, v in ipairs(readonly) do
