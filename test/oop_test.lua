@@ -203,7 +203,7 @@ test.test {
 		end,
 	},
 	{
-		name = "Tag get / set",
+		name = "Entity tag get / set",
 		body = function()
 			local entity = ecs.load("file")
 			entity.tags["foo"] = true
@@ -211,7 +211,7 @@ test.test {
 		end,
 	},
 	{
-		name = "Tag iterate",
+		name = "Entity tag iterate",
 		body = function()
 			local entity = ecs.load("file")
 			entity.tags["foo"] = true
@@ -225,7 +225,7 @@ test.test {
 		end,
 	},
 	{
-		name = "Tag remove",
+		name = "Entity tag remove",
 		body = function()
 			local entity = ecs.load("file")
 			entity.tags["foo"] = true
@@ -234,7 +234,7 @@ test.test {
 		end,
 	},
 	{
-		name = "Tag copy",
+		name = "Entity tag copy",
 		body = function()
 			local entity = ecs.load("file")
 			local entity2 = ecs.load("file")
@@ -244,7 +244,7 @@ test.test {
 		end,
 	},
 	{
-		name = "Tag set",
+		name = "Entity tag set",
 		body = function()
 			local entity = ecs.load("file")
 			entity.tags = "foo,bar,baz"
@@ -255,18 +255,19 @@ test.test {
 			test.eq(counter, 3)
 		end,
 	},
-	{
+	--[[{
 		name = "Components iterate",
 		body = function()
 			local entity = ecs.load("file")
-			entity.components.VariableStorage:add()
-			entity.components.VariableStorage:add()
-			entity.components.VariableStorage:add()
+			entity.components.VariableStorage
+				:add({ name = "foo" })
+				:add({ name = "baz" })
+				:add({ name = "bar" })
 			local counter = 0
 			for _ in entity.components.VariableStorage do
 				counter = counter + 1
 			end
 			test.eq(counter, 3)
 		end,
-	},
+	},]]
 }

@@ -1,7 +1,6 @@
 local require = require
 local freeze = require "src.utils.freeze"
-local metatable = require "src.utils.metatable"
-local typed = require "src.utils.typed"
+local tags = require "src.utils.tags"
 
 ---@class (exact) EntityTags
 ---@overload fun(): string?
@@ -18,42 +17,15 @@ local typed = require "src.utils.typed"
 ---@class ECS.EntityTagsLib
 local M = {}
 
-local mt = metatable.metatable({}, {}, "EntityTags", function(self)
-	---@cast self ECS.EntityTags
+local mt = tags.make_tags_mt(function(self)
 	return EntityGetTags(self[1].entity.id)
-end, {
-	---@param self ECS.EntityTags
-	---@param index any
-	__index = function(self, index)
-		index = typed.must(index, "string")
-		return EntityHasTag(self[1].entity.id, index)
-	end,
-	---@param self ECS.EntityTags
-	---@param index any
-	---@param value any
-	__newindex = function(self, index, value)
-		index = typed.must(index, "string")
-		value = typed.must(value, "boolean")
-		if value then
-			EntityAddTag(self[1].entity.id, index)
-		else
-			EntityRemoveTag(self[1].entity.id, index)
-		end
-	end,
-	---@param self ECS.EntityTags
-	---@return string?
-	__call = function(self)
-		local backing = self[1]
-		if not backing.tags then
-			backing.tags = {}
-			for tag in EntityGetTags(backing.entity.id):gmatch("[^,]+") do
-				table.insert(backing.tags, tag)
-			end
-		end
-		backing.index = backing.index + 1
-		return backing.tags[backing.index]
-	end,
-})
+end, function(self, tag)
+	return EntityAddTag(self[1].entity.id, tag)
+end, function(self, tag)
+	return EntityRemoveTag(self[1].entity.id, tag)
+end, function(self, tag)
+	return EntityHasTag(self[1].entity.id, tag)
+end)
 
 ---@param entity Entity
 function M.from_entity(entity)

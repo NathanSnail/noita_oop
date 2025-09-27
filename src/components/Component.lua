@@ -2,6 +2,7 @@ local require = require
 local freeze = require "src.utils.freeze"
 local functional = require "src.utils.functional"
 local metatable = require "src.utils.metatable"
+local tags = require "src.utils.tags"
 local typed = require "src.utils.typed"
 
 ---@class (exact) Component
@@ -11,7 +12,15 @@ local typed = require "src.utils.typed"
 ---@class ECS.ComponentLib
 local M = {}
 
-local mt = metatable.metatable({}, {}, "Component", function(self)
+local index = {
+	tags = {},
+}
+
+local new_index = {
+	tags = tags.new_index,
+}
+
+local mt = metatable.metatable({}, new_index, "Component", function(self)
 	return tostring(self.id)
 end)
 
