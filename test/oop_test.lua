@@ -255,19 +255,18 @@ test.test {
 			test.eq(counter, 3)
 		end,
 	},
-	--[[{
+	{
 		name = "Components iterate",
 		body = function()
 			local entity = ecs.load("file")
-			entity.components.VariableStorage
-				:add({ name = "foo" })
-				:add({ name = "baz" })
-				:add({ name = "bar" })
+			entity.components.VariableStorage:add({ name = "foo" })
+			entity.components.VariableStorage:add({ name = "baz" })
+			entity.components.VariableStorage:add({ name = "bar" })
 			local counter = 0
 			for _ in entity.components.VariableStorage do
 				counter = counter + 1
 			end
 			test.eq(counter, 3)
 		end,
-	},]]
+	},
 }

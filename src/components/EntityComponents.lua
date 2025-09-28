@@ -92,8 +92,7 @@ local specific_mt = metatable.metatable(
 				self._index = 0
 			end
 			self._index = self._index + 1
-			if self._index > #self._components then return end
-			return Component(self._components[self._index])
+			return self._components[self._index]
 		end,
 	}
 )
