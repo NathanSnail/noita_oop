@@ -88,7 +88,8 @@ local specific_mt = metatable.metatable(
 					comps = EntityGetComponent(self._entity.id, self._type) or {}
 				end
 
-				self._components = functional.map(comps, Component --[[@as function]])
+				self._components =
+					functional.map(comps, Component --[[@as fun(component_id): Component]])
 				self._index = 0
 			end
 			self._index = self._index + 1

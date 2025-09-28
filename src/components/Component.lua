@@ -30,5 +30,9 @@ function M.from_id(component_id)
 	return setmetatable({ id = component_id }, mt)
 end
 
-freeze.freeze(M, "ECS.ComponentLib", { __call = M.from_id })
+freeze.freeze(M, "ECS.ComponentLib", {
+	__call = function(_, arg)
+		return M.from_id(arg)
+	end,
+})
 return M
