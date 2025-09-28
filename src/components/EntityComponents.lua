@@ -11,7 +11,7 @@ local typed = require "src.utils.typed"
 ---@field enabled fun(self: SpecificComponents, enabled: boolean): SpecificComponents
 ---@field tagged fun(self: SpecificComponents, tag: string): SpecificComponents
 ---@field with_field fun(self: SpecificComponents, field: string, value: any): SpecificComponents
----@field add fun(self: SpecificComponents, fields: table?): SpecificComponents
+---@field add fun(self: SpecificComponents, fields: table?): Component
 
 ---@class (exact) ECS.SpecificComponents : SpecificComponents
 ---@field _entity Entity
