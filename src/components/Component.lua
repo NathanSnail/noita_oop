@@ -1,26 +1,28 @@
 local require = require
+local ComponentTags = require "src.components.ComponentTags"
 local freeze = require "src.utils.freeze"
-local functional = require "src.utils.functional"
 local metatable = require "src.utils.metatable"
 local tags = require "src.utils.tags"
-local typed = require "src.utils.typed"
 
 ---@class (exact) Component
 ---@overload fun(component_id: component_id): Component
 ---@field id component_id readonly
+---@field tags Tags | string
 
 ---@class ECS.ComponentLib
 local M = {}
 
 local index = {
-	tags = {},
+	tags = function(self)
+		return ComponentTags.from_component(self)
+	end,
 }
 
 local new_index = {
 	tags = tags.new_index,
 }
 
-local mt = metatable.metatable({}, new_index, "Component", function(self)
+local mt = metatable.metatable(index, new_index, "Component", function(self)
 	return tostring(self.id)
 end)
 
