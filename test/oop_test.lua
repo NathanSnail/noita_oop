@@ -305,4 +305,16 @@ test.test {
 			test.eq(a.tags.c, true)
 		end,
 	},
+	{
+		name = "Mixed tag set",
+		body = function()
+			local entity = ecs.load("file")
+			entity.tags = "a,b"
+			local a = entity.components.VariableStorage:add({ name = "foo", tags = "c" })
+			a.tags = entity.tags
+			test.eq(a.tags.a, true)
+			test.eq(a.tags.b, true)
+			test.eq(a.tags.c, false)
+		end,
+	},
 }
