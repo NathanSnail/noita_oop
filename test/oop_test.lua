@@ -269,4 +269,30 @@ test.test {
 			test.eq(counter, 3)
 		end,
 	},
+	{
+		name = "Components tagged iterate",
+		body = function()
+			local entity = ecs.load("file")
+			entity.components.VariableStorage:add({ name = "foo", tags = "a" })
+			entity.components.VariableStorage:add({ name = "baz", tags = "b,a" })
+			entity.components.VariableStorage:add({ name = "bar" })
+			local counter = 0
+			for _ in entity.components.VariableStorage:tagged("a") do
+				counter = counter + 1
+			end
+			test.eq(counter, 2)
+		end,
+	},
+	{
+		name = "Component tag copy",
+		body = function()
+			local entity = ecs.load("file")
+			local a = entity.components.VariableStorage:add({ name = "foo", tags = "a" })
+			local b = entity.components.VariableStorage:add({ name = "bar", tags = "b" })
+			a.tags["foo"] = true
+			print(a.tags)
+			b.tags = a.tags
+			test.eq(b.tags["foo"], true)
+		end,
+	},
 }

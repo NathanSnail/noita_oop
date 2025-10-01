@@ -24,7 +24,7 @@ local typed = require "src.utils.typed"
 ---@field parent Entity?
 ---@field root Entity readonly
 ---@field children EntityChildren readonly
----@field tags EntityTags | string can be assigned from a csv like `"mortal,enemy,human"`
+---@field tags Tags | string can be assigned from a csv like `"mortal,enemy,human"`
 ---@field components Components readonly
 
 local readonly = { "file", "root", "children", "components" }

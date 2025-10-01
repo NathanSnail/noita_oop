@@ -231,10 +231,41 @@ end
 ---@return component_id
 function EntityAddComponent2(entity_id, component_type_name, table_of_component_values)
 	table_of_component_values._ty = component_type_name
+	table_of_component_values._tags = {}
 	table.insert(components, table_of_component_values)
 	local entity = entities[entity_id]
 	entity.components[component_type_name] = entity.components[component_type_name] or {}
 	table.insert(entity.components[component_type_name], #components)
 	---@diagnostic disable-next-line: return-type-mismatch
 	return #components
+end
+
+---@param component_id component_id
+---@param tag string
+function ComponentAddTag(component_id, tag)
+	components[component_id]._tags[tag] = true
+end
+
+---@param component_id component_id
+---@param tag string
+function ComponentRemoveTag(component_id, tag)
+	components[component_id]._tags[tag] = nil
+end
+
+---@param component_id component_id
+---@param tag string
+---@return boolean
+---@nodiscard
+function ComponentHasTag(component_id, tag)
+	return components[component_id]._tags[tag] == true
+end
+
+---Returns a string where the tags are comma-separated, or nil if can't find `component_id` component.
+---@param component_id component_id
+---@return string|nil
+---@nodiscard
+function ComponentGetTags(component_id)
+	local s = table.concat(components[component_id]._tags, ",")
+	if s == "" then return nil end
+	return s
 end

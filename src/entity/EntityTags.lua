@@ -2,11 +2,7 @@ local require = require
 local freeze = require "src.utils.freeze"
 local tags = require "src.utils.tags"
 
----@class (exact) EntityTags
----@overload fun(): string?
----@field [string] boolean
-
----@class (exact) ECS.EntityTags : EntityTags
+---@class (exact) ECS.EntityTags : Tags
 ---@field [1] ECS.EntityTagsBacking
 
 ---@class (exact) ECS.EntityTagsBacking

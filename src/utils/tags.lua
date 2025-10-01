@@ -3,6 +3,10 @@ local freeze = require "src.utils.freeze"
 local metatable = require "src.utils.metatable"
 local typed = require "src.utils.typed"
 
+---@class (exact) Tags
+---@overload fun(): string?
+---@field [string] boolean
+
 ---@class ECS.TagsLib
 local M = {}
 
