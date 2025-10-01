@@ -269,4 +269,18 @@ test.test {
 			test.eq(counter, 3)
 		end,
 	},
+	{
+		name = "Components tagged iterate",
+		body = function()
+			local entity = ecs.load("file")
+			entity.components.VariableStorage:add({ name = "foo", tags = "a" })
+			entity.components.VariableStorage:add({ name = "baz", tags = "b,a" })
+			entity.components.VariableStorage:add({ name = "bar" })
+			local counter = 0
+			for _ in entity.components.VariableStorage:tagged("a") do
+				counter = counter + 1
+			end
+			test.eq(counter, 2)
+		end,
+	},
 }
