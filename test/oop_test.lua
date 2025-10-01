@@ -294,4 +294,15 @@ test.test {
 			test.eq(b.tags["foo"], true)
 		end,
 	},
+	{
+		name = "Component tag set",
+		body = function()
+			local entity = ecs.load("file")
+			local a = entity.components.VariableStorage:add({ name = "foo", tags = "a" })
+			a.tags = "a,b,c"
+			test.eq(a.tags.a, true)
+			test.eq(a.tags.b, true)
+			test.eq(a.tags.c, true)
+		end,
+	},
 }
