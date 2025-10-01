@@ -290,7 +290,6 @@ test.test {
 			local a = entity.components.VariableStorage:add({ name = "foo", tags = "a" })
 			local b = entity.components.VariableStorage:add({ name = "bar", tags = "b" })
 			a.tags["foo"] = true
-			print(a.tags)
 			b.tags = a.tags
 			test.eq(b.tags["foo"], true)
 		end,
