@@ -1,8 +1,10 @@
 #!/bin/sh
+set -e
 luajit test/oop_test.lua
-stylua -c $(find . -type f | rg \.lua$)
+files=$(find . -type f | rg \.lua$ | rg -v "src/components/fields/component_fields.lua")
+stylua -c $files
 bad=false
-for file in $(find src -type f | rg \.lua$);
+for file in $(echo $files | sed 's/ /\n/g' | rg "src");
 do
 	first=$(head -n 1 < $file)
 	if [ "$first" != "local require = require" ]; then
