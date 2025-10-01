@@ -265,7 +265,11 @@ end
 ---@return string|nil
 ---@nodiscard
 function ComponentGetTags(component_id)
-	local s = table.concat(components[component_id]._tags, ",")
+	local s = ""
+	for tag, _ in pairs(components[component_id]._tags) do
+		s = s .. "," .. tag
+	end
+	s = s:sub(2)
 	if s == "" then return nil end
 	return s
 end
