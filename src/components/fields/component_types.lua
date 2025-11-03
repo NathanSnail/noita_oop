@@ -6,7 +6,7 @@
 ---@field add fun(self: ParticleEmitterComponents, fields: ParticleEmitterComponent.partial): ParticleEmitterComponent
 
 ---@class (exact) ParticleEmitterComponent.partial
----@field m_cached_image_animation ParticleEmitter_Animation*?                                "
+---@field m_cached_image_animation ParticleEmitter_Animation*?
 ---@field emitted_material_name string? `emitted_material_name = blood [0, 1]`
 ---@field create_real_particles boolean? `create_real_particles = 0 [0, 1]` used to be emit_real_particles - creates these particles in the grid, if that happens velocity and lifetime are ignored
 ---@field emit_real_particles boolean? `emit_real_particles = 0 [0, 1]` this creates particles that will behave like particles, but work outside of the screen
@@ -68,7 +68,7 @@
 ---@field gravity Vec2?
 ---@field count_min integer?
 ---@field count_max integer?
----@field custom_style PARTICLE_EMITTER_CUSTOM_STYLE::Enum?                                "NONE or FIRE
+---@field custom_style PARTICLE_EMITTER_CUSTOM_STYLE::Enum? NONE or FIRE
 ---@field mExPosition Vec2? is used with is_trail
 ---@field mMaterialInventoryMax integer? `mMaterialInventoryMax = 1024 [0, 1]` this is how we figure out the pressure, when using material_inventory
 ---@field m_material_id integer?
@@ -80,7 +80,7 @@
 ---@field m_particle_attractor_id integer? `m_particle_attractor_id = -1 [0, 1]`
 
 ---@class (exact) ParticleEmitterComponent : Component
----@field m_cached_image_animation ParticleEmitter_Animation*                                "
+---@field m_cached_image_animation ParticleEmitter_Animation*
 ---@field emitted_material_name string `emitted_material_name = blood [0, 1]`
 ---@field create_real_particles boolean `create_real_particles = 0 [0, 1]` used to be emit_real_particles - creates these particles in the grid, if that happens velocity and lifetime are ignored
 ---@field emit_real_particles boolean `emit_real_particles = 0 [0, 1]` this creates particles that will behave like particles, but work outside of the screen
@@ -142,7 +142,7 @@
 ---@field gravity Vec2
 ---@field count_min integer
 ---@field count_max integer
----@field custom_style PARTICLE_EMITTER_CUSTOM_STYLE::Enum                                "NONE or FIRE
+---@field custom_style PARTICLE_EMITTER_CUSTOM_STYLE::Enum NONE or FIRE
 ---@field mExPosition Vec2 is used with is_trail
 ---@field mMaterialInventoryMax integer `mMaterialInventoryMax = 1024 [0, 1]` this is how we figure out the pressure, when using material_inventory
 ---@field m_material_id integer
@@ -154,7 +154,7 @@
 ---@field m_particle_attractor_id integer `m_particle_attractor_id = -1 [0, 1]`
 
 ---@alias ParticleEmitterComponent.field
----| '"m_cached_image_animation"' `ParticleEmitter_Animation*`                                "
+---| '"m_cached_image_animation"' `ParticleEmitter_Animation*`
 ---| '"emitted_material_name"' `string emitted_material_name = blood [0, 1]`
 ---| '"create_real_particles"' `boolean create_real_particles = 0 [0, 1]` used to be emit_real_particles - creates these particles in the grid, if that happens velocity and lifetime are ignored
 ---| '"emit_real_particles"' `boolean emit_real_particles = 0 [0, 1]` this creates particles that will behave like particles, but work outside of the screen
@@ -216,7 +216,7 @@
 ---| '"gravity"' `Vec2`
 ---| '"count_min"' `integer`
 ---| '"count_max"' `integer`
----| '"custom_style"' `PARTICLE_EMITTER_CUSTOM_STYLE::Enum`                                "NONE or FIRE
+---| '"custom_style"' `PARTICLE_EMITTER_CUSTOM_STYLE::Enum` NONE or FIRE
 ---| '"mExPosition"' `Vec2` is used with is_trail
 ---| '"mMaterialInventoryMax"' `integer mMaterialInventoryMax = 1024 [0, 1]` this is how we figure out the pressure, when using material_inventory
 ---| '"m_material_id"' `integer`
@@ -235,7 +235,7 @@
 ---@field add fun(self: ExplosionComponents, fields: ExplosionComponent.partial): ExplosionComponent
 
 ---@class (exact) ExplosionComponent.partial
----@field trigger EXPLOSION_TRIGGER_TYPE::Enum?                                "what triggers the explosion
+---@field trigger EXPLOSION_TRIGGER_TYPE::Enum? what triggers the explosion
 ---@field timeout_frames integer? `timeout_frames = 0 [0, 180]` for timer
 ---@field timeout_frames_random integer? `timeout_frames_random = 0 [0, 180]` a random value between 0 and 'timout_frames_random' is added to timer
 ---@field kill_entity boolean? `kill_entity = 1 [0, 1]` if 1, we kill the entity when exploding
@@ -243,7 +243,7 @@
 ---@field config_explosion ConfigExplosion? setup for out explosion
 
 ---@class (exact) ExplosionComponent : Component
----@field trigger EXPLOSION_TRIGGER_TYPE::Enum                                "what triggers the explosion
+---@field trigger EXPLOSION_TRIGGER_TYPE::Enum what triggers the explosion
 ---@field timeout_frames integer `timeout_frames = 0 [0, 180]` for timer
 ---@field timeout_frames_random integer `timeout_frames_random = 0 [0, 180]` a random value between 0 and 'timout_frames_random' is added to timer
 ---@field kill_entity boolean `kill_entity = 1 [0, 1]` if 1, we kill the entity when exploding
@@ -251,7 +251,7 @@
 ---@field config_explosion ConfigExplosion setup for out explosion
 
 ---@alias ExplosionComponent.field
----| '"trigger"' `EXPLOSION_TRIGGER_TYPE::Enum`                                "what triggers the explosion
+---| '"trigger"' `EXPLOSION_TRIGGER_TYPE::Enum` what triggers the explosion
 ---| '"timeout_frames"' `integer timeout_frames = 0 [0, 180]` for timer
 ---| '"timeout_frames_random"' `integer timeout_frames_random = 0 [0, 180]` a random value between 0 and 'timout_frames_random' is added to timer
 ---| '"kill_entity"' `boolean kill_entity = 1 [0, 1]` if 1, we kill the entity when exploding
@@ -266,7 +266,7 @@
 ---@field add fun(self: InventoryComponents, fields: InventoryComponent.partial): InventoryComponent
 
 ---@class (exact) InventoryComponent.partial
----@field update_listener InvenentoryUpdateListener*?                                "listener to keep ui up with ability changes
+---@field update_listener InvenentoryUpdateListener*? listener to keep ui up with ability changes
 ---@field ui_container_type integer? `ui_container_type = 1 [0, 1]` UI_CONTAINER_TYPES enum
 ---@field ui_element_sprite string? `ui_element_sprite = data/ui_gfx/inventory/inventory_box.png [0, 1]` ui back sprite
 ---@field actions string? list of actions, used for serialization
@@ -276,7 +276,7 @@
 ---@field items INVENTORYITEM_VECTOR?
 
 ---@class (exact) InventoryComponent : Component
----@field update_listener InvenentoryUpdateListener*                                "listener to keep ui up with ability changes
+---@field update_listener InvenentoryUpdateListener* listener to keep ui up with ability changes
 ---@field ui_container_type integer `ui_container_type = 1 [0, 1]` UI_CONTAINER_TYPES enum
 ---@field ui_element_sprite string `ui_element_sprite = data/ui_gfx/inventory/inventory_box.png [0, 1]` ui back sprite
 ---@field actions string list of actions, used for serialization
@@ -286,7 +286,7 @@
 ---@field items INVENTORYITEM_VECTOR
 
 ---@alias InventoryComponent.field
----| '"update_listener"' `InvenentoryUpdateListener*`                                "listener to keep ui up with ability changes
+---| '"update_listener"' `InvenentoryUpdateListener*` listener to keep ui up with ability changes
 ---| '"ui_container_type"' `integer ui_container_type = 1 [0, 1]` UI_CONTAINER_TYPES enum
 ---| '"ui_element_sprite"' `string ui_element_sprite = data/ui_gfx/inventory/inventory_box.png [0, 1]` ui back sprite
 ---| '"actions"' `string` list of actions, used for serialization
@@ -303,148 +303,148 @@
 ---@field add fun(self: PathFindingComponents, fields: PathFindingComponent.partial): PathFindingComponent
 
 ---@class (exact) PathFindingComponent.partial
----@field job_result_receiver MSG_QUEUE_PATH_FINDING_RESULT?                                "TODO: Comment
----@field search_depth_max_no_goal integer? `search_depth_max_no_goal = 20 [0, 1e+006]` TODO: Comment
----@field iterations_max_no_goal integer? `iterations_max_no_goal = 1500 [0, 1e+006]` TODO: Comment
----@field search_depth_max_with_goal integer? `search_depth_max_with_goal = 2500 [0, 1e+006]` TODO: Comment
----@field iterations_max_with_goal integer? `iterations_max_with_goal = 1500 [0, 1e+006]` TODO: Comment
----@field cost_of_flying number? `cost_of_flying = 20 [0, 100000]` TODO: Comment
----@field distance_to_reach_node_x integer? `distance_to_reach_node_x = 2 [0, 200]` TODO: Comment
----@field distance_to_reach_node_y integer? `distance_to_reach_node_y = 6 [0, 200]` TODO: Comment
----@field frames_to_get_stuck integer? `frames_to_get_stuck = 60 [0, 600]` TODO: Comment
----@field frames_between_searches integer? `frames_between_searches = 30 [0, 300]` TODO: Comment
----@field y_walking_compensation number? `y_walking_compensation = 0 [-100, 100]` TODO: Comment
----@field can_fly boolean? `can_fly = 1 [0, 1]` TODO: Comment
----@field can_walk boolean? `can_walk = 1 [0, 1]` TODO: Comment
----@field can_jump boolean? `can_jump = 0 [0, 1]` TODO: Comment
----@field can_dive boolean? `can_dive = 0 [0, 1]` TODO: Comment
----@field can_swim_on_surface boolean? `can_swim_on_surface = 0 [0, 1]` TODO: Comment
+---@field job_result_receiver MSG_QUEUE_PATH_FINDING_RESULT?
+---@field search_depth_max_no_goal integer? `search_depth_max_no_goal = 20 [0, 1e+006]`
+---@field iterations_max_no_goal integer? `iterations_max_no_goal = 1500 [0, 1e+006]`
+---@field search_depth_max_with_goal integer? `search_depth_max_with_goal = 2500 [0, 1e+006]`
+---@field iterations_max_with_goal integer? `iterations_max_with_goal = 1500 [0, 1e+006]`
+---@field cost_of_flying number? `cost_of_flying = 20 [0, 100000]`
+---@field distance_to_reach_node_x integer? `distance_to_reach_node_x = 2 [0, 200]`
+---@field distance_to_reach_node_y integer? `distance_to_reach_node_y = 6 [0, 200]`
+---@field frames_to_get_stuck integer? `frames_to_get_stuck = 60 [0, 600]`
+---@field frames_between_searches integer? `frames_between_searches = 30 [0, 300]`
+---@field y_walking_compensation number? `y_walking_compensation = 0 [-100, 100]`
+---@field can_fly boolean? `can_fly = 1 [0, 1]`
+---@field can_walk boolean? `can_walk = 1 [0, 1]`
+---@field can_jump boolean? `can_jump = 0 [0, 1]`
+---@field can_dive boolean? `can_dive = 0 [0, 1]`
+---@field can_swim_on_surface boolean? `can_swim_on_surface = 0 [0, 1]`
 ---@field never_consider_line_of_sight boolean? `never_consider_line_of_sight = 0 [0, 1]` if 1, we require a path to have an entity at the goal, having line of sight to the entity is not enough
 ---@field space_required number? `space_required = 0 [0, 20]` how far (in cells) must a point on our route be from the nearest wall to consider it passable?
----@field max_jump_distance_from_camera number? `max_jump_distance_from_camera = 400 [0, 400]` TODO: Comment
----@field jump_speed number? `jump_speed = 200 [0, 1000]` TODO: Comment
----@field initial_jump_lob number? `initial_jump_lob = 1 [0, 5]` TODO: Comment
----@field initial_jump_max_distance_x number? `initial_jump_max_distance_x = 100 [0, 1000]` TODO: Comment
----@field initial_jump_max_distance_y number? `initial_jump_max_distance_y = 80 [0, 1000]` TODO: Comment
+---@field max_jump_distance_from_camera number? `max_jump_distance_from_camera = 400 [0, 400]`
+---@field jump_speed number? `jump_speed = 200 [0, 1000]`
+---@field initial_jump_lob number? `initial_jump_lob = 1 [0, 5]`
+---@field initial_jump_max_distance_x number? `initial_jump_max_distance_x = 100 [0, 1000]`
+---@field initial_jump_max_distance_y number? `initial_jump_max_distance_y = 80 [0, 1000]`
 ---@field read_state integer? `read_state = 0 [0, 1]` Read only value to get mState as an integer. Used to detect when the worst cheesers are trying to cheese our beloved squidward.
----@field jump_trajectories VECTOR_JUMPPARAMS? TODO: Comment
----@field input PathFindingInput? TODO: Comment
----@field waiting_for boolean? `waiting_for = 0 [0, 1]` TODO: Comment
----@field next_search_frame integer? `next_search_frame = 0 [0, 1]` TODO: Comment
----@field path VECTOR_PATHNODE? TODO: Comment
----@field path_next_node PathFindingResultNode? TODO: Comment
----@field path_next_node_vector_to Vec2? TODO: Comment
----@field path_next_node_distance_to number? `path_next_node_distance_to = 0 [0, 1]` TODO: Comment
----@field path_previous_node PathFindingNodeHandle? TODO: Comment
----@field path_frames_stuck integer? `path_frames_stuck = 0 [0, 1]` TODO: Comment
----@field path_is_stuck boolean? `path_is_stuck = 0 [0, 1]` TODO: Comment
----@field path_last_frame_with_job integer? `path_last_frame_with_job = 0 [0, 1]` TODO: Comment
+---@field jump_trajectories VECTOR_JUMPPARAMS?
+---@field input PathFindingInput?
+---@field waiting_for boolean? `waiting_for = 0 [0, 1]`
+---@field next_search_frame integer? `next_search_frame = 0 [0, 1]`
+---@field path VECTOR_PATHNODE?
+---@field path_next_node PathFindingResultNode?
+---@field path_next_node_vector_to Vec2?
+---@field path_next_node_distance_to number? `path_next_node_distance_to = 0 [0, 1]`
+---@field path_previous_node PathFindingNodeHandle?
+---@field path_frames_stuck integer? `path_frames_stuck = 0 [0, 1]`
+---@field path_is_stuck boolean? `path_is_stuck = 0 [0, 1]`
+---@field path_last_frame_with_job integer? `path_last_frame_with_job = 0 [0, 1]`
 ---@field mLogic PathFindingLogic*? this defines what is an acceptable path
 ---@field mFallbackLogic PathFindingLogic*? we use this to define an acceptable path if mLogic doesn't return one
----@field mSelectedLogic PathFindingLogic*? TODO: Comment
----@field mEnabled boolean? `mEnabled = 0 [0, 1]` TODO: Comment
----@field mState PathFindingComponentState::Enum?                                "TODO: Comment
----@field mTimesStuck integer? `mTimesStuck = 0 [0, 1]` TODO: Comment
----@field mNextClearDontApproachListFrame integer? `mNextClearDontApproachListFrame = 0 [0, 1]` TODO: Comment
----@field mNodeProximityCheckCorrectionY number? `mNodeProximityCheckCorrectionY = 0 [0, 1]` TODO: Comment
----@field debug_path VECTOR_PATHNODE? TODO: Comment
----@field jump_velocity_multiplier number? TODO: Comment
+---@field mSelectedLogic PathFindingLogic*?
+---@field mEnabled boolean? `mEnabled = 0 [0, 1]`
+---@field mState PathFindingComponentState::Enum?
+---@field mTimesStuck integer? `mTimesStuck = 0 [0, 1]`
+---@field mNextClearDontApproachListFrame integer? `mNextClearDontApproachListFrame = 0 [0, 1]`
+---@field mNodeProximityCheckCorrectionY number? `mNodeProximityCheckCorrectionY = 0 [0, 1]`
+---@field debug_path VECTOR_PATHNODE?
+---@field jump_velocity_multiplier number?
 
 ---@class (exact) PathFindingComponent : Component
----@field job_result_receiver MSG_QUEUE_PATH_FINDING_RESULT                                "TODO: Comment
----@field search_depth_max_no_goal integer `search_depth_max_no_goal = 20 [0, 1e+006]` TODO: Comment
----@field iterations_max_no_goal integer `iterations_max_no_goal = 1500 [0, 1e+006]` TODO: Comment
----@field search_depth_max_with_goal integer `search_depth_max_with_goal = 2500 [0, 1e+006]` TODO: Comment
----@field iterations_max_with_goal integer `iterations_max_with_goal = 1500 [0, 1e+006]` TODO: Comment
----@field cost_of_flying number `cost_of_flying = 20 [0, 100000]` TODO: Comment
----@field distance_to_reach_node_x integer `distance_to_reach_node_x = 2 [0, 200]` TODO: Comment
----@field distance_to_reach_node_y integer `distance_to_reach_node_y = 6 [0, 200]` TODO: Comment
----@field frames_to_get_stuck integer `frames_to_get_stuck = 60 [0, 600]` TODO: Comment
----@field frames_between_searches integer `frames_between_searches = 30 [0, 300]` TODO: Comment
----@field y_walking_compensation number `y_walking_compensation = 0 [-100, 100]` TODO: Comment
----@field can_fly boolean `can_fly = 1 [0, 1]` TODO: Comment
----@field can_walk boolean `can_walk = 1 [0, 1]` TODO: Comment
----@field can_jump boolean `can_jump = 0 [0, 1]` TODO: Comment
----@field can_dive boolean `can_dive = 0 [0, 1]` TODO: Comment
----@field can_swim_on_surface boolean `can_swim_on_surface = 0 [0, 1]` TODO: Comment
+---@field job_result_receiver MSG_QUEUE_PATH_FINDING_RESULT
+---@field search_depth_max_no_goal integer `search_depth_max_no_goal = 20 [0, 1e+006]`
+---@field iterations_max_no_goal integer `iterations_max_no_goal = 1500 [0, 1e+006]`
+---@field search_depth_max_with_goal integer `search_depth_max_with_goal = 2500 [0, 1e+006]`
+---@field iterations_max_with_goal integer `iterations_max_with_goal = 1500 [0, 1e+006]`
+---@field cost_of_flying number `cost_of_flying = 20 [0, 100000]`
+---@field distance_to_reach_node_x integer `distance_to_reach_node_x = 2 [0, 200]`
+---@field distance_to_reach_node_y integer `distance_to_reach_node_y = 6 [0, 200]`
+---@field frames_to_get_stuck integer `frames_to_get_stuck = 60 [0, 600]`
+---@field frames_between_searches integer `frames_between_searches = 30 [0, 300]`
+---@field y_walking_compensation number `y_walking_compensation = 0 [-100, 100]`
+---@field can_fly boolean `can_fly = 1 [0, 1]`
+---@field can_walk boolean `can_walk = 1 [0, 1]`
+---@field can_jump boolean `can_jump = 0 [0, 1]`
+---@field can_dive boolean `can_dive = 0 [0, 1]`
+---@field can_swim_on_surface boolean `can_swim_on_surface = 0 [0, 1]`
 ---@field never_consider_line_of_sight boolean `never_consider_line_of_sight = 0 [0, 1]` if 1, we require a path to have an entity at the goal, having line of sight to the entity is not enough
 ---@field space_required number `space_required = 0 [0, 20]` how far (in cells) must a point on our route be from the nearest wall to consider it passable?
----@field max_jump_distance_from_camera number `max_jump_distance_from_camera = 400 [0, 400]` TODO: Comment
----@field jump_speed number `jump_speed = 200 [0, 1000]` TODO: Comment
----@field initial_jump_lob number `initial_jump_lob = 1 [0, 5]` TODO: Comment
----@field initial_jump_max_distance_x number `initial_jump_max_distance_x = 100 [0, 1000]` TODO: Comment
----@field initial_jump_max_distance_y number `initial_jump_max_distance_y = 80 [0, 1000]` TODO: Comment
+---@field max_jump_distance_from_camera number `max_jump_distance_from_camera = 400 [0, 400]`
+---@field jump_speed number `jump_speed = 200 [0, 1000]`
+---@field initial_jump_lob number `initial_jump_lob = 1 [0, 5]`
+---@field initial_jump_max_distance_x number `initial_jump_max_distance_x = 100 [0, 1000]`
+---@field initial_jump_max_distance_y number `initial_jump_max_distance_y = 80 [0, 1000]`
 ---@field read_state integer `read_state = 0 [0, 1]` Read only value to get mState as an integer. Used to detect when the worst cheesers are trying to cheese our beloved squidward.
----@field jump_trajectories VECTOR_JUMPPARAMS TODO: Comment
----@field input PathFindingInput TODO: Comment
----@field waiting_for boolean `waiting_for = 0 [0, 1]` TODO: Comment
----@field next_search_frame integer `next_search_frame = 0 [0, 1]` TODO: Comment
----@field path VECTOR_PATHNODE TODO: Comment
----@field path_next_node PathFindingResultNode TODO: Comment
----@field path_next_node_vector_to Vec2 TODO: Comment
----@field path_next_node_distance_to number `path_next_node_distance_to = 0 [0, 1]` TODO: Comment
----@field path_previous_node PathFindingNodeHandle TODO: Comment
----@field path_frames_stuck integer `path_frames_stuck = 0 [0, 1]` TODO: Comment
----@field path_is_stuck boolean `path_is_stuck = 0 [0, 1]` TODO: Comment
----@field path_last_frame_with_job integer `path_last_frame_with_job = 0 [0, 1]` TODO: Comment
+---@field jump_trajectories VECTOR_JUMPPARAMS
+---@field input PathFindingInput
+---@field waiting_for boolean `waiting_for = 0 [0, 1]`
+---@field next_search_frame integer `next_search_frame = 0 [0, 1]`
+---@field path VECTOR_PATHNODE
+---@field path_next_node PathFindingResultNode
+---@field path_next_node_vector_to Vec2
+---@field path_next_node_distance_to number `path_next_node_distance_to = 0 [0, 1]`
+---@field path_previous_node PathFindingNodeHandle
+---@field path_frames_stuck integer `path_frames_stuck = 0 [0, 1]`
+---@field path_is_stuck boolean `path_is_stuck = 0 [0, 1]`
+---@field path_last_frame_with_job integer `path_last_frame_with_job = 0 [0, 1]`
 ---@field mLogic PathFindingLogic* this defines what is an acceptable path
 ---@field mFallbackLogic PathFindingLogic* we use this to define an acceptable path if mLogic doesn't return one
----@field mSelectedLogic PathFindingLogic* TODO: Comment
----@field mEnabled boolean `mEnabled = 0 [0, 1]` TODO: Comment
----@field mState PathFindingComponentState::Enum                                "TODO: Comment
----@field mTimesStuck integer `mTimesStuck = 0 [0, 1]` TODO: Comment
----@field mNextClearDontApproachListFrame integer `mNextClearDontApproachListFrame = 0 [0, 1]` TODO: Comment
----@field mNodeProximityCheckCorrectionY number `mNodeProximityCheckCorrectionY = 0 [0, 1]` TODO: Comment
----@field debug_path VECTOR_PATHNODE TODO: Comment
----@field jump_velocity_multiplier number TODO: Comment
+---@field mSelectedLogic PathFindingLogic*
+---@field mEnabled boolean `mEnabled = 0 [0, 1]`
+---@field mState PathFindingComponentState::Enum
+---@field mTimesStuck integer `mTimesStuck = 0 [0, 1]`
+---@field mNextClearDontApproachListFrame integer `mNextClearDontApproachListFrame = 0 [0, 1]`
+---@field mNodeProximityCheckCorrectionY number `mNodeProximityCheckCorrectionY = 0 [0, 1]`
+---@field debug_path VECTOR_PATHNODE
+---@field jump_velocity_multiplier number
 
 ---@alias PathFindingComponent.field
----| '"job_result_receiver"' `MSG_QUEUE_PATH_FINDING_RESULT`                                "TODO: Comment
----| '"search_depth_max_no_goal"' `integer search_depth_max_no_goal = 20 [0, 1e+006]` TODO: Comment
----| '"iterations_max_no_goal"' `integer iterations_max_no_goal = 1500 [0, 1e+006]` TODO: Comment
----| '"search_depth_max_with_goal"' `integer search_depth_max_with_goal = 2500 [0, 1e+006]` TODO: Comment
----| '"iterations_max_with_goal"' `integer iterations_max_with_goal = 1500 [0, 1e+006]` TODO: Comment
----| '"cost_of_flying"' `number cost_of_flying = 20 [0, 100000]` TODO: Comment
----| '"distance_to_reach_node_x"' `integer distance_to_reach_node_x = 2 [0, 200]` TODO: Comment
----| '"distance_to_reach_node_y"' `integer distance_to_reach_node_y = 6 [0, 200]` TODO: Comment
----| '"frames_to_get_stuck"' `integer frames_to_get_stuck = 60 [0, 600]` TODO: Comment
----| '"frames_between_searches"' `integer frames_between_searches = 30 [0, 300]` TODO: Comment
----| '"y_walking_compensation"' `number y_walking_compensation = 0 [-100, 100]` TODO: Comment
----| '"can_fly"' `boolean can_fly = 1 [0, 1]` TODO: Comment
----| '"can_walk"' `boolean can_walk = 1 [0, 1]` TODO: Comment
----| '"can_jump"' `boolean can_jump = 0 [0, 1]` TODO: Comment
----| '"can_dive"' `boolean can_dive = 0 [0, 1]` TODO: Comment
----| '"can_swim_on_surface"' `boolean can_swim_on_surface = 0 [0, 1]` TODO: Comment
+---| '"job_result_receiver"' `MSG_QUEUE_PATH_FINDING_RESULT`
+---| '"search_depth_max_no_goal"' `integer search_depth_max_no_goal = 20 [0, 1e+006]`
+---| '"iterations_max_no_goal"' `integer iterations_max_no_goal = 1500 [0, 1e+006]`
+---| '"search_depth_max_with_goal"' `integer search_depth_max_with_goal = 2500 [0, 1e+006]`
+---| '"iterations_max_with_goal"' `integer iterations_max_with_goal = 1500 [0, 1e+006]`
+---| '"cost_of_flying"' `number cost_of_flying = 20 [0, 100000]`
+---| '"distance_to_reach_node_x"' `integer distance_to_reach_node_x = 2 [0, 200]`
+---| '"distance_to_reach_node_y"' `integer distance_to_reach_node_y = 6 [0, 200]`
+---| '"frames_to_get_stuck"' `integer frames_to_get_stuck = 60 [0, 600]`
+---| '"frames_between_searches"' `integer frames_between_searches = 30 [0, 300]`
+---| '"y_walking_compensation"' `number y_walking_compensation = 0 [-100, 100]`
+---| '"can_fly"' `boolean can_fly = 1 [0, 1]`
+---| '"can_walk"' `boolean can_walk = 1 [0, 1]`
+---| '"can_jump"' `boolean can_jump = 0 [0, 1]`
+---| '"can_dive"' `boolean can_dive = 0 [0, 1]`
+---| '"can_swim_on_surface"' `boolean can_swim_on_surface = 0 [0, 1]`
 ---| '"never_consider_line_of_sight"' `boolean never_consider_line_of_sight = 0 [0, 1]` if 1, we require a path to have an entity at the goal, having line of sight to the entity is not enough
 ---| '"space_required"' `number space_required = 0 [0, 20]` how far (in cells) must a point on our route be from the nearest wall to consider it passable?
----| '"max_jump_distance_from_camera"' `number max_jump_distance_from_camera = 400 [0, 400]` TODO: Comment
----| '"jump_speed"' `number jump_speed = 200 [0, 1000]` TODO: Comment
----| '"initial_jump_lob"' `number initial_jump_lob = 1 [0, 5]` TODO: Comment
----| '"initial_jump_max_distance_x"' `number initial_jump_max_distance_x = 100 [0, 1000]` TODO: Comment
----| '"initial_jump_max_distance_y"' `number initial_jump_max_distance_y = 80 [0, 1000]` TODO: Comment
+---| '"max_jump_distance_from_camera"' `number max_jump_distance_from_camera = 400 [0, 400]`
+---| '"jump_speed"' `number jump_speed = 200 [0, 1000]`
+---| '"initial_jump_lob"' `number initial_jump_lob = 1 [0, 5]`
+---| '"initial_jump_max_distance_x"' `number initial_jump_max_distance_x = 100 [0, 1000]`
+---| '"initial_jump_max_distance_y"' `number initial_jump_max_distance_y = 80 [0, 1000]`
 ---| '"read_state"' `integer read_state = 0 [0, 1]` Read only value to get mState as an integer. Used to detect when the worst cheesers are trying to cheese our beloved squidward.
----| '"jump_trajectories"' `VECTOR_JUMPPARAMS` TODO: Comment
----| '"input"' `PathFindingInput` TODO: Comment
----| '"waiting_for"' `boolean waiting_for = 0 [0, 1]` TODO: Comment
----| '"next_search_frame"' `integer next_search_frame = 0 [0, 1]` TODO: Comment
----| '"path"' `VECTOR_PATHNODE` TODO: Comment
----| '"path_next_node"' `PathFindingResultNode` TODO: Comment
----| '"path_next_node_vector_to"' `Vec2` TODO: Comment
----| '"path_next_node_distance_to"' `number path_next_node_distance_to = 0 [0, 1]` TODO: Comment
----| '"path_previous_node"' `PathFindingNodeHandle` TODO: Comment
----| '"path_frames_stuck"' `integer path_frames_stuck = 0 [0, 1]` TODO: Comment
----| '"path_is_stuck"' `boolean path_is_stuck = 0 [0, 1]` TODO: Comment
----| '"path_last_frame_with_job"' `integer path_last_frame_with_job = 0 [0, 1]` TODO: Comment
+---| '"jump_trajectories"' `VECTOR_JUMPPARAMS`
+---| '"input"' `PathFindingInput`
+---| '"waiting_for"' `boolean waiting_for = 0 [0, 1]`
+---| '"next_search_frame"' `integer next_search_frame = 0 [0, 1]`
+---| '"path"' `VECTOR_PATHNODE`
+---| '"path_next_node"' `PathFindingResultNode`
+---| '"path_next_node_vector_to"' `Vec2`
+---| '"path_next_node_distance_to"' `number path_next_node_distance_to = 0 [0, 1]`
+---| '"path_previous_node"' `PathFindingNodeHandle`
+---| '"path_frames_stuck"' `integer path_frames_stuck = 0 [0, 1]`
+---| '"path_is_stuck"' `boolean path_is_stuck = 0 [0, 1]`
+---| '"path_last_frame_with_job"' `integer path_last_frame_with_job = 0 [0, 1]`
 ---| '"mLogic"' `PathFindingLogic*` this defines what is an acceptable path
 ---| '"mFallbackLogic"' `PathFindingLogic*` we use this to define an acceptable path if mLogic doesn't return one
----| '"mSelectedLogic"' `PathFindingLogic*` TODO: Comment
----| '"mEnabled"' `boolean mEnabled = 0 [0, 1]` TODO: Comment
----| '"mState"' `PathFindingComponentState::Enum`                                "TODO: Comment
----| '"mTimesStuck"' `integer mTimesStuck = 0 [0, 1]` TODO: Comment
----| '"mNextClearDontApproachListFrame"' `integer mNextClearDontApproachListFrame = 0 [0, 1]` TODO: Comment
----| '"mNodeProximityCheckCorrectionY"' `number mNodeProximityCheckCorrectionY = 0 [0, 1]` TODO: Comment
----| '"debug_path"' `VECTOR_PATHNODE` TODO: Comment
----| '"jump_velocity_multiplier"' `number` TODO: Comment
+---| '"mSelectedLogic"' `PathFindingLogic*`
+---| '"mEnabled"' `boolean mEnabled = 0 [0, 1]`
+---| '"mState"' `PathFindingComponentState::Enum`
+---| '"mTimesStuck"' `integer mTimesStuck = 0 [0, 1]`
+---| '"mNextClearDontApproachListFrame"' `integer mNextClearDontApproachListFrame = 0 [0, 1]`
+---| '"mNodeProximityCheckCorrectionY"' `number mNodeProximityCheckCorrectionY = 0 [0, 1]`
+---| '"debug_path"' `VECTOR_PATHNODE`
+---| '"jump_velocity_multiplier"' `number`
 
 ---@class (exact) MoveToSurfaceOnCreateComponents
 ---@overload fun(): MoveToSurfaceOnCreateComponent
@@ -482,17 +482,17 @@
 ---@field add fun(self: NinjaRopeComponents, fields: NinjaRopeComponent.partial): NinjaRopeComponent
 
 ---@class (exact) NinjaRopeComponent.partial
----@field mSegments NINJA_ROPE_SEGMENT_VECTOR?                                "
+---@field mSegments NINJA_ROPE_SEGMENT_VECTOR?
 ---@field max_length number? `max_length = 356 [0, 2000]`
 ---@field mLength number? `mLength = 0 [0, 2000]`
 
 ---@class (exact) NinjaRopeComponent : Component
----@field mSegments NINJA_ROPE_SEGMENT_VECTOR                                "
+---@field mSegments NINJA_ROPE_SEGMENT_VECTOR
 ---@field max_length number `max_length = 356 [0, 2000]`
 ---@field mLength number `mLength = 0 [0, 2000]`
 
 ---@alias NinjaRopeComponent.field
----| '"mSegments"' `NINJA_ROPE_SEGMENT_VECTOR`                                "
+---| '"mSegments"' `NINJA_ROPE_SEGMENT_VECTOR`
 ---| '"max_length"' `number max_length = 356 [0, 2000]`
 ---| '"mLength"' `number mLength = 0 [0, 2000]`
 
@@ -504,7 +504,7 @@
 ---@field add fun(self: TeleportComponents, fields: TeleportComponent.partial): TeleportComponent
 
 ---@class (exact) TeleportComponent.partial
----@field state TeleportComponentState::Enum?                                "
+---@field state TeleportComponentState::Enum?
 ---@field target_x_is_absolute_position boolean? `target_x_is_absolute_position = 0 [0, 1]` If set, target position x is in world coordinates, otherwise it's an offset
 ---@field target_y_is_absolute_position boolean? `target_y_is_absolute_position = 0 [0, 1]` If set, target position y is in world coordinates, otherwise it's an offset
 ---@field source_particle_fx_file string? `source_particle_fx_file = data/entities/particles/teleportation_source.xml [0, 1]` This entity is loaded at the source position when teleportation occurs
@@ -516,7 +516,7 @@
 ---@field source_location_camera_aabb types::aabb?
 
 ---@class (exact) TeleportComponent : Component
----@field state TeleportComponentState::Enum                                "
+---@field state TeleportComponentState::Enum
 ---@field target_x_is_absolute_position boolean `target_x_is_absolute_position = 0 [0, 1]` If set, target position x is in world coordinates, otherwise it's an offset
 ---@field target_y_is_absolute_position boolean `target_y_is_absolute_position = 0 [0, 1]` If set, target position y is in world coordinates, otherwise it's an offset
 ---@field source_particle_fx_file string `source_particle_fx_file = data/entities/particles/teleportation_source.xml [0, 1]` This entity is loaded at the source position when teleportation occurs
@@ -528,7 +528,7 @@
 ---@field source_location_camera_aabb types::aabb
 
 ---@alias TeleportComponent.field
----| '"state"' `TeleportComponentState::Enum`                                "
+---| '"state"' `TeleportComponentState::Enum`
 ---| '"target_x_is_absolute_position"' `boolean target_x_is_absolute_position = 0 [0, 1]` If set, target position x is in world coordinates, otherwise it's an offset
 ---| '"target_y_is_absolute_position"' `boolean target_y_is_absolute_position = 0 [0, 1]` If set, target position y is in world coordinates, otherwise it's an offset
 ---| '"source_particle_fx_file"' `string source_particle_fx_file = data/entities/particles/teleportation_source.xml [0, 1]` This entity is loaded at the source position when teleportation occurs

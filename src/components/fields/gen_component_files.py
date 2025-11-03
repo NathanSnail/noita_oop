@@ -83,6 +83,7 @@ def get_types(src: str) -> dict[str, dict[str, ComponentField]]:
             continue
         if line[1] == "-":
             continue
+        special = False
         if line[27] != " ":
             matching_item: Optional[tuple[str, str]] = None
             for item in content_items:
@@ -93,13 +94,17 @@ def get_types(src: str) -> dict[str, dict[str, ComponentField]]:
                 raise Exception("error missing seperator", line)
             field = matching_item[0]
             ty = matching_item[1]
+            special = True
         else:
             ty = "".join([x for x in line[:27].split(" ") if x != ""])
             field = line[28:].split(" ")[0]
         assert name != error, "Missing component name"
         normalised = normalise_types(ty)
-        default = line[92:].split(" ")[0]
-        remainder = line[92 + len(default) + 1 :]
+        default_offset = 92
+        if special:
+            default_offset += len(ty) - 27 + 3
+        default = line[default_offset:].split(" ")[0]
+        remainder = line[default_offset + len(default) + 1 :]
         remainder = remainder.lstrip()
 
         if default == "-":
@@ -113,6 +118,8 @@ def get_types(src: str) -> dict[str, dict[str, ComponentField]]:
             comment = remainder
 
         comment = comment[1:-1]
+        if comment == "TODO: Comment":
+            comment = ""
 
         content[name][field] = ComponentField(normalised, default, val_range, comment)
     return content
