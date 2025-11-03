@@ -1,0 +1,8492 @@
+---@class (exact) ParticleEmitterComponents
+---@overload fun(): ParticleEmitterComponent
+---@field enabled fun(self: ParticleEmitterComponents, enabled: boolean): ParticleEmitterComponents
+---@field tagged fun(self: ParticleEmitterComponents, tag: string): ParticleEmitterComponents
+---@field with_field fun(self: ParticleEmitterComponents, field: ParticleEmitterComponent.field, value: any): ParticleEmitterComponents
+---@field add fun(self: ParticleEmitterComponents, fields: ParticleEmitterComponent.partial): ParticleEmitterComponent
+
+---@class (exact) ParticleEmitterComponent.partial
+---@field custom_style PARTICLE_EMITTER_CUSTOM_STYLE::Enum?
+---@field m_cached_image_animation ParticleEmitter_Animation*?
+---@field emitted_material_name string?
+---@field create_real_particles boolean?
+---@field emit_real_particles boolean?
+---@field emit_cosmetic_particles boolean?
+---@field cosmetic_force_create boolean?
+---@field render_back boolean?
+---@field render_ultrabright boolean?
+---@field collide_with_grid boolean?
+---@field collide_with_gas_and_fire boolean?
+---@field particle_single_width boolean?
+---@field emit_only_if_there_is_space boolean?
+---@field emitter_lifetime_frames integer?
+---@field fire_cells_dont_ignite_damagemodel boolean?
+---@field color_is_based_on_pos boolean?
+---@field custom_alpha number?
+---@field x_pos_offset_min number?
+---@field y_pos_offset_min number?
+---@field x_pos_offset_max number?
+---@field y_pos_offset_max number?
+---@field area_circle_sector_degrees number?
+---@field x_vel_min number?
+---@field x_vel_max number?
+---@field y_vel_min number?
+---@field y_vel_max number?
+---@field direction_random_deg number?
+---@field velocity_always_away_from_center number?
+---@field lifetime_min number?
+---@field lifetime_max number?
+---@field airflow_force number?
+---@field airflow_time number?
+---@field airflow_scale number?
+---@field friction number?
+---@field attractor_force number?
+---@field emission_interval_min_frames integer?
+---@field emission_interval_max_frames integer?
+---@field emission_chance integer?
+---@field delay_frames integer?
+---@field is_emitting boolean?
+---@field use_material_inventory boolean?
+---@field is_trail boolean?
+---@field trail_gap number?
+---@field render_on_grid boolean?
+---@field fade_based_on_lifetime boolean?
+---@field draw_as_long boolean?
+---@field b2_force number?
+---@field set_magic_creation boolean?
+---@field image_animation_file string?
+---@field image_animation_colors_file string?
+---@field image_animation_speed number?
+---@field image_animation_loop boolean?
+---@field image_animation_phase number?
+---@field image_animation_emission_probability number?
+---@field image_animation_raytrace_from_center boolean?
+---@field image_animation_use_entity_rotation boolean?
+---@field ignore_transform_updated_msg boolean?
+---@field color integer?
+---@field offset Vec2?
+---@field area_circle_radius ValueRange?
+---@field gravity Vec2?
+---@field count_min integer?
+---@field count_max integer?
+---@field mExPosition Vec2?
+---@field mMaterialInventoryMax integer?
+---@field m_material_id integer?
+---@field m_next_emit_frame integer?
+---@field m_has_emitted boolean?
+---@field m_last_emit_position Vec2?
+---@field m_image_based_animation_time number?
+---@field m_collision_angles float*?
+---@field m_particle_attractor_id integer?
+
+---@class (exact) ParticleEmitterComponent : Component
+---@field custom_style PARTICLE_EMITTER_CUSTOM_STYLE::Enum
+---@field m_cached_image_animation ParticleEmitter_Animation*
+---@field emitted_material_name string
+---@field create_real_particles boolean
+---@field emit_real_particles boolean
+---@field emit_cosmetic_particles boolean
+---@field cosmetic_force_create boolean
+---@field render_back boolean
+---@field render_ultrabright boolean
+---@field collide_with_grid boolean
+---@field collide_with_gas_and_fire boolean
+---@field particle_single_width boolean
+---@field emit_only_if_there_is_space boolean
+---@field emitter_lifetime_frames integer
+---@field fire_cells_dont_ignite_damagemodel boolean
+---@field color_is_based_on_pos boolean
+---@field custom_alpha number
+---@field x_pos_offset_min number
+---@field y_pos_offset_min number
+---@field x_pos_offset_max number
+---@field y_pos_offset_max number
+---@field area_circle_sector_degrees number
+---@field x_vel_min number
+---@field x_vel_max number
+---@field y_vel_min number
+---@field y_vel_max number
+---@field direction_random_deg number
+---@field velocity_always_away_from_center number
+---@field lifetime_min number
+---@field lifetime_max number
+---@field airflow_force number
+---@field airflow_time number
+---@field airflow_scale number
+---@field friction number
+---@field attractor_force number
+---@field emission_interval_min_frames integer
+---@field emission_interval_max_frames integer
+---@field emission_chance integer
+---@field delay_frames integer
+---@field is_emitting boolean
+---@field use_material_inventory boolean
+---@field is_trail boolean
+---@field trail_gap number
+---@field render_on_grid boolean
+---@field fade_based_on_lifetime boolean
+---@field draw_as_long boolean
+---@field b2_force number
+---@field set_magic_creation boolean
+---@field image_animation_file string
+---@field image_animation_colors_file string
+---@field image_animation_speed number
+---@field image_animation_loop boolean
+---@field image_animation_phase number
+---@field image_animation_emission_probability number
+---@field image_animation_raytrace_from_center boolean
+---@field image_animation_use_entity_rotation boolean
+---@field ignore_transform_updated_msg boolean
+---@field color integer
+---@field offset Vec2
+---@field area_circle_radius ValueRange
+---@field gravity Vec2
+---@field count_min integer
+---@field count_max integer
+---@field mExPosition Vec2
+---@field mMaterialInventoryMax integer
+---@field m_material_id integer
+---@field m_next_emit_frame integer
+---@field m_has_emitted boolean
+---@field m_last_emit_position Vec2
+---@field m_image_based_animation_time number
+---@field m_collision_angles float*
+---@field m_particle_attractor_id integer
+
+---@alias ParticleEmitterComponent.field
+---| '"custom_style"' PARTICLE_EMITTER_CUSTOM_STYLE::Enum
+---| '"m_cached_image_animation"' ParticleEmitter_Animation*
+---| '"emitted_material_name"' string
+---| '"create_real_particles"' boolean
+---| '"emit_real_particles"' boolean
+---| '"emit_cosmetic_particles"' boolean
+---| '"cosmetic_force_create"' boolean
+---| '"render_back"' boolean
+---| '"render_ultrabright"' boolean
+---| '"collide_with_grid"' boolean
+---| '"collide_with_gas_and_fire"' boolean
+---| '"particle_single_width"' boolean
+---| '"emit_only_if_there_is_space"' boolean
+---| '"emitter_lifetime_frames"' integer
+---| '"fire_cells_dont_ignite_damagemodel"' boolean
+---| '"color_is_based_on_pos"' boolean
+---| '"custom_alpha"' number
+---| '"x_pos_offset_min"' number
+---| '"y_pos_offset_min"' number
+---| '"x_pos_offset_max"' number
+---| '"y_pos_offset_max"' number
+---| '"area_circle_sector_degrees"' number
+---| '"x_vel_min"' number
+---| '"x_vel_max"' number
+---| '"y_vel_min"' number
+---| '"y_vel_max"' number
+---| '"direction_random_deg"' number
+---| '"velocity_always_away_from_center"' number
+---| '"lifetime_min"' number
+---| '"lifetime_max"' number
+---| '"airflow_force"' number
+---| '"airflow_time"' number
+---| '"airflow_scale"' number
+---| '"friction"' number
+---| '"attractor_force"' number
+---| '"emission_interval_min_frames"' integer
+---| '"emission_interval_max_frames"' integer
+---| '"emission_chance"' integer
+---| '"delay_frames"' integer
+---| '"is_emitting"' boolean
+---| '"use_material_inventory"' boolean
+---| '"is_trail"' boolean
+---| '"trail_gap"' number
+---| '"render_on_grid"' boolean
+---| '"fade_based_on_lifetime"' boolean
+---| '"draw_as_long"' boolean
+---| '"b2_force"' number
+---| '"set_magic_creation"' boolean
+---| '"image_animation_file"' string
+---| '"image_animation_colors_file"' string
+---| '"image_animation_speed"' number
+---| '"image_animation_loop"' boolean
+---| '"image_animation_phase"' number
+---| '"image_animation_emission_probability"' number
+---| '"image_animation_raytrace_from_center"' boolean
+---| '"image_animation_use_entity_rotation"' boolean
+---| '"ignore_transform_updated_msg"' boolean
+---| '"color"' integer
+---| '"offset"' Vec2
+---| '"area_circle_radius"' ValueRange
+---| '"gravity"' Vec2
+---| '"count_min"' integer
+---| '"count_max"' integer
+---| '"mExPosition"' Vec2
+---| '"mMaterialInventoryMax"' integer
+---| '"m_material_id"' integer
+---| '"m_next_emit_frame"' integer
+---| '"m_has_emitted"' boolean
+---| '"m_last_emit_position"' Vec2
+---| '"m_image_based_animation_time"' number
+---| '"m_collision_angles"' float*
+---| '"m_particle_attractor_id"' integer
+
+---@class (exact) ExplosionComponents
+---@overload fun(): ExplosionComponent
+---@field enabled fun(self: ExplosionComponents, enabled: boolean): ExplosionComponents
+---@field tagged fun(self: ExplosionComponents, tag: string): ExplosionComponents
+---@field with_field fun(self: ExplosionComponents, field: ExplosionComponent.field, value: any): ExplosionComponents
+---@field add fun(self: ExplosionComponents, fields: ExplosionComponent.partial): ExplosionComponent
+
+---@class (exact) ExplosionComponent.partial
+---@field trigger EXPLOSION_TRIGGER_TYPE::Enum?
+---@field timeout_frames integer?
+---@field timeout_frames_random integer?
+---@field kill_entity boolean?
+---@field mTimerTriggerFrame integer?
+---@field config_explosion ConfigExplosion?
+
+---@class (exact) ExplosionComponent : Component
+---@field trigger EXPLOSION_TRIGGER_TYPE::Enum
+---@field timeout_frames integer
+---@field timeout_frames_random integer
+---@field kill_entity boolean
+---@field mTimerTriggerFrame integer
+---@field config_explosion ConfigExplosion
+
+---@alias ExplosionComponent.field
+---| '"trigger"' EXPLOSION_TRIGGER_TYPE::Enum
+---| '"timeout_frames"' integer
+---| '"timeout_frames_random"' integer
+---| '"kill_entity"' boolean
+---| '"mTimerTriggerFrame"' integer
+---| '"config_explosion"' ConfigExplosion
+
+---@class (exact) InventoryComponents
+---@overload fun(): InventoryComponent
+---@field enabled fun(self: InventoryComponents, enabled: boolean): InventoryComponents
+---@field tagged fun(self: InventoryComponents, tag: string): InventoryComponents
+---@field with_field fun(self: InventoryComponents, field: InventoryComponent.field, value: any): InventoryComponents
+---@field add fun(self: InventoryComponents, fields: InventoryComponent.partial): InventoryComponent
+
+---@class (exact) InventoryComponent.partial
+---@field update_listener InvenentoryUpdateListener*?
+---@field ui_container_type integer?
+---@field ui_element_sprite string?
+---@field actions string?
+---@field ui_container_size Vec2?
+---@field ui_element_size Vec2?
+---@field ui_position_on_screen Vec2?
+---@field items INVENTORYITEM_VECTOR?
+
+---@class (exact) InventoryComponent : Component
+---@field update_listener InvenentoryUpdateListener*
+---@field ui_container_type integer
+---@field ui_element_sprite string
+---@field actions string
+---@field ui_container_size Vec2
+---@field ui_element_size Vec2
+---@field ui_position_on_screen Vec2
+---@field items INVENTORYITEM_VECTOR
+
+---@alias InventoryComponent.field
+---| '"update_listener"' InvenentoryUpdateListener*
+---| '"ui_container_type"' integer
+---| '"ui_element_sprite"' string
+---| '"actions"' string
+---| '"ui_container_size"' Vec2
+---| '"ui_element_size"' Vec2
+---| '"ui_position_on_screen"' Vec2
+---| '"items"' INVENTORYITEM_VECTOR
+
+---@class (exact) PathFindingComponents
+---@overload fun(): PathFindingComponent
+---@field enabled fun(self: PathFindingComponents, enabled: boolean): PathFindingComponents
+---@field tagged fun(self: PathFindingComponents, tag: string): PathFindingComponents
+---@field with_field fun(self: PathFindingComponents, field: PathFindingComponent.field, value: any): PathFindingComponents
+---@field add fun(self: PathFindingComponents, fields: PathFindingComponent.partial): PathFindingComponent
+
+---@class (exact) PathFindingComponent.partial
+---@field mState PathFindingComponentState::Enum?
+---@field job_result_receiver MSG_QUEUE_PATH_FINDING_RESULT?
+---@field search_depth_max_no_goal integer?
+---@field iterations_max_no_goal integer?
+---@field search_depth_max_with_goal integer?
+---@field iterations_max_with_goal integer?
+---@field cost_of_flying number?
+---@field distance_to_reach_node_x integer?
+---@field distance_to_reach_node_y integer?
+---@field frames_to_get_stuck integer?
+---@field frames_between_searches integer?
+---@field y_walking_compensation number?
+---@field can_fly boolean?
+---@field can_walk boolean?
+---@field can_jump boolean?
+---@field can_dive boolean?
+---@field can_swim_on_surface boolean?
+---@field never_consider_line_of_sight boolean?
+---@field space_required number?
+---@field max_jump_distance_from_camera number?
+---@field jump_speed number?
+---@field initial_jump_lob number?
+---@field initial_jump_max_distance_x number?
+---@field initial_jump_max_distance_y number?
+---@field read_state integer?
+---@field jump_trajectories VECTOR_JUMPPARAMS?
+---@field input PathFindingInput?
+---@field waiting_for boolean?
+---@field next_search_frame integer?
+---@field path VECTOR_PATHNODE?
+---@field path_next_node PathFindingResultNode?
+---@field path_next_node_vector_to Vec2?
+---@field path_next_node_distance_to number?
+---@field path_previous_node PathFindingNodeHandle?
+---@field path_frames_stuck integer?
+---@field path_is_stuck boolean?
+---@field path_last_frame_with_job integer?
+---@field mLogic PathFindingLogic*?
+---@field mFallbackLogic PathFindingLogic*?
+---@field mSelectedLogic PathFindingLogic*?
+---@field mEnabled boolean?
+---@field mTimesStuck integer?
+---@field mNextClearDontApproachListFrame integer?
+---@field mNodeProximityCheckCorrectionY number?
+---@field debug_path VECTOR_PATHNODE?
+---@field jump_velocity_multiplier number?
+
+---@class (exact) PathFindingComponent : Component
+---@field mState PathFindingComponentState::Enum
+---@field job_result_receiver MSG_QUEUE_PATH_FINDING_RESULT
+---@field search_depth_max_no_goal integer
+---@field iterations_max_no_goal integer
+---@field search_depth_max_with_goal integer
+---@field iterations_max_with_goal integer
+---@field cost_of_flying number
+---@field distance_to_reach_node_x integer
+---@field distance_to_reach_node_y integer
+---@field frames_to_get_stuck integer
+---@field frames_between_searches integer
+---@field y_walking_compensation number
+---@field can_fly boolean
+---@field can_walk boolean
+---@field can_jump boolean
+---@field can_dive boolean
+---@field can_swim_on_surface boolean
+---@field never_consider_line_of_sight boolean
+---@field space_required number
+---@field max_jump_distance_from_camera number
+---@field jump_speed number
+---@field initial_jump_lob number
+---@field initial_jump_max_distance_x number
+---@field initial_jump_max_distance_y number
+---@field read_state integer
+---@field jump_trajectories VECTOR_JUMPPARAMS
+---@field input PathFindingInput
+---@field waiting_for boolean
+---@field next_search_frame integer
+---@field path VECTOR_PATHNODE
+---@field path_next_node PathFindingResultNode
+---@field path_next_node_vector_to Vec2
+---@field path_next_node_distance_to number
+---@field path_previous_node PathFindingNodeHandle
+---@field path_frames_stuck integer
+---@field path_is_stuck boolean
+---@field path_last_frame_with_job integer
+---@field mLogic PathFindingLogic*
+---@field mFallbackLogic PathFindingLogic*
+---@field mSelectedLogic PathFindingLogic*
+---@field mEnabled boolean
+---@field mTimesStuck integer
+---@field mNextClearDontApproachListFrame integer
+---@field mNodeProximityCheckCorrectionY number
+---@field debug_path VECTOR_PATHNODE
+---@field jump_velocity_multiplier number
+
+---@alias PathFindingComponent.field
+---| '"mState"' PathFindingComponentState::Enum
+---| '"job_result_receiver"' MSG_QUEUE_PATH_FINDING_RESULT
+---| '"search_depth_max_no_goal"' integer
+---| '"iterations_max_no_goal"' integer
+---| '"search_depth_max_with_goal"' integer
+---| '"iterations_max_with_goal"' integer
+---| '"cost_of_flying"' number
+---| '"distance_to_reach_node_x"' integer
+---| '"distance_to_reach_node_y"' integer
+---| '"frames_to_get_stuck"' integer
+---| '"frames_between_searches"' integer
+---| '"y_walking_compensation"' number
+---| '"can_fly"' boolean
+---| '"can_walk"' boolean
+---| '"can_jump"' boolean
+---| '"can_dive"' boolean
+---| '"can_swim_on_surface"' boolean
+---| '"never_consider_line_of_sight"' boolean
+---| '"space_required"' number
+---| '"max_jump_distance_from_camera"' number
+---| '"jump_speed"' number
+---| '"initial_jump_lob"' number
+---| '"initial_jump_max_distance_x"' number
+---| '"initial_jump_max_distance_y"' number
+---| '"read_state"' integer
+---| '"jump_trajectories"' VECTOR_JUMPPARAMS
+---| '"input"' PathFindingInput
+---| '"waiting_for"' boolean
+---| '"next_search_frame"' integer
+---| '"path"' VECTOR_PATHNODE
+---| '"path_next_node"' PathFindingResultNode
+---| '"path_next_node_vector_to"' Vec2
+---| '"path_next_node_distance_to"' number
+---| '"path_previous_node"' PathFindingNodeHandle
+---| '"path_frames_stuck"' integer
+---| '"path_is_stuck"' boolean
+---| '"path_last_frame_with_job"' integer
+---| '"mLogic"' PathFindingLogic*
+---| '"mFallbackLogic"' PathFindingLogic*
+---| '"mSelectedLogic"' PathFindingLogic*
+---| '"mEnabled"' boolean
+---| '"mTimesStuck"' integer
+---| '"mNextClearDontApproachListFrame"' integer
+---| '"mNodeProximityCheckCorrectionY"' number
+---| '"debug_path"' VECTOR_PATHNODE
+---| '"jump_velocity_multiplier"' number
+
+---@class (exact) MoveToSurfaceOnCreateComponents
+---@overload fun(): MoveToSurfaceOnCreateComponent
+---@field enabled fun(self: MoveToSurfaceOnCreateComponents, enabled: boolean): MoveToSurfaceOnCreateComponents
+---@field tagged fun(self: MoveToSurfaceOnCreateComponents, tag: string): MoveToSurfaceOnCreateComponents
+---@field with_field fun(self: MoveToSurfaceOnCreateComponents, field: MoveToSurfaceOnCreateComponent.field, value: any): MoveToSurfaceOnCreateComponents
+---@field add fun(self: MoveToSurfaceOnCreateComponents, fields: MoveToSurfaceOnCreateComponent.partial): MoveToSurfaceOnCreateComponent
+
+---@class (exact) MoveToSurfaceOnCreateComponent.partial
+---@field type MOVETOSURFACE_TYPE::Enum?
+---@field lookup_radius number?
+---@field offset_from_surface number?
+---@field ray_count integer?
+---@field verlet_min_joint_distance number?
+
+---@class (exact) MoveToSurfaceOnCreateComponent : Component
+---@field type MOVETOSURFACE_TYPE::Enum
+---@field lookup_radius number
+---@field offset_from_surface number
+---@field ray_count integer
+---@field verlet_min_joint_distance number
+
+---@alias MoveToSurfaceOnCreateComponent.field
+---| '"type"' MOVETOSURFACE_TYPE::Enum
+---| '"lookup_radius"' number
+---| '"offset_from_surface"' number
+---| '"ray_count"' integer
+---| '"verlet_min_joint_distance"' number
+
+---@class (exact) NinjaRopeComponents
+---@overload fun(): NinjaRopeComponent
+---@field enabled fun(self: NinjaRopeComponents, enabled: boolean): NinjaRopeComponents
+---@field tagged fun(self: NinjaRopeComponents, tag: string): NinjaRopeComponents
+---@field with_field fun(self: NinjaRopeComponents, field: NinjaRopeComponent.field, value: any): NinjaRopeComponents
+---@field add fun(self: NinjaRopeComponents, fields: NinjaRopeComponent.partial): NinjaRopeComponent
+
+---@class (exact) NinjaRopeComponent.partial
+---@field mSegments NINJA_ROPE_SEGMENT_VECTOR?
+---@field max_length number?
+---@field mLength number?
+
+---@class (exact) NinjaRopeComponent : Component
+---@field mSegments NINJA_ROPE_SEGMENT_VECTOR
+---@field max_length number
+---@field mLength number
+
+---@alias NinjaRopeComponent.field
+---| '"mSegments"' NINJA_ROPE_SEGMENT_VECTOR
+---| '"max_length"' number
+---| '"mLength"' number
+
+---@class (exact) TeleportComponents
+---@overload fun(): TeleportComponent
+---@field enabled fun(self: TeleportComponents, enabled: boolean): TeleportComponents
+---@field tagged fun(self: TeleportComponents, tag: string): TeleportComponents
+---@field with_field fun(self: TeleportComponents, field: TeleportComponent.field, value: any): TeleportComponents
+---@field add fun(self: TeleportComponents, fields: TeleportComponent.partial): TeleportComponent
+
+---@class (exact) TeleportComponent.partial
+---@field state TeleportComponentState::Enum?
+---@field target_x_is_absolute_position boolean?
+---@field target_y_is_absolute_position boolean?
+---@field source_particle_fx_file string?
+---@field target_particle_fx_file string?
+---@field load_collapse_entity boolean?
+---@field target Vec2?
+---@field safety_counter integer?
+---@field teleported_entities ENTITY_VEC?
+---@field source_location_camera_aabb types::aabb?
+
+---@class (exact) TeleportComponent : Component
+---@field state TeleportComponentState::Enum
+---@field target_x_is_absolute_position boolean
+---@field target_y_is_absolute_position boolean
+---@field source_particle_fx_file string
+---@field target_particle_fx_file string
+---@field load_collapse_entity boolean
+---@field target Vec2
+---@field safety_counter integer
+---@field teleported_entities ENTITY_VEC
+---@field source_location_camera_aabb types::aabb
+
+---@alias TeleportComponent.field
+---| '"state"' TeleportComponentState::Enum
+---| '"target_x_is_absolute_position"' boolean
+---| '"target_y_is_absolute_position"' boolean
+---| '"source_particle_fx_file"' string
+---| '"target_particle_fx_file"' string
+---| '"load_collapse_entity"' boolean
+---| '"target"' Vec2
+---| '"safety_counter"' integer
+---| '"teleported_entities"' ENTITY_VEC
+---| '"source_location_camera_aabb"' types::aabb
+
+---@class (exact) AIAttackComponents
+---@overload fun(): AIAttackComponent
+---@field enabled fun(self: AIAttackComponents, enabled: boolean): AIAttackComponents
+---@field tagged fun(self: AIAttackComponents, tag: string): AIAttackComponents
+---@field with_field fun(self: AIAttackComponents, field: AIAttackComponent.field, value: any): AIAttackComponents
+---@field add fun(self: AIAttackComponents, fields: AIAttackComponent.partial): AIAttackComponent
+
+---@class (exact) AIAttackComponent.partial
+---@field use_probability integer?
+---@field min_distance number?
+---@field max_distance number?
+---@field angular_range_deg number?
+---@field state_duration_frames integer?
+---@field frames_between integer?
+---@field frames_between_global integer?
+---@field animation_name string?
+---@field attack_landing_ranged_enabled boolean?
+---@field attack_ranged_action_frame integer?
+---@field attack_ranged_offset_x number?
+---@field attack_ranged_offset_y number?
+---@field attack_ranged_root_offset_x number?
+---@field attack_ranged_root_offset_y number?
+---@field attack_ranged_use_message boolean?
+---@field attack_ranged_predict boolean?
+---@field attack_ranged_entity_file string?
+---@field attack_ranged_entity_count_min integer?
+---@field attack_ranged_entity_count_max integer?
+---@field attack_ranged_use_laser_sight boolean?
+---@field attack_ranged_aim_rotation_enabled boolean?
+---@field attack_ranged_aim_rotation_speed number?
+---@field attack_ranged_aim_rotation_shooting_ok_angle_deg number?
+---@field mRangedAttackCurrentAimAngle number?
+---@field mNextFrameUsable integer?
+
+---@class (exact) AIAttackComponent : Component
+---@field use_probability integer
+---@field min_distance number
+---@field max_distance number
+---@field angular_range_deg number
+---@field state_duration_frames integer
+---@field frames_between integer
+---@field frames_between_global integer
+---@field animation_name string
+---@field attack_landing_ranged_enabled boolean
+---@field attack_ranged_action_frame integer
+---@field attack_ranged_offset_x number
+---@field attack_ranged_offset_y number
+---@field attack_ranged_root_offset_x number
+---@field attack_ranged_root_offset_y number
+---@field attack_ranged_use_message boolean
+---@field attack_ranged_predict boolean
+---@field attack_ranged_entity_file string
+---@field attack_ranged_entity_count_min integer
+---@field attack_ranged_entity_count_max integer
+---@field attack_ranged_use_laser_sight boolean
+---@field attack_ranged_aim_rotation_enabled boolean
+---@field attack_ranged_aim_rotation_speed number
+---@field attack_ranged_aim_rotation_shooting_ok_angle_deg number
+---@field mRangedAttackCurrentAimAngle number
+---@field mNextFrameUsable integer
+
+---@alias AIAttackComponent.field
+---| '"use_probability"' integer
+---| '"min_distance"' number
+---| '"max_distance"' number
+---| '"angular_range_deg"' number
+---| '"state_duration_frames"' integer
+---| '"frames_between"' integer
+---| '"frames_between_global"' integer
+---| '"animation_name"' string
+---| '"attack_landing_ranged_enabled"' boolean
+---| '"attack_ranged_action_frame"' integer
+---| '"attack_ranged_offset_x"' number
+---| '"attack_ranged_offset_y"' number
+---| '"attack_ranged_root_offset_x"' number
+---| '"attack_ranged_root_offset_y"' number
+---| '"attack_ranged_use_message"' boolean
+---| '"attack_ranged_predict"' boolean
+---| '"attack_ranged_entity_file"' string
+---| '"attack_ranged_entity_count_min"' integer
+---| '"attack_ranged_entity_count_max"' integer
+---| '"attack_ranged_use_laser_sight"' boolean
+---| '"attack_ranged_aim_rotation_enabled"' boolean
+---| '"attack_ranged_aim_rotation_speed"' number
+---| '"attack_ranged_aim_rotation_shooting_ok_angle_deg"' number
+---| '"mRangedAttackCurrentAimAngle"' number
+---| '"mNextFrameUsable"' integer
+
+---@class (exact) AIComponents
+---@overload fun(): AIComponent
+---@field enabled fun(self: AIComponents, enabled: boolean): AIComponents
+---@field tagged fun(self: AIComponents, tag: string): AIComponents
+---@field with_field fun(self: AIComponents, field: AIComponent.field, value: any): AIComponents
+---@field add fun(self: AIComponents, fields: AIComponent.partial): AIComponent
+
+---@class (exact) AIComponent.partial
+---@field TEMP_TEMP_TEMP number?
+---@field data AIData*?
+
+---@class (exact) AIComponent : Component
+---@field TEMP_TEMP_TEMP number
+---@field data AIData*
+
+---@alias AIComponent.field
+---| '"TEMP_TEMP_TEMP"' number
+---| '"data"' AIData*
+
+---@class (exact) AbilityComponents
+---@overload fun(): AbilityComponent
+---@field enabled fun(self: AbilityComponents, enabled: boolean): AbilityComponents
+---@field tagged fun(self: AbilityComponents, tag: string): AbilityComponents
+---@field with_field fun(self: AbilityComponents, field: AbilityComponent.field, value: any): AbilityComponents
+---@field add fun(self: AbilityComponents, fields: AbilityComponent.partial): AbilityComponent
+
+---@class (exact) AbilityComponent.partial
+---@field cooldown_frames integer?
+---@field entity_file string?
+---@field sprite_file string?
+---@field entity_count integer?
+---@field never_reload boolean?
+---@field reload_time_frames integer?
+---@field mana number?
+---@field mana_max number?
+---@field mana_charge_speed number?
+---@field rotate_in_hand boolean?
+---@field rotate_in_hand_amount number?
+---@field rotate_hand_amount number?
+---@field fast_projectile boolean?
+---@field swim_propel_amount number?
+---@field max_charged_actions integer?
+---@field charge_wait_frames integer?
+---@field item_recoil_recovery_speed number?
+---@field item_recoil_max number?
+---@field item_recoil_offset_coeff number?
+---@field item_recoil_rotation_coeff number?
+---@field base_item_file string?
+---@field use_entity_file_as_projectile_info_proxy boolean?
+---@field click_to_use boolean?
+---@field stat_times_player_has_shot integer?
+---@field stat_times_player_has_edited integer?
+---@field shooting_reduces_amount_in_inventory boolean?
+---@field throw_as_item boolean?
+---@field simulate_throw_as_item boolean?
+---@field max_amount_in_inventory integer?
+---@field amount_in_inventory integer?
+---@field drop_as_item_on_death boolean?
+---@field ui_name string?
+---@field use_gun_script boolean?
+---@field is_petris_gun boolean?
+---@field gun_level integer?
+---@field add_these_child_actions string?
+---@field current_slot_durability integer?
+---@field slot_consumption_function std_string?
+---@field mNextFrameUsable integer?
+---@field mCastDelayStartFrame integer?
+---@field mReloadFramesLeft integer?
+---@field mReloadNextFrameUsable integer?
+---@field mChargeCount integer?
+---@field mIsInitialized boolean?
+---@field gun_config ConfigGun?
+---@field gunaction_config ConfigGunActionInfo?
+---@field mAmmoLeft integer?
+---@field mNextChargeFrame integer?
+---@field mItemRecoil number?
+
+---@class (exact) AbilityComponent : Component
+---@field cooldown_frames integer
+---@field entity_file string
+---@field sprite_file string
+---@field entity_count integer
+---@field never_reload boolean
+---@field reload_time_frames integer
+---@field mana number
+---@field mana_max number
+---@field mana_charge_speed number
+---@field rotate_in_hand boolean
+---@field rotate_in_hand_amount number
+---@field rotate_hand_amount number
+---@field fast_projectile boolean
+---@field swim_propel_amount number
+---@field max_charged_actions integer
+---@field charge_wait_frames integer
+---@field item_recoil_recovery_speed number
+---@field item_recoil_max number
+---@field item_recoil_offset_coeff number
+---@field item_recoil_rotation_coeff number
+---@field base_item_file string
+---@field use_entity_file_as_projectile_info_proxy boolean
+---@field click_to_use boolean
+---@field stat_times_player_has_shot integer
+---@field stat_times_player_has_edited integer
+---@field shooting_reduces_amount_in_inventory boolean
+---@field throw_as_item boolean
+---@field simulate_throw_as_item boolean
+---@field max_amount_in_inventory integer
+---@field amount_in_inventory integer
+---@field drop_as_item_on_death boolean
+---@field ui_name string
+---@field use_gun_script boolean
+---@field is_petris_gun boolean
+---@field gun_level integer
+---@field add_these_child_actions string
+---@field current_slot_durability integer
+---@field slot_consumption_function std_string
+---@field mNextFrameUsable integer
+---@field mCastDelayStartFrame integer
+---@field mReloadFramesLeft integer
+---@field mReloadNextFrameUsable integer
+---@field mChargeCount integer
+---@field mIsInitialized boolean
+---@field gun_config ConfigGun
+---@field gunaction_config ConfigGunActionInfo
+---@field mAmmoLeft integer
+---@field mNextChargeFrame integer
+---@field mItemRecoil number
+
+---@alias AbilityComponent.field
+---| '"cooldown_frames"' integer
+---| '"entity_file"' string
+---| '"sprite_file"' string
+---| '"entity_count"' integer
+---| '"never_reload"' boolean
+---| '"reload_time_frames"' integer
+---| '"mana"' number
+---| '"mana_max"' number
+---| '"mana_charge_speed"' number
+---| '"rotate_in_hand"' boolean
+---| '"rotate_in_hand_amount"' number
+---| '"rotate_hand_amount"' number
+---| '"fast_projectile"' boolean
+---| '"swim_propel_amount"' number
+---| '"max_charged_actions"' integer
+---| '"charge_wait_frames"' integer
+---| '"item_recoil_recovery_speed"' number
+---| '"item_recoil_max"' number
+---| '"item_recoil_offset_coeff"' number
+---| '"item_recoil_rotation_coeff"' number
+---| '"base_item_file"' string
+---| '"use_entity_file_as_projectile_info_proxy"' boolean
+---| '"click_to_use"' boolean
+---| '"stat_times_player_has_shot"' integer
+---| '"stat_times_player_has_edited"' integer
+---| '"shooting_reduces_amount_in_inventory"' boolean
+---| '"throw_as_item"' boolean
+---| '"simulate_throw_as_item"' boolean
+---| '"max_amount_in_inventory"' integer
+---| '"amount_in_inventory"' integer
+---| '"drop_as_item_on_death"' boolean
+---| '"ui_name"' string
+---| '"use_gun_script"' boolean
+---| '"is_petris_gun"' boolean
+---| '"gun_level"' integer
+---| '"add_these_child_actions"' string
+---| '"current_slot_durability"' integer
+---| '"slot_consumption_function"' std_string
+---| '"mNextFrameUsable"' integer
+---| '"mCastDelayStartFrame"' integer
+---| '"mReloadFramesLeft"' integer
+---| '"mReloadNextFrameUsable"' integer
+---| '"mChargeCount"' integer
+---| '"mIsInitialized"' boolean
+---| '"gun_config"' ConfigGun
+---| '"gunaction_config"' ConfigGunActionInfo
+---| '"mAmmoLeft"' integer
+---| '"mNextChargeFrame"' integer
+---| '"mItemRecoil"' number
+
+---@class (exact) AdvancedFishAIComponents
+---@overload fun(): AdvancedFishAIComponent
+---@field enabled fun(self: AdvancedFishAIComponents, enabled: boolean): AdvancedFishAIComponents
+---@field tagged fun(self: AdvancedFishAIComponents, tag: string): AdvancedFishAIComponents
+---@field with_field fun(self: AdvancedFishAIComponents, field: AdvancedFishAIComponent.field, value: any): AdvancedFishAIComponents
+---@field add fun(self: AdvancedFishAIComponents, fields: AdvancedFishAIComponent.partial): AdvancedFishAIComponent
+
+---@class (exact) AdvancedFishAIComponent.partial
+---@field move_check_range_min number?
+---@field move_check_range_max number?
+---@field flock boolean?
+---@field avoid_predators boolean?
+---@field mHasTargetDirection boolean?
+---@field mTargetPos Vec2?
+---@field mTargetVec Vec2?
+---@field mLastFramesMovementAreaMin Vec2?
+---@field mLastFramesMovementAreaMax Vec2?
+---@field mNumFailedTargetSearches integer?
+---@field mNextFrameCheckAreWeStuck integer?
+---@field mNextFrameCheckFlockWants integer?
+---@field mNextFramePredatorAvoidance integer?
+---@field mScared number?
+---@field mWantsToBeInFlock boolean?
+
+---@class (exact) AdvancedFishAIComponent : Component
+---@field move_check_range_min number
+---@field move_check_range_max number
+---@field flock boolean
+---@field avoid_predators boolean
+---@field mHasTargetDirection boolean
+---@field mTargetPos Vec2
+---@field mTargetVec Vec2
+---@field mLastFramesMovementAreaMin Vec2
+---@field mLastFramesMovementAreaMax Vec2
+---@field mNumFailedTargetSearches integer
+---@field mNextFrameCheckAreWeStuck integer
+---@field mNextFrameCheckFlockWants integer
+---@field mNextFramePredatorAvoidance integer
+---@field mScared number
+---@field mWantsToBeInFlock boolean
+
+---@alias AdvancedFishAIComponent.field
+---| '"move_check_range_min"' number
+---| '"move_check_range_max"' number
+---| '"flock"' boolean
+---| '"avoid_predators"' boolean
+---| '"mHasTargetDirection"' boolean
+---| '"mTargetPos"' Vec2
+---| '"mTargetVec"' Vec2
+---| '"mLastFramesMovementAreaMin"' Vec2
+---| '"mLastFramesMovementAreaMax"' Vec2
+---| '"mNumFailedTargetSearches"' integer
+---| '"mNextFrameCheckAreWeStuck"' integer
+---| '"mNextFrameCheckFlockWants"' integer
+---| '"mNextFramePredatorAvoidance"' integer
+---| '"mScared"' number
+---| '"mWantsToBeInFlock"' boolean
+
+---@class (exact) AltarComponents
+---@overload fun(): AltarComponent
+---@field enabled fun(self: AltarComponents, enabled: boolean): AltarComponents
+---@field tagged fun(self: AltarComponents, tag: string): AltarComponents
+---@field with_field fun(self: AltarComponents, field: AltarComponent.field, value: any): AltarComponents
+---@field add fun(self: AltarComponents, fields: AltarComponent.partial): AltarComponent
+
+---@class (exact) AltarComponent.partial
+---@field recognized_entity_tags string?
+---@field uses_remaining integer?
+---@field good_fx_material integer?
+---@field neutral_fx_material integer?
+---@field evil_fx_material integer?
+---@field m_recognized_entity_tags EntityTags?
+---@field m_recognized_entity_tags_count integer?
+---@field m_current_entity_tags EntityTags?
+
+---@class (exact) AltarComponent : Component
+---@field recognized_entity_tags string
+---@field uses_remaining integer
+---@field good_fx_material integer
+---@field neutral_fx_material integer
+---@field evil_fx_material integer
+---@field m_recognized_entity_tags EntityTags
+---@field m_recognized_entity_tags_count integer
+---@field m_current_entity_tags EntityTags
+
+---@alias AltarComponent.field
+---| '"recognized_entity_tags"' string
+---| '"uses_remaining"' integer
+---| '"good_fx_material"' integer
+---| '"neutral_fx_material"' integer
+---| '"evil_fx_material"' integer
+---| '"m_recognized_entity_tags"' EntityTags
+---| '"m_recognized_entity_tags_count"' integer
+---| '"m_current_entity_tags"' EntityTags
+
+---@class (exact) AnimalAIComponents
+---@overload fun(): AnimalAIComponent
+---@field enabled fun(self: AnimalAIComponents, enabled: boolean): AnimalAIComponents
+---@field tagged fun(self: AnimalAIComponents, tag: string): AnimalAIComponents
+---@field with_field fun(self: AnimalAIComponents, field: AnimalAIComponent.field, value: any): AnimalAIComponents
+---@field add fun(self: AnimalAIComponents, fields: AnimalAIComponent.partial): AnimalAIComponent
+
+---@class (exact) AnimalAIComponent.partial
+---@field ai_state integer?
+---@field ai_state_timer integer?
+---@field keep_state_alive_when_enabled boolean?
+---@field preferred_job string?
+---@field escape_if_damaged_probability integer?
+---@field attack_if_damaged_probability integer?
+---@field eye_offset_x integer?
+---@field eye_offset_y integer?
+---@field attack_only_if_attacked boolean?
+---@field dont_counter_attack_own_herd boolean?
+---@field creature_detection_range_x number?
+---@field creature_detection_range_y number?
+---@field creature_detection_angular_range_deg number?
+---@field creature_detection_check_every_x_frames integer?
+---@field max_distance_to_cam_to_start_hunting number?
+---@field pathfinding_max_depth_no_target integer?
+---@field pathfinding_max_depth_has_target integer?
+---@field aggressiveness_min number?
+---@field aggressiveness_max number?
+---@field tries_to_ranged_attack_friends boolean?
+---@field attack_melee_enabled boolean?
+---@field attack_dash_enabled boolean?
+---@field attack_landing_ranged_enabled boolean?
+---@field attack_ranged_enabled boolean?
+---@field attack_knockback_multiplier number?
+---@field is_static_turret boolean?
+---@field attack_melee_max_distance integer?
+---@field attack_melee_action_frame integer?
+---@field attack_melee_frames_between integer?
+---@field attack_melee_damage_min number?
+---@field attack_melee_damage_max number?
+---@field attack_melee_impulse_vector_x number?
+---@field attack_melee_impulse_vector_y number?
+---@field attack_melee_impulse_multiplier number?
+---@field attack_melee_offset_x number?
+---@field attack_melee_offset_y number?
+---@field attack_melee_finish_enabled boolean?
+---@field attack_melee_finish_action_frame integer?
+---@field attack_dash_distance number?
+---@field attack_dash_frames_between integer?
+---@field attack_dash_damage number?
+---@field attack_dash_speed number?
+---@field attack_dash_lob number?
+---@field attack_ranged_min_distance number?
+---@field attack_ranged_max_distance number?
+---@field attack_ranged_action_frame integer?
+---@field attack_ranged_offset_x number?
+---@field attack_ranged_offset_y number?
+---@field attack_ranged_use_message boolean?
+---@field attack_ranged_predict boolean?
+---@field attack_ranged_entity_file string?
+---@field attack_ranged_entity_count_min integer?
+---@field attack_ranged_entity_count_max integer?
+---@field attack_ranged_use_laser_sight boolean?
+---@field attack_ranged_laser_sight_beam_kind boolean?
+---@field attack_ranged_aim_rotation_enabled boolean?
+---@field attack_ranged_aim_rotation_speed number?
+---@field attack_ranged_aim_rotation_shooting_ok_angle_deg number?
+---@field attack_ranged_state_duration_frames integer?
+---@field hide_from_prey boolean?
+---@field hide_from_prey_target_distance number?
+---@field hide_from_prey_time integer?
+---@field food_eating_create_particles boolean?
+---@field eating_area_radius_x integer?
+---@field eating_area_radius_y integer?
+---@field mouth_offset_x integer?
+---@field mouth_offset_y integer?
+---@field defecates_and_pees boolean?
+---@field butt_offset_x integer?
+---@field butt_offset_y integer?
+---@field pee_velocity_x number?
+---@field pee_velocity_y number?
+---@field needs_food boolean?
+---@field sense_creatures boolean?
+---@field sense_creatures_through_walls boolean?
+---@field can_fly boolean?
+---@field can_walk boolean?
+---@field path_distance_to_target_node_to_turn_around integer?
+---@field path_cleanup_explosion_radius number?
+---@field max_distance_to_move_from_home number?
+---@field attack_melee_finish_config_explosion ConfigExplosion?
+---@field attack_ranged_frames_between integer?
+---@field food_material integer?
+---@field food_particle_effect_material integer?
+---@field mAggression number?
+---@field mAiStateStack AI_STATE_STACK?
+---@field mAiStateLastSwitchFrame integer?
+---@field mAiStatePrev integer?
+---@field mCreatureDetectionNextCheck integer?
+---@field mGreatestThreat EntityID?
+---@field mGreatestPrey EntityID?
+---@field mSelectedMultiAttack integer?
+---@field mHasFoundPrey boolean?
+---@field mHasBeenAttackedByPlayer boolean?
+---@field mHasStartedAttacking boolean?
+---@field mNearbyFoodCount integer?
+---@field mEatNextFrame integer?
+---@field mEatTime integer?
+---@field mFrameNextGiveUp integer?
+---@field mLastFramesMovementAreaMin Vec2?
+---@field mLastFramesMovementAreaMax Vec2?
+---@field mFoodMaterialId integer?
+---@field mFoodParticleEffectMaterialId integer?
+---@field mNextJumpLob number?
+---@field mNextJumpTarget Vec2?
+---@field mNextJumpHasVelocity boolean?
+---@field mLastFrameJumped integer?
+---@field mFramesWithoutTarget integer?
+---@field mLastFrameCanDamageOwnHerd integer?
+---@field mHomePosition Vec2?
+---@field mLastFrameAttackWasDone integer?
+---@field mNextFrameCanCallFriend integer?
+---@field mNextFrameRespondFriend integer?
+---@field mHasNoticedPlayer boolean?
+---@field mRangedAttackCurrentAimAngle number?
+---@field mRangedAttackNextFrame integer?
+---@field mMeleeAttackNextFrame integer?
+---@field mNextMeleeAttackDamage number?
+---@field mMeleeAttacking boolean?
+---@field mMeleeAttackDashNextFrame integer?
+---@field mCurrentJob RtsUnitGoal?
+
+---@class (exact) AnimalAIComponent : Component
+---@field ai_state integer
+---@field ai_state_timer integer
+---@field keep_state_alive_when_enabled boolean
+---@field preferred_job string
+---@field escape_if_damaged_probability integer
+---@field attack_if_damaged_probability integer
+---@field eye_offset_x integer
+---@field eye_offset_y integer
+---@field attack_only_if_attacked boolean
+---@field dont_counter_attack_own_herd boolean
+---@field creature_detection_range_x number
+---@field creature_detection_range_y number
+---@field creature_detection_angular_range_deg number
+---@field creature_detection_check_every_x_frames integer
+---@field max_distance_to_cam_to_start_hunting number
+---@field pathfinding_max_depth_no_target integer
+---@field pathfinding_max_depth_has_target integer
+---@field aggressiveness_min number
+---@field aggressiveness_max number
+---@field tries_to_ranged_attack_friends boolean
+---@field attack_melee_enabled boolean
+---@field attack_dash_enabled boolean
+---@field attack_landing_ranged_enabled boolean
+---@field attack_ranged_enabled boolean
+---@field attack_knockback_multiplier number
+---@field is_static_turret boolean
+---@field attack_melee_max_distance integer
+---@field attack_melee_action_frame integer
+---@field attack_melee_frames_between integer
+---@field attack_melee_damage_min number
+---@field attack_melee_damage_max number
+---@field attack_melee_impulse_vector_x number
+---@field attack_melee_impulse_vector_y number
+---@field attack_melee_impulse_multiplier number
+---@field attack_melee_offset_x number
+---@field attack_melee_offset_y number
+---@field attack_melee_finish_enabled boolean
+---@field attack_melee_finish_action_frame integer
+---@field attack_dash_distance number
+---@field attack_dash_frames_between integer
+---@field attack_dash_damage number
+---@field attack_dash_speed number
+---@field attack_dash_lob number
+---@field attack_ranged_min_distance number
+---@field attack_ranged_max_distance number
+---@field attack_ranged_action_frame integer
+---@field attack_ranged_offset_x number
+---@field attack_ranged_offset_y number
+---@field attack_ranged_use_message boolean
+---@field attack_ranged_predict boolean
+---@field attack_ranged_entity_file string
+---@field attack_ranged_entity_count_min integer
+---@field attack_ranged_entity_count_max integer
+---@field attack_ranged_use_laser_sight boolean
+---@field attack_ranged_laser_sight_beam_kind boolean
+---@field attack_ranged_aim_rotation_enabled boolean
+---@field attack_ranged_aim_rotation_speed number
+---@field attack_ranged_aim_rotation_shooting_ok_angle_deg number
+---@field attack_ranged_state_duration_frames integer
+---@field hide_from_prey boolean
+---@field hide_from_prey_target_distance number
+---@field hide_from_prey_time integer
+---@field food_eating_create_particles boolean
+---@field eating_area_radius_x integer
+---@field eating_area_radius_y integer
+---@field mouth_offset_x integer
+---@field mouth_offset_y integer
+---@field defecates_and_pees boolean
+---@field butt_offset_x integer
+---@field butt_offset_y integer
+---@field pee_velocity_x number
+---@field pee_velocity_y number
+---@field needs_food boolean
+---@field sense_creatures boolean
+---@field sense_creatures_through_walls boolean
+---@field can_fly boolean
+---@field can_walk boolean
+---@field path_distance_to_target_node_to_turn_around integer
+---@field path_cleanup_explosion_radius number
+---@field max_distance_to_move_from_home number
+---@field attack_melee_finish_config_explosion ConfigExplosion
+---@field attack_ranged_frames_between integer
+---@field food_material integer
+---@field food_particle_effect_material integer
+---@field mAggression number
+---@field mAiStateStack AI_STATE_STACK
+---@field mAiStateLastSwitchFrame integer
+---@field mAiStatePrev integer
+---@field mCreatureDetectionNextCheck integer
+---@field mGreatestThreat EntityID
+---@field mGreatestPrey EntityID
+---@field mSelectedMultiAttack integer
+---@field mHasFoundPrey boolean
+---@field mHasBeenAttackedByPlayer boolean
+---@field mHasStartedAttacking boolean
+---@field mNearbyFoodCount integer
+---@field mEatNextFrame integer
+---@field mEatTime integer
+---@field mFrameNextGiveUp integer
+---@field mLastFramesMovementAreaMin Vec2
+---@field mLastFramesMovementAreaMax Vec2
+---@field mFoodMaterialId integer
+---@field mFoodParticleEffectMaterialId integer
+---@field mNextJumpLob number
+---@field mNextJumpTarget Vec2
+---@field mNextJumpHasVelocity boolean
+---@field mLastFrameJumped integer
+---@field mFramesWithoutTarget integer
+---@field mLastFrameCanDamageOwnHerd integer
+---@field mHomePosition Vec2
+---@field mLastFrameAttackWasDone integer
+---@field mNextFrameCanCallFriend integer
+---@field mNextFrameRespondFriend integer
+---@field mHasNoticedPlayer boolean
+---@field mRangedAttackCurrentAimAngle number
+---@field mRangedAttackNextFrame integer
+---@field mMeleeAttackNextFrame integer
+---@field mNextMeleeAttackDamage number
+---@field mMeleeAttacking boolean
+---@field mMeleeAttackDashNextFrame integer
+---@field mCurrentJob RtsUnitGoal
+
+---@alias AnimalAIComponent.field
+---| '"ai_state"' integer
+---| '"ai_state_timer"' integer
+---| '"keep_state_alive_when_enabled"' boolean
+---| '"preferred_job"' string
+---| '"escape_if_damaged_probability"' integer
+---| '"attack_if_damaged_probability"' integer
+---| '"eye_offset_x"' integer
+---| '"eye_offset_y"' integer
+---| '"attack_only_if_attacked"' boolean
+---| '"dont_counter_attack_own_herd"' boolean
+---| '"creature_detection_range_x"' number
+---| '"creature_detection_range_y"' number
+---| '"creature_detection_angular_range_deg"' number
+---| '"creature_detection_check_every_x_frames"' integer
+---| '"max_distance_to_cam_to_start_hunting"' number
+---| '"pathfinding_max_depth_no_target"' integer
+---| '"pathfinding_max_depth_has_target"' integer
+---| '"aggressiveness_min"' number
+---| '"aggressiveness_max"' number
+---| '"tries_to_ranged_attack_friends"' boolean
+---| '"attack_melee_enabled"' boolean
+---| '"attack_dash_enabled"' boolean
+---| '"attack_landing_ranged_enabled"' boolean
+---| '"attack_ranged_enabled"' boolean
+---| '"attack_knockback_multiplier"' number
+---| '"is_static_turret"' boolean
+---| '"attack_melee_max_distance"' integer
+---| '"attack_melee_action_frame"' integer
+---| '"attack_melee_frames_between"' integer
+---| '"attack_melee_damage_min"' number
+---| '"attack_melee_damage_max"' number
+---| '"attack_melee_impulse_vector_x"' number
+---| '"attack_melee_impulse_vector_y"' number
+---| '"attack_melee_impulse_multiplier"' number
+---| '"attack_melee_offset_x"' number
+---| '"attack_melee_offset_y"' number
+---| '"attack_melee_finish_enabled"' boolean
+---| '"attack_melee_finish_action_frame"' integer
+---| '"attack_dash_distance"' number
+---| '"attack_dash_frames_between"' integer
+---| '"attack_dash_damage"' number
+---| '"attack_dash_speed"' number
+---| '"attack_dash_lob"' number
+---| '"attack_ranged_min_distance"' number
+---| '"attack_ranged_max_distance"' number
+---| '"attack_ranged_action_frame"' integer
+---| '"attack_ranged_offset_x"' number
+---| '"attack_ranged_offset_y"' number
+---| '"attack_ranged_use_message"' boolean
+---| '"attack_ranged_predict"' boolean
+---| '"attack_ranged_entity_file"' string
+---| '"attack_ranged_entity_count_min"' integer
+---| '"attack_ranged_entity_count_max"' integer
+---| '"attack_ranged_use_laser_sight"' boolean
+---| '"attack_ranged_laser_sight_beam_kind"' boolean
+---| '"attack_ranged_aim_rotation_enabled"' boolean
+---| '"attack_ranged_aim_rotation_speed"' number
+---| '"attack_ranged_aim_rotation_shooting_ok_angle_deg"' number
+---| '"attack_ranged_state_duration_frames"' integer
+---| '"hide_from_prey"' boolean
+---| '"hide_from_prey_target_distance"' number
+---| '"hide_from_prey_time"' integer
+---| '"food_eating_create_particles"' boolean
+---| '"eating_area_radius_x"' integer
+---| '"eating_area_radius_y"' integer
+---| '"mouth_offset_x"' integer
+---| '"mouth_offset_y"' integer
+---| '"defecates_and_pees"' boolean
+---| '"butt_offset_x"' integer
+---| '"butt_offset_y"' integer
+---| '"pee_velocity_x"' number
+---| '"pee_velocity_y"' number
+---| '"needs_food"' boolean
+---| '"sense_creatures"' boolean
+---| '"sense_creatures_through_walls"' boolean
+---| '"can_fly"' boolean
+---| '"can_walk"' boolean
+---| '"path_distance_to_target_node_to_turn_around"' integer
+---| '"path_cleanup_explosion_radius"' number
+---| '"max_distance_to_move_from_home"' number
+---| '"attack_melee_finish_config_explosion"' ConfigExplosion
+---| '"attack_ranged_frames_between"' integer
+---| '"food_material"' integer
+---| '"food_particle_effect_material"' integer
+---| '"mAggression"' number
+---| '"mAiStateStack"' AI_STATE_STACK
+---| '"mAiStateLastSwitchFrame"' integer
+---| '"mAiStatePrev"' integer
+---| '"mCreatureDetectionNextCheck"' integer
+---| '"mGreatestThreat"' EntityID
+---| '"mGreatestPrey"' EntityID
+---| '"mSelectedMultiAttack"' integer
+---| '"mHasFoundPrey"' boolean
+---| '"mHasBeenAttackedByPlayer"' boolean
+---| '"mHasStartedAttacking"' boolean
+---| '"mNearbyFoodCount"' integer
+---| '"mEatNextFrame"' integer
+---| '"mEatTime"' integer
+---| '"mFrameNextGiveUp"' integer
+---| '"mLastFramesMovementAreaMin"' Vec2
+---| '"mLastFramesMovementAreaMax"' Vec2
+---| '"mFoodMaterialId"' integer
+---| '"mFoodParticleEffectMaterialId"' integer
+---| '"mNextJumpLob"' number
+---| '"mNextJumpTarget"' Vec2
+---| '"mNextJumpHasVelocity"' boolean
+---| '"mLastFrameJumped"' integer
+---| '"mFramesWithoutTarget"' integer
+---| '"mLastFrameCanDamageOwnHerd"' integer
+---| '"mHomePosition"' Vec2
+---| '"mLastFrameAttackWasDone"' integer
+---| '"mNextFrameCanCallFriend"' integer
+---| '"mNextFrameRespondFriend"' integer
+---| '"mHasNoticedPlayer"' boolean
+---| '"mRangedAttackCurrentAimAngle"' number
+---| '"mRangedAttackNextFrame"' integer
+---| '"mMeleeAttackNextFrame"' integer
+---| '"mNextMeleeAttackDamage"' number
+---| '"mMeleeAttacking"' boolean
+---| '"mMeleeAttackDashNextFrame"' integer
+---| '"mCurrentJob"' RtsUnitGoal
+
+---@class (exact) ArcComponents
+---@overload fun(): ArcComponent
+---@field enabled fun(self: ArcComponents, enabled: boolean): ArcComponents
+---@field tagged fun(self: ArcComponents, tag: string): ArcComponents
+---@field with_field fun(self: ArcComponents, field: ArcComponent.field, value: any): ArcComponents
+---@field add fun(self: ArcComponents, fields: ArcComponent.partial): ArcComponent
+
+---@class (exact) ArcComponent.partial
+---@field lifetime integer?
+---@field type ARC_TYPE::Enum?
+---@field material integer?
+---@field mArcTarget EntityID?
+
+---@class (exact) ArcComponent : Component
+---@field lifetime integer
+---@field type ARC_TYPE::Enum
+---@field material integer
+---@field mArcTarget EntityID
+
+---@alias ArcComponent.field
+---| '"lifetime"' integer
+---| '"type"' ARC_TYPE::Enum
+---| '"material"' integer
+---| '"mArcTarget"' EntityID
+
+---@class (exact) AreaDamageComponents
+---@overload fun(): AreaDamageComponent
+---@field enabled fun(self: AreaDamageComponents, enabled: boolean): AreaDamageComponents
+---@field tagged fun(self: AreaDamageComponents, tag: string): AreaDamageComponents
+---@field with_field fun(self: AreaDamageComponents, field: AreaDamageComponent.field, value: any): AreaDamageComponents
+---@field add fun(self: AreaDamageComponents, fields: AreaDamageComponent.partial): AreaDamageComponent
+
+---@class (exact) AreaDamageComponent.partial
+---@field circle_radius number?
+---@field damage_per_frame number?
+---@field update_every_n_frame integer?
+---@field entity_responsible EntityID?
+---@field death_cause string?
+---@field entities_with_tag string?
+---@field aabb_min Vec2?
+---@field aabb_max Vec2?
+---@field damage_type DAMAGE_TYPES::Enum?
+
+---@class (exact) AreaDamageComponent : Component
+---@field circle_radius number
+---@field damage_per_frame number
+---@field update_every_n_frame integer
+---@field entity_responsible EntityID
+---@field death_cause string
+---@field entities_with_tag string
+---@field aabb_min Vec2
+---@field aabb_max Vec2
+---@field damage_type DAMAGE_TYPES::Enum
+
+---@alias AreaDamageComponent.field
+---| '"circle_radius"' number
+---| '"damage_per_frame"' number
+---| '"update_every_n_frame"' integer
+---| '"entity_responsible"' EntityID
+---| '"death_cause"' string
+---| '"entities_with_tag"' string
+---| '"aabb_min"' Vec2
+---| '"aabb_max"' Vec2
+---| '"damage_type"' DAMAGE_TYPES::Enum
+
+---@class (exact) AttachToEntityComponents
+---@overload fun(): AttachToEntityComponent
+---@field enabled fun(self: AttachToEntityComponents, enabled: boolean): AttachToEntityComponents
+---@field tagged fun(self: AttachToEntityComponents, tag: string): AttachToEntityComponents
+---@field with_field fun(self: AttachToEntityComponents, field: AttachToEntityComponent.field, value: any): AttachToEntityComponents
+---@field add fun(self: AttachToEntityComponents, fields: AttachToEntityComponent.partial): AttachToEntityComponent
+
+---@class (exact) AttachToEntityComponent.partial
+---@field only_position boolean?
+---@field target_hotspot_tag string?
+---@field target_sprite_id integer?
+---@field rotate_based_on_x_scale boolean?
+---@field destroy_component_when_target_is_gone boolean?
+---@field Transform types::xform?
+---@field target EntityID?
+---@field mUpdateFrame integer?
+
+---@class (exact) AttachToEntityComponent : Component
+---@field only_position boolean
+---@field target_hotspot_tag string
+---@field target_sprite_id integer
+---@field rotate_based_on_x_scale boolean
+---@field destroy_component_when_target_is_gone boolean
+---@field Transform types::xform
+---@field target EntityID
+---@field mUpdateFrame integer
+
+---@alias AttachToEntityComponent.field
+---| '"only_position"' boolean
+---| '"target_hotspot_tag"' string
+---| '"target_sprite_id"' integer
+---| '"rotate_based_on_x_scale"' boolean
+---| '"destroy_component_when_target_is_gone"' boolean
+---| '"Transform"' types::xform
+---| '"target"' EntityID
+---| '"mUpdateFrame"' integer
+
+---@class (exact) AudioComponents
+---@overload fun(): AudioComponent
+---@field enabled fun(self: AudioComponents, enabled: boolean): AudioComponents
+---@field tagged fun(self: AudioComponents, tag: string): AudioComponents
+---@field with_field fun(self: AudioComponents, field: AudioComponent.field, value: any): AudioComponents
+---@field add fun(self: AudioComponents, fields: AudioComponent.partial): AudioComponent
+
+---@class (exact) AudioComponent.partial
+---@field file string?
+---@field event_root string?
+---@field audio_physics_material string?
+---@field set_latest_event_position boolean?
+---@field remove_latest_event_on_destroyed boolean?
+---@field send_message_on_event_dead boolean?
+---@field play_only_if_visible boolean?
+---@field m_audio_physics_material integer?
+---@field m_latest_source AudioSourceHandle?
+
+---@class (exact) AudioComponent : Component
+---@field file string
+---@field event_root string
+---@field audio_physics_material string
+---@field set_latest_event_position boolean
+---@field remove_latest_event_on_destroyed boolean
+---@field send_message_on_event_dead boolean
+---@field play_only_if_visible boolean
+---@field m_audio_physics_material integer
+---@field m_latest_source AudioSourceHandle
+
+---@alias AudioComponent.field
+---| '"file"' string
+---| '"event_root"' string
+---| '"audio_physics_material"' string
+---| '"set_latest_event_position"' boolean
+---| '"remove_latest_event_on_destroyed"' boolean
+---| '"send_message_on_event_dead"' boolean
+---| '"play_only_if_visible"' boolean
+---| '"m_audio_physics_material"' integer
+---| '"m_latest_source"' AudioSourceHandle
+
+---@class (exact) AudioListenerComponents
+---@overload fun(): AudioListenerComponent
+---@field enabled fun(self: AudioListenerComponents, enabled: boolean): AudioListenerComponents
+---@field tagged fun(self: AudioListenerComponents, tag: string): AudioListenerComponents
+---@field with_field fun(self: AudioListenerComponents, field: AudioListenerComponent.field, value: any): AudioListenerComponents
+---@field add fun(self: AudioListenerComponents, fields: AudioListenerComponent.partial): AudioListenerComponent
+
+---@class (exact) AudioListenerComponent.partial
+---@field z number?
+
+---@class (exact) AudioListenerComponent : Component
+---@field z number
+
+---@alias AudioListenerComponent.field
+---| '"z"' number
+
+---@class (exact) AudioLoopComponents
+---@overload fun(): AudioLoopComponent
+---@field enabled fun(self: AudioLoopComponents, enabled: boolean): AudioLoopComponents
+---@field tagged fun(self: AudioLoopComponents, tag: string): AudioLoopComponents
+---@field with_field fun(self: AudioLoopComponents, field: AudioLoopComponent.field, value: any): AudioLoopComponents
+---@field add fun(self: AudioLoopComponents, fields: AudioLoopComponent.partial): AudioLoopComponent
+
+---@class (exact) AudioLoopComponent.partial
+---@field file string?
+---@field event_name string?
+---@field auto_play boolean?
+---@field auto_play_if_enabled boolean?
+---@field play_on_component_enable boolean?
+---@field calculate_material_lowpass boolean?
+---@field set_speed_parameter boolean?
+---@field set_speed_parameter_only_based_on_x_movement boolean?
+---@field set_speed_parameter_only_based_on_y_movement boolean?
+---@field volume_autofade_speed number?
+---@field m_volume number?
+---@field m_intensity number?
+---@field m_intensity2 number?
+---@field m_source AudioSourceHandle?
+---@field m_frame_created integer?
+
+---@class (exact) AudioLoopComponent : Component
+---@field file string
+---@field event_name string
+---@field auto_play boolean
+---@field auto_play_if_enabled boolean
+---@field play_on_component_enable boolean
+---@field calculate_material_lowpass boolean
+---@field set_speed_parameter boolean
+---@field set_speed_parameter_only_based_on_x_movement boolean
+---@field set_speed_parameter_only_based_on_y_movement boolean
+---@field volume_autofade_speed number
+---@field m_volume number
+---@field m_intensity number
+---@field m_intensity2 number
+---@field m_source AudioSourceHandle
+---@field m_frame_created integer
+
+---@alias AudioLoopComponent.field
+---| '"file"' string
+---| '"event_name"' string
+---| '"auto_play"' boolean
+---| '"auto_play_if_enabled"' boolean
+---| '"play_on_component_enable"' boolean
+---| '"calculate_material_lowpass"' boolean
+---| '"set_speed_parameter"' boolean
+---| '"set_speed_parameter_only_based_on_x_movement"' boolean
+---| '"set_speed_parameter_only_based_on_y_movement"' boolean
+---| '"volume_autofade_speed"' number
+---| '"m_volume"' number
+---| '"m_intensity"' number
+---| '"m_intensity2"' number
+---| '"m_source"' AudioSourceHandle
+---| '"m_frame_created"' integer
+
+---@class (exact) BiomeTrackerComponents
+---@overload fun(): BiomeTrackerComponent
+---@field enabled fun(self: BiomeTrackerComponents, enabled: boolean): BiomeTrackerComponents
+---@field tagged fun(self: BiomeTrackerComponents, tag: string): BiomeTrackerComponents
+---@field with_field fun(self: BiomeTrackerComponents, field: BiomeTrackerComponent.field, value: any): BiomeTrackerComponents
+---@field add fun(self: BiomeTrackerComponents, fields: BiomeTrackerComponent.partial): BiomeTrackerComponent
+
+---@class (exact) BiomeTrackerComponent.partial
+---@field limit_to_every_n_frame integer?
+---@field unsafe_current_biome Biome*?
+---@field current_biome_name string?
+
+---@class (exact) BiomeTrackerComponent : Component
+---@field limit_to_every_n_frame integer
+---@field unsafe_current_biome Biome*
+---@field current_biome_name string
+
+---@alias BiomeTrackerComponent.field
+---| '"limit_to_every_n_frame"' integer
+---| '"unsafe_current_biome"' Biome*
+---| '"current_biome_name"' string
+
+---@class (exact) BlackHoleComponents
+---@overload fun(): BlackHoleComponent
+---@field enabled fun(self: BlackHoleComponents, enabled: boolean): BlackHoleComponents
+---@field tagged fun(self: BlackHoleComponents, tag: string): BlackHoleComponents
+---@field with_field fun(self: BlackHoleComponents, field: BlackHoleComponent.field, value: any): BlackHoleComponents
+---@field add fun(self: BlackHoleComponents, fields: BlackHoleComponent.partial): BlackHoleComponent
+
+---@class (exact) BlackHoleComponent.partial
+---@field radius number?
+---@field particle_attractor_force number?
+---@field damage_probability number?
+---@field damage_amount number?
+---@field m_particle_attractor_id integer?
+
+---@class (exact) BlackHoleComponent : Component
+---@field radius number
+---@field particle_attractor_force number
+---@field damage_probability number
+---@field damage_amount number
+---@field m_particle_attractor_id integer
+
+---@alias BlackHoleComponent.field
+---| '"radius"' number
+---| '"particle_attractor_force"' number
+---| '"damage_probability"' number
+---| '"damage_amount"' number
+---| '"m_particle_attractor_id"' integer
+
+---@class (exact) BookComponents
+---@overload fun(): BookComponent
+---@field enabled fun(self: BookComponents, enabled: boolean): BookComponents
+---@field tagged fun(self: BookComponents, tag: string): BookComponents
+---@field with_field fun(self: BookComponents, field: BookComponent.field, value: any): BookComponents
+---@field add fun(self: BookComponents, fields: BookComponent.partial): BookComponent
+
+---@class (exact) BookComponent.partial
+---@field TEMP_TEMPY number?
+---@field TEMP_TEMP_TEMP number?
+
+---@class (exact) BookComponent : Component
+---@field TEMP_TEMPY number
+---@field TEMP_TEMP_TEMP number
+
+---@alias BookComponent.field
+---| '"TEMP_TEMPY"' number
+---| '"TEMP_TEMP_TEMP"' number
+
+---@class (exact) BossDragonComponents
+---@overload fun(): BossDragonComponent
+---@field enabled fun(self: BossDragonComponents, enabled: boolean): BossDragonComponents
+---@field tagged fun(self: BossDragonComponents, tag: string): BossDragonComponents
+---@field with_field fun(self: BossDragonComponents, field: BossDragonComponent.field, value: any): BossDragonComponents
+---@field add fun(self: BossDragonComponents, fields: BossDragonComponent.partial): BossDragonComponent
+
+---@class (exact) BossDragonComponent.partial
+---@field speed number?
+---@field speed_hunt number?
+---@field acceleration number?
+---@field direction_adjust_speed number?
+---@field direction_adjust_speed_hunt number?
+---@field gravity number?
+---@field tail_gravity number?
+---@field part_distance number?
+---@field ground_check_offset integer?
+---@field eat_ground_radius number?
+---@field eat_ground boolean?
+---@field hitbox_radius number?
+---@field bite_damage number?
+---@field target_kill_radius number?
+---@field target_kill_ragdoll_force number?
+---@field hunt_box_radius number?
+---@field random_target_box_radius number?
+---@field new_hunt_target_check_every integer?
+---@field new_random_target_check_every integer?
+---@field jump_cam_shake number?
+---@field jump_cam_shake_distance number?
+---@field eat_anim_wait_mult number?
+---@field projectile_1 string?
+---@field projectile_1_count integer?
+---@field projectile_2 string?
+---@field projectile_2_count integer?
+---@field ragdoll_filename string?
+---@field mTargetEntityId integer?
+---@field mTargetVec Vec2?
+---@field mGravVelocity number?
+---@field mSpeed number?
+---@field mRandomTarget Vec2?
+---@field mLastLivingTargetPos Vec2?
+---@field mNextTargetCheckFrame integer?
+---@field mNextHuntTargetCheckFrame integer?
+---@field mOnGroundPrev boolean?
+---@field mMaterialIdPrev integer?
+---@field mPhase integer?
+---@field mNextPhaseSwitchTime integer?
+---@field mPartDistance number?
+---@field mIsInitialized boolean?
+
+---@class (exact) BossDragonComponent : Component
+---@field speed number
+---@field speed_hunt number
+---@field acceleration number
+---@field direction_adjust_speed number
+---@field direction_adjust_speed_hunt number
+---@field gravity number
+---@field tail_gravity number
+---@field part_distance number
+---@field ground_check_offset integer
+---@field eat_ground_radius number
+---@field eat_ground boolean
+---@field hitbox_radius number
+---@field bite_damage number
+---@field target_kill_radius number
+---@field target_kill_ragdoll_force number
+---@field hunt_box_radius number
+---@field random_target_box_radius number
+---@field new_hunt_target_check_every integer
+---@field new_random_target_check_every integer
+---@field jump_cam_shake number
+---@field jump_cam_shake_distance number
+---@field eat_anim_wait_mult number
+---@field projectile_1 string
+---@field projectile_1_count integer
+---@field projectile_2 string
+---@field projectile_2_count integer
+---@field ragdoll_filename string
+---@field mTargetEntityId integer
+---@field mTargetVec Vec2
+---@field mGravVelocity number
+---@field mSpeed number
+---@field mRandomTarget Vec2
+---@field mLastLivingTargetPos Vec2
+---@field mNextTargetCheckFrame integer
+---@field mNextHuntTargetCheckFrame integer
+---@field mOnGroundPrev boolean
+---@field mMaterialIdPrev integer
+---@field mPhase integer
+---@field mNextPhaseSwitchTime integer
+---@field mPartDistance number
+---@field mIsInitialized boolean
+
+---@alias BossDragonComponent.field
+---| '"speed"' number
+---| '"speed_hunt"' number
+---| '"acceleration"' number
+---| '"direction_adjust_speed"' number
+---| '"direction_adjust_speed_hunt"' number
+---| '"gravity"' number
+---| '"tail_gravity"' number
+---| '"part_distance"' number
+---| '"ground_check_offset"' integer
+---| '"eat_ground_radius"' number
+---| '"eat_ground"' boolean
+---| '"hitbox_radius"' number
+---| '"bite_damage"' number
+---| '"target_kill_radius"' number
+---| '"target_kill_ragdoll_force"' number
+---| '"hunt_box_radius"' number
+---| '"random_target_box_radius"' number
+---| '"new_hunt_target_check_every"' integer
+---| '"new_random_target_check_every"' integer
+---| '"jump_cam_shake"' number
+---| '"jump_cam_shake_distance"' number
+---| '"eat_anim_wait_mult"' number
+---| '"projectile_1"' string
+---| '"projectile_1_count"' integer
+---| '"projectile_2"' string
+---| '"projectile_2_count"' integer
+---| '"ragdoll_filename"' string
+---| '"mTargetEntityId"' integer
+---| '"mTargetVec"' Vec2
+---| '"mGravVelocity"' number
+---| '"mSpeed"' number
+---| '"mRandomTarget"' Vec2
+---| '"mLastLivingTargetPos"' Vec2
+---| '"mNextTargetCheckFrame"' integer
+---| '"mNextHuntTargetCheckFrame"' integer
+---| '"mOnGroundPrev"' boolean
+---| '"mMaterialIdPrev"' integer
+---| '"mPhase"' integer
+---| '"mNextPhaseSwitchTime"' integer
+---| '"mPartDistance"' number
+---| '"mIsInitialized"' boolean
+
+---@class (exact) BossHealthBarComponents
+---@overload fun(): BossHealthBarComponent
+---@field enabled fun(self: BossHealthBarComponents, enabled: boolean): BossHealthBarComponents
+---@field tagged fun(self: BossHealthBarComponents, tag: string): BossHealthBarComponents
+---@field with_field fun(self: BossHealthBarComponents, field: BossHealthBarComponent.field, value: any): BossHealthBarComponents
+---@field add fun(self: BossHealthBarComponents, fields: BossHealthBarComponent.partial): BossHealthBarComponent
+
+---@class (exact) BossHealthBarComponent.partial
+---@field gui boolean?
+---@field gui_special_final_boss boolean?
+---@field in_world boolean?
+---@field gui_max_distance_visible number?
+---@field mOldSpritesDestroyed boolean?
+
+---@class (exact) BossHealthBarComponent : Component
+---@field gui boolean
+---@field gui_special_final_boss boolean
+---@field in_world boolean
+---@field gui_max_distance_visible number
+---@field mOldSpritesDestroyed boolean
+
+---@alias BossHealthBarComponent.field
+---| '"gui"' boolean
+---| '"gui_special_final_boss"' boolean
+---| '"in_world"' boolean
+---| '"gui_max_distance_visible"' number
+---| '"mOldSpritesDestroyed"' boolean
+
+---@class (exact) CameraBoundComponents
+---@overload fun(): CameraBoundComponent
+---@field enabled fun(self: CameraBoundComponents, enabled: boolean): CameraBoundComponents
+---@field tagged fun(self: CameraBoundComponents, tag: string): CameraBoundComponents
+---@field with_field fun(self: CameraBoundComponents, field: CameraBoundComponent.field, value: any): CameraBoundComponents
+---@field add fun(self: CameraBoundComponents, fields: CameraBoundComponent.partial): CameraBoundComponent
+
+---@class (exact) CameraBoundComponent.partial
+---@field enabled boolean?
+---@field distance number?
+---@field distance_border number?
+---@field max_count integer?
+---@field freeze_on_distance_kill boolean?
+---@field freeze_on_max_count_kill boolean?
+
+---@class (exact) CameraBoundComponent : Component
+---@field enabled boolean
+---@field distance number
+---@field distance_border number
+---@field max_count integer
+---@field freeze_on_distance_kill boolean
+---@field freeze_on_max_count_kill boolean
+
+---@alias CameraBoundComponent.field
+---| '"enabled"' boolean
+---| '"distance"' number
+---| '"distance_border"' number
+---| '"max_count"' integer
+---| '"freeze_on_distance_kill"' boolean
+---| '"freeze_on_max_count_kill"' boolean
+
+---@class (exact) CardinalMovementComponents
+---@overload fun(): CardinalMovementComponent
+---@field enabled fun(self: CardinalMovementComponents, enabled: boolean): CardinalMovementComponents
+---@field tagged fun(self: CardinalMovementComponents, tag: string): CardinalMovementComponents
+---@field with_field fun(self: CardinalMovementComponents, field: CardinalMovementComponent.field, value: any): CardinalMovementComponents
+---@field add fun(self: CardinalMovementComponents, fields: CardinalMovementComponent.partial): CardinalMovementComponent
+
+---@class (exact) CardinalMovementComponent.partial
+---@field horizontal_movement boolean?
+---@field vertical_movement boolean?
+---@field intercardinal_movement boolean?
+---@field mPrevPos Vec2?
+
+---@class (exact) CardinalMovementComponent : Component
+---@field horizontal_movement boolean
+---@field vertical_movement boolean
+---@field intercardinal_movement boolean
+---@field mPrevPos Vec2
+
+---@alias CardinalMovementComponent.field
+---| '"horizontal_movement"' boolean
+---| '"vertical_movement"' boolean
+---| '"intercardinal_movement"' boolean
+---| '"mPrevPos"' Vec2
+
+---@class (exact) CellEaterComponents
+---@overload fun(): CellEaterComponent
+---@field enabled fun(self: CellEaterComponents, enabled: boolean): CellEaterComponents
+---@field tagged fun(self: CellEaterComponents, tag: string): CellEaterComponents
+---@field with_field fun(self: CellEaterComponents, field: CellEaterComponent.field, value: any): CellEaterComponents
+---@field add fun(self: CellEaterComponents, fields: CellEaterComponent.partial): CellEaterComponent
+
+---@class (exact) CellEaterComponent.partial
+---@field radius number?
+---@field eat_probability integer?
+---@field only_stain boolean?
+---@field eat_dynamic_physics_bodies boolean?
+---@field limited_materials boolean?
+---@field ignored_material_tag string?
+---@field ignored_material integer?
+---@field materials VEC_OF_MATERIALS?
+
+---@class (exact) CellEaterComponent : Component
+---@field radius number
+---@field eat_probability integer
+---@field only_stain boolean
+---@field eat_dynamic_physics_bodies boolean
+---@field limited_materials boolean
+---@field ignored_material_tag string
+---@field ignored_material integer
+---@field materials VEC_OF_MATERIALS
+
+---@alias CellEaterComponent.field
+---| '"radius"' number
+---| '"eat_probability"' integer
+---| '"only_stain"' boolean
+---| '"eat_dynamic_physics_bodies"' boolean
+---| '"limited_materials"' boolean
+---| '"ignored_material_tag"' string
+---| '"ignored_material"' integer
+---| '"materials"' VEC_OF_MATERIALS
+
+---@class (exact) CharacterCollisionComponents
+---@overload fun(): CharacterCollisionComponent
+---@field enabled fun(self: CharacterCollisionComponents, enabled: boolean): CharacterCollisionComponents
+---@field tagged fun(self: CharacterCollisionComponents, tag: string): CharacterCollisionComponents
+---@field with_field fun(self: CharacterCollisionComponents, field: CharacterCollisionComponent.field, value: any): CharacterCollisionComponents
+---@field add fun(self: CharacterCollisionComponents, fields: CharacterCollisionComponent.partial): CharacterCollisionComponent
+
+---@class (exact) CharacterCollisionComponent.partial
+---@field getting_crushed_threshold integer?
+---@field moving_up_before_getting_crushed_threshold integer?
+---@field getting_crushed_counter integer?
+---@field stuck_in_ground_counter integer?
+---@field mCollidedHorizontally boolean?
+
+---@class (exact) CharacterCollisionComponent : Component
+---@field getting_crushed_threshold integer
+---@field moving_up_before_getting_crushed_threshold integer
+---@field getting_crushed_counter integer
+---@field stuck_in_ground_counter integer
+---@field mCollidedHorizontally boolean
+
+---@alias CharacterCollisionComponent.field
+---| '"getting_crushed_threshold"' integer
+---| '"moving_up_before_getting_crushed_threshold"' integer
+---| '"getting_crushed_counter"' integer
+---| '"stuck_in_ground_counter"' integer
+---| '"mCollidedHorizontally"' boolean
+
+---@class (exact) CharacterDataComponents
+---@overload fun(): CharacterDataComponent
+---@field enabled fun(self: CharacterDataComponents, enabled: boolean): CharacterDataComponents
+---@field tagged fun(self: CharacterDataComponents, tag: string): CharacterDataComponents
+---@field with_field fun(self: CharacterDataComponents, field: CharacterDataComponent.field, value: any): CharacterDataComponents
+---@field add fun(self: CharacterDataComponents, fields: CharacterDataComponent.partial): CharacterDataComponent
+
+---@class (exact) CharacterDataComponent.partial
+---@field platforming_type integer?
+---@field mass number?
+---@field buoyancy_check_offset_y integer?
+---@field liquid_velocity_coeff number?
+---@field gravity number?
+---@field fly_recharge_spd number?
+---@field fly_recharge_spd_ground number?
+---@field flying_needs_recharge boolean?
+---@field flying_in_air_wait_frames integer?
+---@field flying_recharge_removal_frames integer?
+---@field climb_over_y integer?
+---@field check_collision_max_size_x integer?
+---@field check_collision_max_size_y integer?
+---@field is_on_ground boolean?
+---@field is_on_slippery_ground boolean?
+---@field ground_stickyness number?
+---@field effect_hit_ground boolean?
+---@field eff_hg_damage_min integer?
+---@field eff_hg_damage_max integer?
+---@field eff_hg_position_x number?
+---@field eff_hg_position_y number?
+---@field eff_hg_size_x number?
+---@field eff_hg_size_y number?
+---@field eff_hg_velocity_min_x number?
+---@field eff_hg_velocity_max_x number?
+---@field eff_hg_velocity_min_y number?
+---@field eff_hg_velocity_max_y number?
+---@field eff_hg_offset_y number?
+---@field eff_hg_update_box2d boolean?
+---@field eff_hg_b2force_multiplier number?
+---@field destroy_ground number?
+---@field send_transform_update_message boolean?
+---@field dont_update_velocity_and_xform boolean?
+---@field mFlyingTimeLeft number?
+---@field collision_aabb_min_x number?
+---@field collision_aabb_max_x number?
+---@field collision_aabb_min_y number?
+---@field collision_aabb_max_y number?
+---@field fly_time_max number?
+---@field mFramesOnGround integer?
+---@field mLastFrameOnGround integer?
+---@field mVelocity Vec2?
+---@field mCollidedHorizontally boolean?
+
+---@class (exact) CharacterDataComponent : Component
+---@field platforming_type integer
+---@field mass number
+---@field buoyancy_check_offset_y integer
+---@field liquid_velocity_coeff number
+---@field gravity number
+---@field fly_recharge_spd number
+---@field fly_recharge_spd_ground number
+---@field flying_needs_recharge boolean
+---@field flying_in_air_wait_frames integer
+---@field flying_recharge_removal_frames integer
+---@field climb_over_y integer
+---@field check_collision_max_size_x integer
+---@field check_collision_max_size_y integer
+---@field is_on_ground boolean
+---@field is_on_slippery_ground boolean
+---@field ground_stickyness number
+---@field effect_hit_ground boolean
+---@field eff_hg_damage_min integer
+---@field eff_hg_damage_max integer
+---@field eff_hg_position_x number
+---@field eff_hg_position_y number
+---@field eff_hg_size_x number
+---@field eff_hg_size_y number
+---@field eff_hg_velocity_min_x number
+---@field eff_hg_velocity_max_x number
+---@field eff_hg_velocity_min_y number
+---@field eff_hg_velocity_max_y number
+---@field eff_hg_offset_y number
+---@field eff_hg_update_box2d boolean
+---@field eff_hg_b2force_multiplier number
+---@field destroy_ground number
+---@field send_transform_update_message boolean
+---@field dont_update_velocity_and_xform boolean
+---@field mFlyingTimeLeft number
+---@field collision_aabb_min_x number
+---@field collision_aabb_max_x number
+---@field collision_aabb_min_y number
+---@field collision_aabb_max_y number
+---@field fly_time_max number
+---@field mFramesOnGround integer
+---@field mLastFrameOnGround integer
+---@field mVelocity Vec2
+---@field mCollidedHorizontally boolean
+
+---@alias CharacterDataComponent.field
+---| '"platforming_type"' integer
+---| '"mass"' number
+---| '"buoyancy_check_offset_y"' integer
+---| '"liquid_velocity_coeff"' number
+---| '"gravity"' number
+---| '"fly_recharge_spd"' number
+---| '"fly_recharge_spd_ground"' number
+---| '"flying_needs_recharge"' boolean
+---| '"flying_in_air_wait_frames"' integer
+---| '"flying_recharge_removal_frames"' integer
+---| '"climb_over_y"' integer
+---| '"check_collision_max_size_x"' integer
+---| '"check_collision_max_size_y"' integer
+---| '"is_on_ground"' boolean
+---| '"is_on_slippery_ground"' boolean
+---| '"ground_stickyness"' number
+---| '"effect_hit_ground"' boolean
+---| '"eff_hg_damage_min"' integer
+---| '"eff_hg_damage_max"' integer
+---| '"eff_hg_position_x"' number
+---| '"eff_hg_position_y"' number
+---| '"eff_hg_size_x"' number
+---| '"eff_hg_size_y"' number
+---| '"eff_hg_velocity_min_x"' number
+---| '"eff_hg_velocity_max_x"' number
+---| '"eff_hg_velocity_min_y"' number
+---| '"eff_hg_velocity_max_y"' number
+---| '"eff_hg_offset_y"' number
+---| '"eff_hg_update_box2d"' boolean
+---| '"eff_hg_b2force_multiplier"' number
+---| '"destroy_ground"' number
+---| '"send_transform_update_message"' boolean
+---| '"dont_update_velocity_and_xform"' boolean
+---| '"mFlyingTimeLeft"' number
+---| '"collision_aabb_min_x"' number
+---| '"collision_aabb_max_x"' number
+---| '"collision_aabb_min_y"' number
+---| '"collision_aabb_max_y"' number
+---| '"fly_time_max"' number
+---| '"mFramesOnGround"' integer
+---| '"mLastFrameOnGround"' integer
+---| '"mVelocity"' Vec2
+---| '"mCollidedHorizontally"' boolean
+
+---@class (exact) CharacterPlatformingComponents
+---@overload fun(): CharacterPlatformingComponent
+---@field enabled fun(self: CharacterPlatformingComponents, enabled: boolean): CharacterPlatformingComponents
+---@field tagged fun(self: CharacterPlatformingComponents, tag: string): CharacterPlatformingComponents
+---@field with_field fun(self: CharacterPlatformingComponents, field: CharacterPlatformingComponent.field, value: any): CharacterPlatformingComponents
+---@field add fun(self: CharacterPlatformingComponents, fields: CharacterPlatformingComponent.partial): CharacterPlatformingComponent
+
+---@class (exact) CharacterPlatformingComponent.partial
+---@field jump_velocity_x number?
+---@field jump_velocity_y number?
+---@field jump_keydown_buffer integer?
+---@field fly_speed_mult number?
+---@field fly_speed_change_spd number?
+---@field fly_model_player boolean?
+---@field fly_smooth_y boolean?
+---@field accel_x number?
+---@field accel_x_air number?
+---@field pixel_gravity number?
+---@field swim_idle_buoyancy_coeff number?
+---@field swim_down_buoyancy_coeff number?
+---@field swim_up_buoyancy_coeff number?
+---@field swim_drag number?
+---@field swim_extra_horizontal_drag number?
+---@field mouse_look boolean?
+---@field mouse_look_buffer number?
+---@field keyboard_look boolean?
+---@field turning_buffer number?
+---@field animation_to_play string?
+---@field animation_to_play_next string?
+---@field run_animation_velocity_switching_threshold number?
+---@field run_animation_velocity_switching_enabled boolean?
+---@field turn_animation_frames_between integer?
+---@field precision_jumping_max_duration_frames integer?
+---@field audio_liquid_splash_intensity number?
+---@field velocity_min_x number?
+---@field velocity_max_x number?
+---@field velocity_min_y number?
+---@field velocity_max_y number?
+---@field run_velocity number?
+---@field fly_velocity_x number?
+---@field fly_speed_max_up number?
+---@field fly_speed_max_down number?
+---@field mExAnimationPos Vec2?
+---@field mFramesInAirCounter integer?
+---@field mIsPrecisionJumping boolean?
+---@field mPrecisionJumpingTime integer?
+---@field mPrecisionJumpingSpeedX number?
+---@field mPrecisionJumpingTimeLeft integer?
+---@field mFlyThrottle number?
+---@field mSmoothedFlyingTargetY number?
+---@field mJetpackEmitting integer?
+---@field mNextTurnAnimationFrame integer?
+---@field mFramesNotSwimming integer?
+---@field mFramesSwimming integer?
+---@field mShouldCrouch boolean?
+---@field mShouldCrouchPrev boolean?
+---@field mLastPostureSwitchFrame integer?
+---@field mLookOverrideLastFrame integer?
+---@field mLookOverrideDirection integer?
+
+---@class (exact) CharacterPlatformingComponent : Component
+---@field jump_velocity_x number
+---@field jump_velocity_y number
+---@field jump_keydown_buffer integer
+---@field fly_speed_mult number
+---@field fly_speed_change_spd number
+---@field fly_model_player boolean
+---@field fly_smooth_y boolean
+---@field accel_x number
+---@field accel_x_air number
+---@field pixel_gravity number
+---@field swim_idle_buoyancy_coeff number
+---@field swim_down_buoyancy_coeff number
+---@field swim_up_buoyancy_coeff number
+---@field swim_drag number
+---@field swim_extra_horizontal_drag number
+---@field mouse_look boolean
+---@field mouse_look_buffer number
+---@field keyboard_look boolean
+---@field turning_buffer number
+---@field animation_to_play string
+---@field animation_to_play_next string
+---@field run_animation_velocity_switching_threshold number
+---@field run_animation_velocity_switching_enabled boolean
+---@field turn_animation_frames_between integer
+---@field precision_jumping_max_duration_frames integer
+---@field audio_liquid_splash_intensity number
+---@field velocity_min_x number
+---@field velocity_max_x number
+---@field velocity_min_y number
+---@field velocity_max_y number
+---@field run_velocity number
+---@field fly_velocity_x number
+---@field fly_speed_max_up number
+---@field fly_speed_max_down number
+---@field mExAnimationPos Vec2
+---@field mFramesInAirCounter integer
+---@field mIsPrecisionJumping boolean
+---@field mPrecisionJumpingTime integer
+---@field mPrecisionJumpingSpeedX number
+---@field mPrecisionJumpingTimeLeft integer
+---@field mFlyThrottle number
+---@field mSmoothedFlyingTargetY number
+---@field mJetpackEmitting integer
+---@field mNextTurnAnimationFrame integer
+---@field mFramesNotSwimming integer
+---@field mFramesSwimming integer
+---@field mShouldCrouch boolean
+---@field mShouldCrouchPrev boolean
+---@field mLastPostureSwitchFrame integer
+---@field mLookOverrideLastFrame integer
+---@field mLookOverrideDirection integer
+
+---@alias CharacterPlatformingComponent.field
+---| '"jump_velocity_x"' number
+---| '"jump_velocity_y"' number
+---| '"jump_keydown_buffer"' integer
+---| '"fly_speed_mult"' number
+---| '"fly_speed_change_spd"' number
+---| '"fly_model_player"' boolean
+---| '"fly_smooth_y"' boolean
+---| '"accel_x"' number
+---| '"accel_x_air"' number
+---| '"pixel_gravity"' number
+---| '"swim_idle_buoyancy_coeff"' number
+---| '"swim_down_buoyancy_coeff"' number
+---| '"swim_up_buoyancy_coeff"' number
+---| '"swim_drag"' number
+---| '"swim_extra_horizontal_drag"' number
+---| '"mouse_look"' boolean
+---| '"mouse_look_buffer"' number
+---| '"keyboard_look"' boolean
+---| '"turning_buffer"' number
+---| '"animation_to_play"' string
+---| '"animation_to_play_next"' string
+---| '"run_animation_velocity_switching_threshold"' number
+---| '"run_animation_velocity_switching_enabled"' boolean
+---| '"turn_animation_frames_between"' integer
+---| '"precision_jumping_max_duration_frames"' integer
+---| '"audio_liquid_splash_intensity"' number
+---| '"velocity_min_x"' number
+---| '"velocity_max_x"' number
+---| '"velocity_min_y"' number
+---| '"velocity_max_y"' number
+---| '"run_velocity"' number
+---| '"fly_velocity_x"' number
+---| '"fly_speed_max_up"' number
+---| '"fly_speed_max_down"' number
+---| '"mExAnimationPos"' Vec2
+---| '"mFramesInAirCounter"' integer
+---| '"mIsPrecisionJumping"' boolean
+---| '"mPrecisionJumpingTime"' integer
+---| '"mPrecisionJumpingSpeedX"' number
+---| '"mPrecisionJumpingTimeLeft"' integer
+---| '"mFlyThrottle"' number
+---| '"mSmoothedFlyingTargetY"' number
+---| '"mJetpackEmitting"' integer
+---| '"mNextTurnAnimationFrame"' integer
+---| '"mFramesNotSwimming"' integer
+---| '"mFramesSwimming"' integer
+---| '"mShouldCrouch"' boolean
+---| '"mShouldCrouchPrev"' boolean
+---| '"mLastPostureSwitchFrame"' integer
+---| '"mLookOverrideLastFrame"' integer
+---| '"mLookOverrideDirection"' integer
+
+---@class (exact) CharacterStatsComponents
+---@overload fun(): CharacterStatsComponent
+---@field enabled fun(self: CharacterStatsComponents, enabled: boolean): CharacterStatsComponents
+---@field tagged fun(self: CharacterStatsComponents, tag: string): CharacterStatsComponents
+---@field with_field fun(self: CharacterStatsComponents, field: CharacterStatsComponent.field, value: any): CharacterStatsComponents
+---@field add fun(self: CharacterStatsComponents, fields: CharacterStatsComponent.partial): CharacterStatsComponent
+
+---@class (exact) CharacterStatsComponent.partial
+---@field stats CharacterStatsModifier?
+
+---@class (exact) CharacterStatsComponent : Component
+---@field stats CharacterStatsModifier
+
+---@alias CharacterStatsComponent.field
+---| '"stats"' CharacterStatsModifier
+
+---@class (exact) CollisionTriggerComponents
+---@overload fun(): CollisionTriggerComponent
+---@field enabled fun(self: CollisionTriggerComponents, enabled: boolean): CollisionTriggerComponents
+---@field tagged fun(self: CollisionTriggerComponents, tag: string): CollisionTriggerComponents
+---@field with_field fun(self: CollisionTriggerComponents, field: CollisionTriggerComponent.field, value: any): CollisionTriggerComponents
+---@field add fun(self: CollisionTriggerComponents, fields: CollisionTriggerComponent.partial): CollisionTriggerComponent
+
+---@class (exact) CollisionTriggerComponent.partial
+---@field width number?
+---@field height number?
+---@field radius number?
+---@field required_tag string?
+---@field remove_component_when_triggered boolean?
+---@field destroy_this_entity_when_triggered boolean?
+---@field timer_for_destruction integer?
+---@field self_trigger boolean?
+---@field skip_self_frames integer?
+---@field mTimer integer?
+
+---@class (exact) CollisionTriggerComponent : Component
+---@field width number
+---@field height number
+---@field radius number
+---@field required_tag string
+---@field remove_component_when_triggered boolean
+---@field destroy_this_entity_when_triggered boolean
+---@field timer_for_destruction integer
+---@field self_trigger boolean
+---@field skip_self_frames integer
+---@field mTimer integer
+
+---@alias CollisionTriggerComponent.field
+---| '"width"' number
+---| '"height"' number
+---| '"radius"' number
+---| '"required_tag"' string
+---| '"remove_component_when_triggered"' boolean
+---| '"destroy_this_entity_when_triggered"' boolean
+---| '"timer_for_destruction"' integer
+---| '"self_trigger"' boolean
+---| '"skip_self_frames"' integer
+---| '"mTimer"' integer
+
+---@class (exact) ConsumableTeleportComponents
+---@overload fun(): ConsumableTeleportComponent
+---@field enabled fun(self: ConsumableTeleportComponents, enabled: boolean): ConsumableTeleportComponents
+---@field tagged fun(self: ConsumableTeleportComponents, tag: string): ConsumableTeleportComponents
+---@field with_field fun(self: ConsumableTeleportComponents, field: ConsumableTeleportComponent.field, value: any): ConsumableTeleportComponents
+---@field add fun(self: ConsumableTeleportComponents, fields: ConsumableTeleportComponent.partial): ConsumableTeleportComponent
+
+---@class (exact) ConsumableTeleportComponent.partial
+---@field create_other_end boolean?
+---@field is_at_home boolean?
+---@field collision_radius number?
+---@field target_id integer?
+---@field id integer?
+---@field mNextUsableFrame integer?
+---@field mHasOtherEnd boolean?
+---@field target_location Vec2?
+
+---@class (exact) ConsumableTeleportComponent : Component
+---@field create_other_end boolean
+---@field is_at_home boolean
+---@field collision_radius number
+---@field target_id integer
+---@field id integer
+---@field mNextUsableFrame integer
+---@field mHasOtherEnd boolean
+---@field target_location Vec2
+
+---@alias ConsumableTeleportComponent.field
+---| '"create_other_end"' boolean
+---| '"is_at_home"' boolean
+---| '"collision_radius"' number
+---| '"target_id"' integer
+---| '"id"' integer
+---| '"mNextUsableFrame"' integer
+---| '"mHasOtherEnd"' boolean
+---| '"target_location"' Vec2
+
+---@class (exact) ControllerGoombaAIComponents
+---@overload fun(): ControllerGoombaAIComponent
+---@field enabled fun(self: ControllerGoombaAIComponents, enabled: boolean): ControllerGoombaAIComponents
+---@field tagged fun(self: ControllerGoombaAIComponents, tag: string): ControllerGoombaAIComponents
+---@field with_field fun(self: ControllerGoombaAIComponents, field: ControllerGoombaAIComponent.field, value: any): ControllerGoombaAIComponents
+---@field add fun(self: ControllerGoombaAIComponents, fields: ControllerGoombaAIComponent.partial): ControllerGoombaAIComponent
+
+---@class (exact) ControllerGoombaAIComponent.partial
+---@field auto_turn_around_enabled boolean?
+---@field wait_to_turn_around integer?
+---@field wall_hit_wait integer?
+---@field check_wall_detection boolean?
+---@field wall_detection_aabb_min_x number?
+---@field wall_detection_aabb_max_x number?
+---@field wall_detection_aabb_min_y number?
+---@field wall_detection_aabb_max_y number?
+---@field check_floor_detection boolean?
+---@field floor_detection_aabb_min_x number?
+---@field floor_detection_aabb_max_x number?
+---@field floor_detection_aabb_min_y number?
+---@field floor_detection_aabb_max_y number?
+---@field mChangingDirectionCounter integer?
+
+---@class (exact) ControllerGoombaAIComponent : Component
+---@field auto_turn_around_enabled boolean
+---@field wait_to_turn_around integer
+---@field wall_hit_wait integer
+---@field check_wall_detection boolean
+---@field wall_detection_aabb_min_x number
+---@field wall_detection_aabb_max_x number
+---@field wall_detection_aabb_min_y number
+---@field wall_detection_aabb_max_y number
+---@field check_floor_detection boolean
+---@field floor_detection_aabb_min_x number
+---@field floor_detection_aabb_max_x number
+---@field floor_detection_aabb_min_y number
+---@field floor_detection_aabb_max_y number
+---@field mChangingDirectionCounter integer
+
+---@alias ControllerGoombaAIComponent.field
+---| '"auto_turn_around_enabled"' boolean
+---| '"wait_to_turn_around"' integer
+---| '"wall_hit_wait"' integer
+---| '"check_wall_detection"' boolean
+---| '"wall_detection_aabb_min_x"' number
+---| '"wall_detection_aabb_max_x"' number
+---| '"wall_detection_aabb_min_y"' number
+---| '"wall_detection_aabb_max_y"' number
+---| '"check_floor_detection"' boolean
+---| '"floor_detection_aabb_min_x"' number
+---| '"floor_detection_aabb_max_x"' number
+---| '"floor_detection_aabb_min_y"' number
+---| '"floor_detection_aabb_max_y"' number
+---| '"mChangingDirectionCounter"' integer
+
+---@class (exact) ControlsComponents
+---@overload fun(): ControlsComponent
+---@field enabled fun(self: ControlsComponents, enabled: boolean): ControlsComponents
+---@field tagged fun(self: ControlsComponents, tag: string): ControlsComponents
+---@field with_field fun(self: ControlsComponents, field: ControlsComponent.field, value: any): ControlsComponents
+---@field add fun(self: ControlsComponents, fields: ControlsComponent.partial): ControlsComponent
+
+---@class (exact) ControlsComponent.partial
+---@field polymorph_hax boolean?
+---@field polymorph_next_attack_frame integer?
+---@field enabled boolean?
+---@field gamepad_indirect_aiming_enabled boolean?
+---@field gamepad_fire_on_thumbstick_extend boolean?
+---@field gamepad_fire_on_thumbstick_extend_threshold number?
+---@field mButtonDownFire boolean?
+---@field mButtonFrameFire integer?
+---@field mButtonLastFrameFire integer?
+---@field mButtonDownFire2 boolean?
+---@field mButtonFrameFire2 integer?
+---@field mButtonDownAction boolean?
+---@field mButtonFrameAction integer?
+---@field mButtonDownThrow boolean?
+---@field mButtonFrameThrow integer?
+---@field mButtonDownInteract boolean?
+---@field mButtonFrameInteract integer?
+---@field mButtonDownLeft boolean?
+---@field mButtonFrameLeft integer?
+---@field mButtonDownRight boolean?
+---@field mButtonFrameRight integer?
+---@field mButtonDownUp boolean?
+---@field mButtonFrameUp integer?
+---@field mButtonDownDown boolean?
+---@field mButtonFrameDown integer?
+---@field mButtonDownJump boolean?
+---@field mButtonFrameJump integer?
+---@field mButtonDownRun boolean?
+---@field mButtonFrameRun integer?
+---@field mButtonDownFly boolean?
+---@field mButtonFrameFly integer?
+---@field mButtonDownDig boolean?
+---@field mButtonFrameDig integer?
+---@field mButtonDownChangeItemR boolean?
+---@field mButtonFrameChangeItemR integer?
+---@field mButtonCountChangeItemR integer?
+---@field mButtonDownChangeItemL boolean?
+---@field mButtonFrameChangeItemL integer?
+---@field mButtonCountChangeItemL integer?
+---@field mButtonDownInventory boolean?
+---@field mButtonFrameInventory integer?
+---@field mButtonDownHolsterItem boolean?
+---@field mButtonFrameHolsterItem integer?
+---@field mButtonDownDropItem boolean?
+---@field mButtonFrameDropItem integer?
+---@field mButtonDownKick boolean?
+---@field mButtonFrameKick integer?
+---@field mButtonDownEat boolean?
+---@field mButtonFrameEat integer?
+---@field mButtonDownLeftClick boolean?
+---@field mButtonFrameLeftClick integer?
+---@field mButtonDownRightClick boolean?
+---@field mButtonFrameRightClick integer?
+---@field mButtonDownTransformLeft boolean?
+---@field mButtonFrameTransformLeft integer?
+---@field mButtonDownTransformRight boolean?
+---@field mButtonFrameTransformRight integer?
+---@field mButtonDownTransformUp boolean?
+---@field mButtonFrameTransformUp integer?
+---@field mButtonCountTransformUp integer?
+---@field mButtonDownTransformDown boolean?
+---@field mButtonFrameTransformDown integer?
+---@field mButtonCountTransformDown integer?
+---@field mFlyingTargetY number?
+---@field mAimingVector Vec2?
+---@field mAimingVectorNormalized Vec2?
+---@field mAimingVectorNonZeroLatest Vec2?
+---@field mGamepadAimingVectorRaw Vec2?
+---@field mJumpVelocity Vec2?
+---@field mMousePosition Vec2?
+---@field mMousePositionRaw Vec2?
+---@field mMousePositionRawPrev Vec2?
+---@field mMouseDelta Vec2?
+---@field mGamepadIndirectAiming Vec2?
+---@field mGamePadCursorInWorld Vec2?
+---@field mButtonDownDelayLineFire integer?
+---@field mButtonDownDelayLineFire2 integer?
+---@field mButtonDownDelayLineRight integer?
+---@field mButtonDownDelayLineLeft integer?
+---@field mButtonDownDelayLineUp integer?
+---@field mButtonDownDelayLineDown integer?
+---@field mButtonDownDelayLineKick integer?
+---@field mButtonDownDelayLineThrow integer?
+---@field mButtonDownDelayLineJump integer?
+---@field mButtonDownDelayLineFly integer?
+---@field input_latency_frames integer?
+
+---@class (exact) ControlsComponent : Component
+---@field polymorph_hax boolean
+---@field polymorph_next_attack_frame integer
+---@field enabled boolean
+---@field gamepad_indirect_aiming_enabled boolean
+---@field gamepad_fire_on_thumbstick_extend boolean
+---@field gamepad_fire_on_thumbstick_extend_threshold number
+---@field mButtonDownFire boolean
+---@field mButtonFrameFire integer
+---@field mButtonLastFrameFire integer
+---@field mButtonDownFire2 boolean
+---@field mButtonFrameFire2 integer
+---@field mButtonDownAction boolean
+---@field mButtonFrameAction integer
+---@field mButtonDownThrow boolean
+---@field mButtonFrameThrow integer
+---@field mButtonDownInteract boolean
+---@field mButtonFrameInteract integer
+---@field mButtonDownLeft boolean
+---@field mButtonFrameLeft integer
+---@field mButtonDownRight boolean
+---@field mButtonFrameRight integer
+---@field mButtonDownUp boolean
+---@field mButtonFrameUp integer
+---@field mButtonDownDown boolean
+---@field mButtonFrameDown integer
+---@field mButtonDownJump boolean
+---@field mButtonFrameJump integer
+---@field mButtonDownRun boolean
+---@field mButtonFrameRun integer
+---@field mButtonDownFly boolean
+---@field mButtonFrameFly integer
+---@field mButtonDownDig boolean
+---@field mButtonFrameDig integer
+---@field mButtonDownChangeItemR boolean
+---@field mButtonFrameChangeItemR integer
+---@field mButtonCountChangeItemR integer
+---@field mButtonDownChangeItemL boolean
+---@field mButtonFrameChangeItemL integer
+---@field mButtonCountChangeItemL integer
+---@field mButtonDownInventory boolean
+---@field mButtonFrameInventory integer
+---@field mButtonDownHolsterItem boolean
+---@field mButtonFrameHolsterItem integer
+---@field mButtonDownDropItem boolean
+---@field mButtonFrameDropItem integer
+---@field mButtonDownKick boolean
+---@field mButtonFrameKick integer
+---@field mButtonDownEat boolean
+---@field mButtonFrameEat integer
+---@field mButtonDownLeftClick boolean
+---@field mButtonFrameLeftClick integer
+---@field mButtonDownRightClick boolean
+---@field mButtonFrameRightClick integer
+---@field mButtonDownTransformLeft boolean
+---@field mButtonFrameTransformLeft integer
+---@field mButtonDownTransformRight boolean
+---@field mButtonFrameTransformRight integer
+---@field mButtonDownTransformUp boolean
+---@field mButtonFrameTransformUp integer
+---@field mButtonCountTransformUp integer
+---@field mButtonDownTransformDown boolean
+---@field mButtonFrameTransformDown integer
+---@field mButtonCountTransformDown integer
+---@field mFlyingTargetY number
+---@field mAimingVector Vec2
+---@field mAimingVectorNormalized Vec2
+---@field mAimingVectorNonZeroLatest Vec2
+---@field mGamepadAimingVectorRaw Vec2
+---@field mJumpVelocity Vec2
+---@field mMousePosition Vec2
+---@field mMousePositionRaw Vec2
+---@field mMousePositionRawPrev Vec2
+---@field mMouseDelta Vec2
+---@field mGamepadIndirectAiming Vec2
+---@field mGamePadCursorInWorld Vec2
+---@field mButtonDownDelayLineFire integer
+---@field mButtonDownDelayLineFire2 integer
+---@field mButtonDownDelayLineRight integer
+---@field mButtonDownDelayLineLeft integer
+---@field mButtonDownDelayLineUp integer
+---@field mButtonDownDelayLineDown integer
+---@field mButtonDownDelayLineKick integer
+---@field mButtonDownDelayLineThrow integer
+---@field mButtonDownDelayLineJump integer
+---@field mButtonDownDelayLineFly integer
+---@field input_latency_frames integer
+
+---@alias ControlsComponent.field
+---| '"polymorph_hax"' boolean
+---| '"polymorph_next_attack_frame"' integer
+---| '"enabled"' boolean
+---| '"gamepad_indirect_aiming_enabled"' boolean
+---| '"gamepad_fire_on_thumbstick_extend"' boolean
+---| '"gamepad_fire_on_thumbstick_extend_threshold"' number
+---| '"mButtonDownFire"' boolean
+---| '"mButtonFrameFire"' integer
+---| '"mButtonLastFrameFire"' integer
+---| '"mButtonDownFire2"' boolean
+---| '"mButtonFrameFire2"' integer
+---| '"mButtonDownAction"' boolean
+---| '"mButtonFrameAction"' integer
+---| '"mButtonDownThrow"' boolean
+---| '"mButtonFrameThrow"' integer
+---| '"mButtonDownInteract"' boolean
+---| '"mButtonFrameInteract"' integer
+---| '"mButtonDownLeft"' boolean
+---| '"mButtonFrameLeft"' integer
+---| '"mButtonDownRight"' boolean
+---| '"mButtonFrameRight"' integer
+---| '"mButtonDownUp"' boolean
+---| '"mButtonFrameUp"' integer
+---| '"mButtonDownDown"' boolean
+---| '"mButtonFrameDown"' integer
+---| '"mButtonDownJump"' boolean
+---| '"mButtonFrameJump"' integer
+---| '"mButtonDownRun"' boolean
+---| '"mButtonFrameRun"' integer
+---| '"mButtonDownFly"' boolean
+---| '"mButtonFrameFly"' integer
+---| '"mButtonDownDig"' boolean
+---| '"mButtonFrameDig"' integer
+---| '"mButtonDownChangeItemR"' boolean
+---| '"mButtonFrameChangeItemR"' integer
+---| '"mButtonCountChangeItemR"' integer
+---| '"mButtonDownChangeItemL"' boolean
+---| '"mButtonFrameChangeItemL"' integer
+---| '"mButtonCountChangeItemL"' integer
+---| '"mButtonDownInventory"' boolean
+---| '"mButtonFrameInventory"' integer
+---| '"mButtonDownHolsterItem"' boolean
+---| '"mButtonFrameHolsterItem"' integer
+---| '"mButtonDownDropItem"' boolean
+---| '"mButtonFrameDropItem"' integer
+---| '"mButtonDownKick"' boolean
+---| '"mButtonFrameKick"' integer
+---| '"mButtonDownEat"' boolean
+---| '"mButtonFrameEat"' integer
+---| '"mButtonDownLeftClick"' boolean
+---| '"mButtonFrameLeftClick"' integer
+---| '"mButtonDownRightClick"' boolean
+---| '"mButtonFrameRightClick"' integer
+---| '"mButtonDownTransformLeft"' boolean
+---| '"mButtonFrameTransformLeft"' integer
+---| '"mButtonDownTransformRight"' boolean
+---| '"mButtonFrameTransformRight"' integer
+---| '"mButtonDownTransformUp"' boolean
+---| '"mButtonFrameTransformUp"' integer
+---| '"mButtonCountTransformUp"' integer
+---| '"mButtonDownTransformDown"' boolean
+---| '"mButtonFrameTransformDown"' integer
+---| '"mButtonCountTransformDown"' integer
+---| '"mFlyingTargetY"' number
+---| '"mAimingVector"' Vec2
+---| '"mAimingVectorNormalized"' Vec2
+---| '"mAimingVectorNonZeroLatest"' Vec2
+---| '"mGamepadAimingVectorRaw"' Vec2
+---| '"mJumpVelocity"' Vec2
+---| '"mMousePosition"' Vec2
+---| '"mMousePositionRaw"' Vec2
+---| '"mMousePositionRawPrev"' Vec2
+---| '"mMouseDelta"' Vec2
+---| '"mGamepadIndirectAiming"' Vec2
+---| '"mGamePadCursorInWorld"' Vec2
+---| '"mButtonDownDelayLineFire"' integer
+---| '"mButtonDownDelayLineFire2"' integer
+---| '"mButtonDownDelayLineRight"' integer
+---| '"mButtonDownDelayLineLeft"' integer
+---| '"mButtonDownDelayLineUp"' integer
+---| '"mButtonDownDelayLineDown"' integer
+---| '"mButtonDownDelayLineKick"' integer
+---| '"mButtonDownDelayLineThrow"' integer
+---| '"mButtonDownDelayLineJump"' integer
+---| '"mButtonDownDelayLineFly"' integer
+---| '"input_latency_frames"' integer
+
+---@class (exact) CrawlerAnimalComponents
+---@overload fun(): CrawlerAnimalComponent
+---@field enabled fun(self: CrawlerAnimalComponents, enabled: boolean): CrawlerAnimalComponents
+---@field tagged fun(self: CrawlerAnimalComponents, tag: string): CrawlerAnimalComponents
+---@field with_field fun(self: CrawlerAnimalComponents, field: CrawlerAnimalComponent.field, value: any): CrawlerAnimalComponents
+---@field add fun(self: CrawlerAnimalComponents, fields: CrawlerAnimalComponent.partial): CrawlerAnimalComponent
+
+---@class (exact) CrawlerAnimalComponent.partial
+---@field ray_length number?
+---@field ray_count integer?
+---@field gravity number?
+---@field terminal_velocity number?
+---@field speed number?
+---@field give_up_area_radius integer?
+---@field give_up_time integer?
+---@field attack_from_ceiling_check_ray_length number?
+---@field attack_from_ceiling_check_every_n_frames integer?
+---@field collision_damage number?
+---@field collision_damage_radius number?
+---@field collision_damage_frames_between integer?
+---@field animate boolean?
+---@field mDir boolean?
+---@field mFrameNextGiveUp integer?
+---@field mFrameNextDamage integer?
+---@field mFrameNextAttackFromCeilingCheck integer?
+---@field mMin Vec2?
+---@field mMax Vec2?
+---@field mPrevNonSnappedPosition Vec2?
+---@field mPrevCellPosition Vec2?
+---@field mPrevCellPosition2 Vec2?
+---@field mPrevCellPosition3 Vec2?
+---@field mPrevCellPosition4 Vec2?
+---@field mPrevCellPosition5 Vec2?
+---@field mPrevCellPosition6 Vec2?
+---@field mPrevCellPosition7 Vec2?
+---@field mPrevCellPosition8 Vec2?
+---@field mLatestPosition Vec2?
+---@field mPrevFalling boolean?
+---@field mIsInitialized boolean?
+---@field mVelocityY number?
+---@field mAngle number?
+---@field mMovementStepAccumulator number?
+
+---@class (exact) CrawlerAnimalComponent : Component
+---@field ray_length number
+---@field ray_count integer
+---@field gravity number
+---@field terminal_velocity number
+---@field speed number
+---@field give_up_area_radius integer
+---@field give_up_time integer
+---@field attack_from_ceiling_check_ray_length number
+---@field attack_from_ceiling_check_every_n_frames integer
+---@field collision_damage number
+---@field collision_damage_radius number
+---@field collision_damage_frames_between integer
+---@field animate boolean
+---@field mDir boolean
+---@field mFrameNextGiveUp integer
+---@field mFrameNextDamage integer
+---@field mFrameNextAttackFromCeilingCheck integer
+---@field mMin Vec2
+---@field mMax Vec2
+---@field mPrevNonSnappedPosition Vec2
+---@field mPrevCellPosition Vec2
+---@field mPrevCellPosition2 Vec2
+---@field mPrevCellPosition3 Vec2
+---@field mPrevCellPosition4 Vec2
+---@field mPrevCellPosition5 Vec2
+---@field mPrevCellPosition6 Vec2
+---@field mPrevCellPosition7 Vec2
+---@field mPrevCellPosition8 Vec2
+---@field mLatestPosition Vec2
+---@field mPrevFalling boolean
+---@field mIsInitialized boolean
+---@field mVelocityY number
+---@field mAngle number
+---@field mMovementStepAccumulator number
+
+---@alias CrawlerAnimalComponent.field
+---| '"ray_length"' number
+---| '"ray_count"' integer
+---| '"gravity"' number
+---| '"terminal_velocity"' number
+---| '"speed"' number
+---| '"give_up_area_radius"' integer
+---| '"give_up_time"' integer
+---| '"attack_from_ceiling_check_ray_length"' number
+---| '"attack_from_ceiling_check_every_n_frames"' integer
+---| '"collision_damage"' number
+---| '"collision_damage_radius"' number
+---| '"collision_damage_frames_between"' integer
+---| '"animate"' boolean
+---| '"mDir"' boolean
+---| '"mFrameNextGiveUp"' integer
+---| '"mFrameNextDamage"' integer
+---| '"mFrameNextAttackFromCeilingCheck"' integer
+---| '"mMin"' Vec2
+---| '"mMax"' Vec2
+---| '"mPrevNonSnappedPosition"' Vec2
+---| '"mPrevCellPosition"' Vec2
+---| '"mPrevCellPosition2"' Vec2
+---| '"mPrevCellPosition3"' Vec2
+---| '"mPrevCellPosition4"' Vec2
+---| '"mPrevCellPosition5"' Vec2
+---| '"mPrevCellPosition6"' Vec2
+---| '"mPrevCellPosition7"' Vec2
+---| '"mPrevCellPosition8"' Vec2
+---| '"mLatestPosition"' Vec2
+---| '"mPrevFalling"' boolean
+---| '"mIsInitialized"' boolean
+---| '"mVelocityY"' number
+---| '"mAngle"' number
+---| '"mMovementStepAccumulator"' number
+
+---@class (exact) CutThroughWorldDoneHereComponents
+---@overload fun(): CutThroughWorldDoneHereComponent
+---@field enabled fun(self: CutThroughWorldDoneHereComponents, enabled: boolean): CutThroughWorldDoneHereComponents
+---@field tagged fun(self: CutThroughWorldDoneHereComponents, tag: string): CutThroughWorldDoneHereComponents
+---@field with_field fun(self: CutThroughWorldDoneHereComponents, field: CutThroughWorldDoneHereComponent.field, value: any): CutThroughWorldDoneHereComponents
+---@field add fun(self: CutThroughWorldDoneHereComponents, fields: CutThroughWorldDoneHereComponent.partial): CutThroughWorldDoneHereComponent
+
+---@class (exact) CutThroughWorldDoneHereComponent.partial
+---@field id_of_done_cut integer?
+
+---@class (exact) CutThroughWorldDoneHereComponent : Component
+---@field id_of_done_cut integer
+
+---@alias CutThroughWorldDoneHereComponent.field
+---| '"id_of_done_cut"' integer
+
+---@class (exact) DamageModelComponents
+---@overload fun(): DamageModelComponent
+---@field enabled fun(self: DamageModelComponents, enabled: boolean): DamageModelComponents
+---@field tagged fun(self: DamageModelComponents, tag: string): DamageModelComponents
+---@field with_field fun(self: DamageModelComponents, field: DamageModelComponent.field, value: any): DamageModelComponents
+---@field add fun(self: DamageModelComponents, fields: DamageModelComponent.partial): DamageModelComponent
+
+---@class (exact) DamageModelComponent.partial
+---@field hp number?
+---@field max_hp number?
+---@field max_hp_cap number?
+---@field max_hp_old number?
+---@field critical_damage_resistance number?
+---@field invincibility_frames integer?
+---@field falling_damages boolean?
+---@field falling_damage_height_min number?
+---@field falling_damage_height_max number?
+---@field falling_damage_damage_min number?
+---@field falling_damage_damage_max number?
+---@field air_needed boolean?
+---@field air_in_lungs number?
+---@field air_in_lungs_max number?
+---@field air_lack_of_damage number?
+---@field minimum_knockback_force number?
+---@field materials_damage boolean?
+---@field material_damage_min_cell_count integer?
+---@field materials_that_damage string?
+---@field materials_how_much_damage string?
+---@field materials_damage_proportional_to_maxhp boolean?
+---@field physics_objects_damage boolean?
+---@field materials_create_messages boolean?
+---@field materials_that_create_messages string?
+---@field ragdoll_filenames_file string?
+---@field ragdoll_material string?
+---@field ragdoll_offset_x number?
+---@field ragdoll_offset_y number?
+---@field blood_material string?
+---@field blood_spray_material string?
+---@field blood_spray_create_some_cosmetic boolean?
+---@field blood_multiplier number?
+---@field ragdoll_blood_amount_absolute integer?
+---@field blood_sprite_directional string?
+---@field blood_sprite_large string?
+---@field healing_particle_effect_entity string?
+---@field create_ragdoll boolean?
+---@field ragdollify_child_entity_sprites boolean?
+---@field ragdollify_root_angular_damping number?
+---@field ragdollify_disintegrate_nonroot boolean?
+---@field wait_for_kill_flag_on_death boolean?
+---@field kill_now boolean?
+---@field drop_items_on_death boolean?
+---@field ui_report_damage boolean?
+---@field ui_force_report_damage boolean?
+---@field in_liquid_shooting_electrify_prob integer?
+---@field wet_status_effect_damage number?
+---@field is_on_fire boolean?
+---@field fire_probability_of_ignition number?
+---@field fire_how_much_fire_generates integer?
+---@field fire_damage_ignited_amount number?
+---@field fire_damage_amount number?
+---@field mLastElectricityResistanceFrame integer?
+---@field mLastFrameReportedBlock integer?
+---@field mLastMaxHpChangeFrame integer?
+---@field damage_multipliers ConfigDamagesByType?
+---@field ragdoll_fx_forced RAGDOLL_FX::Enum?
+---@field mIsOnFire boolean?
+---@field mFireProbability integer?
+---@field mFireFramesLeft integer?
+---@field mFireDurationFrames integer?
+---@field mFireTriedIgniting boolean?
+---@field mLastCheckX integer?
+---@field mLastCheckY integer?
+---@field mLastCheckTime integer?
+---@field mLastMaterialDamageFrame integer?
+---@field mFallIsOnGround boolean?
+---@field mFallHighestY number?
+---@field mFallCount integer?
+---@field mAirAreWeInWater boolean?
+---@field mAirFramesNotInWater integer?
+---@field mAirDoWeHave boolean?
+---@field mTotalCells integer?
+---@field mLiquidCount integer?
+---@field mLiquidMaterialWeAreIn integer?
+---@field mDamageMaterials std::vector<int>?
+---@field mDamageMaterialsHowMuch std::vector<float>?
+---@field mCollisionMessageMaterials std::vector<int>?
+---@field mCollisionMessageMaterialCountsThisFrame std::vector<int>?
+---@field mMaterialDamageThisFrame std::vector<float>?
+---@field mFallDamageThisFrame number?
+---@field mElectricityDamageThisFrame number?
+---@field mPhysicsDamageThisFrame number?
+---@field mPhysicsDamageVecThisFrame Vec2?
+---@field mPhysicsDamageLastFrame integer?
+---@field mPhysicsDamageEntity EntityTypeID?
+---@field mPhysicsDamageTelekinesisCasterEntity EntityTypeID?
+---@field mLastDamageFrame integer?
+---@field mHpBeforeLastDamage number?
+---@field mFireDamageBuffered number?
+---@field mFireDamageBufferedNextDeliveryFrame integer?
+
+---@class (exact) DamageModelComponent : Component
+---@field hp number
+---@field max_hp number
+---@field max_hp_cap number
+---@field max_hp_old number
+---@field critical_damage_resistance number
+---@field invincibility_frames integer
+---@field falling_damages boolean
+---@field falling_damage_height_min number
+---@field falling_damage_height_max number
+---@field falling_damage_damage_min number
+---@field falling_damage_damage_max number
+---@field air_needed boolean
+---@field air_in_lungs number
+---@field air_in_lungs_max number
+---@field air_lack_of_damage number
+---@field minimum_knockback_force number
+---@field materials_damage boolean
+---@field material_damage_min_cell_count integer
+---@field materials_that_damage string
+---@field materials_how_much_damage string
+---@field materials_damage_proportional_to_maxhp boolean
+---@field physics_objects_damage boolean
+---@field materials_create_messages boolean
+---@field materials_that_create_messages string
+---@field ragdoll_filenames_file string
+---@field ragdoll_material string
+---@field ragdoll_offset_x number
+---@field ragdoll_offset_y number
+---@field blood_material string
+---@field blood_spray_material string
+---@field blood_spray_create_some_cosmetic boolean
+---@field blood_multiplier number
+---@field ragdoll_blood_amount_absolute integer
+---@field blood_sprite_directional string
+---@field blood_sprite_large string
+---@field healing_particle_effect_entity string
+---@field create_ragdoll boolean
+---@field ragdollify_child_entity_sprites boolean
+---@field ragdollify_root_angular_damping number
+---@field ragdollify_disintegrate_nonroot boolean
+---@field wait_for_kill_flag_on_death boolean
+---@field kill_now boolean
+---@field drop_items_on_death boolean
+---@field ui_report_damage boolean
+---@field ui_force_report_damage boolean
+---@field in_liquid_shooting_electrify_prob integer
+---@field wet_status_effect_damage number
+---@field is_on_fire boolean
+---@field fire_probability_of_ignition number
+---@field fire_how_much_fire_generates integer
+---@field fire_damage_ignited_amount number
+---@field fire_damage_amount number
+---@field mLastElectricityResistanceFrame integer
+---@field mLastFrameReportedBlock integer
+---@field mLastMaxHpChangeFrame integer
+---@field damage_multipliers ConfigDamagesByType
+---@field ragdoll_fx_forced RAGDOLL_FX::Enum
+---@field mIsOnFire boolean
+---@field mFireProbability integer
+---@field mFireFramesLeft integer
+---@field mFireDurationFrames integer
+---@field mFireTriedIgniting boolean
+---@field mLastCheckX integer
+---@field mLastCheckY integer
+---@field mLastCheckTime integer
+---@field mLastMaterialDamageFrame integer
+---@field mFallIsOnGround boolean
+---@field mFallHighestY number
+---@field mFallCount integer
+---@field mAirAreWeInWater boolean
+---@field mAirFramesNotInWater integer
+---@field mAirDoWeHave boolean
+---@field mTotalCells integer
+---@field mLiquidCount integer
+---@field mLiquidMaterialWeAreIn integer
+---@field mDamageMaterials std::vector<int>
+---@field mDamageMaterialsHowMuch std::vector<float>
+---@field mCollisionMessageMaterials std::vector<int>
+---@field mCollisionMessageMaterialCountsThisFrame std::vector<int>
+---@field mMaterialDamageThisFrame std::vector<float>
+---@field mFallDamageThisFrame number
+---@field mElectricityDamageThisFrame number
+---@field mPhysicsDamageThisFrame number
+---@field mPhysicsDamageVecThisFrame Vec2
+---@field mPhysicsDamageLastFrame integer
+---@field mPhysicsDamageEntity EntityTypeID
+---@field mPhysicsDamageTelekinesisCasterEntity EntityTypeID
+---@field mLastDamageFrame integer
+---@field mHpBeforeLastDamage number
+---@field mFireDamageBuffered number
+---@field mFireDamageBufferedNextDeliveryFrame integer
+
+---@alias DamageModelComponent.field
+---| '"hp"' number
+---| '"max_hp"' number
+---| '"max_hp_cap"' number
+---| '"max_hp_old"' number
+---| '"critical_damage_resistance"' number
+---| '"invincibility_frames"' integer
+---| '"falling_damages"' boolean
+---| '"falling_damage_height_min"' number
+---| '"falling_damage_height_max"' number
+---| '"falling_damage_damage_min"' number
+---| '"falling_damage_damage_max"' number
+---| '"air_needed"' boolean
+---| '"air_in_lungs"' number
+---| '"air_in_lungs_max"' number
+---| '"air_lack_of_damage"' number
+---| '"minimum_knockback_force"' number
+---| '"materials_damage"' boolean
+---| '"material_damage_min_cell_count"' integer
+---| '"materials_that_damage"' string
+---| '"materials_how_much_damage"' string
+---| '"materials_damage_proportional_to_maxhp"' boolean
+---| '"physics_objects_damage"' boolean
+---| '"materials_create_messages"' boolean
+---| '"materials_that_create_messages"' string
+---| '"ragdoll_filenames_file"' string
+---| '"ragdoll_material"' string
+---| '"ragdoll_offset_x"' number
+---| '"ragdoll_offset_y"' number
+---| '"blood_material"' string
+---| '"blood_spray_material"' string
+---| '"blood_spray_create_some_cosmetic"' boolean
+---| '"blood_multiplier"' number
+---| '"ragdoll_blood_amount_absolute"' integer
+---| '"blood_sprite_directional"' string
+---| '"blood_sprite_large"' string
+---| '"healing_particle_effect_entity"' string
+---| '"create_ragdoll"' boolean
+---| '"ragdollify_child_entity_sprites"' boolean
+---| '"ragdollify_root_angular_damping"' number
+---| '"ragdollify_disintegrate_nonroot"' boolean
+---| '"wait_for_kill_flag_on_death"' boolean
+---| '"kill_now"' boolean
+---| '"drop_items_on_death"' boolean
+---| '"ui_report_damage"' boolean
+---| '"ui_force_report_damage"' boolean
+---| '"in_liquid_shooting_electrify_prob"' integer
+---| '"wet_status_effect_damage"' number
+---| '"is_on_fire"' boolean
+---| '"fire_probability_of_ignition"' number
+---| '"fire_how_much_fire_generates"' integer
+---| '"fire_damage_ignited_amount"' number
+---| '"fire_damage_amount"' number
+---| '"mLastElectricityResistanceFrame"' integer
+---| '"mLastFrameReportedBlock"' integer
+---| '"mLastMaxHpChangeFrame"' integer
+---| '"damage_multipliers"' ConfigDamagesByType
+---| '"ragdoll_fx_forced"' RAGDOLL_FX::Enum
+---| '"mIsOnFire"' boolean
+---| '"mFireProbability"' integer
+---| '"mFireFramesLeft"' integer
+---| '"mFireDurationFrames"' integer
+---| '"mFireTriedIgniting"' boolean
+---| '"mLastCheckX"' integer
+---| '"mLastCheckY"' integer
+---| '"mLastCheckTime"' integer
+---| '"mLastMaterialDamageFrame"' integer
+---| '"mFallIsOnGround"' boolean
+---| '"mFallHighestY"' number
+---| '"mFallCount"' integer
+---| '"mAirAreWeInWater"' boolean
+---| '"mAirFramesNotInWater"' integer
+---| '"mAirDoWeHave"' boolean
+---| '"mTotalCells"' integer
+---| '"mLiquidCount"' integer
+---| '"mLiquidMaterialWeAreIn"' integer
+---| '"mDamageMaterials"' std::vector<int>
+---| '"mDamageMaterialsHowMuch"' std::vector<float>
+---| '"mCollisionMessageMaterials"' std::vector<int>
+---| '"mCollisionMessageMaterialCountsThisFrame"' std::vector<int>
+---| '"mMaterialDamageThisFrame"' std::vector<float>
+---| '"mFallDamageThisFrame"' number
+---| '"mElectricityDamageThisFrame"' number
+---| '"mPhysicsDamageThisFrame"' number
+---| '"mPhysicsDamageVecThisFrame"' Vec2
+---| '"mPhysicsDamageLastFrame"' integer
+---| '"mPhysicsDamageEntity"' EntityTypeID
+---| '"mPhysicsDamageTelekinesisCasterEntity"' EntityTypeID
+---| '"mLastDamageFrame"' integer
+---| '"mHpBeforeLastDamage"' number
+---| '"mFireDamageBuffered"' number
+---| '"mFireDamageBufferedNextDeliveryFrame"' integer
+
+---@class (exact) DamageNearbyEntitiesComponents
+---@overload fun(): DamageNearbyEntitiesComponent
+---@field enabled fun(self: DamageNearbyEntitiesComponents, enabled: boolean): DamageNearbyEntitiesComponents
+---@field tagged fun(self: DamageNearbyEntitiesComponents, tag: string): DamageNearbyEntitiesComponents
+---@field with_field fun(self: DamageNearbyEntitiesComponents, field: DamageNearbyEntitiesComponent.field, value: any): DamageNearbyEntitiesComponents
+---@field add fun(self: DamageNearbyEntitiesComponents, fields: DamageNearbyEntitiesComponent.partial): DamageNearbyEntitiesComponent
+
+---@class (exact) DamageNearbyEntitiesComponent.partial
+---@field radius number?
+---@field damage_min number?
+---@field damage_max number?
+---@field target_vec_max_len number?
+---@field knockback_multiplier number?
+---@field time_between_damaging integer?
+---@field damage_description string?
+---@field target_tag string?
+---@field damage_type DAMAGE_TYPES::Enum?
+---@field ragdoll_fx RAGDOLL_FX::Enum?
+---@field mVelocity Vec2?
+---@field mNextDamageFrame integer?
+
+---@class (exact) DamageNearbyEntitiesComponent : Component
+---@field radius number
+---@field damage_min number
+---@field damage_max number
+---@field target_vec_max_len number
+---@field knockback_multiplier number
+---@field time_between_damaging integer
+---@field damage_description string
+---@field target_tag string
+---@field damage_type DAMAGE_TYPES::Enum
+---@field ragdoll_fx RAGDOLL_FX::Enum
+---@field mVelocity Vec2
+---@field mNextDamageFrame integer
+
+---@alias DamageNearbyEntitiesComponent.field
+---| '"radius"' number
+---| '"damage_min"' number
+---| '"damage_max"' number
+---| '"target_vec_max_len"' number
+---| '"knockback_multiplier"' number
+---| '"time_between_damaging"' integer
+---| '"damage_description"' string
+---| '"target_tag"' string
+---| '"damage_type"' DAMAGE_TYPES::Enum
+---| '"ragdoll_fx"' RAGDOLL_FX::Enum
+---| '"mVelocity"' Vec2
+---| '"mNextDamageFrame"' integer
+
+---@class (exact) DebugFollowMouseComponents
+---@overload fun(): DebugFollowMouseComponent
+---@field enabled fun(self: DebugFollowMouseComponents, enabled: boolean): DebugFollowMouseComponents
+---@field tagged fun(self: DebugFollowMouseComponents, tag: string): DebugFollowMouseComponents
+---@field with_field fun(self: DebugFollowMouseComponents, field: DebugFollowMouseComponent.field, value: any): DebugFollowMouseComponents
+---@field add fun(self: DebugFollowMouseComponents, fields: DebugFollowMouseComponent.partial): DebugFollowMouseComponent
+
+---@class (exact) DebugFollowMouseComponent.partial
+
+---@class (exact) DebugFollowMouseComponent : Component
+
+---@alias DebugFollowMouseComponent.field
+
+---@class (exact) DebugLogMessagesComponents
+---@overload fun(): DebugLogMessagesComponent
+---@field enabled fun(self: DebugLogMessagesComponents, enabled: boolean): DebugLogMessagesComponents
+---@field tagged fun(self: DebugLogMessagesComponents, tag: string): DebugLogMessagesComponents
+---@field with_field fun(self: DebugLogMessagesComponents, field: DebugLogMessagesComponent.field, value: any): DebugLogMessagesComponents
+---@field add fun(self: DebugLogMessagesComponents, fields: DebugLogMessagesComponent.partial): DebugLogMessagesComponent
+
+---@class (exact) DebugLogMessagesComponent.partial
+---@field TEMP_TEMPY number?
+---@field TEMP_TEMP_TEMP number?
+
+---@class (exact) DebugLogMessagesComponent : Component
+---@field TEMP_TEMPY number
+---@field TEMP_TEMP_TEMP number
+
+---@alias DebugLogMessagesComponent.field
+---| '"TEMP_TEMPY"' number
+---| '"TEMP_TEMP_TEMP"' number
+
+---@class (exact) DebugSpatialVisualizerComponents
+---@overload fun(): DebugSpatialVisualizerComponent
+---@field enabled fun(self: DebugSpatialVisualizerComponents, enabled: boolean): DebugSpatialVisualizerComponents
+---@field tagged fun(self: DebugSpatialVisualizerComponents, tag: string): DebugSpatialVisualizerComponents
+---@field with_field fun(self: DebugSpatialVisualizerComponents, field: DebugSpatialVisualizerComponent.field, value: any): DebugSpatialVisualizerComponents
+---@field add fun(self: DebugSpatialVisualizerComponents, fields: DebugSpatialVisualizerComponent.partial): DebugSpatialVisualizerComponent
+
+---@class (exact) DebugSpatialVisualizerComponent.partial
+---@field min_x number?
+---@field min_y number?
+---@field max_x number?
+---@field max_y number?
+---@field color integer?
+
+---@class (exact) DebugSpatialVisualizerComponent : Component
+---@field min_x number
+---@field min_y number
+---@field max_x number
+---@field max_y number
+---@field color integer
+
+---@alias DebugSpatialVisualizerComponent.field
+---| '"min_x"' number
+---| '"min_y"' number
+---| '"max_x"' number
+---| '"max_y"' number
+---| '"color"' integer
+
+---@class (exact) DieIfSpeedBelowComponents
+---@overload fun(): DieIfSpeedBelowComponent
+---@field enabled fun(self: DieIfSpeedBelowComponents, enabled: boolean): DieIfSpeedBelowComponents
+---@field tagged fun(self: DieIfSpeedBelowComponents, tag: string): DieIfSpeedBelowComponents
+---@field with_field fun(self: DieIfSpeedBelowComponents, field: DieIfSpeedBelowComponent.field, value: any): DieIfSpeedBelowComponents
+---@field add fun(self: DieIfSpeedBelowComponents, fields: DieIfSpeedBelowComponent.partial): DieIfSpeedBelowComponent
+
+---@class (exact) DieIfSpeedBelowComponent.partial
+---@field min_speed number?
+---@field mMinSpeedSquared number?
+
+---@class (exact) DieIfSpeedBelowComponent : Component
+---@field min_speed number
+---@field mMinSpeedSquared number
+
+---@alias DieIfSpeedBelowComponent.field
+---| '"min_speed"' number
+---| '"mMinSpeedSquared"' number
+
+---@class (exact) DroneLauncherComponents
+---@overload fun(): DroneLauncherComponent
+---@field enabled fun(self: DroneLauncherComponents, enabled: boolean): DroneLauncherComponents
+---@field tagged fun(self: DroneLauncherComponents, tag: string): DroneLauncherComponents
+---@field with_field fun(self: DroneLauncherComponents, field: DroneLauncherComponent.field, value: any): DroneLauncherComponents
+---@field add fun(self: DroneLauncherComponents, fields: DroneLauncherComponent.partial): DroneLauncherComponent
+
+---@class (exact) DroneLauncherComponent.partial
+---@field drone_entity_file string?
+
+---@class (exact) DroneLauncherComponent : Component
+---@field drone_entity_file string
+
+---@alias DroneLauncherComponent.field
+---| '"drone_entity_file"' string
+
+---@class (exact) DrugEffectComponents
+---@overload fun(): DrugEffectComponent
+---@field enabled fun(self: DrugEffectComponents, enabled: boolean): DrugEffectComponents
+---@field tagged fun(self: DrugEffectComponents, tag: string): DrugEffectComponents
+---@field with_field fun(self: DrugEffectComponents, field: DrugEffectComponent.field, value: any): DrugEffectComponents
+---@field add fun(self: DrugEffectComponents, fields: DrugEffectComponent.partial): DrugEffectComponent
+
+---@class (exact) DrugEffectComponent.partial
+---@field drug_fx_target ConfigDrugFx?
+---@field m_drug_fx_current ConfigDrugFx?
+
+---@class (exact) DrugEffectComponent : Component
+---@field drug_fx_target ConfigDrugFx
+---@field m_drug_fx_current ConfigDrugFx
+
+---@alias DrugEffectComponent.field
+---| '"drug_fx_target"' ConfigDrugFx
+---| '"m_drug_fx_current"' ConfigDrugFx
+
+---@class (exact) DrugEffectModifierComponents
+---@overload fun(): DrugEffectModifierComponent
+---@field enabled fun(self: DrugEffectModifierComponents, enabled: boolean): DrugEffectModifierComponents
+---@field tagged fun(self: DrugEffectModifierComponents, tag: string): DrugEffectModifierComponents
+---@field with_field fun(self: DrugEffectModifierComponents, field: DrugEffectModifierComponent.field, value: any): DrugEffectModifierComponents
+---@field add fun(self: DrugEffectModifierComponents, fields: DrugEffectModifierComponent.partial): DrugEffectModifierComponent
+
+---@class (exact) DrugEffectModifierComponent.partial
+---@field fx_add ConfigDrugFx?
+---@field fx_multiply ConfigDrugFx?
+
+---@class (exact) DrugEffectModifierComponent : Component
+---@field fx_add ConfigDrugFx
+---@field fx_multiply ConfigDrugFx
+
+---@alias DrugEffectModifierComponent.field
+---| '"fx_add"' ConfigDrugFx
+---| '"fx_multiply"' ConfigDrugFx
+
+---@class (exact) ElectricChargeComponents
+---@overload fun(): ElectricChargeComponent
+---@field enabled fun(self: ElectricChargeComponents, enabled: boolean): ElectricChargeComponents
+---@field tagged fun(self: ElectricChargeComponents, tag: string): ElectricChargeComponents
+---@field with_field fun(self: ElectricChargeComponents, field: ElectricChargeComponent.field, value: any): ElectricChargeComponents
+---@field add fun(self: ElectricChargeComponents, fields: ElectricChargeComponent.partial): ElectricChargeComponent
+
+---@class (exact) ElectricChargeComponent.partial
+---@field charge_time_frames integer?
+---@field fx_velocity_max number?
+---@field electricity_emission_interval_frames integer?
+---@field fx_emission_interval_min integer?
+---@field fx_emission_interval_max integer?
+---@field charge integer?
+
+---@class (exact) ElectricChargeComponent : Component
+---@field charge_time_frames integer
+---@field fx_velocity_max number
+---@field electricity_emission_interval_frames integer
+---@field fx_emission_interval_min integer
+---@field fx_emission_interval_max integer
+---@field charge integer
+
+---@alias ElectricChargeComponent.field
+---| '"charge_time_frames"' integer
+---| '"fx_velocity_max"' number
+---| '"electricity_emission_interval_frames"' integer
+---| '"fx_emission_interval_min"' integer
+---| '"fx_emission_interval_max"' integer
+---| '"charge"' integer
+
+---@class (exact) ElectricityComponents
+---@overload fun(): ElectricityComponent
+---@field enabled fun(self: ElectricityComponents, enabled: boolean): ElectricityComponents
+---@field tagged fun(self: ElectricityComponents, tag: string): ElectricityComponents
+---@field with_field fun(self: ElectricityComponents, field: ElectricityComponent.field, value: any): ElectricityComponents
+---@field add fun(self: ElectricityComponents, fields: ElectricityComponent.partial): ElectricityComponent
+
+---@class (exact) ElectricityComponent.partial
+---@field energy integer?
+---@field probability_to_heat number?
+---@field speed integer?
+---@field splittings_min integer?
+---@field splittings_max integer?
+---@field splitting_energy_min integer?
+---@field splitting_energy_max integer?
+---@field hack_is_material_crack boolean?
+---@field hack_crack_ice boolean?
+---@field hack_is_set_fire boolean?
+---@field mSplittingsLeft integer?
+---@field mSplittingEnergy integer?
+---@field mAvgDir Vec2?
+---@field mPrevPos Vec2?
+---@field mPrevMaterial integer?
+---@field mShouldPlaySound boolean?
+
+---@class (exact) ElectricityComponent : Component
+---@field energy integer
+---@field probability_to_heat number
+---@field speed integer
+---@field splittings_min integer
+---@field splittings_max integer
+---@field splitting_energy_min integer
+---@field splitting_energy_max integer
+---@field hack_is_material_crack boolean
+---@field hack_crack_ice boolean
+---@field hack_is_set_fire boolean
+---@field mSplittingsLeft integer
+---@field mSplittingEnergy integer
+---@field mAvgDir Vec2
+---@field mPrevPos Vec2
+---@field mPrevMaterial integer
+---@field mShouldPlaySound boolean
+
+---@alias ElectricityComponent.field
+---| '"energy"' integer
+---| '"probability_to_heat"' number
+---| '"speed"' integer
+---| '"splittings_min"' integer
+---| '"splittings_max"' integer
+---| '"splitting_energy_min"' integer
+---| '"splitting_energy_max"' integer
+---| '"hack_is_material_crack"' boolean
+---| '"hack_crack_ice"' boolean
+---| '"hack_is_set_fire"' boolean
+---| '"mSplittingsLeft"' integer
+---| '"mSplittingEnergy"' integer
+---| '"mAvgDir"' Vec2
+---| '"mPrevPos"' Vec2
+---| '"mPrevMaterial"' integer
+---| '"mShouldPlaySound"' boolean
+
+---@class (exact) ElectricityReceiverComponents
+---@overload fun(): ElectricityReceiverComponent
+---@field enabled fun(self: ElectricityReceiverComponents, enabled: boolean): ElectricityReceiverComponents
+---@field tagged fun(self: ElectricityReceiverComponents, tag: string): ElectricityReceiverComponents
+---@field with_field fun(self: ElectricityReceiverComponents, field: ElectricityReceiverComponent.field, value: any): ElectricityReceiverComponents
+---@field add fun(self: ElectricityReceiverComponents, fields: ElectricityReceiverComponent.partial): ElectricityReceiverComponent
+
+---@class (exact) ElectricityReceiverComponent.partial
+---@field offset_x integer?
+---@field offset_y integer?
+---@field radius integer?
+---@field active_time_frames integer?
+---@field switch_on_msg_interval_frames integer?
+---@field electrified_msg_interval_frames integer?
+---@field mLastFrameElectrified integer?
+---@field mNextElectrifiedMsgFrame integer?
+---@field mNextSwitchOnMsgFrame integer?
+
+---@class (exact) ElectricityReceiverComponent : Component
+---@field offset_x integer
+---@field offset_y integer
+---@field radius integer
+---@field active_time_frames integer
+---@field switch_on_msg_interval_frames integer
+---@field electrified_msg_interval_frames integer
+---@field mLastFrameElectrified integer
+---@field mNextElectrifiedMsgFrame integer
+---@field mNextSwitchOnMsgFrame integer
+
+---@alias ElectricityReceiverComponent.field
+---| '"offset_x"' integer
+---| '"offset_y"' integer
+---| '"radius"' integer
+---| '"active_time_frames"' integer
+---| '"switch_on_msg_interval_frames"' integer
+---| '"electrified_msg_interval_frames"' integer
+---| '"mLastFrameElectrified"' integer
+---| '"mNextElectrifiedMsgFrame"' integer
+---| '"mNextSwitchOnMsgFrame"' integer
+
+---@class (exact) ElectricitySourceComponents
+---@overload fun(): ElectricitySourceComponent
+---@field enabled fun(self: ElectricitySourceComponents, enabled: boolean): ElectricitySourceComponents
+---@field tagged fun(self: ElectricitySourceComponents, tag: string): ElectricitySourceComponents
+---@field with_field fun(self: ElectricitySourceComponents, field: ElectricitySourceComponent.field, value: any): ElectricitySourceComponents
+---@field add fun(self: ElectricitySourceComponents, fields: ElectricitySourceComponent.partial): ElectricitySourceComponent
+
+---@class (exact) ElectricitySourceComponent.partial
+---@field radius integer?
+---@field emission_interval_frames integer?
+---@field mNextFrameEmitElectricity integer?
+
+---@class (exact) ElectricitySourceComponent : Component
+---@field radius integer
+---@field emission_interval_frames integer
+---@field mNextFrameEmitElectricity integer
+
+---@alias ElectricitySourceComponent.field
+---| '"radius"' integer
+---| '"emission_interval_frames"' integer
+---| '"mNextFrameEmitElectricity"' integer
+
+---@class (exact) EndingMcGuffinComponents
+---@overload fun(): EndingMcGuffinComponent
+---@field enabled fun(self: EndingMcGuffinComponents, enabled: boolean): EndingMcGuffinComponents
+---@field tagged fun(self: EndingMcGuffinComponents, tag: string): EndingMcGuffinComponents
+---@field with_field fun(self: EndingMcGuffinComponents, field: EndingMcGuffinComponent.field, value: any): EndingMcGuffinComponents
+---@field add fun(self: EndingMcGuffinComponents, fields: EndingMcGuffinComponent.partial): EndingMcGuffinComponent
+
+---@class (exact) EndingMcGuffinComponent.partial
+---@field TEMP_TEMPY number?
+---@field TEMP_TEMP_TEMP number?
+
+---@class (exact) EndingMcGuffinComponent : Component
+---@field TEMP_TEMPY number
+---@field TEMP_TEMP_TEMP number
+
+---@alias EndingMcGuffinComponent.field
+---| '"TEMP_TEMPY"' number
+---| '"TEMP_TEMP_TEMP"' number
+
+---@class (exact) EnergyShieldComponents
+---@overload fun(): EnergyShieldComponent
+---@field enabled fun(self: EnergyShieldComponents, enabled: boolean): EnergyShieldComponents
+---@field tagged fun(self: EnergyShieldComponents, tag: string): EnergyShieldComponents
+---@field with_field fun(self: EnergyShieldComponents, field: EnergyShieldComponent.field, value: any): EnergyShieldComponents
+---@field add fun(self: EnergyShieldComponents, fields: EnergyShieldComponent.partial): EnergyShieldComponent
+
+---@class (exact) EnergyShieldComponent.partial
+---@field radius number?
+---@field damage_multiplier number?
+---@field max_energy number?
+---@field energy_required_to_shield number?
+---@field recharge_speed number?
+---@field sector_degrees number?
+---@field energy number?
+---@field mPrevPosition Vec2?
+
+---@class (exact) EnergyShieldComponent : Component
+---@field radius number
+---@field damage_multiplier number
+---@field max_energy number
+---@field energy_required_to_shield number
+---@field recharge_speed number
+---@field sector_degrees number
+---@field energy number
+---@field mPrevPosition Vec2
+
+---@alias EnergyShieldComponent.field
+---| '"radius"' number
+---| '"damage_multiplier"' number
+---| '"max_energy"' number
+---| '"energy_required_to_shield"' number
+---| '"recharge_speed"' number
+---| '"sector_degrees"' number
+---| '"energy"' number
+---| '"mPrevPosition"' Vec2
+
+---@class (exact) ExplodeOnDamageComponents
+---@overload fun(): ExplodeOnDamageComponent
+---@field enabled fun(self: ExplodeOnDamageComponents, enabled: boolean): ExplodeOnDamageComponents
+---@field tagged fun(self: ExplodeOnDamageComponents, tag: string): ExplodeOnDamageComponents
+---@field with_field fun(self: ExplodeOnDamageComponents, field: ExplodeOnDamageComponent.field, value: any): ExplodeOnDamageComponents
+---@field add fun(self: ExplodeOnDamageComponents, fields: ExplodeOnDamageComponent.partial): ExplodeOnDamageComponent
+
+---@class (exact) ExplodeOnDamageComponent.partial
+---@field explode_on_death_percent number?
+---@field explode_on_damage_percent number?
+---@field physics_body_modified_death_probability number?
+---@field physics_body_destruction_required number?
+---@field config_explosion ConfigExplosion?
+---@field mDone boolean?
+
+---@class (exact) ExplodeOnDamageComponent : Component
+---@field explode_on_death_percent number
+---@field explode_on_damage_percent number
+---@field physics_body_modified_death_probability number
+---@field physics_body_destruction_required number
+---@field config_explosion ConfigExplosion
+---@field mDone boolean
+
+---@alias ExplodeOnDamageComponent.field
+---| '"explode_on_death_percent"' number
+---| '"explode_on_damage_percent"' number
+---| '"physics_body_modified_death_probability"' number
+---| '"physics_body_destruction_required"' number
+---| '"config_explosion"' ConfigExplosion
+---| '"mDone"' boolean
+
+---@class (exact) FishAIComponents
+---@overload fun(): FishAIComponent
+---@field enabled fun(self: FishAIComponents, enabled: boolean): FishAIComponents
+---@field tagged fun(self: FishAIComponents, tag: string): FishAIComponents
+---@field with_field fun(self: FishAIComponents, field: FishAIComponent.field, value: any): FishAIComponents
+---@field add fun(self: FishAIComponents, fields: FishAIComponent.partial): FishAIComponent
+
+---@class (exact) FishAIComponent.partial
+---@field direction integer?
+---@field speed number?
+---@field aabb_min Vec2?
+---@field aabb_max Vec2?
+---@field velocity Vec2?
+---@field stuck_counter integer?
+---@field mLastCheckPos Vec2?
+
+---@class (exact) FishAIComponent : Component
+---@field direction integer
+---@field speed number
+---@field aabb_min Vec2
+---@field aabb_max Vec2
+---@field velocity Vec2
+---@field stuck_counter integer
+---@field mLastCheckPos Vec2
+
+---@alias FishAIComponent.field
+---| '"direction"' integer
+---| '"speed"' number
+---| '"aabb_min"' Vec2
+---| '"aabb_max"' Vec2
+---| '"velocity"' Vec2
+---| '"stuck_counter"' integer
+---| '"mLastCheckPos"' Vec2
+
+---@class (exact) FlyingComponents
+---@overload fun(): FlyingComponent
+---@field enabled fun(self: FlyingComponents, enabled: boolean): FlyingComponents
+---@field tagged fun(self: FlyingComponents, tag: string): FlyingComponents
+---@field with_field fun(self: FlyingComponents, field: FlyingComponent.field, value: any): FlyingComponents
+---@field add fun(self: FlyingComponents, fields: FlyingComponent.partial): FlyingComponent
+
+---@class (exact) FlyingComponent.partial
+---@field type integer?
+---@field perlin_freq number?
+---@field perlin_time_freq number?
+---@field perlin_wind_x number?
+---@field perlin_wind_y number?
+
+---@class (exact) FlyingComponent : Component
+---@field type integer
+---@field perlin_freq number
+---@field perlin_time_freq number
+---@field perlin_wind_x number
+---@field perlin_wind_y number
+
+---@alias FlyingComponent.field
+---| '"type"' integer
+---| '"perlin_freq"' number
+---| '"perlin_time_freq"' number
+---| '"perlin_wind_x"' number
+---| '"perlin_wind_y"' number
+
+---@class (exact) FogOfWarRadiusComponents
+---@overload fun(): FogOfWarRadiusComponent
+---@field enabled fun(self: FogOfWarRadiusComponents, enabled: boolean): FogOfWarRadiusComponents
+---@field tagged fun(self: FogOfWarRadiusComponents, tag: string): FogOfWarRadiusComponents
+---@field with_field fun(self: FogOfWarRadiusComponents, field: FogOfWarRadiusComponent.field, value: any): FogOfWarRadiusComponents
+---@field add fun(self: FogOfWarRadiusComponents, fields: FogOfWarRadiusComponent.partial): FogOfWarRadiusComponent
+
+---@class (exact) FogOfWarRadiusComponent.partial
+---@field radius number?
+
+---@class (exact) FogOfWarRadiusComponent : Component
+---@field radius number
+
+---@alias FogOfWarRadiusComponent.field
+---| '"radius"' number
+
+---@class (exact) FogOfWarRemoverComponents
+---@overload fun(): FogOfWarRemoverComponent
+---@field enabled fun(self: FogOfWarRemoverComponents, enabled: boolean): FogOfWarRemoverComponents
+---@field tagged fun(self: FogOfWarRemoverComponents, tag: string): FogOfWarRemoverComponents
+---@field with_field fun(self: FogOfWarRemoverComponents, field: FogOfWarRemoverComponent.field, value: any): FogOfWarRemoverComponents
+---@field add fun(self: FogOfWarRemoverComponents, fields: FogOfWarRemoverComponent.partial): FogOfWarRemoverComponent
+
+---@class (exact) FogOfWarRemoverComponent.partial
+---@field radius number?
+
+---@class (exact) FogOfWarRemoverComponent : Component
+---@field radius number
+
+---@alias FogOfWarRemoverComponent.field
+---| '"radius"' number
+
+---@class (exact) GameAreaEffectComponents
+---@overload fun(): GameAreaEffectComponent
+---@field enabled fun(self: GameAreaEffectComponents, enabled: boolean): GameAreaEffectComponents
+---@field tagged fun(self: GameAreaEffectComponents, tag: string): GameAreaEffectComponents
+---@field with_field fun(self: GameAreaEffectComponents, field: GameAreaEffectComponent.field, value: any): GameAreaEffectComponents
+---@field add fun(self: GameAreaEffectComponents, fields: GameAreaEffectComponent.partial): GameAreaEffectComponent
+
+---@class (exact) GameAreaEffectComponent.partial
+---@field radius number?
+---@field collide_with_tag string?
+---@field frame_length integer?
+---@field game_effect_entitities VECTOR_STR?
+---@field mEntitiesAppliedOutTo VECTOR_ENTITYID?
+---@field mEntitiesAppliedFrame VECTOR_INT?
+
+---@class (exact) GameAreaEffectComponent : Component
+---@field radius number
+---@field collide_with_tag string
+---@field frame_length integer
+---@field game_effect_entitities VECTOR_STR
+---@field mEntitiesAppliedOutTo VECTOR_ENTITYID
+---@field mEntitiesAppliedFrame VECTOR_INT
+
+---@alias GameAreaEffectComponent.field
+---| '"radius"' number
+---| '"collide_with_tag"' string
+---| '"frame_length"' integer
+---| '"game_effect_entitities"' VECTOR_STR
+---| '"mEntitiesAppliedOutTo"' VECTOR_ENTITYID
+---| '"mEntitiesAppliedFrame"' VECTOR_INT
+
+---@class (exact) GameEffectComponents
+---@overload fun(): GameEffectComponent
+---@field enabled fun(self: GameEffectComponents, enabled: boolean): GameEffectComponents
+---@field tagged fun(self: GameEffectComponents, tag: string): GameEffectComponents
+---@field with_field fun(self: GameEffectComponents, field: GameEffectComponent.field, value: any): GameEffectComponents
+---@field add fun(self: GameEffectComponents, fields: GameEffectComponent.partial): GameEffectComponent
+
+---@class (exact) GameEffectComponent.partial
+---@field custom_effect_id string?
+---@field frames integer?
+---@field exclusivity_group integer?
+---@field report_block_msg boolean?
+---@field disable_movement boolean?
+---@field ragdoll_effect_custom_entity_file string?
+---@field ragdoll_fx_custom_entity_apply_only_to_largest_body boolean?
+---@field polymorph_target string?
+---@field mSerializedData USTRING?
+---@field mCaster EntityID?
+---@field mCasterHerdId integer?
+---@field teleportation_probability integer?
+---@field teleportation_delay_min_frames integer?
+---@field teleportation_radius_min number?
+---@field teleportation_radius_max number?
+---@field teleportations_num integer?
+---@field no_heal_max_hp_cap number?
+---@field caused_by_ingestion_status_effect boolean?
+---@field caused_by_stains boolean?
+---@field mCharmDisabledCameraBound boolean?
+---@field mCharmEnabledTeleporting boolean?
+---@field mInvisible boolean?
+---@field mCounter integer?
+---@field mCooldown integer?
+---@field mIsExtension boolean?
+---@field mIsSpent boolean?
+---@field effect GAME_EFFECT::Enum?
+---@field ragdoll_effect RAGDOLL_FX::Enum?
+---@field ragdoll_material integer?
+---@field causing_status_effect StatusEffectType?
+
+---@class (exact) GameEffectComponent : Component
+---@field custom_effect_id string
+---@field frames integer
+---@field exclusivity_group integer
+---@field report_block_msg boolean
+---@field disable_movement boolean
+---@field ragdoll_effect_custom_entity_file string
+---@field ragdoll_fx_custom_entity_apply_only_to_largest_body boolean
+---@field polymorph_target string
+---@field mSerializedData USTRING
+---@field mCaster EntityID
+---@field mCasterHerdId integer
+---@field teleportation_probability integer
+---@field teleportation_delay_min_frames integer
+---@field teleportation_radius_min number
+---@field teleportation_radius_max number
+---@field teleportations_num integer
+---@field no_heal_max_hp_cap number
+---@field caused_by_ingestion_status_effect boolean
+---@field caused_by_stains boolean
+---@field mCharmDisabledCameraBound boolean
+---@field mCharmEnabledTeleporting boolean
+---@field mInvisible boolean
+---@field mCounter integer
+---@field mCooldown integer
+---@field mIsExtension boolean
+---@field mIsSpent boolean
+---@field effect GAME_EFFECT::Enum
+---@field ragdoll_effect RAGDOLL_FX::Enum
+---@field ragdoll_material integer
+---@field causing_status_effect StatusEffectType
+
+---@alias GameEffectComponent.field
+---| '"custom_effect_id"' string
+---| '"frames"' integer
+---| '"exclusivity_group"' integer
+---| '"report_block_msg"' boolean
+---| '"disable_movement"' boolean
+---| '"ragdoll_effect_custom_entity_file"' string
+---| '"ragdoll_fx_custom_entity_apply_only_to_largest_body"' boolean
+---| '"polymorph_target"' string
+---| '"mSerializedData"' USTRING
+---| '"mCaster"' EntityID
+---| '"mCasterHerdId"' integer
+---| '"teleportation_probability"' integer
+---| '"teleportation_delay_min_frames"' integer
+---| '"teleportation_radius_min"' number
+---| '"teleportation_radius_max"' number
+---| '"teleportations_num"' integer
+---| '"no_heal_max_hp_cap"' number
+---| '"caused_by_ingestion_status_effect"' boolean
+---| '"caused_by_stains"' boolean
+---| '"mCharmDisabledCameraBound"' boolean
+---| '"mCharmEnabledTeleporting"' boolean
+---| '"mInvisible"' boolean
+---| '"mCounter"' integer
+---| '"mCooldown"' integer
+---| '"mIsExtension"' boolean
+---| '"mIsSpent"' boolean
+---| '"effect"' GAME_EFFECT::Enum
+---| '"ragdoll_effect"' RAGDOLL_FX::Enum
+---| '"ragdoll_material"' integer
+---| '"causing_status_effect"' StatusEffectType
+
+---@class (exact) GameLogComponents
+---@overload fun(): GameLogComponent
+---@field enabled fun(self: GameLogComponents, enabled: boolean): GameLogComponents
+---@field tagged fun(self: GameLogComponents, tag: string): GameLogComponents
+---@field with_field fun(self: GameLogComponents, field: GameLogComponent.field, value: any): GameLogComponents
+---@field add fun(self: GameLogComponents, fields: GameLogComponent.partial): GameLogComponent
+
+---@class (exact) GameLogComponent.partial
+---@field report_death boolean?
+---@field report_damage boolean?
+---@field report_new_biomes boolean?
+---@field mVisitiedBiomes VISITED_VEC?
+---@field mNewBiomeCheckFrame integer?
+
+---@class (exact) GameLogComponent : Component
+---@field report_death boolean
+---@field report_damage boolean
+---@field report_new_biomes boolean
+---@field mVisitiedBiomes VISITED_VEC
+---@field mNewBiomeCheckFrame integer
+
+---@alias GameLogComponent.field
+---| '"report_death"' boolean
+---| '"report_damage"' boolean
+---| '"report_new_biomes"' boolean
+---| '"mVisitiedBiomes"' VISITED_VEC
+---| '"mNewBiomeCheckFrame"' integer
+
+---@class (exact) GameStatsComponents
+---@overload fun(): GameStatsComponent
+---@field enabled fun(self: GameStatsComponents, enabled: boolean): GameStatsComponents
+---@field tagged fun(self: GameStatsComponents, tag: string): GameStatsComponents
+---@field with_field fun(self: GameStatsComponents, field: GameStatsComponent.field, value: any): GameStatsComponents
+---@field add fun(self: GameStatsComponents, fields: GameStatsComponent.partial): GameStatsComponent
+
+---@class (exact) GameStatsComponent.partial
+---@field name string?
+---@field stats_filename string?
+---@field is_player boolean?
+---@field extra_death_msg string?
+---@field dont_do_logplayerkill boolean?
+---@field player_polymorph_count integer?
+
+---@class (exact) GameStatsComponent : Component
+---@field name string
+---@field stats_filename string
+---@field is_player boolean
+---@field extra_death_msg string
+---@field dont_do_logplayerkill boolean
+---@field player_polymorph_count integer
+
+---@alias GameStatsComponent.field
+---| '"name"' string
+---| '"stats_filename"' string
+---| '"is_player"' boolean
+---| '"extra_death_msg"' string
+---| '"dont_do_logplayerkill"' boolean
+---| '"player_polymorph_count"' integer
+
+---@class (exact) GasBubbleComponents
+---@overload fun(): GasBubbleComponent
+---@field enabled fun(self: GasBubbleComponents, enabled: boolean): GasBubbleComponents
+---@field tagged fun(self: GasBubbleComponents, tag: string): GasBubbleComponents
+---@field with_field fun(self: GasBubbleComponents, field: GasBubbleComponent.field, value: any): GasBubbleComponents
+---@field add fun(self: GasBubbleComponents, fields: GasBubbleComponent.partial): GasBubbleComponent
+
+---@class (exact) GasBubbleComponent.partial
+---@field acceleration number?
+---@field max_speed number?
+---@field mVelocity number?
+
+---@class (exact) GasBubbleComponent : Component
+---@field acceleration number
+---@field max_speed number
+---@field mVelocity number
+
+---@alias GasBubbleComponent.field
+---| '"acceleration"' number
+---| '"max_speed"' number
+---| '"mVelocity"' number
+
+---@class (exact) GenomeDataComponents
+---@overload fun(): GenomeDataComponent
+---@field enabled fun(self: GenomeDataComponents, enabled: boolean): GenomeDataComponents
+---@field tagged fun(self: GenomeDataComponents, tag: string): GenomeDataComponents
+---@field with_field fun(self: GenomeDataComponents, field: GenomeDataComponent.field, value: any): GenomeDataComponents
+---@field add fun(self: GenomeDataComponents, fields: GenomeDataComponent.partial): GenomeDataComponent
+
+---@class (exact) GenomeDataComponent.partial
+---@field is_predator boolean?
+---@field food_chain_rank number?
+---@field berserk_dont_attack_friends boolean?
+---@field herd_id integer?
+---@field friend_thundermage boolean?
+---@field friend_firemage boolean?
+
+---@class (exact) GenomeDataComponent : Component
+---@field is_predator boolean
+---@field food_chain_rank number
+---@field berserk_dont_attack_friends boolean
+---@field herd_id integer
+---@field friend_thundermage boolean
+---@field friend_firemage boolean
+
+---@alias GenomeDataComponent.field
+---| '"is_predator"' boolean
+---| '"food_chain_rank"' number
+---| '"berserk_dont_attack_friends"' boolean
+---| '"herd_id"' integer
+---| '"friend_thundermage"' boolean
+---| '"friend_firemage"' boolean
+
+---@class (exact) GhostComponents
+---@overload fun(): GhostComponent
+---@field enabled fun(self: GhostComponents, enabled: boolean): GhostComponents
+---@field tagged fun(self: GhostComponents, tag: string): GhostComponents
+---@field with_field fun(self: GhostComponents, field: GhostComponent.field, value: any): GhostComponents
+---@field add fun(self: GhostComponents, fields: GhostComponent.partial): GhostComponent
+
+---@class (exact) GhostComponent.partial
+---@field speed number?
+---@field new_hunt_target_check_every integer?
+---@field hunt_box_radius number?
+---@field aggressiveness number?
+---@field max_distance_from_home number?
+---@field die_if_no_home boolean?
+---@field target_tag string?
+---@field velocity Vec2?
+---@field mEntityHome EntityID?
+---@field mFramesWithoutHome integer?
+---@field mTargetPosition Vec2?
+---@field mTargetEntityId integer?
+---@field mRandomTarget Vec2?
+---@field mNextTargetCheckFrame integer?
+
+---@class (exact) GhostComponent : Component
+---@field speed number
+---@field new_hunt_target_check_every integer
+---@field hunt_box_radius number
+---@field aggressiveness number
+---@field max_distance_from_home number
+---@field die_if_no_home boolean
+---@field target_tag string
+---@field velocity Vec2
+---@field mEntityHome EntityID
+---@field mFramesWithoutHome integer
+---@field mTargetPosition Vec2
+---@field mTargetEntityId integer
+---@field mRandomTarget Vec2
+---@field mNextTargetCheckFrame integer
+
+---@alias GhostComponent.field
+---| '"speed"' number
+---| '"new_hunt_target_check_every"' integer
+---| '"hunt_box_radius"' number
+---| '"aggressiveness"' number
+---| '"max_distance_from_home"' number
+---| '"die_if_no_home"' boolean
+---| '"target_tag"' string
+---| '"velocity"' Vec2
+---| '"mEntityHome"' EntityID
+---| '"mFramesWithoutHome"' integer
+---| '"mTargetPosition"' Vec2
+---| '"mTargetEntityId"' integer
+---| '"mRandomTarget"' Vec2
+---| '"mNextTargetCheckFrame"' integer
+
+---@class (exact) GodInfoComponents
+---@overload fun(): GodInfoComponent
+---@field enabled fun(self: GodInfoComponents, enabled: boolean): GodInfoComponents
+---@field tagged fun(self: GodInfoComponents, tag: string): GodInfoComponents
+---@field with_field fun(self: GodInfoComponents, field: GodInfoComponent.field, value: any): GodInfoComponents
+---@field add fun(self: GodInfoComponents, fields: GodInfoComponent.partial): GodInfoComponent
+
+---@class (exact) GodInfoComponent.partial
+---@field mana_current number?
+---@field mana_max number?
+---@field gold number?
+---@field god_entity Entity*?
+
+---@class (exact) GodInfoComponent : Component
+---@field mana_current number
+---@field mana_max number
+---@field gold number
+---@field god_entity Entity*
+
+---@alias GodInfoComponent.field
+---| '"mana_current"' number
+---| '"mana_max"' number
+---| '"gold"' number
+---| '"god_entity"' Entity*
+
+---@class (exact) GunComponents
+---@overload fun(): GunComponent
+---@field enabled fun(self: GunComponents, enabled: boolean): GunComponents
+---@field tagged fun(self: GunComponents, tag: string): GunComponents
+---@field with_field fun(self: GunComponents, field: GunComponent.field, value: any): GunComponents
+---@field add fun(self: GunComponents, fields: GunComponent.partial): GunComponent
+
+---@class (exact) GunComponent.partial
+---@field mLuaManager LuaManager*?
+
+---@class (exact) GunComponent : Component
+---@field mLuaManager LuaManager*
+
+---@alias GunComponent.field
+---| '"mLuaManager"' LuaManager*
+
+---@class (exact) HealthBarComponents
+---@overload fun(): HealthBarComponent
+---@field enabled fun(self: HealthBarComponents, enabled: boolean): HealthBarComponents
+---@field tagged fun(self: HealthBarComponents, tag: string): HealthBarComponents
+---@field with_field fun(self: HealthBarComponents, field: HealthBarComponent.field, value: any): HealthBarComponents
+---@field add fun(self: HealthBarComponents, fields: HealthBarComponent.partial): HealthBarComponent
+
+---@class (exact) HealthBarComponent.partial
+
+---@class (exact) HealthBarComponent : Component
+
+---@alias HealthBarComponent.field
+
+---@class (exact) HitEffectComponents
+---@overload fun(): HitEffectComponent
+---@field enabled fun(self: HitEffectComponents, enabled: boolean): HitEffectComponents
+---@field tagged fun(self: HitEffectComponents, tag: string): HitEffectComponents
+---@field with_field fun(self: HitEffectComponents, field: HitEffectComponent.field, value: any): HitEffectComponents
+---@field add fun(self: HitEffectComponents, fields: HitEffectComponent.partial): HitEffectComponent
+
+---@class (exact) HitEffectComponent.partial
+---@field value integer?
+---@field value_string string?
+---@field condition_effect GAME_EFFECT::Enum?
+---@field condition_status StatusEffectType?
+---@field effect_hit HIT_EFFECT::Enum?
+
+---@class (exact) HitEffectComponent : Component
+---@field value integer
+---@field value_string string
+---@field condition_effect GAME_EFFECT::Enum
+---@field condition_status StatusEffectType
+---@field effect_hit HIT_EFFECT::Enum
+
+---@alias HitEffectComponent.field
+---| '"value"' integer
+---| '"value_string"' string
+---| '"condition_effect"' GAME_EFFECT::Enum
+---| '"condition_status"' StatusEffectType
+---| '"effect_hit"' HIT_EFFECT::Enum
+
+---@class (exact) HitboxComponents
+---@overload fun(): HitboxComponent
+---@field enabled fun(self: HitboxComponents, enabled: boolean): HitboxComponents
+---@field tagged fun(self: HitboxComponents, tag: string): HitboxComponents
+---@field with_field fun(self: HitboxComponents, field: HitboxComponent.field, value: any): HitboxComponents
+---@field add fun(self: HitboxComponents, fields: HitboxComponent.partial): HitboxComponent
+
+---@class (exact) HitboxComponent.partial
+---@field is_player boolean?
+---@field is_enemy boolean?
+---@field is_item boolean?
+---@field aabb_min_x number?
+---@field aabb_max_x number?
+---@field aabb_min_y number?
+---@field aabb_max_y number?
+---@field damage_multiplier number?
+---@field offset Vec2?
+---@field dead boolean?
+
+---@class (exact) HitboxComponent : Component
+---@field is_player boolean
+---@field is_enemy boolean
+---@field is_item boolean
+---@field aabb_min_x number
+---@field aabb_max_x number
+---@field aabb_min_y number
+---@field aabb_max_y number
+---@field damage_multiplier number
+---@field offset Vec2
+---@field dead boolean
+
+---@alias HitboxComponent.field
+---| '"is_player"' boolean
+---| '"is_enemy"' boolean
+---| '"is_item"' boolean
+---| '"aabb_min_x"' number
+---| '"aabb_max_x"' number
+---| '"aabb_min_y"' number
+---| '"aabb_max_y"' number
+---| '"damage_multiplier"' number
+---| '"offset"' Vec2
+---| '"dead"' boolean
+
+---@class (exact) HomingComponents
+---@overload fun(): HomingComponent
+---@field enabled fun(self: HomingComponents, enabled: boolean): HomingComponents
+---@field tagged fun(self: HomingComponents, tag: string): HomingComponents
+---@field with_field fun(self: HomingComponents, field: HomingComponent.field, value: any): HomingComponents
+---@field add fun(self: HomingComponents, fields: HomingComponent.partial): HomingComponent
+
+---@class (exact) HomingComponent.partial
+---@field target_tag string?
+---@field target_who_shot boolean?
+---@field detect_distance number?
+---@field homing_velocity_multiplier number?
+---@field homing_targeting_coeff number?
+---@field just_rotate_towards_target boolean?
+---@field max_turn_rate number?
+---@field predefined_target EntityID?
+---@field look_for_root_entities_only boolean?
+
+---@class (exact) HomingComponent : Component
+---@field target_tag string
+---@field target_who_shot boolean
+---@field detect_distance number
+---@field homing_velocity_multiplier number
+---@field homing_targeting_coeff number
+---@field just_rotate_towards_target boolean
+---@field max_turn_rate number
+---@field predefined_target EntityID
+---@field look_for_root_entities_only boolean
+
+---@alias HomingComponent.field
+---| '"target_tag"' string
+---| '"target_who_shot"' boolean
+---| '"detect_distance"' number
+---| '"homing_velocity_multiplier"' number
+---| '"homing_targeting_coeff"' number
+---| '"just_rotate_towards_target"' boolean
+---| '"max_turn_rate"' number
+---| '"predefined_target"' EntityID
+---| '"look_for_root_entities_only"' boolean
+
+---@class (exact) HotspotComponents
+---@overload fun(): HotspotComponent
+---@field enabled fun(self: HotspotComponents, enabled: boolean): HotspotComponents
+---@field tagged fun(self: HotspotComponents, tag: string): HotspotComponents
+---@field with_field fun(self: HotspotComponents, field: HotspotComponent.field, value: any): HotspotComponents
+---@field add fun(self: HotspotComponents, fields: HotspotComponent.partial): HotspotComponent
+
+---@class (exact) HotspotComponent.partial
+---@field transform_with_scale boolean?
+---@field sprite_hotspot_name string?
+---@field offset Vec2?
+
+---@class (exact) HotspotComponent : Component
+---@field transform_with_scale boolean
+---@field sprite_hotspot_name string
+---@field offset Vec2
+
+---@alias HotspotComponent.field
+---| '"transform_with_scale"' boolean
+---| '"sprite_hotspot_name"' string
+---| '"offset"' Vec2
+
+---@class (exact) IKLimbAttackerComponents
+---@overload fun(): IKLimbAttackerComponent
+---@field enabled fun(self: IKLimbAttackerComponents, enabled: boolean): IKLimbAttackerComponents
+---@field tagged fun(self: IKLimbAttackerComponents, tag: string): IKLimbAttackerComponents
+---@field with_field fun(self: IKLimbAttackerComponents, field: IKLimbAttackerComponent.field, value: any): IKLimbAttackerComponents
+---@field add fun(self: IKLimbAttackerComponents, fields: IKLimbAttackerComponent.partial): IKLimbAttackerComponent
+
+---@class (exact) IKLimbAttackerComponent.partial
+---@field radius number?
+---@field leg_velocity_coeff number?
+---@field targeting_radius number?
+---@field targeting_raytrace boolean?
+---@field target_entities_with_tag string?
+---@field mTarget Vec2?
+---@field mTargetEntity EntityID?
+---@field mState IKLimbAttackerState?
+---@field mStateTimer number?
+
+---@class (exact) IKLimbAttackerComponent : Component
+---@field radius number
+---@field leg_velocity_coeff number
+---@field targeting_radius number
+---@field targeting_raytrace boolean
+---@field target_entities_with_tag string
+---@field mTarget Vec2
+---@field mTargetEntity EntityID
+---@field mState IKLimbAttackerState
+---@field mStateTimer number
+
+---@alias IKLimbAttackerComponent.field
+---| '"radius"' number
+---| '"leg_velocity_coeff"' number
+---| '"targeting_radius"' number
+---| '"targeting_raytrace"' boolean
+---| '"target_entities_with_tag"' string
+---| '"mTarget"' Vec2
+---| '"mTargetEntity"' EntityID
+---| '"mState"' IKLimbAttackerState
+---| '"mStateTimer"' number
+
+---@class (exact) IKLimbComponents
+---@overload fun(): IKLimbComponent
+---@field enabled fun(self: IKLimbComponents, enabled: boolean): IKLimbComponents
+---@field tagged fun(self: IKLimbComponents, tag: string): IKLimbComponents
+---@field with_field fun(self: IKLimbComponents, field: IKLimbComponent.field, value: any): IKLimbComponents
+---@field add fun(self: IKLimbComponents, fields: IKLimbComponent.partial): IKLimbComponent
+
+---@class (exact) IKLimbComponent.partial
+---@field length number?
+---@field thigh_extra_lenght number?
+---@field mJointSideInterpolation number?
+---@field end_position Vec2?
+---@field mJointWorldPos Vec2?
+---@field mEndPrevPos Vec2?
+---@field mPart0PrevPos Vec2?
+---@field mPart0PrevRotation number?
+---@field mPart1PrevPos Vec2?
+---@field mPart1PrevRotation number?
+
+---@class (exact) IKLimbComponent : Component
+---@field length number
+---@field thigh_extra_lenght number
+---@field mJointSideInterpolation number
+---@field end_position Vec2
+---@field mJointWorldPos Vec2
+---@field mEndPrevPos Vec2
+---@field mPart0PrevPos Vec2
+---@field mPart0PrevRotation number
+---@field mPart1PrevPos Vec2
+---@field mPart1PrevRotation number
+
+---@alias IKLimbComponent.field
+---| '"length"' number
+---| '"thigh_extra_lenght"' number
+---| '"mJointSideInterpolation"' number
+---| '"end_position"' Vec2
+---| '"mJointWorldPos"' Vec2
+---| '"mEndPrevPos"' Vec2
+---| '"mPart0PrevPos"' Vec2
+---| '"mPart0PrevRotation"' number
+---| '"mPart1PrevPos"' Vec2
+---| '"mPart1PrevRotation"' number
+
+---@class (exact) IKLimbWalkerComponents
+---@overload fun(): IKLimbWalkerComponent
+---@field enabled fun(self: IKLimbWalkerComponents, enabled: boolean): IKLimbWalkerComponents
+---@field tagged fun(self: IKLimbWalkerComponents, tag: string): IKLimbWalkerComponents
+---@field with_field fun(self: IKLimbWalkerComponents, field: IKLimbWalkerComponent.field, value: any): IKLimbWalkerComponents
+---@field add fun(self: IKLimbWalkerComponents, fields: IKLimbWalkerComponent.partial): IKLimbWalkerComponent
+
+---@class (exact) IKLimbWalkerComponent.partial
+---@field ground_attachment_min_spread number?
+---@field ground_attachment_max_tries integer?
+---@field ground_attachment_max_angle number?
+---@field ground_attachment_ray_length_coeff number?
+---@field leg_velocity_coeff number?
+---@field affect_flying boolean?
+---@field mState integer?
+---@field ray_skip_material integer?
+---@field mTarget Vec2?
+---@field mPrevTarget Vec2?
+---@field mPrevCenterPosition Vec2?
+
+---@class (exact) IKLimbWalkerComponent : Component
+---@field ground_attachment_min_spread number
+---@field ground_attachment_max_tries integer
+---@field ground_attachment_max_angle number
+---@field ground_attachment_ray_length_coeff number
+---@field leg_velocity_coeff number
+---@field affect_flying boolean
+---@field mState integer
+---@field ray_skip_material integer
+---@field mTarget Vec2
+---@field mPrevTarget Vec2
+---@field mPrevCenterPosition Vec2
+
+---@alias IKLimbWalkerComponent.field
+---| '"ground_attachment_min_spread"' number
+---| '"ground_attachment_max_tries"' integer
+---| '"ground_attachment_max_angle"' number
+---| '"ground_attachment_ray_length_coeff"' number
+---| '"leg_velocity_coeff"' number
+---| '"affect_flying"' boolean
+---| '"mState"' integer
+---| '"ray_skip_material"' integer
+---| '"mTarget"' Vec2
+---| '"mPrevTarget"' Vec2
+---| '"mPrevCenterPosition"' Vec2
+
+---@class (exact) IKLimbsAnimatorComponents
+---@overload fun(): IKLimbsAnimatorComponent
+---@field enabled fun(self: IKLimbsAnimatorComponents, enabled: boolean): IKLimbsAnimatorComponents
+---@field tagged fun(self: IKLimbsAnimatorComponents, tag: string): IKLimbsAnimatorComponents
+---@field with_field fun(self: IKLimbsAnimatorComponents, field: IKLimbsAnimatorComponent.field, value: any): IKLimbsAnimatorComponents
+---@field add fun(self: IKLimbsAnimatorComponents, fields: IKLimbsAnimatorComponent.partial): IKLimbsAnimatorComponent
+
+---@class (exact) IKLimbsAnimatorComponent.partial
+---@field future_state_samples integer?
+---@field ground_attachment_ray_length_coeff number?
+---@field leg_velocity_coeff number?
+---@field affect_flying boolean?
+---@field large_movement_penalty_coeff number?
+---@field no_ground_attachment_penalty_coeff number?
+---@field is_limp boolean?
+---@field ray_skip_material integer?
+---@field mPrevBodyPosition Vec2?
+---@field mLimbStates IKLimbStateVec?
+---@field mHasGroundAttachmentOnAnyLeg boolean?
+
+---@class (exact) IKLimbsAnimatorComponent : Component
+---@field future_state_samples integer
+---@field ground_attachment_ray_length_coeff number
+---@field leg_velocity_coeff number
+---@field affect_flying boolean
+---@field large_movement_penalty_coeff number
+---@field no_ground_attachment_penalty_coeff number
+---@field is_limp boolean
+---@field ray_skip_material integer
+---@field mPrevBodyPosition Vec2
+---@field mLimbStates IKLimbStateVec
+---@field mHasGroundAttachmentOnAnyLeg boolean
+
+---@alias IKLimbsAnimatorComponent.field
+---| '"future_state_samples"' integer
+---| '"ground_attachment_ray_length_coeff"' number
+---| '"leg_velocity_coeff"' number
+---| '"affect_flying"' boolean
+---| '"large_movement_penalty_coeff"' number
+---| '"no_ground_attachment_penalty_coeff"' number
+---| '"is_limp"' boolean
+---| '"ray_skip_material"' integer
+---| '"mPrevBodyPosition"' Vec2
+---| '"mLimbStates"' IKLimbStateVec
+---| '"mHasGroundAttachmentOnAnyLeg"' boolean
+
+---@class (exact) IngestionComponents
+---@overload fun(): IngestionComponent
+---@field enabled fun(self: IngestionComponents, enabled: boolean): IngestionComponents
+---@field tagged fun(self: IngestionComponents, tag: string): IngestionComponents
+---@field with_field fun(self: IngestionComponents, field: IngestionComponent.field, value: any): IngestionComponents
+---@field add fun(self: IngestionComponents, fields: IngestionComponent.partial): IngestionComponent
+
+---@class (exact) IngestionComponent.partial
+---@field ingestion_size integer?
+---@field ingestion_capacity integer?
+---@field ingestion_cooldown_delay_frames integer?
+---@field ingestion_reduce_every_n_frame integer?
+---@field overingestion_damage number?
+---@field blood_healing_speed number?
+---@field ingestion_satiation_material_tag string?
+---@field m_ingestion_cooldown_frames integer?
+---@field m_next_overeating_msg_frame integer?
+---@field m_ingestion_satiation_material_tag_cached string?
+---@field m_ingestion_satiation_material_cache std::set<int32>?
+---@field m_damage_effect_lifetime integer?
+
+---@class (exact) IngestionComponent : Component
+---@field ingestion_size integer
+---@field ingestion_capacity integer
+---@field ingestion_cooldown_delay_frames integer
+---@field ingestion_reduce_every_n_frame integer
+---@field overingestion_damage number
+---@field blood_healing_speed number
+---@field ingestion_satiation_material_tag string
+---@field m_ingestion_cooldown_frames integer
+---@field m_next_overeating_msg_frame integer
+---@field m_ingestion_satiation_material_tag_cached string
+---@field m_ingestion_satiation_material_cache std::set<int32>
+---@field m_damage_effect_lifetime integer
+
+---@alias IngestionComponent.field
+---| '"ingestion_size"' integer
+---| '"ingestion_capacity"' integer
+---| '"ingestion_cooldown_delay_frames"' integer
+---| '"ingestion_reduce_every_n_frame"' integer
+---| '"overingestion_damage"' number
+---| '"blood_healing_speed"' number
+---| '"ingestion_satiation_material_tag"' string
+---| '"m_ingestion_cooldown_frames"' integer
+---| '"m_next_overeating_msg_frame"' integer
+---| '"m_ingestion_satiation_material_tag_cached"' string
+---| '"m_ingestion_satiation_material_cache"' std::set<int32>
+---| '"m_damage_effect_lifetime"' integer
+
+---@class (exact) InheritTransformComponents
+---@overload fun(): InheritTransformComponent
+---@field enabled fun(self: InheritTransformComponents, enabled: boolean): InheritTransformComponents
+---@field tagged fun(self: InheritTransformComponents, tag: string): InheritTransformComponents
+---@field with_field fun(self: InheritTransformComponents, field: InheritTransformComponent.field, value: any): InheritTransformComponents
+---@field add fun(self: InheritTransformComponents, fields: InheritTransformComponent.partial): InheritTransformComponent
+
+---@class (exact) InheritTransformComponent.partial
+---@field use_root_parent boolean?
+---@field only_position boolean?
+---@field parent_hotspot_tag string?
+---@field parent_sprite_id integer?
+---@field always_use_immediate_parent_rotation boolean?
+---@field rotate_based_on_x_scale boolean?
+---@field Transform types::xform?
+---@field mUpdateFrame integer?
+
+---@class (exact) InheritTransformComponent : Component
+---@field use_root_parent boolean
+---@field only_position boolean
+---@field parent_hotspot_tag string
+---@field parent_sprite_id integer
+---@field always_use_immediate_parent_rotation boolean
+---@field rotate_based_on_x_scale boolean
+---@field Transform types::xform
+---@field mUpdateFrame integer
+
+---@alias InheritTransformComponent.field
+---| '"use_root_parent"' boolean
+---| '"only_position"' boolean
+---| '"parent_hotspot_tag"' string
+---| '"parent_sprite_id"' integer
+---| '"always_use_immediate_parent_rotation"' boolean
+---| '"rotate_based_on_x_scale"' boolean
+---| '"Transform"' types::xform
+---| '"mUpdateFrame"' integer
+
+---@class (exact) InteractableComponents
+---@overload fun(): InteractableComponent
+---@field enabled fun(self: InteractableComponents, enabled: boolean): InteractableComponents
+---@field tagged fun(self: InteractableComponents, tag: string): InteractableComponents
+---@field with_field fun(self: InteractableComponents, field: InteractableComponent.field, value: any): InteractableComponents
+---@field add fun(self: InteractableComponents, fields: InteractableComponent.partial): InteractableComponent
+
+---@class (exact) InteractableComponent.partial
+---@field radius number?
+---@field ui_text string?
+---@field name string?
+---@field exclusivity_group integer?
+
+---@class (exact) InteractableComponent : Component
+---@field radius number
+---@field ui_text string
+---@field name string
+---@field exclusivity_group integer
+
+---@alias InteractableComponent.field
+---| '"radius"' number
+---| '"ui_text"' string
+---| '"name"' string
+---| '"exclusivity_group"' integer
+
+---@class (exact) Inventory2Components
+---@overload fun(): Inventory2Component
+---@field enabled fun(self: Inventory2Components, enabled: boolean): Inventory2Components
+---@field tagged fun(self: Inventory2Components, tag: string): Inventory2Components
+---@field with_field fun(self: Inventory2Components, field: Inventory2Component.field, value: any): Inventory2Components
+---@field add fun(self: Inventory2Components, fields: Inventory2Component.partial): Inventory2Component
+
+---@class (exact) Inventory2Component.partial
+---@field quick_inventory_slots integer?
+---@field full_inventory_slots_x integer?
+---@field full_inventory_slots_y integer?
+---@field mSavedActiveItemIndex integer?
+---@field mActiveItem EntityID?
+---@field mActualActiveItem EntityID?
+---@field mActiveStash EntityID?
+---@field mThrowItem EntityID?
+---@field mItemHolstered boolean?
+---@field mInitialized boolean?
+---@field mForceRefresh boolean?
+---@field mDontLogNextItemEquip boolean?
+---@field mSmoothedItemXOffset number?
+---@field mLastItemSwitchFrame integer?
+---@field mIntroEquipItemLerp number?
+---@field mSmoothedItemAngleVec Vec2?
+
+---@class (exact) Inventory2Component : Component
+---@field quick_inventory_slots integer
+---@field full_inventory_slots_x integer
+---@field full_inventory_slots_y integer
+---@field mSavedActiveItemIndex integer
+---@field mActiveItem EntityID
+---@field mActualActiveItem EntityID
+---@field mActiveStash EntityID
+---@field mThrowItem EntityID
+---@field mItemHolstered boolean
+---@field mInitialized boolean
+---@field mForceRefresh boolean
+---@field mDontLogNextItemEquip boolean
+---@field mSmoothedItemXOffset number
+---@field mLastItemSwitchFrame integer
+---@field mIntroEquipItemLerp number
+---@field mSmoothedItemAngleVec Vec2
+
+---@alias Inventory2Component.field
+---| '"quick_inventory_slots"' integer
+---| '"full_inventory_slots_x"' integer
+---| '"full_inventory_slots_y"' integer
+---| '"mSavedActiveItemIndex"' integer
+---| '"mActiveItem"' EntityID
+---| '"mActualActiveItem"' EntityID
+---| '"mActiveStash"' EntityID
+---| '"mThrowItem"' EntityID
+---| '"mItemHolstered"' boolean
+---| '"mInitialized"' boolean
+---| '"mForceRefresh"' boolean
+---| '"mDontLogNextItemEquip"' boolean
+---| '"mSmoothedItemXOffset"' number
+---| '"mLastItemSwitchFrame"' integer
+---| '"mIntroEquipItemLerp"' number
+---| '"mSmoothedItemAngleVec"' Vec2
+
+---@class (exact) InventoryGuiComponents
+---@overload fun(): InventoryGuiComponent
+---@field enabled fun(self: InventoryGuiComponents, enabled: boolean): InventoryGuiComponents
+---@field tagged fun(self: InventoryGuiComponents, tag: string): InventoryGuiComponents
+---@field with_field fun(self: InventoryGuiComponents, field: InventoryGuiComponent.field, value: any): InventoryGuiComponents
+---@field add fun(self: InventoryGuiComponents, fields: InventoryGuiComponent.partial): InventoryGuiComponent
+
+---@class (exact) InventoryGuiComponent.partial
+---@field has_opened_inventory_edit boolean?
+---@field wallet_money_target integer?
+---@field mDisplayFireRateWaitBar boolean?
+---@field imgui ImGuiContext*?
+---@field mLastFrameInteracted integer?
+---@field mLastFrameActionsVisible integer?
+---@field mLastPurchasedAction Entity*?
+---@field mActive boolean?
+---@field mAlpha number?
+---@field mBackgroundOverlayAlpha number?
+---@field mFrameShake_ReloadBar integer?
+---@field mFrameShake_ManaBar integer?
+---@field mFrameShake_FlyBar integer?
+---@field mFrameShake_FireRateWaitBar integer?
+
+---@class (exact) InventoryGuiComponent : Component
+---@field has_opened_inventory_edit boolean
+---@field wallet_money_target integer
+---@field mDisplayFireRateWaitBar boolean
+---@field imgui ImGuiContext*
+---@field mLastFrameInteracted integer
+---@field mLastFrameActionsVisible integer
+---@field mLastPurchasedAction Entity*
+---@field mActive boolean
+---@field mAlpha number
+---@field mBackgroundOverlayAlpha number
+---@field mFrameShake_ReloadBar integer
+---@field mFrameShake_ManaBar integer
+---@field mFrameShake_FlyBar integer
+---@field mFrameShake_FireRateWaitBar integer
+
+---@alias InventoryGuiComponent.field
+---| '"has_opened_inventory_edit"' boolean
+---| '"wallet_money_target"' integer
+---| '"mDisplayFireRateWaitBar"' boolean
+---| '"imgui"' ImGuiContext*
+---| '"mLastFrameInteracted"' integer
+---| '"mLastFrameActionsVisible"' integer
+---| '"mLastPurchasedAction"' Entity*
+---| '"mActive"' boolean
+---| '"mAlpha"' number
+---| '"mBackgroundOverlayAlpha"' number
+---| '"mFrameShake_ReloadBar"' integer
+---| '"mFrameShake_ManaBar"' integer
+---| '"mFrameShake_FlyBar"' integer
+---| '"mFrameShake_FireRateWaitBar"' integer
+
+---@class (exact) ItemAIKnowledgeComponents
+---@overload fun(): ItemAIKnowledgeComponent
+---@field enabled fun(self: ItemAIKnowledgeComponents, enabled: boolean): ItemAIKnowledgeComponents
+---@field tagged fun(self: ItemAIKnowledgeComponents, tag: string): ItemAIKnowledgeComponents
+---@field with_field fun(self: ItemAIKnowledgeComponents, field: ItemAIKnowledgeComponent.field, value: any): ItemAIKnowledgeComponents
+---@field add fun(self: ItemAIKnowledgeComponents, fields: ItemAIKnowledgeComponent.partial): ItemAIKnowledgeComponent
+
+---@class (exact) ItemAIKnowledgeComponent.partial
+---@field is_ranged_weapon boolean?
+---@field is_throwable_weapon boolean?
+---@field is_melee_weapon boolean?
+---@field is_self_healing boolean?
+---@field is_other_healing boolean?
+---@field is_self_buffing boolean?
+---@field is_other_buffing boolean?
+---@field is_weapon boolean?
+---@field is_known boolean?
+---@field is_safe boolean?
+---@field is_consumed boolean?
+---@field never_use boolean?
+---@field ranged_min_distance number?
+
+---@class (exact) ItemAIKnowledgeComponent : Component
+---@field is_ranged_weapon boolean
+---@field is_throwable_weapon boolean
+---@field is_melee_weapon boolean
+---@field is_self_healing boolean
+---@field is_other_healing boolean
+---@field is_self_buffing boolean
+---@field is_other_buffing boolean
+---@field is_weapon boolean
+---@field is_known boolean
+---@field is_safe boolean
+---@field is_consumed boolean
+---@field never_use boolean
+---@field ranged_min_distance number
+
+---@alias ItemAIKnowledgeComponent.field
+---| '"is_ranged_weapon"' boolean
+---| '"is_throwable_weapon"' boolean
+---| '"is_melee_weapon"' boolean
+---| '"is_self_healing"' boolean
+---| '"is_other_healing"' boolean
+---| '"is_self_buffing"' boolean
+---| '"is_other_buffing"' boolean
+---| '"is_weapon"' boolean
+---| '"is_known"' boolean
+---| '"is_safe"' boolean
+---| '"is_consumed"' boolean
+---| '"never_use"' boolean
+---| '"ranged_min_distance"' number
+
+---@class (exact) ItemActionComponents
+---@overload fun(): ItemActionComponent
+---@field enabled fun(self: ItemActionComponents, enabled: boolean): ItemActionComponents
+---@field tagged fun(self: ItemActionComponents, tag: string): ItemActionComponents
+---@field with_field fun(self: ItemActionComponents, field: ItemActionComponent.field, value: any): ItemActionComponents
+---@field add fun(self: ItemActionComponents, fields: ItemActionComponent.partial): ItemActionComponent
+
+---@class (exact) ItemActionComponent.partial
+---@field action_id string?
+
+---@class (exact) ItemActionComponent : Component
+---@field action_id string
+
+---@alias ItemActionComponent.field
+---| '"action_id"' string
+
+---@class (exact) ItemAlchemyComponents
+---@overload fun(): ItemAlchemyComponent
+---@field enabled fun(self: ItemAlchemyComponents, enabled: boolean): ItemAlchemyComponents
+---@field tagged fun(self: ItemAlchemyComponents, tag: string): ItemAlchemyComponents
+---@field with_field fun(self: ItemAlchemyComponents, field: ItemAlchemyComponent.field, value: any): ItemAlchemyComponents
+---@field add fun(self: ItemAlchemyComponents, fields: ItemAlchemyComponent.partial): ItemAlchemyComponent
+
+---@class (exact) ItemAlchemyComponent.partial
+---@field material_make_always_cast integer?
+---@field material_remove_shuffle integer?
+---@field material_animate_wand integer?
+---@field material_animate_wand_alt integer?
+---@field material_increase_uses_remaining integer?
+---@field material_sacrifice integer?
+
+---@class (exact) ItemAlchemyComponent : Component
+---@field material_make_always_cast integer
+---@field material_remove_shuffle integer
+---@field material_animate_wand integer
+---@field material_animate_wand_alt integer
+---@field material_increase_uses_remaining integer
+---@field material_sacrifice integer
+
+---@alias ItemAlchemyComponent.field
+---| '"material_make_always_cast"' integer
+---| '"material_remove_shuffle"' integer
+---| '"material_animate_wand"' integer
+---| '"material_animate_wand_alt"' integer
+---| '"material_increase_uses_remaining"' integer
+---| '"material_sacrifice"' integer
+
+---@class (exact) ItemChestComponents
+---@overload fun(): ItemChestComponent
+---@field enabled fun(self: ItemChestComponents, enabled: boolean): ItemChestComponents
+---@field tagged fun(self: ItemChestComponents, tag: string): ItemChestComponents
+---@field with_field fun(self: ItemChestComponents, field: ItemChestComponent.field, value: any): ItemChestComponents
+---@field add fun(self: ItemChestComponents, fields: ItemChestComponent.partial): ItemChestComponent
+
+---@class (exact) ItemChestComponent.partial
+---@field item_count_min integer?
+---@field item_count_max integer?
+---@field level integer?
+---@field enemy_drop boolean?
+---@field actions string?
+---@field action_uses_remaining string?
+---@field other_entities_to_spawn string?
+---@field mSeed integer?
+
+---@class (exact) ItemChestComponent : Component
+---@field item_count_min integer
+---@field item_count_max integer
+---@field level integer
+---@field enemy_drop boolean
+---@field actions string
+---@field action_uses_remaining string
+---@field other_entities_to_spawn string
+---@field mSeed integer
+
+---@alias ItemChestComponent.field
+---| '"item_count_min"' integer
+---| '"item_count_max"' integer
+---| '"level"' integer
+---| '"enemy_drop"' boolean
+---| '"actions"' string
+---| '"action_uses_remaining"' string
+---| '"other_entities_to_spawn"' string
+---| '"mSeed"' integer
+
+---@class (exact) ItemComponents
+---@overload fun(): ItemComponent
+---@field enabled fun(self: ItemComponents, enabled: boolean): ItemComponents
+---@field tagged fun(self: ItemComponents, tag: string): ItemComponents
+---@field with_field fun(self: ItemComponents, field: ItemComponent.field, value: any): ItemComponents
+---@field add fun(self: ItemComponents, fields: ItemComponent.partial): ItemComponent
+
+---@class (exact) ItemComponent.partial
+---@field item_name string?
+---@field is_stackable boolean?
+---@field is_consumable boolean?
+---@field stats_count_as_item_pick_up boolean?
+---@field auto_pickup boolean?
+---@field permanently_attached boolean?
+---@field uses_remaining integer?
+---@field is_identified boolean?
+---@field is_frozen boolean?
+---@field collect_nondefault_actions boolean?
+---@field remove_on_death boolean?
+---@field remove_on_death_if_empty boolean?
+---@field remove_default_child_actions_on_death boolean?
+---@field play_hover_animation boolean?
+---@field play_spinning_animation boolean?
+---@field is_equipable_forced boolean?
+---@field play_pick_sound boolean?
+---@field drinkable boolean?
+---@field max_child_items integer?
+---@field ui_sprite string?
+---@field ui_description string?
+---@field enable_orb_hacks boolean?
+---@field is_all_spells_book boolean?
+---@field always_use_item_name_in_ui boolean?
+---@field custom_pickup_string string?
+---@field ui_display_description_on_pick_up_hint boolean?
+---@field next_frame_pickable integer?
+---@field npc_next_frame_pickable integer?
+---@field is_pickable boolean?
+---@field is_hittable_always boolean?
+---@field item_pickup_radius number?
+---@field camera_max_distance number?
+---@field camera_smooth_speed_multiplier number?
+---@field has_been_picked_by_player boolean?
+---@field mFramePickedUp integer?
+---@field spawn_pos Vec2?
+---@field preferred_inventory INVENTORY_KIND::Enum?
+---@field inventory_slot Vec2?
+---@field mItemUid integer?
+---@field mIsIdentified boolean?
+
+---@class (exact) ItemComponent : Component
+---@field item_name string
+---@field is_stackable boolean
+---@field is_consumable boolean
+---@field stats_count_as_item_pick_up boolean
+---@field auto_pickup boolean
+---@field permanently_attached boolean
+---@field uses_remaining integer
+---@field is_identified boolean
+---@field is_frozen boolean
+---@field collect_nondefault_actions boolean
+---@field remove_on_death boolean
+---@field remove_on_death_if_empty boolean
+---@field remove_default_child_actions_on_death boolean
+---@field play_hover_animation boolean
+---@field play_spinning_animation boolean
+---@field is_equipable_forced boolean
+---@field play_pick_sound boolean
+---@field drinkable boolean
+---@field max_child_items integer
+---@field ui_sprite string
+---@field ui_description string
+---@field enable_orb_hacks boolean
+---@field is_all_spells_book boolean
+---@field always_use_item_name_in_ui boolean
+---@field custom_pickup_string string
+---@field ui_display_description_on_pick_up_hint boolean
+---@field next_frame_pickable integer
+---@field npc_next_frame_pickable integer
+---@field is_pickable boolean
+---@field is_hittable_always boolean
+---@field item_pickup_radius number
+---@field camera_max_distance number
+---@field camera_smooth_speed_multiplier number
+---@field has_been_picked_by_player boolean
+---@field mFramePickedUp integer
+---@field spawn_pos Vec2
+---@field preferred_inventory INVENTORY_KIND::Enum
+---@field inventory_slot Vec2
+---@field mItemUid integer
+---@field mIsIdentified boolean
+
+---@alias ItemComponent.field
+---| '"item_name"' string
+---| '"is_stackable"' boolean
+---| '"is_consumable"' boolean
+---| '"stats_count_as_item_pick_up"' boolean
+---| '"auto_pickup"' boolean
+---| '"permanently_attached"' boolean
+---| '"uses_remaining"' integer
+---| '"is_identified"' boolean
+---| '"is_frozen"' boolean
+---| '"collect_nondefault_actions"' boolean
+---| '"remove_on_death"' boolean
+---| '"remove_on_death_if_empty"' boolean
+---| '"remove_default_child_actions_on_death"' boolean
+---| '"play_hover_animation"' boolean
+---| '"play_spinning_animation"' boolean
+---| '"is_equipable_forced"' boolean
+---| '"play_pick_sound"' boolean
+---| '"drinkable"' boolean
+---| '"max_child_items"' integer
+---| '"ui_sprite"' string
+---| '"ui_description"' string
+---| '"enable_orb_hacks"' boolean
+---| '"is_all_spells_book"' boolean
+---| '"always_use_item_name_in_ui"' boolean
+---| '"custom_pickup_string"' string
+---| '"ui_display_description_on_pick_up_hint"' boolean
+---| '"next_frame_pickable"' integer
+---| '"npc_next_frame_pickable"' integer
+---| '"is_pickable"' boolean
+---| '"is_hittable_always"' boolean
+---| '"item_pickup_radius"' number
+---| '"camera_max_distance"' number
+---| '"camera_smooth_speed_multiplier"' number
+---| '"has_been_picked_by_player"' boolean
+---| '"mFramePickedUp"' integer
+---| '"spawn_pos"' Vec2
+---| '"preferred_inventory"' INVENTORY_KIND::Enum
+---| '"inventory_slot"' Vec2
+---| '"mItemUid"' integer
+---| '"mIsIdentified"' boolean
+
+---@class (exact) ItemCostComponents
+---@overload fun(): ItemCostComponent
+---@field enabled fun(self: ItemCostComponents, enabled: boolean): ItemCostComponents
+---@field tagged fun(self: ItemCostComponents, tag: string): ItemCostComponents
+---@field with_field fun(self: ItemCostComponents, field: ItemCostComponent.field, value: any): ItemCostComponents
+---@field add fun(self: ItemCostComponents, fields: ItemCostComponent.partial): ItemCostComponent
+
+---@class (exact) ItemCostComponent.partial
+---@field cost integer?
+---@field stealable boolean?
+---@field mExCost integer?
+
+---@class (exact) ItemCostComponent : Component
+---@field cost integer
+---@field stealable boolean
+---@field mExCost integer
+
+---@alias ItemCostComponent.field
+---| '"cost"' integer
+---| '"stealable"' boolean
+---| '"mExCost"' integer
+
+---@class (exact) ItemPickUpperComponents
+---@overload fun(): ItemPickUpperComponent
+---@field enabled fun(self: ItemPickUpperComponents, enabled: boolean): ItemPickUpperComponents
+---@field tagged fun(self: ItemPickUpperComponents, tag: string): ItemPickUpperComponents
+---@field with_field fun(self: ItemPickUpperComponents, field: ItemPickUpperComponent.field, value: any): ItemPickUpperComponents
+---@field add fun(self: ItemPickUpperComponents, fields: ItemPickUpperComponent.partial): ItemPickUpperComponent
+
+---@class (exact) ItemPickUpperComponent.partial
+---@field is_in_npc boolean?
+---@field pick_up_any_item_buggy boolean?
+---@field is_immune_to_kicks boolean?
+---@field only_pick_this_entity EntityID?
+---@field drop_items_on_death boolean?
+---@field mLatestItemOverlapInfoBoxPosition Vec2?
+
+---@class (exact) ItemPickUpperComponent : Component
+---@field is_in_npc boolean
+---@field pick_up_any_item_buggy boolean
+---@field is_immune_to_kicks boolean
+---@field only_pick_this_entity EntityID
+---@field drop_items_on_death boolean
+---@field mLatestItemOverlapInfoBoxPosition Vec2
+
+---@alias ItemPickUpperComponent.field
+---| '"is_in_npc"' boolean
+---| '"pick_up_any_item_buggy"' boolean
+---| '"is_immune_to_kicks"' boolean
+---| '"only_pick_this_entity"' EntityID
+---| '"drop_items_on_death"' boolean
+---| '"mLatestItemOverlapInfoBoxPosition"' Vec2
+
+---@class (exact) ItemRechargeNearGroundComponents
+---@overload fun(): ItemRechargeNearGroundComponent
+---@field enabled fun(self: ItemRechargeNearGroundComponents, enabled: boolean): ItemRechargeNearGroundComponents
+---@field tagged fun(self: ItemRechargeNearGroundComponents, tag: string): ItemRechargeNearGroundComponents
+---@field with_field fun(self: ItemRechargeNearGroundComponents, field: ItemRechargeNearGroundComponent.field, value: any): ItemRechargeNearGroundComponents
+---@field add fun(self: ItemRechargeNearGroundComponents, fields: ItemRechargeNearGroundComponent.partial): ItemRechargeNearGroundComponent
+
+---@class (exact) ItemRechargeNearGroundComponent.partial
+---@field TEMP_TEMPY number?
+---@field TEMP_TEMP_TEMP number?
+
+---@class (exact) ItemRechargeNearGroundComponent : Component
+---@field TEMP_TEMPY number
+---@field TEMP_TEMP_TEMP number
+
+---@alias ItemRechargeNearGroundComponent.field
+---| '"TEMP_TEMPY"' number
+---| '"TEMP_TEMP_TEMP"' number
+
+---@class (exact) ItemStashComponents
+---@overload fun(): ItemStashComponent
+---@field enabled fun(self: ItemStashComponents, enabled: boolean): ItemStashComponents
+---@field tagged fun(self: ItemStashComponents, tag: string): ItemStashComponents
+---@field with_field fun(self: ItemStashComponents, field: ItemStashComponent.field, value: any): ItemStashComponents
+---@field add fun(self: ItemStashComponents, fields: ItemStashComponent.partial): ItemStashComponent
+
+---@class (exact) ItemStashComponent.partial
+---@field throw_openable_cooldown_frames integer?
+---@field init_children boolean?
+---@field mNextFrameOpenable integer?
+---@field mFrameOpened integer?
+
+---@class (exact) ItemStashComponent : Component
+---@field throw_openable_cooldown_frames integer
+---@field init_children boolean
+---@field mNextFrameOpenable integer
+---@field mFrameOpened integer
+
+---@alias ItemStashComponent.field
+---| '"throw_openable_cooldown_frames"' integer
+---| '"init_children"' boolean
+---| '"mNextFrameOpenable"' integer
+---| '"mFrameOpened"' integer
+
+---@class (exact) KickComponents
+---@overload fun(): KickComponent
+---@field enabled fun(self: KickComponents, enabled: boolean): KickComponents
+---@field tagged fun(self: KickComponents, tag: string): KickComponents
+---@field with_field fun(self: KickComponents, field: KickComponent.field, value: any): KickComponents
+---@field add fun(self: KickComponents, fields: KickComponent.partial): KickComponent
+
+---@class (exact) KickComponent.partial
+---@field can_kick boolean?
+---@field kick_radius number?
+---@field telekinesis_throw_speed number?
+---@field kick_entities string?
+---@field max_force number?
+---@field player_kickforce number?
+---@field kick_damage number?
+---@field kick_knockback number?
+
+---@class (exact) KickComponent : Component
+---@field can_kick boolean
+---@field kick_radius number
+---@field telekinesis_throw_speed number
+---@field kick_entities string
+---@field max_force number
+---@field player_kickforce number
+---@field kick_damage number
+---@field kick_knockback number
+
+---@alias KickComponent.field
+---| '"can_kick"' boolean
+---| '"kick_radius"' number
+---| '"telekinesis_throw_speed"' number
+---| '"kick_entities"' string
+---| '"max_force"' number
+---| '"player_kickforce"' number
+---| '"kick_damage"' number
+---| '"kick_knockback"' number
+
+---@class (exact) LaserEmitterComponents
+---@overload fun(): LaserEmitterComponent
+---@field enabled fun(self: LaserEmitterComponents, enabled: boolean): LaserEmitterComponents
+---@field tagged fun(self: LaserEmitterComponents, tag: string): LaserEmitterComponents
+---@field with_field fun(self: LaserEmitterComponents, field: LaserEmitterComponent.field, value: any): LaserEmitterComponents
+---@field add fun(self: LaserEmitterComponents, fields: LaserEmitterComponent.partial): LaserEmitterComponent
+
+---@class (exact) LaserEmitterComponent.partial
+---@field is_emitting boolean?
+---@field emit_until_frame integer?
+---@field laser_angle_add_rad number?
+---@field laser ConfigLaser?
+
+---@class (exact) LaserEmitterComponent : Component
+---@field is_emitting boolean
+---@field emit_until_frame integer
+---@field laser_angle_add_rad number
+---@field laser ConfigLaser
+
+---@alias LaserEmitterComponent.field
+---| '"is_emitting"' boolean
+---| '"emit_until_frame"' integer
+---| '"laser_angle_add_rad"' number
+---| '"laser"' ConfigLaser
+
+---@class (exact) LevitationComponents
+---@overload fun(): LevitationComponent
+---@field enabled fun(self: LevitationComponents, enabled: boolean): LevitationComponents
+---@field tagged fun(self: LevitationComponents, tag: string): LevitationComponents
+---@field with_field fun(self: LevitationComponents, field: LevitationComponent.field, value: any): LevitationComponents
+---@field add fun(self: LevitationComponents, fields: LevitationComponent.partial): LevitationComponent
+
+---@class (exact) LevitationComponent.partial
+---@field radius number?
+---@field entity_force number?
+---@field box2d_force number?
+---@field effect_lifetime_frames integer?
+
+---@class (exact) LevitationComponent : Component
+---@field radius number
+---@field entity_force number
+---@field box2d_force number
+---@field effect_lifetime_frames integer
+
+---@alias LevitationComponent.field
+---| '"radius"' number
+---| '"entity_force"' number
+---| '"box2d_force"' number
+---| '"effect_lifetime_frames"' integer
+
+---@class (exact) LifetimeComponents
+---@overload fun(): LifetimeComponent
+---@field enabled fun(self: LifetimeComponents, enabled: boolean): LifetimeComponents
+---@field tagged fun(self: LifetimeComponents, tag: string): LifetimeComponents
+---@field with_field fun(self: LifetimeComponents, field: LifetimeComponent.field, value: any): LifetimeComponents
+---@field add fun(self: LifetimeComponents, fields: LifetimeComponent.partial): LifetimeComponent
+
+---@class (exact) LifetimeComponent.partial
+---@field lifetime integer?
+---@field fade_sprites boolean?
+---@field kill_parent boolean?
+---@field kill_all_parents boolean?
+---@field serialize_duration boolean?
+---@field kill_frame_serialized integer?
+---@field creation_frame_serialized integer?
+---@field randomize_lifetime ValueRange?
+---@field creation_frame integer?
+---@field kill_frame integer?
+
+---@class (exact) LifetimeComponent : Component
+---@field lifetime integer
+---@field fade_sprites boolean
+---@field kill_parent boolean
+---@field kill_all_parents boolean
+---@field serialize_duration boolean
+---@field kill_frame_serialized integer
+---@field creation_frame_serialized integer
+---@field randomize_lifetime ValueRange
+---@field creation_frame integer
+---@field kill_frame integer
+
+---@alias LifetimeComponent.field
+---| '"lifetime"' integer
+---| '"fade_sprites"' boolean
+---| '"kill_parent"' boolean
+---| '"kill_all_parents"' boolean
+---| '"serialize_duration"' boolean
+---| '"kill_frame_serialized"' integer
+---| '"creation_frame_serialized"' integer
+---| '"randomize_lifetime"' ValueRange
+---| '"creation_frame"' integer
+---| '"kill_frame"' integer
+
+---@class (exact) LightComponents
+---@overload fun(): LightComponent
+---@field enabled fun(self: LightComponents, enabled: boolean): LightComponents
+---@field tagged fun(self: LightComponents, tag: string): LightComponents
+---@field with_field fun(self: LightComponents, field: LightComponent.field, value: any): LightComponents
+---@field add fun(self: LightComponents, fields: LightComponent.partial): LightComponent
+
+---@class (exact) LightComponent.partial
+---@field update_properties boolean?
+---@field radius number?
+---@field r integer?
+---@field g integer?
+---@field b integer?
+---@field offset_x number?
+---@field offset_y number?
+---@field fade_out_time number?
+---@field blinking_freq number?
+---@field mAlpha number?
+---@field mSprite as::Sprite*?
+
+---@class (exact) LightComponent : Component
+---@field update_properties boolean
+---@field radius number
+---@field r integer
+---@field g integer
+---@field b integer
+---@field offset_x number
+---@field offset_y number
+---@field fade_out_time number
+---@field blinking_freq number
+---@field mAlpha number
+---@field mSprite as::Sprite*
+
+---@alias LightComponent.field
+---| '"update_properties"' boolean
+---| '"radius"' number
+---| '"r"' integer
+---| '"g"' integer
+---| '"b"' integer
+---| '"offset_x"' number
+---| '"offset_y"' number
+---| '"fade_out_time"' number
+---| '"blinking_freq"' number
+---| '"mAlpha"' number
+---| '"mSprite"' as::Sprite*
+
+---@class (exact) LightningComponents
+---@overload fun(): LightningComponent
+---@field enabled fun(self: LightningComponents, enabled: boolean): LightningComponents
+---@field tagged fun(self: LightningComponents, tag: string): LightningComponents
+---@field with_field fun(self: LightningComponents, field: LightningComponent.field, value: any): LightningComponents
+---@field add fun(self: LightningComponents, fields: LightningComponent.partial): LightningComponent
+
+---@class (exact) LightningComponent.partial
+---@field sprite_lightning_file string?
+---@field is_projectile boolean?
+---@field explosion_type integer?
+---@field arc_lifetime integer?
+---@field config_explosion ConfigExplosion?
+---@field mExPosition Vec2?
+---@field mArcTarget EntityID?
+
+---@class (exact) LightningComponent : Component
+---@field sprite_lightning_file string
+---@field is_projectile boolean
+---@field explosion_type integer
+---@field arc_lifetime integer
+---@field config_explosion ConfigExplosion
+---@field mExPosition Vec2
+---@field mArcTarget EntityID
+
+---@alias LightningComponent.field
+---| '"sprite_lightning_file"' string
+---| '"is_projectile"' boolean
+---| '"explosion_type"' integer
+---| '"arc_lifetime"' integer
+---| '"config_explosion"' ConfigExplosion
+---| '"mExPosition"' Vec2
+---| '"mArcTarget"' EntityID
+
+---@class (exact) LimbBossComponents
+---@overload fun(): LimbBossComponent
+---@field enabled fun(self: LimbBossComponents, enabled: boolean): LimbBossComponents
+---@field tagged fun(self: LimbBossComponents, tag: string): LimbBossComponents
+---@field with_field fun(self: LimbBossComponents, field: LimbBossComponent.field, value: any): LimbBossComponents
+---@field add fun(self: LimbBossComponents, fields: LimbBossComponent.partial): LimbBossComponent
+
+---@class (exact) LimbBossComponent.partial
+---@field state integer?
+---@field mStatePrev integer?
+---@field mMoveToPositionX number?
+---@field mMoveToPositionY number?
+
+---@class (exact) LimbBossComponent : Component
+---@field state integer
+---@field mStatePrev integer
+---@field mMoveToPositionX number
+---@field mMoveToPositionY number
+
+---@alias LimbBossComponent.field
+---| '"state"' integer
+---| '"mStatePrev"' integer
+---| '"mMoveToPositionX"' number
+---| '"mMoveToPositionY"' number
+
+---@class (exact) LiquidDisplacerComponents
+---@overload fun(): LiquidDisplacerComponent
+---@field enabled fun(self: LiquidDisplacerComponents, enabled: boolean): LiquidDisplacerComponents
+---@field tagged fun(self: LiquidDisplacerComponents, tag: string): LiquidDisplacerComponents
+---@field with_field fun(self: LiquidDisplacerComponents, field: LiquidDisplacerComponent.field, value: any): LiquidDisplacerComponents
+---@field add fun(self: LiquidDisplacerComponents, fields: LiquidDisplacerComponent.partial): LiquidDisplacerComponent
+
+---@class (exact) LiquidDisplacerComponent.partial
+---@field radius integer?
+---@field velocity_x number?
+---@field velocity_y number?
+---@field mPrevX integer?
+---@field mPrevY integer?
+
+---@class (exact) LiquidDisplacerComponent : Component
+---@field radius integer
+---@field velocity_x number
+---@field velocity_y number
+---@field mPrevX integer
+---@field mPrevY integer
+
+---@alias LiquidDisplacerComponent.field
+---| '"radius"' integer
+---| '"velocity_x"' number
+---| '"velocity_y"' number
+---| '"mPrevX"' integer
+---| '"mPrevY"' integer
+
+---@class (exact) LoadEntitiesComponents
+---@overload fun(): LoadEntitiesComponent
+---@field enabled fun(self: LoadEntitiesComponents, enabled: boolean): LoadEntitiesComponents
+---@field tagged fun(self: LoadEntitiesComponents, tag: string): LoadEntitiesComponents
+---@field with_field fun(self: LoadEntitiesComponents, field: LoadEntitiesComponent.field, value: any): LoadEntitiesComponents
+---@field add fun(self: LoadEntitiesComponents, fields: LoadEntitiesComponent.partial): LoadEntitiesComponent
+
+---@class (exact) LoadEntitiesComponent.partial
+---@field entity_file string?
+---@field kill_entity boolean?
+---@field timeout_frames integer?
+---@field mTimerTriggerFrame integer?
+---@field count ValueRangeInt?
+
+---@class (exact) LoadEntitiesComponent : Component
+---@field entity_file string
+---@field kill_entity boolean
+---@field timeout_frames integer
+---@field mTimerTriggerFrame integer
+---@field count ValueRangeInt
+
+---@alias LoadEntitiesComponent.field
+---| '"entity_file"' string
+---| '"kill_entity"' boolean
+---| '"timeout_frames"' integer
+---| '"mTimerTriggerFrame"' integer
+---| '"count"' ValueRangeInt
+
+---@class (exact) LocationMarkerComponents
+---@overload fun(): LocationMarkerComponent
+---@field enabled fun(self: LocationMarkerComponents, enabled: boolean): LocationMarkerComponents
+---@field tagged fun(self: LocationMarkerComponents, tag: string): LocationMarkerComponents
+---@field with_field fun(self: LocationMarkerComponents, field: LocationMarkerComponent.field, value: any): LocationMarkerComponents
+---@field add fun(self: LocationMarkerComponents, fields: LocationMarkerComponent.partial): LocationMarkerComponent
+
+---@class (exact) LocationMarkerComponent.partial
+---@field id integer?
+
+---@class (exact) LocationMarkerComponent : Component
+---@field id integer
+
+---@alias LocationMarkerComponent.field
+---| '"id"' integer
+
+---@class (exact) LooseGroundComponents
+---@overload fun(): LooseGroundComponent
+---@field enabled fun(self: LooseGroundComponents, enabled: boolean): LooseGroundComponents
+---@field tagged fun(self: LooseGroundComponents, tag: string): LooseGroundComponents
+---@field with_field fun(self: LooseGroundComponents, field: LooseGroundComponent.field, value: any): LooseGroundComponents
+---@field add fun(self: LooseGroundComponents, fields: LooseGroundComponent.partial): LooseGroundComponent
+
+---@class (exact) LooseGroundComponent.partial
+---@field probability number?
+---@field max_durability integer?
+---@field max_distance number?
+---@field max_angle number?
+---@field min_radius integer?
+---@field max_radius integer?
+---@field chunk_probability number?
+---@field chunk_max_angle number?
+---@field chunk_count integer?
+---@field collapse_images string?
+---@field chunk_material integer?
+---@field mChunkCount integer?
+
+---@class (exact) LooseGroundComponent : Component
+---@field probability number
+---@field max_durability integer
+---@field max_distance number
+---@field max_angle number
+---@field min_radius integer
+---@field max_radius integer
+---@field chunk_probability number
+---@field chunk_max_angle number
+---@field chunk_count integer
+---@field collapse_images string
+---@field chunk_material integer
+---@field mChunkCount integer
+
+---@alias LooseGroundComponent.field
+---| '"probability"' number
+---| '"max_durability"' integer
+---| '"max_distance"' number
+---| '"max_angle"' number
+---| '"min_radius"' integer
+---| '"max_radius"' integer
+---| '"chunk_probability"' number
+---| '"chunk_max_angle"' number
+---| '"chunk_count"' integer
+---| '"collapse_images"' string
+---| '"chunk_material"' integer
+---| '"mChunkCount"' integer
+
+---@class (exact) LuaComponents
+---@overload fun(): LuaComponent
+---@field enabled fun(self: LuaComponents, enabled: boolean): LuaComponents
+---@field tagged fun(self: LuaComponents, tag: string): LuaComponents
+---@field with_field fun(self: LuaComponents, field: LuaComponent.field, value: any): LuaComponents
+---@field add fun(self: LuaComponents, fields: LuaComponent.partial): LuaComponent
+
+---@class (exact) LuaComponent.partial
+---@field script_source_file string?
+---@field execute_on_added boolean?
+---@field execute_on_removed boolean?
+---@field execute_every_n_frame integer?
+---@field execute_times integer?
+---@field limit_how_many_times_per_frame integer?
+---@field limit_to_every_n_frame integer?
+---@field limit_all_callbacks boolean?
+---@field remove_after_executed boolean?
+---@field enable_coroutines boolean?
+---@field call_init_function boolean?
+---@field script_enabled_changed string?
+---@field script_damage_received string?
+---@field script_damage_about_to_be_received string?
+---@field script_item_picked_up string?
+---@field script_shot string?
+---@field script_collision_trigger_hit string?
+---@field script_collision_trigger_timer_finished string?
+---@field script_physics_body_modified string?
+---@field script_pressure_plate_change string?
+---@field script_inhaled_material string?
+---@field script_death string?
+---@field script_throw_item string?
+---@field script_material_area_checker_failed string?
+---@field script_material_area_checker_success string?
+---@field script_electricity_receiver_switched string?
+---@field script_electricity_receiver_electrified string?
+---@field script_kick string?
+---@field script_interacting string?
+---@field script_audio_event_dead string?
+---@field script_wand_fired string?
+---@field script_teleported string?
+---@field script_portal_teleport_used string?
+---@field script_polymorphing_to string?
+---@field script_biome_entered string?
+---@field mLastExecutionFrame integer?
+---@field mTimesExecutedThisFrame integer?
+---@field mModAppendsDone boolean?
+---@field vm_type LUA_VM_TYPE::Enum?
+---@field mNextExecutionTime integer?
+---@field mTimesExecuted integer?
+---@field mLuaManager LuaManager*?
+---@field mPersistentValues ValueMap?
+
+---@class (exact) LuaComponent : Component
+---@field script_source_file string
+---@field execute_on_added boolean
+---@field execute_on_removed boolean
+---@field execute_every_n_frame integer
+---@field execute_times integer
+---@field limit_how_many_times_per_frame integer
+---@field limit_to_every_n_frame integer
+---@field limit_all_callbacks boolean
+---@field remove_after_executed boolean
+---@field enable_coroutines boolean
+---@field call_init_function boolean
+---@field script_enabled_changed string
+---@field script_damage_received string
+---@field script_damage_about_to_be_received string
+---@field script_item_picked_up string
+---@field script_shot string
+---@field script_collision_trigger_hit string
+---@field script_collision_trigger_timer_finished string
+---@field script_physics_body_modified string
+---@field script_pressure_plate_change string
+---@field script_inhaled_material string
+---@field script_death string
+---@field script_throw_item string
+---@field script_material_area_checker_failed string
+---@field script_material_area_checker_success string
+---@field script_electricity_receiver_switched string
+---@field script_electricity_receiver_electrified string
+---@field script_kick string
+---@field script_interacting string
+---@field script_audio_event_dead string
+---@field script_wand_fired string
+---@field script_teleported string
+---@field script_portal_teleport_used string
+---@field script_polymorphing_to string
+---@field script_biome_entered string
+---@field mLastExecutionFrame integer
+---@field mTimesExecutedThisFrame integer
+---@field mModAppendsDone boolean
+---@field vm_type LUA_VM_TYPE::Enum
+---@field mNextExecutionTime integer
+---@field mTimesExecuted integer
+---@field mLuaManager LuaManager*
+---@field mPersistentValues ValueMap
+
+---@alias LuaComponent.field
+---| '"script_source_file"' string
+---| '"execute_on_added"' boolean
+---| '"execute_on_removed"' boolean
+---| '"execute_every_n_frame"' integer
+---| '"execute_times"' integer
+---| '"limit_how_many_times_per_frame"' integer
+---| '"limit_to_every_n_frame"' integer
+---| '"limit_all_callbacks"' boolean
+---| '"remove_after_executed"' boolean
+---| '"enable_coroutines"' boolean
+---| '"call_init_function"' boolean
+---| '"script_enabled_changed"' string
+---| '"script_damage_received"' string
+---| '"script_damage_about_to_be_received"' string
+---| '"script_item_picked_up"' string
+---| '"script_shot"' string
+---| '"script_collision_trigger_hit"' string
+---| '"script_collision_trigger_timer_finished"' string
+---| '"script_physics_body_modified"' string
+---| '"script_pressure_plate_change"' string
+---| '"script_inhaled_material"' string
+---| '"script_death"' string
+---| '"script_throw_item"' string
+---| '"script_material_area_checker_failed"' string
+---| '"script_material_area_checker_success"' string
+---| '"script_electricity_receiver_switched"' string
+---| '"script_electricity_receiver_electrified"' string
+---| '"script_kick"' string
+---| '"script_interacting"' string
+---| '"script_audio_event_dead"' string
+---| '"script_wand_fired"' string
+---| '"script_teleported"' string
+---| '"script_portal_teleport_used"' string
+---| '"script_polymorphing_to"' string
+---| '"script_biome_entered"' string
+---| '"mLastExecutionFrame"' integer
+---| '"mTimesExecutedThisFrame"' integer
+---| '"mModAppendsDone"' boolean
+---| '"vm_type"' LUA_VM_TYPE::Enum
+---| '"mNextExecutionTime"' integer
+---| '"mTimesExecuted"' integer
+---| '"mLuaManager"' LuaManager*
+---| '"mPersistentValues"' ValueMap
+
+---@class (exact) MagicConvertMaterialComponents
+---@overload fun(): MagicConvertMaterialComponent
+---@field enabled fun(self: MagicConvertMaterialComponents, enabled: boolean): MagicConvertMaterialComponents
+---@field tagged fun(self: MagicConvertMaterialComponents, tag: string): MagicConvertMaterialComponents
+---@field with_field fun(self: MagicConvertMaterialComponents, field: MagicConvertMaterialComponent.field, value: any): MagicConvertMaterialComponents
+---@field add fun(self: MagicConvertMaterialComponents, fields: MagicConvertMaterialComponent.partial): MagicConvertMaterialComponent
+
+---@class (exact) MagicConvertMaterialComponent.partial
+---@field radius integer?
+---@field min_radius integer?
+---@field is_circle boolean?
+---@field steps_per_frame integer?
+---@field from_material_tag string?
+---@field from_any_material boolean?
+---@field clean_stains boolean?
+---@field extinguish_fire boolean?
+---@field fan_the_flames integer?
+---@field temperature_reaction_temp integer?
+---@field ignite_materials integer?
+---@field loop boolean?
+---@field kill_when_finished boolean?
+---@field convert_entities boolean?
+---@field stain_frozen boolean?
+---@field reaction_audio_amount number?
+---@field convert_same_material boolean?
+---@field from_material_array string?
+---@field to_material_array string?
+---@field mRadius integer?
+---@field from_material integer?
+---@field to_material integer?
+---@field mUseArrays boolean?
+---@field mFromMaterialArray std::vector<int>?
+---@field mToMaterialArray std::vector<int>?
+
+---@class (exact) MagicConvertMaterialComponent : Component
+---@field radius integer
+---@field min_radius integer
+---@field is_circle boolean
+---@field steps_per_frame integer
+---@field from_material_tag string
+---@field from_any_material boolean
+---@field clean_stains boolean
+---@field extinguish_fire boolean
+---@field fan_the_flames integer
+---@field temperature_reaction_temp integer
+---@field ignite_materials integer
+---@field loop boolean
+---@field kill_when_finished boolean
+---@field convert_entities boolean
+---@field stain_frozen boolean
+---@field reaction_audio_amount number
+---@field convert_same_material boolean
+---@field from_material_array string
+---@field to_material_array string
+---@field mRadius integer
+---@field from_material integer
+---@field to_material integer
+---@field mUseArrays boolean
+---@field mFromMaterialArray std::vector<int>
+---@field mToMaterialArray std::vector<int>
+
+---@alias MagicConvertMaterialComponent.field
+---| '"radius"' integer
+---| '"min_radius"' integer
+---| '"is_circle"' boolean
+---| '"steps_per_frame"' integer
+---| '"from_material_tag"' string
+---| '"from_any_material"' boolean
+---| '"clean_stains"' boolean
+---| '"extinguish_fire"' boolean
+---| '"fan_the_flames"' integer
+---| '"temperature_reaction_temp"' integer
+---| '"ignite_materials"' integer
+---| '"loop"' boolean
+---| '"kill_when_finished"' boolean
+---| '"convert_entities"' boolean
+---| '"stain_frozen"' boolean
+---| '"reaction_audio_amount"' number
+---| '"convert_same_material"' boolean
+---| '"from_material_array"' string
+---| '"to_material_array"' string
+---| '"mRadius"' integer
+---| '"from_material"' integer
+---| '"to_material"' integer
+---| '"mUseArrays"' boolean
+---| '"mFromMaterialArray"' std::vector<int>
+---| '"mToMaterialArray"' std::vector<int>
+
+---@class (exact) MagicXRayComponents
+---@overload fun(): MagicXRayComponent
+---@field enabled fun(self: MagicXRayComponents, enabled: boolean): MagicXRayComponents
+---@field tagged fun(self: MagicXRayComponents, tag: string): MagicXRayComponents
+---@field with_field fun(self: MagicXRayComponents, field: MagicXRayComponent.field, value: any): MagicXRayComponents
+---@field add fun(self: MagicXRayComponents, fields: MagicXRayComponent.partial): MagicXRayComponent
+
+---@class (exact) MagicXRayComponent.partial
+---@field radius integer?
+---@field steps_per_frame integer?
+---@field mStep integer?
+---@field mRadius integer?
+
+---@class (exact) MagicXRayComponent : Component
+---@field radius integer
+---@field steps_per_frame integer
+---@field mStep integer
+---@field mRadius integer
+
+---@alias MagicXRayComponent.field
+---| '"radius"' integer
+---| '"steps_per_frame"' integer
+---| '"mStep"' integer
+---| '"mRadius"' integer
+
+---@class (exact) ManaReloaderComponents
+---@overload fun(): ManaReloaderComponent
+---@field enabled fun(self: ManaReloaderComponents, enabled: boolean): ManaReloaderComponents
+---@field tagged fun(self: ManaReloaderComponents, tag: string): ManaReloaderComponents
+---@field with_field fun(self: ManaReloaderComponents, field: ManaReloaderComponent.field, value: any): ManaReloaderComponents
+---@field add fun(self: ManaReloaderComponents, fields: ManaReloaderComponent.partial): ManaReloaderComponent
+
+---@class (exact) ManaReloaderComponent.partial
+
+---@class (exact) ManaReloaderComponent : Component
+
+---@alias ManaReloaderComponent.field
+
+---@class (exact) MaterialAreaCheckerComponents
+---@overload fun(): MaterialAreaCheckerComponent
+---@field enabled fun(self: MaterialAreaCheckerComponents, enabled: boolean): MaterialAreaCheckerComponents
+---@field tagged fun(self: MaterialAreaCheckerComponents, tag: string): MaterialAreaCheckerComponents
+---@field with_field fun(self: MaterialAreaCheckerComponents, field: MaterialAreaCheckerComponent.field, value: any): MaterialAreaCheckerComponents
+---@field add fun(self: MaterialAreaCheckerComponents, fields: MaterialAreaCheckerComponent.partial): MaterialAreaCheckerComponent
+
+---@class (exact) MaterialAreaCheckerComponent.partial
+---@field update_every_x_frame integer?
+---@field look_for_failure boolean?
+---@field count_min integer?
+---@field always_check_fullness boolean?
+---@field kill_after_message boolean?
+---@field area_aabb types::aabb?
+---@field material integer?
+---@field material2 integer?
+---@field mPosition integer?
+---@field mLastFrameChecked integer?
+
+---@class (exact) MaterialAreaCheckerComponent : Component
+---@field update_every_x_frame integer
+---@field look_for_failure boolean
+---@field count_min integer
+---@field always_check_fullness boolean
+---@field kill_after_message boolean
+---@field area_aabb types::aabb
+---@field material integer
+---@field material2 integer
+---@field mPosition integer
+---@field mLastFrameChecked integer
+
+---@alias MaterialAreaCheckerComponent.field
+---| '"update_every_x_frame"' integer
+---| '"look_for_failure"' boolean
+---| '"count_min"' integer
+---| '"always_check_fullness"' boolean
+---| '"kill_after_message"' boolean
+---| '"area_aabb"' types::aabb
+---| '"material"' integer
+---| '"material2"' integer
+---| '"mPosition"' integer
+---| '"mLastFrameChecked"' integer
+
+---@class (exact) MaterialInventoryComponents
+---@overload fun(): MaterialInventoryComponent
+---@field enabled fun(self: MaterialInventoryComponents, enabled: boolean): MaterialInventoryComponents
+---@field tagged fun(self: MaterialInventoryComponents, tag: string): MaterialInventoryComponents
+---@field with_field fun(self: MaterialInventoryComponents, field: MaterialInventoryComponent.field, value: any): MaterialInventoryComponents
+---@field add fun(self: MaterialInventoryComponents, fields: MaterialInventoryComponent.partial): MaterialInventoryComponent
+
+---@class (exact) MaterialInventoryComponent.partial
+---@field drop_as_item boolean?
+---@field on_death_spill boolean?
+---@field leak_gently boolean?
+---@field leak_on_damage_percent number?
+---@field leak_pressure_min number?
+---@field leak_pressure_max number?
+---@field min_damage_to_leak number?
+---@field b2_force_on_leak number?
+---@field death_throw_particle_velocity_coeff number?
+---@field kill_when_empty boolean?
+---@field halftime_materials boolean?
+---@field do_reactions integer?
+---@field do_reactions_explosions boolean?
+---@field do_reactions_entities boolean?
+---@field reaction_speed integer?
+---@field reactions_shaking_speeds_up boolean?
+---@field max_capacity number?
+---@field audio_collision_size_modifier_amount number?
+---@field last_frame_drank integer?
+---@field count_per_material_type MATERIAL_VEC_DOUBLES?
+---@field is_death_handled boolean?
+---@field ex_position Vec2?
+---@field ex_angle number?
+
+---@class (exact) MaterialInventoryComponent : Component
+---@field drop_as_item boolean
+---@field on_death_spill boolean
+---@field leak_gently boolean
+---@field leak_on_damage_percent number
+---@field leak_pressure_min number
+---@field leak_pressure_max number
+---@field min_damage_to_leak number
+---@field b2_force_on_leak number
+---@field death_throw_particle_velocity_coeff number
+---@field kill_when_empty boolean
+---@field halftime_materials boolean
+---@field do_reactions integer
+---@field do_reactions_explosions boolean
+---@field do_reactions_entities boolean
+---@field reaction_speed integer
+---@field reactions_shaking_speeds_up boolean
+---@field max_capacity number
+---@field audio_collision_size_modifier_amount number
+---@field last_frame_drank integer
+---@field count_per_material_type MATERIAL_VEC_DOUBLES
+---@field is_death_handled boolean
+---@field ex_position Vec2
+---@field ex_angle number
+
+---@alias MaterialInventoryComponent.field
+---| '"drop_as_item"' boolean
+---| '"on_death_spill"' boolean
+---| '"leak_gently"' boolean
+---| '"leak_on_damage_percent"' number
+---| '"leak_pressure_min"' number
+---| '"leak_pressure_max"' number
+---| '"min_damage_to_leak"' number
+---| '"b2_force_on_leak"' number
+---| '"death_throw_particle_velocity_coeff"' number
+---| '"kill_when_empty"' boolean
+---| '"halftime_materials"' boolean
+---| '"do_reactions"' integer
+---| '"do_reactions_explosions"' boolean
+---| '"do_reactions_entities"' boolean
+---| '"reaction_speed"' integer
+---| '"reactions_shaking_speeds_up"' boolean
+---| '"max_capacity"' number
+---| '"audio_collision_size_modifier_amount"' number
+---| '"last_frame_drank"' integer
+---| '"count_per_material_type"' MATERIAL_VEC_DOUBLES
+---| '"is_death_handled"' boolean
+---| '"ex_position"' Vec2
+---| '"ex_angle"' number
+
+---@class (exact) MaterialSeaSpawnerComponents
+---@overload fun(): MaterialSeaSpawnerComponent
+---@field enabled fun(self: MaterialSeaSpawnerComponents, enabled: boolean): MaterialSeaSpawnerComponents
+---@field tagged fun(self: MaterialSeaSpawnerComponents, tag: string): MaterialSeaSpawnerComponents
+---@field with_field fun(self: MaterialSeaSpawnerComponents, field: MaterialSeaSpawnerComponent.field, value: any): MaterialSeaSpawnerComponents
+---@field add fun(self: MaterialSeaSpawnerComponents, fields: MaterialSeaSpawnerComponent.partial): MaterialSeaSpawnerComponent
+
+---@class (exact) MaterialSeaSpawnerComponent.partial
+---@field speed integer?
+---@field sine_wavelength number?
+---@field sine_amplitude number?
+---@field noise_scale number?
+---@field noise_threshold number?
+---@field m_position integer?
+---@field frames_run integer?
+---@field material integer?
+---@field size Vec2?
+---@field offset Vec2?
+
+---@class (exact) MaterialSeaSpawnerComponent : Component
+---@field speed integer
+---@field sine_wavelength number
+---@field sine_amplitude number
+---@field noise_scale number
+---@field noise_threshold number
+---@field m_position integer
+---@field frames_run integer
+---@field material integer
+---@field size Vec2
+---@field offset Vec2
+
+---@alias MaterialSeaSpawnerComponent.field
+---| '"speed"' integer
+---| '"sine_wavelength"' number
+---| '"sine_amplitude"' number
+---| '"noise_scale"' number
+---| '"noise_threshold"' number
+---| '"m_position"' integer
+---| '"frames_run"' integer
+---| '"material"' integer
+---| '"size"' Vec2
+---| '"offset"' Vec2
+
+---@class (exact) MaterialSuckerComponents
+---@overload fun(): MaterialSuckerComponent
+---@field enabled fun(self: MaterialSuckerComponents, enabled: boolean): MaterialSuckerComponents
+---@field tagged fun(self: MaterialSuckerComponents, tag: string): MaterialSuckerComponents
+---@field with_field fun(self: MaterialSuckerComponents, field: MaterialSuckerComponent.field, value: any): MaterialSuckerComponents
+---@field add fun(self: MaterialSuckerComponents, fields: MaterialSuckerComponent.partial): MaterialSuckerComponent
+
+---@class (exact) MaterialSuckerComponent.partial
+---@field material_type integer?
+---@field barrel_size integer?
+---@field num_cells_sucked_per_frame integer?
+---@field set_projectile_to_liquid boolean?
+---@field last_material_id integer?
+---@field suck_gold boolean?
+---@field suck_health boolean?
+---@field suck_static_materials boolean?
+---@field suck_tag string?
+---@field mAmountUsed integer?
+---@field randomized_position types::iaabb?
+---@field mGoldAccumulator integer?
+---@field mLastFramePickedGold integer?
+
+---@class (exact) MaterialSuckerComponent : Component
+---@field material_type integer
+---@field barrel_size integer
+---@field num_cells_sucked_per_frame integer
+---@field set_projectile_to_liquid boolean
+---@field last_material_id integer
+---@field suck_gold boolean
+---@field suck_health boolean
+---@field suck_static_materials boolean
+---@field suck_tag string
+---@field mAmountUsed integer
+---@field randomized_position types::iaabb
+---@field mGoldAccumulator integer
+---@field mLastFramePickedGold integer
+
+---@alias MaterialSuckerComponent.field
+---| '"material_type"' integer
+---| '"barrel_size"' integer
+---| '"num_cells_sucked_per_frame"' integer
+---| '"set_projectile_to_liquid"' boolean
+---| '"last_material_id"' integer
+---| '"suck_gold"' boolean
+---| '"suck_health"' boolean
+---| '"suck_static_materials"' boolean
+---| '"suck_tag"' string
+---| '"mAmountUsed"' integer
+---| '"randomized_position"' types::iaabb
+---| '"mGoldAccumulator"' integer
+---| '"mLastFramePickedGold"' integer
+
+---@class (exact) MusicEnergyAffectorComponents
+---@overload fun(): MusicEnergyAffectorComponent
+---@field enabled fun(self: MusicEnergyAffectorComponents, enabled: boolean): MusicEnergyAffectorComponents
+---@field tagged fun(self: MusicEnergyAffectorComponents, tag: string): MusicEnergyAffectorComponents
+---@field with_field fun(self: MusicEnergyAffectorComponents, field: MusicEnergyAffectorComponent.field, value: any): MusicEnergyAffectorComponents
+---@field add fun(self: MusicEnergyAffectorComponents, fields: MusicEnergyAffectorComponent.partial): MusicEnergyAffectorComponent
+
+---@class (exact) MusicEnergyAffectorComponent.partial
+---@field energy_target number?
+---@field fade_range number?
+---@field trigger_danger_music boolean?
+---@field fog_of_war_threshold integer?
+---@field is_enemy boolean?
+---@field energy_lerp_up_speed_multiplier number?
+
+---@class (exact) MusicEnergyAffectorComponent : Component
+---@field energy_target number
+---@field fade_range number
+---@field trigger_danger_music boolean
+---@field fog_of_war_threshold integer
+---@field is_enemy boolean
+---@field energy_lerp_up_speed_multiplier number
+
+---@alias MusicEnergyAffectorComponent.field
+---| '"energy_target"' number
+---| '"fade_range"' number
+---| '"trigger_danger_music"' boolean
+---| '"fog_of_war_threshold"' integer
+---| '"is_enemy"' boolean
+---| '"energy_lerp_up_speed_multiplier"' number
+
+---@class (exact) NullDamageComponents
+---@overload fun(): NullDamageComponent
+---@field enabled fun(self: NullDamageComponents, enabled: boolean): NullDamageComponents
+---@field tagged fun(self: NullDamageComponents, tag: string): NullDamageComponents
+---@field with_field fun(self: NullDamageComponents, field: NullDamageComponent.field, value: any): NullDamageComponents
+---@field add fun(self: NullDamageComponents, fields: NullDamageComponent.partial): NullDamageComponent
+
+---@class (exact) NullDamageComponent.partial
+---@field null_chance number?
+
+---@class (exact) NullDamageComponent : Component
+---@field null_chance number
+
+---@alias NullDamageComponent.field
+---| '"null_chance"' number
+
+---@class (exact) OrbComponents
+---@overload fun(): OrbComponent
+---@field enabled fun(self: OrbComponents, enabled: boolean): OrbComponents
+---@field tagged fun(self: OrbComponents, tag: string): OrbComponents
+---@field with_field fun(self: OrbComponents, field: OrbComponent.field, value: any): OrbComponents
+---@field add fun(self: OrbComponents, fields: OrbComponent.partial): OrbComponent
+
+---@class (exact) OrbComponent.partial
+---@field orb_id integer?
+
+---@class (exact) OrbComponent : Component
+---@field orb_id integer
+
+---@alias OrbComponent.field
+---| '"orb_id"' integer
+
+---@class (exact) PathFindingGridMarkerComponents
+---@overload fun(): PathFindingGridMarkerComponent
+---@field enabled fun(self: PathFindingGridMarkerComponents, enabled: boolean): PathFindingGridMarkerComponents
+---@field tagged fun(self: PathFindingGridMarkerComponents, tag: string): PathFindingGridMarkerComponents
+---@field with_field fun(self: PathFindingGridMarkerComponents, field: PathFindingGridMarkerComponent.field, value: any): PathFindingGridMarkerComponents
+---@field add fun(self: PathFindingGridMarkerComponents, fields: PathFindingGridMarkerComponent.partial): PathFindingGridMarkerComponent
+
+---@class (exact) PathFindingGridMarkerComponent.partial
+---@field marker_work_flag integer?
+---@field marker_offset_x number?
+---@field marker_offset_y number?
+---@field player_marker_radius number?
+---@field mNode PathFindingNodeHandle?
+
+---@class (exact) PathFindingGridMarkerComponent : Component
+---@field marker_work_flag integer
+---@field marker_offset_x number
+---@field marker_offset_y number
+---@field player_marker_radius number
+---@field mNode PathFindingNodeHandle
+
+---@alias PathFindingGridMarkerComponent.field
+---| '"marker_work_flag"' integer
+---| '"marker_offset_x"' number
+---| '"marker_offset_y"' number
+---| '"player_marker_radius"' number
+---| '"mNode"' PathFindingNodeHandle
+
+---@class (exact) PhysicsAIComponents
+---@overload fun(): PhysicsAIComponent
+---@field enabled fun(self: PhysicsAIComponents, enabled: boolean): PhysicsAIComponents
+---@field tagged fun(self: PhysicsAIComponents, tag: string): PhysicsAIComponents
+---@field with_field fun(self: PhysicsAIComponents, field: PhysicsAIComponent.field, value: any): PhysicsAIComponents
+---@field add fun(self: PhysicsAIComponents, fields: PhysicsAIComponent.partial): PhysicsAIComponent
+
+---@class (exact) PhysicsAIComponent.partial
+---@field target_vec_max_len number?
+---@field force_coeff number?
+---@field force_balancing_coeff number?
+---@field force_max number?
+---@field torque_coeff number?
+---@field torque_balancing_coeff number?
+---@field torque_max number?
+---@field torque_damaged_max number?
+---@field torque_jump_random number?
+---@field damage_deactivation_probability integer?
+---@field damage_deactivation_time_min integer?
+---@field damage_deactivation_time_max integer?
+---@field die_on_remaining_mass_percentage number?
+---@field levitate boolean?
+---@field v0_jump_logic boolean?
+---@field v0_swim_logic boolean?
+---@field v0_body_id_logic boolean?
+---@field swim_check_y_min integer?
+---@field swim_check_y_max integer?
+---@field swim_check_side_x integer?
+---@field swim_check_side_y integer?
+---@field keep_inside_world boolean?
+---@field free_if_static boolean?
+---@field rotation_speed number?
+---@field mStartingMass number?
+---@field mMainBodyFound boolean?
+---@field mNextFrameActive integer?
+---@field mRotationTarget number?
+---@field mLastPositionWhenHadPath Vec2?
+---@field mHasLastPosition boolean?
+
+---@class (exact) PhysicsAIComponent : Component
+---@field target_vec_max_len number
+---@field force_coeff number
+---@field force_balancing_coeff number
+---@field force_max number
+---@field torque_coeff number
+---@field torque_balancing_coeff number
+---@field torque_max number
+---@field torque_damaged_max number
+---@field torque_jump_random number
+---@field damage_deactivation_probability integer
+---@field damage_deactivation_time_min integer
+---@field damage_deactivation_time_max integer
+---@field die_on_remaining_mass_percentage number
+---@field levitate boolean
+---@field v0_jump_logic boolean
+---@field v0_swim_logic boolean
+---@field v0_body_id_logic boolean
+---@field swim_check_y_min integer
+---@field swim_check_y_max integer
+---@field swim_check_side_x integer
+---@field swim_check_side_y integer
+---@field keep_inside_world boolean
+---@field free_if_static boolean
+---@field rotation_speed number
+---@field mStartingMass number
+---@field mMainBodyFound boolean
+---@field mNextFrameActive integer
+---@field mRotationTarget number
+---@field mLastPositionWhenHadPath Vec2
+---@field mHasLastPosition boolean
+
+---@alias PhysicsAIComponent.field
+---| '"target_vec_max_len"' number
+---| '"force_coeff"' number
+---| '"force_balancing_coeff"' number
+---| '"force_max"' number
+---| '"torque_coeff"' number
+---| '"torque_balancing_coeff"' number
+---| '"torque_max"' number
+---| '"torque_damaged_max"' number
+---| '"torque_jump_random"' number
+---| '"damage_deactivation_probability"' integer
+---| '"damage_deactivation_time_min"' integer
+---| '"damage_deactivation_time_max"' integer
+---| '"die_on_remaining_mass_percentage"' number
+---| '"levitate"' boolean
+---| '"v0_jump_logic"' boolean
+---| '"v0_swim_logic"' boolean
+---| '"v0_body_id_logic"' boolean
+---| '"swim_check_y_min"' integer
+---| '"swim_check_y_max"' integer
+---| '"swim_check_side_x"' integer
+---| '"swim_check_side_y"' integer
+---| '"keep_inside_world"' boolean
+---| '"free_if_static"' boolean
+---| '"rotation_speed"' number
+---| '"mStartingMass"' number
+---| '"mMainBodyFound"' boolean
+---| '"mNextFrameActive"' integer
+---| '"mRotationTarget"' number
+---| '"mLastPositionWhenHadPath"' Vec2
+---| '"mHasLastPosition"' boolean
+
+---@class (exact) PhysicsBody2Components
+---@overload fun(): PhysicsBody2Component
+---@field enabled fun(self: PhysicsBody2Components, enabled: boolean): PhysicsBody2Components
+---@field tagged fun(self: PhysicsBody2Components, tag: string): PhysicsBody2Components
+---@field with_field fun(self: PhysicsBody2Components, field: PhysicsBody2Component.field, value: any): PhysicsBody2Components
+---@field add fun(self: PhysicsBody2Components, fields: PhysicsBody2Component.partial): PhysicsBody2Component
+
+---@class (exact) PhysicsBody2Component.partial
+---@field mBodyId b2ObjectID?
+---@field linear_damping number?
+---@field angular_damping number?
+---@field allow_sleep boolean?
+---@field fixed_rotation boolean?
+---@field is_bullet boolean?
+---@field is_static boolean?
+---@field buoyancy number?
+---@field hax_fix_going_through_ground boolean?
+---@field hax_fix_going_through_sand boolean?
+---@field hax_wait_till_pixel_scenes_loaded boolean?
+---@field go_through_sand boolean?
+---@field auto_clean boolean?
+---@field force_add_update_areas boolean?
+---@field update_entity_transform boolean?
+---@field kill_entity_if_body_destroyed boolean?
+---@field kill_entity_after_initialized boolean?
+---@field manual_init boolean?
+---@field destroy_body_if_entity_destroyed boolean?
+---@field root_offset_x number?
+---@field root_offset_y number?
+---@field init_offset_x number?
+---@field init_offset_y number?
+---@field mActiveState boolean?
+---@field mPixelCountOrig integer?
+---@field mLocalPosition Vec2?
+---@field mBody b2Body*?
+---@field mInitialized boolean?
+---@field mPixelCount integer?
+---@field mRefreshed boolean?
+
+---@class (exact) PhysicsBody2Component : Component
+---@field mBodyId b2ObjectID
+---@field linear_damping number
+---@field angular_damping number
+---@field allow_sleep boolean
+---@field fixed_rotation boolean
+---@field is_bullet boolean
+---@field is_static boolean
+---@field buoyancy number
+---@field hax_fix_going_through_ground boolean
+---@field hax_fix_going_through_sand boolean
+---@field hax_wait_till_pixel_scenes_loaded boolean
+---@field go_through_sand boolean
+---@field auto_clean boolean
+---@field force_add_update_areas boolean
+---@field update_entity_transform boolean
+---@field kill_entity_if_body_destroyed boolean
+---@field kill_entity_after_initialized boolean
+---@field manual_init boolean
+---@field destroy_body_if_entity_destroyed boolean
+---@field root_offset_x number
+---@field root_offset_y number
+---@field init_offset_x number
+---@field init_offset_y number
+---@field mActiveState boolean
+---@field mPixelCountOrig integer
+---@field mLocalPosition Vec2
+---@field mBody b2Body*
+---@field mInitialized boolean
+---@field mPixelCount integer
+---@field mRefreshed boolean
+
+---@alias PhysicsBody2Component.field
+---| '"mBodyId"' b2ObjectID
+---| '"linear_damping"' number
+---| '"angular_damping"' number
+---| '"allow_sleep"' boolean
+---| '"fixed_rotation"' boolean
+---| '"is_bullet"' boolean
+---| '"is_static"' boolean
+---| '"buoyancy"' number
+---| '"hax_fix_going_through_ground"' boolean
+---| '"hax_fix_going_through_sand"' boolean
+---| '"hax_wait_till_pixel_scenes_loaded"' boolean
+---| '"go_through_sand"' boolean
+---| '"auto_clean"' boolean
+---| '"force_add_update_areas"' boolean
+---| '"update_entity_transform"' boolean
+---| '"kill_entity_if_body_destroyed"' boolean
+---| '"kill_entity_after_initialized"' boolean
+---| '"manual_init"' boolean
+---| '"destroy_body_if_entity_destroyed"' boolean
+---| '"root_offset_x"' number
+---| '"root_offset_y"' number
+---| '"init_offset_x"' number
+---| '"init_offset_y"' number
+---| '"mActiveState"' boolean
+---| '"mPixelCountOrig"' integer
+---| '"mLocalPosition"' Vec2
+---| '"mBody"' b2Body*
+---| '"mInitialized"' boolean
+---| '"mPixelCount"' integer
+---| '"mRefreshed"' boolean
+
+---@class (exact) PhysicsBodyCollisionDamageComponents
+---@overload fun(): PhysicsBodyCollisionDamageComponent
+---@field enabled fun(self: PhysicsBodyCollisionDamageComponents, enabled: boolean): PhysicsBodyCollisionDamageComponents
+---@field tagged fun(self: PhysicsBodyCollisionDamageComponents, tag: string): PhysicsBodyCollisionDamageComponents
+---@field with_field fun(self: PhysicsBodyCollisionDamageComponents, field: PhysicsBodyCollisionDamageComponent.field, value: any): PhysicsBodyCollisionDamageComponents
+---@field add fun(self: PhysicsBodyCollisionDamageComponents, fields: PhysicsBodyCollisionDamageComponent.partial): PhysicsBodyCollisionDamageComponent
+
+---@class (exact) PhysicsBodyCollisionDamageComponent.partial
+---@field speed_threshold number?
+---@field damage_multiplier number?
+
+---@class (exact) PhysicsBodyCollisionDamageComponent : Component
+---@field speed_threshold number
+---@field damage_multiplier number
+
+---@alias PhysicsBodyCollisionDamageComponent.field
+---| '"speed_threshold"' number
+---| '"damage_multiplier"' number
+
+---@class (exact) PhysicsBodyComponents
+---@overload fun(): PhysicsBodyComponent
+---@field enabled fun(self: PhysicsBodyComponents, enabled: boolean): PhysicsBodyComponents
+---@field tagged fun(self: PhysicsBodyComponents, tag: string): PhysicsBodyComponents
+---@field with_field fun(self: PhysicsBodyComponents, field: PhysicsBodyComponent.field, value: any): PhysicsBodyComponents
+---@field add fun(self: PhysicsBodyComponents, fields: PhysicsBodyComponent.partial): PhysicsBodyComponent
+
+---@class (exact) PhysicsBodyComponent.partial
+---@field is_external boolean?
+---@field hax_fix_going_through_ground boolean?
+---@field hax_fix_going_through_sand boolean?
+---@field hax_wait_till_pixel_scenes_loaded boolean?
+---@field uid integer?
+---@field is_enabled boolean?
+---@field linear_damping number?
+---@field angular_damping number?
+---@field allow_sleep boolean?
+---@field fixed_rotation boolean?
+---@field buoyancy number?
+---@field gravity_scale_if_has_no_image_shapes number?
+---@field is_bullet boolean?
+---@field is_static boolean?
+---@field is_kinematic boolean?
+---@field is_character boolean?
+---@field go_through_sand boolean?
+---@field gridworld_box2d boolean?
+---@field auto_clean boolean?
+---@field on_death_leave_physics_body boolean?
+---@field on_death_really_leave_body boolean?
+---@field update_entity_transform boolean?
+---@field force_add_update_areas boolean?
+---@field kills_entity boolean?
+---@field projectiles_rotate_toward_velocity boolean?
+---@field randomize_init_velocity boolean?
+---@field mActiveState boolean?
+---@field initial_velocity Vec2?
+---@field mBody b2Body*?
+---@field mBodyId b2ObjectID?
+---@field mPixelCount integer?
+---@field mLocalPosition b2Vec2?
+---@field mRefreshed boolean?
+
+---@class (exact) PhysicsBodyComponent : Component
+---@field is_external boolean
+---@field hax_fix_going_through_ground boolean
+---@field hax_fix_going_through_sand boolean
+---@field hax_wait_till_pixel_scenes_loaded boolean
+---@field uid integer
+---@field is_enabled boolean
+---@field linear_damping number
+---@field angular_damping number
+---@field allow_sleep boolean
+---@field fixed_rotation boolean
+---@field buoyancy number
+---@field gravity_scale_if_has_no_image_shapes number
+---@field is_bullet boolean
+---@field is_static boolean
+---@field is_kinematic boolean
+---@field is_character boolean
+---@field go_through_sand boolean
+---@field gridworld_box2d boolean
+---@field auto_clean boolean
+---@field on_death_leave_physics_body boolean
+---@field on_death_really_leave_body boolean
+---@field update_entity_transform boolean
+---@field force_add_update_areas boolean
+---@field kills_entity boolean
+---@field projectiles_rotate_toward_velocity boolean
+---@field randomize_init_velocity boolean
+---@field mActiveState boolean
+---@field initial_velocity Vec2
+---@field mBody b2Body*
+---@field mBodyId b2ObjectID
+---@field mPixelCount integer
+---@field mLocalPosition b2Vec2
+---@field mRefreshed boolean
+
+---@alias PhysicsBodyComponent.field
+---| '"is_external"' boolean
+---| '"hax_fix_going_through_ground"' boolean
+---| '"hax_fix_going_through_sand"' boolean
+---| '"hax_wait_till_pixel_scenes_loaded"' boolean
+---| '"uid"' integer
+---| '"is_enabled"' boolean
+---| '"linear_damping"' number
+---| '"angular_damping"' number
+---| '"allow_sleep"' boolean
+---| '"fixed_rotation"' boolean
+---| '"buoyancy"' number
+---| '"gravity_scale_if_has_no_image_shapes"' number
+---| '"is_bullet"' boolean
+---| '"is_static"' boolean
+---| '"is_kinematic"' boolean
+---| '"is_character"' boolean
+---| '"go_through_sand"' boolean
+---| '"gridworld_box2d"' boolean
+---| '"auto_clean"' boolean
+---| '"on_death_leave_physics_body"' boolean
+---| '"on_death_really_leave_body"' boolean
+---| '"update_entity_transform"' boolean
+---| '"force_add_update_areas"' boolean
+---| '"kills_entity"' boolean
+---| '"projectiles_rotate_toward_velocity"' boolean
+---| '"randomize_init_velocity"' boolean
+---| '"mActiveState"' boolean
+---| '"initial_velocity"' Vec2
+---| '"mBody"' b2Body*
+---| '"mBodyId"' b2ObjectID
+---| '"mPixelCount"' integer
+---| '"mLocalPosition"' b2Vec2
+---| '"mRefreshed"' boolean
+
+---@class (exact) PhysicsImageShapeComponents
+---@overload fun(): PhysicsImageShapeComponent
+---@field enabled fun(self: PhysicsImageShapeComponents, enabled: boolean): PhysicsImageShapeComponents
+---@field tagged fun(self: PhysicsImageShapeComponents, tag: string): PhysicsImageShapeComponents
+---@field with_field fun(self: PhysicsImageShapeComponents, field: PhysicsImageShapeComponent.field, value: any): PhysicsImageShapeComponents
+---@field add fun(self: PhysicsImageShapeComponents, fields: PhysicsImageShapeComponent.partial): PhysicsImageShapeComponent
+
+---@class (exact) PhysicsImageShapeComponent.partial
+---@field is_root boolean?
+---@field body_id integer?
+---@field use_sprite boolean?
+---@field is_circle boolean?
+---@field centered boolean?
+---@field offset_x number?
+---@field offset_y number?
+---@field z number?
+---@field image_file string?
+---@field material integer?
+---@field mBody b2Body*?
+
+---@class (exact) PhysicsImageShapeComponent : Component
+---@field is_root boolean
+---@field body_id integer
+---@field use_sprite boolean
+---@field is_circle boolean
+---@field centered boolean
+---@field offset_x number
+---@field offset_y number
+---@field z number
+---@field image_file string
+---@field material integer
+---@field mBody b2Body*
+
+---@alias PhysicsImageShapeComponent.field
+---| '"is_root"' boolean
+---| '"body_id"' integer
+---| '"use_sprite"' boolean
+---| '"is_circle"' boolean
+---| '"centered"' boolean
+---| '"offset_x"' number
+---| '"offset_y"' number
+---| '"z"' number
+---| '"image_file"' string
+---| '"material"' integer
+---| '"mBody"' b2Body*
+
+---@class (exact) PhysicsJoint2Components
+---@overload fun(): PhysicsJoint2Component
+---@field enabled fun(self: PhysicsJoint2Components, enabled: boolean): PhysicsJoint2Components
+---@field tagged fun(self: PhysicsJoint2Components, tag: string): PhysicsJoint2Components
+---@field with_field fun(self: PhysicsJoint2Components, field: PhysicsJoint2Component.field, value: any): PhysicsJoint2Components
+---@field add fun(self: PhysicsJoint2Components, fields: PhysicsJoint2Component.partial): PhysicsJoint2Component
+
+---@class (exact) PhysicsJoint2Component.partial
+---@field joint_id integer?
+---@field break_force number?
+---@field break_distance number?
+---@field break_on_body_modified boolean?
+---@field break_on_shear_angle_deg number?
+---@field body1_id integer?
+---@field body2_id integer?
+---@field offset_x number?
+---@field offset_y number?
+---@field ray_x number?
+---@field ray_y number?
+---@field surface_attachment_offset_x number?
+---@field surface_attachment_offset_y number?
+---@field type JOINT_TYPE::Enum?
+
+---@class (exact) PhysicsJoint2Component : Component
+---@field joint_id integer
+---@field break_force number
+---@field break_distance number
+---@field break_on_body_modified boolean
+---@field break_on_shear_angle_deg number
+---@field body1_id integer
+---@field body2_id integer
+---@field offset_x number
+---@field offset_y number
+---@field ray_x number
+---@field ray_y number
+---@field surface_attachment_offset_x number
+---@field surface_attachment_offset_y number
+---@field type JOINT_TYPE::Enum
+
+---@alias PhysicsJoint2Component.field
+---| '"joint_id"' integer
+---| '"break_force"' number
+---| '"break_distance"' number
+---| '"break_on_body_modified"' boolean
+---| '"break_on_shear_angle_deg"' number
+---| '"body1_id"' integer
+---| '"body2_id"' integer
+---| '"offset_x"' number
+---| '"offset_y"' number
+---| '"ray_x"' number
+---| '"ray_y"' number
+---| '"surface_attachment_offset_x"' number
+---| '"surface_attachment_offset_y"' number
+---| '"type"' JOINT_TYPE::Enum
+
+---@class (exact) PhysicsJoint2MutatorComponents
+---@overload fun(): PhysicsJoint2MutatorComponent
+---@field enabled fun(self: PhysicsJoint2MutatorComponents, enabled: boolean): PhysicsJoint2MutatorComponents
+---@field tagged fun(self: PhysicsJoint2MutatorComponents, tag: string): PhysicsJoint2MutatorComponents
+---@field with_field fun(self: PhysicsJoint2MutatorComponents, field: PhysicsJoint2MutatorComponent.field, value: any): PhysicsJoint2MutatorComponents
+---@field add fun(self: PhysicsJoint2MutatorComponents, fields: PhysicsJoint2MutatorComponent.partial): PhysicsJoint2MutatorComponent
+
+---@class (exact) PhysicsJoint2MutatorComponent.partial
+---@field joint_id integer?
+---@field destroy boolean?
+---@field motor_speed number?
+---@field motor_max_torque number?
+---@field mBox2DJointId integer?
+---@field mPreviousMotorSpeed number?
+---@field mPreviousMotorMaxTorque number?
+
+---@class (exact) PhysicsJoint2MutatorComponent : Component
+---@field joint_id integer
+---@field destroy boolean
+---@field motor_speed number
+---@field motor_max_torque number
+---@field mBox2DJointId integer
+---@field mPreviousMotorSpeed number
+---@field mPreviousMotorMaxTorque number
+
+---@alias PhysicsJoint2MutatorComponent.field
+---| '"joint_id"' integer
+---| '"destroy"' boolean
+---| '"motor_speed"' number
+---| '"motor_max_torque"' number
+---| '"mBox2DJointId"' integer
+---| '"mPreviousMotorSpeed"' number
+---| '"mPreviousMotorMaxTorque"' number
+
+---@class (exact) PhysicsJointComponents
+---@overload fun(): PhysicsJointComponent
+---@field enabled fun(self: PhysicsJointComponents, enabled: boolean): PhysicsJointComponents
+---@field tagged fun(self: PhysicsJointComponents, tag: string): PhysicsJointComponents
+---@field with_field fun(self: PhysicsJointComponents, field: PhysicsJointComponent.field, value: any): PhysicsJointComponents
+---@field add fun(self: PhysicsJointComponents, fields: PhysicsJointComponent.partial): PhysicsJointComponent
+
+---@class (exact) PhysicsJointComponent.partial
+---@field nail_to_wall boolean?
+---@field grid_joint boolean?
+---@field breakable boolean?
+---@field body1_id integer?
+---@field body2_id integer?
+---@field pos_x number?
+---@field pos_y number?
+---@field delta_x number?
+---@field delta_y number?
+---@field mMotorEnabled boolean?
+---@field mMotorSpeed number?
+---@field mMaxMotorTorque number?
+---@field type JOINT_TYPE::Enum?
+---@field mJoint b2Joint*?
+
+---@class (exact) PhysicsJointComponent : Component
+---@field nail_to_wall boolean
+---@field grid_joint boolean
+---@field breakable boolean
+---@field body1_id integer
+---@field body2_id integer
+---@field pos_x number
+---@field pos_y number
+---@field delta_x number
+---@field delta_y number
+---@field mMotorEnabled boolean
+---@field mMotorSpeed number
+---@field mMaxMotorTorque number
+---@field type JOINT_TYPE::Enum
+---@field mJoint b2Joint*
+
+---@alias PhysicsJointComponent.field
+---| '"nail_to_wall"' boolean
+---| '"grid_joint"' boolean
+---| '"breakable"' boolean
+---| '"body1_id"' integer
+---| '"body2_id"' integer
+---| '"pos_x"' number
+---| '"pos_y"' number
+---| '"delta_x"' number
+---| '"delta_y"' number
+---| '"mMotorEnabled"' boolean
+---| '"mMotorSpeed"' number
+---| '"mMaxMotorTorque"' number
+---| '"type"' JOINT_TYPE::Enum
+---| '"mJoint"' b2Joint*
+
+---@class (exact) PhysicsKeepInWorldComponents
+---@overload fun(): PhysicsKeepInWorldComponent
+---@field enabled fun(self: PhysicsKeepInWorldComponents, enabled: boolean): PhysicsKeepInWorldComponents
+---@field tagged fun(self: PhysicsKeepInWorldComponents, tag: string): PhysicsKeepInWorldComponents
+---@field with_field fun(self: PhysicsKeepInWorldComponents, field: PhysicsKeepInWorldComponent.field, value: any): PhysicsKeepInWorldComponents
+---@field add fun(self: PhysicsKeepInWorldComponents, fields: PhysicsKeepInWorldComponent.partial): PhysicsKeepInWorldComponent
+
+---@class (exact) PhysicsKeepInWorldComponent.partial
+---@field check_whole_aabb boolean?
+---@field predict_aabb boolean?
+---@field keep_at_last_valid_pos boolean?
+---@field mExPosition Vec2?
+---@field mExRotation number?
+
+---@class (exact) PhysicsKeepInWorldComponent : Component
+---@field check_whole_aabb boolean
+---@field predict_aabb boolean
+---@field keep_at_last_valid_pos boolean
+---@field mExPosition Vec2
+---@field mExRotation number
+
+---@alias PhysicsKeepInWorldComponent.field
+---| '"check_whole_aabb"' boolean
+---| '"predict_aabb"' boolean
+---| '"keep_at_last_valid_pos"' boolean
+---| '"mExPosition"' Vec2
+---| '"mExRotation"' number
+
+---@class (exact) PhysicsPickUpComponents
+---@overload fun(): PhysicsPickUpComponent
+---@field enabled fun(self: PhysicsPickUpComponents, enabled: boolean): PhysicsPickUpComponents
+---@field tagged fun(self: PhysicsPickUpComponents, tag: string): PhysicsPickUpComponents
+---@field with_field fun(self: PhysicsPickUpComponents, field: PhysicsPickUpComponent.field, value: any): PhysicsPickUpComponents
+---@field add fun(self: PhysicsPickUpComponents, fields: PhysicsPickUpComponent.partial): PhysicsPickUpComponent
+
+---@class (exact) PhysicsPickUpComponent.partial
+---@field pick_up_strength number?
+---@field transform types::xform?
+---@field original_left_joint_pos Vec2?
+---@field original_right_joint_pos Vec2?
+---@field isBroken boolean?
+---@field leftJointPos Vec2?
+---@field rightJointPos Vec2?
+---@field leftJoint b2WeldJoint*?
+---@field rightJoint b2WeldJoint*?
+
+---@class (exact) PhysicsPickUpComponent : Component
+---@field pick_up_strength number
+---@field transform types::xform
+---@field original_left_joint_pos Vec2
+---@field original_right_joint_pos Vec2
+---@field isBroken boolean
+---@field leftJointPos Vec2
+---@field rightJointPos Vec2
+---@field leftJoint b2WeldJoint*
+---@field rightJoint b2WeldJoint*
+
+---@alias PhysicsPickUpComponent.field
+---| '"pick_up_strength"' number
+---| '"transform"' types::xform
+---| '"original_left_joint_pos"' Vec2
+---| '"original_right_joint_pos"' Vec2
+---| '"isBroken"' boolean
+---| '"leftJointPos"' Vec2
+---| '"rightJointPos"' Vec2
+---| '"leftJoint"' b2WeldJoint*
+---| '"rightJoint"' b2WeldJoint*
+
+---@class (exact) PhysicsRagdollComponents
+---@overload fun(): PhysicsRagdollComponent
+---@field enabled fun(self: PhysicsRagdollComponents, enabled: boolean): PhysicsRagdollComponents
+---@field tagged fun(self: PhysicsRagdollComponents, tag: string): PhysicsRagdollComponents
+---@field with_field fun(self: PhysicsRagdollComponents, field: PhysicsRagdollComponent.field, value: any): PhysicsRagdollComponents
+---@field add fun(self: PhysicsRagdollComponents, fields: PhysicsRagdollComponent.partial): PhysicsRagdollComponent
+
+---@class (exact) PhysicsRagdollComponent.partial
+---@field filename string?
+---@field filenames string?
+---@field offset_x number?
+---@field offset_y number?
+---@field bodies std::vector<b2Body*>*?
+
+---@class (exact) PhysicsRagdollComponent : Component
+---@field filename string
+---@field filenames string
+---@field offset_x number
+---@field offset_y number
+---@field bodies std::vector<b2Body*>*
+
+---@alias PhysicsRagdollComponent.field
+---| '"filename"' string
+---| '"filenames"' string
+---| '"offset_x"' number
+---| '"offset_y"' number
+---| '"bodies"' std::vector<b2Body*>*
+
+---@class (exact) PhysicsShapeComponents
+---@overload fun(): PhysicsShapeComponent
+---@field enabled fun(self: PhysicsShapeComponents, enabled: boolean): PhysicsShapeComponents
+---@field tagged fun(self: PhysicsShapeComponents, tag: string): PhysicsShapeComponents
+---@field with_field fun(self: PhysicsShapeComponents, field: PhysicsShapeComponent.field, value: any): PhysicsShapeComponents
+---@field add fun(self: PhysicsShapeComponents, fields: PhysicsShapeComponent.partial): PhysicsShapeComponent
+
+---@class (exact) PhysicsShapeComponent.partial
+---@field recreate boolean?
+---@field is_circle boolean?
+---@field is_box boolean?
+---@field is_capsule boolean?
+---@field is_based_on_sprite boolean?
+---@field friction number?
+---@field restitution number?
+---@field density number?
+---@field local_position_x number?
+---@field local_position_y number?
+---@field radius_x number?
+---@field radius_y number?
+---@field capsule_x_percent number?
+---@field capsule_y_percent number?
+---@field material integer?
+
+---@class (exact) PhysicsShapeComponent : Component
+---@field recreate boolean
+---@field is_circle boolean
+---@field is_box boolean
+---@field is_capsule boolean
+---@field is_based_on_sprite boolean
+---@field friction number
+---@field restitution number
+---@field density number
+---@field local_position_x number
+---@field local_position_y number
+---@field radius_x number
+---@field radius_y number
+---@field capsule_x_percent number
+---@field capsule_y_percent number
+---@field material integer
+
+---@alias PhysicsShapeComponent.field
+---| '"recreate"' boolean
+---| '"is_circle"' boolean
+---| '"is_box"' boolean
+---| '"is_capsule"' boolean
+---| '"is_based_on_sprite"' boolean
+---| '"friction"' number
+---| '"restitution"' number
+---| '"density"' number
+---| '"local_position_x"' number
+---| '"local_position_y"' number
+---| '"radius_x"' number
+---| '"radius_y"' number
+---| '"capsule_x_percent"' number
+---| '"capsule_y_percent"' number
+---| '"material"' integer
+
+---@class (exact) PhysicsThrowableComponents
+---@overload fun(): PhysicsThrowableComponent
+---@field enabled fun(self: PhysicsThrowableComponents, enabled: boolean): PhysicsThrowableComponents
+---@field tagged fun(self: PhysicsThrowableComponents, tag: string): PhysicsThrowableComponents
+---@field with_field fun(self: PhysicsThrowableComponents, field: PhysicsThrowableComponent.field, value: any): PhysicsThrowableComponents
+---@field add fun(self: PhysicsThrowableComponents, fields: PhysicsThrowableComponent.partial): PhysicsThrowableComponent
+
+---@class (exact) PhysicsThrowableComponent.partial
+---@field throw_force_coeff number?
+---@field max_throw_speed number?
+---@field min_torque number?
+---@field max_torque number?
+---@field tip_check_offset_min number?
+---@field tip_check_offset_max number?
+---@field tip_check_random_rotation_deg number?
+---@field attach_min_speed number?
+---@field attach_to_surfaces_knife_style boolean?
+---@field hp integer?
+---@field mHasJoint boolean?
+
+---@class (exact) PhysicsThrowableComponent : Component
+---@field throw_force_coeff number
+---@field max_throw_speed number
+---@field min_torque number
+---@field max_torque number
+---@field tip_check_offset_min number
+---@field tip_check_offset_max number
+---@field tip_check_random_rotation_deg number
+---@field attach_min_speed number
+---@field attach_to_surfaces_knife_style boolean
+---@field hp integer
+---@field mHasJoint boolean
+
+---@alias PhysicsThrowableComponent.field
+---| '"throw_force_coeff"' number
+---| '"max_throw_speed"' number
+---| '"min_torque"' number
+---| '"max_torque"' number
+---| '"tip_check_offset_min"' number
+---| '"tip_check_offset_max"' number
+---| '"tip_check_random_rotation_deg"' number
+---| '"attach_min_speed"' number
+---| '"attach_to_surfaces_knife_style"' boolean
+---| '"hp"' integer
+---| '"mHasJoint"' boolean
+
+---@class (exact) PixelSceneComponents
+---@overload fun(): PixelSceneComponent
+---@field enabled fun(self: PixelSceneComponents, enabled: boolean): PixelSceneComponents
+---@field tagged fun(self: PixelSceneComponents, tag: string): PixelSceneComponents
+---@field with_field fun(self: PixelSceneComponents, field: PixelSceneComponent.field, value: any): PixelSceneComponents
+---@field add fun(self: PixelSceneComponents, fields: PixelSceneComponent.partial): PixelSceneComponent
+
+---@class (exact) PixelSceneComponent.partial
+---@field pixel_scene string?
+---@field pixel_scene_visual string?
+---@field pixel_scene_background string?
+---@field background_z_index integer?
+---@field offset_x number?
+---@field offset_y number?
+---@field skip_biome_checks boolean?
+---@field skip_edge_textures boolean?
+
+---@class (exact) PixelSceneComponent : Component
+---@field pixel_scene string
+---@field pixel_scene_visual string
+---@field pixel_scene_background string
+---@field background_z_index integer
+---@field offset_x number
+---@field offset_y number
+---@field skip_biome_checks boolean
+---@field skip_edge_textures boolean
+
+---@alias PixelSceneComponent.field
+---| '"pixel_scene"' string
+---| '"pixel_scene_visual"' string
+---| '"pixel_scene_background"' string
+---| '"background_z_index"' integer
+---| '"offset_x"' number
+---| '"offset_y"' number
+---| '"skip_biome_checks"' boolean
+---| '"skip_edge_textures"' boolean
+
+---@class (exact) PixelSpriteComponents
+---@overload fun(): PixelSpriteComponent
+---@field enabled fun(self: PixelSpriteComponents, enabled: boolean): PixelSpriteComponents
+---@field tagged fun(self: PixelSpriteComponents, tag: string): PixelSpriteComponents
+---@field with_field fun(self: PixelSpriteComponents, field: PixelSpriteComponent.field, value: any): PixelSpriteComponents
+---@field add fun(self: PixelSpriteComponents, fields: PixelSpriteComponent.partial): PixelSpriteComponent
+
+---@class (exact) PixelSpriteComponent.partial
+---@field image_file string?
+---@field anchor_x integer?
+---@field anchor_y integer?
+---@field material string?
+---@field diggable boolean?
+---@field clean_overlapping_pixels boolean?
+---@field kill_when_sprite_dies boolean?
+---@field create_box2d_bodies boolean?
+---@field mPixelSprite PixelSprite*?
+
+---@class (exact) PixelSpriteComponent : Component
+---@field image_file string
+---@field anchor_x integer
+---@field anchor_y integer
+---@field material string
+---@field diggable boolean
+---@field clean_overlapping_pixels boolean
+---@field kill_when_sprite_dies boolean
+---@field create_box2d_bodies boolean
+---@field mPixelSprite PixelSprite*
+
+---@alias PixelSpriteComponent.field
+---| '"image_file"' string
+---| '"anchor_x"' integer
+---| '"anchor_y"' integer
+---| '"material"' string
+---| '"diggable"' boolean
+---| '"clean_overlapping_pixels"' boolean
+---| '"kill_when_sprite_dies"' boolean
+---| '"create_box2d_bodies"' boolean
+---| '"mPixelSprite"' PixelSprite*
+
+---@class (exact) PlatformShooterPlayerComponents
+---@overload fun(): PlatformShooterPlayerComponent
+---@field enabled fun(self: PlatformShooterPlayerComponents, enabled: boolean): PlatformShooterPlayerComponents
+---@field tagged fun(self: PlatformShooterPlayerComponents, tag: string): PlatformShooterPlayerComponents
+---@field with_field fun(self: PlatformShooterPlayerComponents, field: PlatformShooterPlayerComponent.field, value: any): PlatformShooterPlayerComponents
+---@field add fun(self: PlatformShooterPlayerComponents, fields: PlatformShooterPlayerComponent.partial): PlatformShooterPlayerComponent
+
+---@class (exact) PlatformShooterPlayerComponent.partial
+---@field aiming_reticle_distance_from_character number?
+---@field camera_max_distance_from_character number?
+---@field alcohol_drunken_speed number?
+---@field blood_fungi_drunken_speed number?
+---@field blood_worm_drunken_speed number?
+---@field eating_cells_per_frame integer?
+---@field eating_probability integer?
+---@field eating_delay_frames integer?
+---@field stoned_speed number?
+---@field center_camera_on_this_entity boolean?
+---@field move_camera_with_aim boolean?
+---@field eating_area_min Vec2?
+---@field eating_area_max Vec2?
+---@field mSmoothedCameraPosition Vec2?
+---@field mSmoothedAimingVector Vec2?
+---@field mCameraRecoil number?
+---@field mCameraRecoilTarget number?
+---@field mCrouching boolean?
+---@field mCameraDistanceLerped number?
+---@field mRequireTriggerPull boolean?
+---@field mWarpDelay integer?
+---@field mItemTemporarilyHidden integer?
+---@field mDesiredCameraPos Vec2?
+---@field mHasGamepadControlsPrev boolean?
+---@field mForceFireOnNextUpdate boolean?
+---@field mFastMovementParticlesAlphaSmoothed number?
+---@field mTeleBoltFramesDuringLastSecond integer?
+---@field mCamCorrectionTeleSmoothed number?
+---@field mCamCorrectionGainSmoothed Vec2?
+---@field mCameraErrorPrev Vec2ArrayInline?
+---@field mCamErrorAveraged Vec2?
+---@field mCamMovingFastPrev boolean?
+---@field mCamFrameStartedMovingFast integer?
+---@field mCamFrameLastMovingFastExplosion integer?
+---@field mCessationDo boolean?
+---@field mCessationLifetime integer?
+
+---@class (exact) PlatformShooterPlayerComponent : Component
+---@field aiming_reticle_distance_from_character number
+---@field camera_max_distance_from_character number
+---@field alcohol_drunken_speed number
+---@field blood_fungi_drunken_speed number
+---@field blood_worm_drunken_speed number
+---@field eating_cells_per_frame integer
+---@field eating_probability integer
+---@field eating_delay_frames integer
+---@field stoned_speed number
+---@field center_camera_on_this_entity boolean
+---@field move_camera_with_aim boolean
+---@field eating_area_min Vec2
+---@field eating_area_max Vec2
+---@field mSmoothedCameraPosition Vec2
+---@field mSmoothedAimingVector Vec2
+---@field mCameraRecoil number
+---@field mCameraRecoilTarget number
+---@field mCrouching boolean
+---@field mCameraDistanceLerped number
+---@field mRequireTriggerPull boolean
+---@field mWarpDelay integer
+---@field mItemTemporarilyHidden integer
+---@field mDesiredCameraPos Vec2
+---@field mHasGamepadControlsPrev boolean
+---@field mForceFireOnNextUpdate boolean
+---@field mFastMovementParticlesAlphaSmoothed number
+---@field mTeleBoltFramesDuringLastSecond integer
+---@field mCamCorrectionTeleSmoothed number
+---@field mCamCorrectionGainSmoothed Vec2
+---@field mCameraErrorPrev Vec2ArrayInline
+---@field mCamErrorAveraged Vec2
+---@field mCamMovingFastPrev boolean
+---@field mCamFrameStartedMovingFast integer
+---@field mCamFrameLastMovingFastExplosion integer
+---@field mCessationDo boolean
+---@field mCessationLifetime integer
+
+---@alias PlatformShooterPlayerComponent.field
+---| '"aiming_reticle_distance_from_character"' number
+---| '"camera_max_distance_from_character"' number
+---| '"alcohol_drunken_speed"' number
+---| '"blood_fungi_drunken_speed"' number
+---| '"blood_worm_drunken_speed"' number
+---| '"eating_cells_per_frame"' integer
+---| '"eating_probability"' integer
+---| '"eating_delay_frames"' integer
+---| '"stoned_speed"' number
+---| '"center_camera_on_this_entity"' boolean
+---| '"move_camera_with_aim"' boolean
+---| '"eating_area_min"' Vec2
+---| '"eating_area_max"' Vec2
+---| '"mSmoothedCameraPosition"' Vec2
+---| '"mSmoothedAimingVector"' Vec2
+---| '"mCameraRecoil"' number
+---| '"mCameraRecoilTarget"' number
+---| '"mCrouching"' boolean
+---| '"mCameraDistanceLerped"' number
+---| '"mRequireTriggerPull"' boolean
+---| '"mWarpDelay"' integer
+---| '"mItemTemporarilyHidden"' integer
+---| '"mDesiredCameraPos"' Vec2
+---| '"mHasGamepadControlsPrev"' boolean
+---| '"mForceFireOnNextUpdate"' boolean
+---| '"mFastMovementParticlesAlphaSmoothed"' number
+---| '"mTeleBoltFramesDuringLastSecond"' integer
+---| '"mCamCorrectionTeleSmoothed"' number
+---| '"mCamCorrectionGainSmoothed"' Vec2
+---| '"mCameraErrorPrev"' Vec2ArrayInline
+---| '"mCamErrorAveraged"' Vec2
+---| '"mCamMovingFastPrev"' boolean
+---| '"mCamFrameStartedMovingFast"' integer
+---| '"mCamFrameLastMovingFastExplosion"' integer
+---| '"mCessationDo"' boolean
+---| '"mCessationLifetime"' integer
+
+---@class (exact) PlayerCollisionComponents
+---@overload fun(): PlayerCollisionComponent
+---@field enabled fun(self: PlayerCollisionComponents, enabled: boolean): PlayerCollisionComponents
+---@field tagged fun(self: PlayerCollisionComponents, tag: string): PlayerCollisionComponents
+---@field with_field fun(self: PlayerCollisionComponents, field: PlayerCollisionComponent.field, value: any): PlayerCollisionComponents
+---@field add fun(self: PlayerCollisionComponents, fields: PlayerCollisionComponent.partial): PlayerCollisionComponent
+
+---@class (exact) PlayerCollisionComponent.partial
+---@field getting_crushed_threshold integer?
+---@field moving_up_before_getting_crushed_threshold integer?
+---@field getting_crushed_counter integer?
+---@field stuck_in_ground_counter integer?
+---@field DEBUG_stuck_in_static_ground integer?
+---@field mCollidedHorizontally boolean?
+---@field mPhysicsCollisionHax b2Body*?
+
+---@class (exact) PlayerCollisionComponent : Component
+---@field getting_crushed_threshold integer
+---@field moving_up_before_getting_crushed_threshold integer
+---@field getting_crushed_counter integer
+---@field stuck_in_ground_counter integer
+---@field DEBUG_stuck_in_static_ground integer
+---@field mCollidedHorizontally boolean
+---@field mPhysicsCollisionHax b2Body*
+
+---@alias PlayerCollisionComponent.field
+---| '"getting_crushed_threshold"' integer
+---| '"moving_up_before_getting_crushed_threshold"' integer
+---| '"getting_crushed_counter"' integer
+---| '"stuck_in_ground_counter"' integer
+---| '"DEBUG_stuck_in_static_ground"' integer
+---| '"mCollidedHorizontally"' boolean
+---| '"mPhysicsCollisionHax"' b2Body*
+
+---@class (exact) PlayerStatsComponents
+---@overload fun(): PlayerStatsComponent
+---@field enabled fun(self: PlayerStatsComponents, enabled: boolean): PlayerStatsComponents
+---@field tagged fun(self: PlayerStatsComponents, tag: string): PlayerStatsComponents
+---@field with_field fun(self: PlayerStatsComponents, field: PlayerStatsComponent.field, value: any): PlayerStatsComponents
+---@field add fun(self: PlayerStatsComponents, fields: PlayerStatsComponent.partial): PlayerStatsComponent
+
+---@class (exact) PlayerStatsComponent.partial
+---@field lives integer?
+---@field max_hp number?
+---@field speed number?
+
+---@class (exact) PlayerStatsComponent : Component
+---@field lives integer
+---@field max_hp number
+---@field speed number
+
+---@alias PlayerStatsComponent.field
+---| '"lives"' integer
+---| '"max_hp"' number
+---| '"speed"' number
+
+---@class (exact) PositionSeedComponents
+---@overload fun(): PositionSeedComponent
+---@field enabled fun(self: PositionSeedComponents, enabled: boolean): PositionSeedComponents
+---@field tagged fun(self: PositionSeedComponents, tag: string): PositionSeedComponents
+---@field with_field fun(self: PositionSeedComponents, field: PositionSeedComponent.field, value: any): PositionSeedComponents
+---@field add fun(self: PositionSeedComponents, fields: PositionSeedComponent.partial): PositionSeedComponent
+
+---@class (exact) PositionSeedComponent.partial
+---@field pos_x number?
+---@field pos_y number?
+
+---@class (exact) PositionSeedComponent : Component
+---@field pos_x number
+---@field pos_y number
+
+---@alias PositionSeedComponent.field
+---| '"pos_x"' number
+---| '"pos_y"' number
+
+---@class (exact) PotionComponents
+---@overload fun(): PotionComponent
+---@field enabled fun(self: PotionComponents, enabled: boolean): PotionComponents
+---@field tagged fun(self: PotionComponents, tag: string): PotionComponents
+---@field with_field fun(self: PotionComponents, field: PotionComponent.field, value: any): PotionComponents
+---@field add fun(self: PotionComponents, fields: PotionComponent.partial): PotionComponent
+
+---@class (exact) PotionComponent.partial
+---@field spray_velocity_coeff number?
+---@field spray_velocity_normalized_min number?
+---@field body_colored boolean?
+---@field throw_bunch boolean?
+---@field throw_how_many integer?
+---@field dont_spray_static_materials boolean?
+---@field dont_spray_just_leak_gas_materials boolean?
+---@field never_color boolean?
+---@field custom_color_material integer?
+
+---@class (exact) PotionComponent : Component
+---@field spray_velocity_coeff number
+---@field spray_velocity_normalized_min number
+---@field body_colored boolean
+---@field throw_bunch boolean
+---@field throw_how_many integer
+---@field dont_spray_static_materials boolean
+---@field dont_spray_just_leak_gas_materials boolean
+---@field never_color boolean
+---@field custom_color_material integer
+
+---@alias PotionComponent.field
+---| '"spray_velocity_coeff"' number
+---| '"spray_velocity_normalized_min"' number
+---| '"body_colored"' boolean
+---| '"throw_bunch"' boolean
+---| '"throw_how_many"' integer
+---| '"dont_spray_static_materials"' boolean
+---| '"dont_spray_just_leak_gas_materials"' boolean
+---| '"never_color"' boolean
+---| '"custom_color_material"' integer
+
+---@class (exact) PressurePlateComponents
+---@overload fun(): PressurePlateComponent
+---@field enabled fun(self: PressurePlateComponents, enabled: boolean): PressurePlateComponents
+---@field tagged fun(self: PressurePlateComponents, tag: string): PressurePlateComponents
+---@field with_field fun(self: PressurePlateComponents, field: PressurePlateComponent.field, value: any): PressurePlateComponents
+---@field add fun(self: PressurePlateComponents, fields: PressurePlateComponent.partial): PressurePlateComponent
+
+---@class (exact) PressurePlateComponent.partial
+---@field check_every_x_frames integer?
+---@field state integer?
+---@field material_percent number?
+---@field aabb_min Vec2?
+---@field aabb_max Vec2?
+---@field mNextFrame integer?
+
+---@class (exact) PressurePlateComponent : Component
+---@field check_every_x_frames integer
+---@field state integer
+---@field material_percent number
+---@field aabb_min Vec2
+---@field aabb_max Vec2
+---@field mNextFrame integer
+
+---@alias PressurePlateComponent.field
+---| '"check_every_x_frames"' integer
+---| '"state"' integer
+---| '"material_percent"' number
+---| '"aabb_min"' Vec2
+---| '"aabb_max"' Vec2
+---| '"mNextFrame"' integer
+
+---@class (exact) ProjectileComponents
+---@overload fun(): ProjectileComponent
+---@field enabled fun(self: ProjectileComponents, enabled: boolean): ProjectileComponents
+---@field tagged fun(self: ProjectileComponents, tag: string): ProjectileComponents
+---@field with_field fun(self: ProjectileComponents, field: ProjectileComponent.field, value: any): ProjectileComponents
+---@field add fun(self: ProjectileComponents, fields: ProjectileComponent.partial): ProjectileComponent
+
+---@class (exact) ProjectileComponent.partial
+---@field lifetime integer?
+---@field lifetime_randomness integer?
+---@field on_lifetime_out_explode boolean?
+---@field collide_with_world boolean?
+---@field speed_min number?
+---@field speed_max number?
+---@field friction number?
+---@field direction_random_rad number?
+---@field direction_nonrandom_rad number?
+---@field lob_min number?
+---@field lob_max number?
+---@field camera_shake_when_shot number?
+---@field shoot_light_flash_radius number?
+---@field shoot_light_flash_r integer?
+---@field shoot_light_flash_g integer?
+---@field shoot_light_flash_b integer?
+---@field create_shell_casing boolean?
+---@field shell_casing_material string?
+---@field muzzle_flash_file string?
+---@field bounces_left integer?
+---@field bounce_energy number?
+---@field bounce_always boolean?
+---@field bounce_at_any_angle boolean?
+---@field attach_to_parent_trigger boolean?
+---@field bounce_fx_file string?
+---@field angular_velocity number?
+---@field velocity_sets_rotation boolean?
+---@field velocity_sets_scale boolean?
+---@field velocity_sets_scale_coeff number?
+---@field velocity_sets_y_flip boolean?
+---@field velocity_updates_animation number?
+---@field ground_penetration_coeff number?
+---@field ground_penetration_max_durability_to_destroy integer?
+---@field go_through_this_material string?
+---@field do_moveto_update boolean?
+---@field on_death_duplicate_remaining integer?
+---@field on_death_gfx_leave_sprite boolean?
+---@field on_death_explode boolean?
+---@field on_death_emit_particle boolean?
+---@field on_death_emit_particle_count integer?
+---@field die_on_liquid_collision boolean?
+---@field die_on_low_velocity boolean?
+---@field die_on_low_velocity_limit number?
+---@field on_death_emit_particle_type string?
+---@field on_death_particle_check_concrete boolean?
+---@field ground_collision_fx boolean?
+---@field explosion_dont_damage_shooter boolean?
+---@field on_death_item_pickable_radius number?
+---@field penetrate_world boolean?
+---@field penetrate_world_velocity_coeff number?
+---@field penetrate_entities boolean?
+---@field on_collision_die boolean?
+---@field on_collision_remove_projectile boolean?
+---@field on_collision_spawn_entity boolean?
+---@field spawn_entity string?
+---@field spawn_entity_is_projectile boolean?
+---@field physics_impulse_coeff number?
+---@field damage_every_x_frames integer?
+---@field damage_scaled_by_speed boolean?
+---@field damage_scale_max_speed number?
+---@field collide_with_entities boolean?
+---@field collide_with_tag string?
+---@field dont_collide_with_tag string?
+---@field collide_with_shooter_frames integer?
+---@field friendly_fire boolean?
+---@field damage number?
+---@field knockback_force number?
+---@field ragdoll_force_multiplier number?
+---@field hit_particle_force_multiplier number?
+---@field blood_count_multiplier number?
+---@field damage_game_effect_entities string?
+---@field never_hit_player boolean?
+---@field collect_materials_to_shooter boolean?
+---@field play_damage_sounds boolean?
+---@field mLastFrameDamaged integer?
+---@field config ConfigGunActionInfo?
+---@field config_explosion ConfigExplosion?
+---@field damage_by_type ConfigDamagesByType?
+---@field damage_critical ConfigDamageCritical?
+---@field projectile_type PROJECTILE_TYPE::Enum?
+---@field shell_casing_offset Vec2?
+---@field ragdoll_fx_on_collision RAGDOLL_FX::Enum?
+---@field mWhoShot EntityID?
+---@field mWhoShotEntityTypeID EntityTypeID?
+---@field mShooterHerdId integer?
+---@field mStartingLifetime integer?
+---@field mEntityThatShot EntityID?
+---@field mTriggers ProjectileTriggers?
+---@field mDamagedEntities VEC_ENTITY?
+---@field mInitialSpeed number?
+
+---@class (exact) ProjectileComponent : Component
+---@field lifetime integer
+---@field lifetime_randomness integer
+---@field on_lifetime_out_explode boolean
+---@field collide_with_world boolean
+---@field speed_min number
+---@field speed_max number
+---@field friction number
+---@field direction_random_rad number
+---@field direction_nonrandom_rad number
+---@field lob_min number
+---@field lob_max number
+---@field camera_shake_when_shot number
+---@field shoot_light_flash_radius number
+---@field shoot_light_flash_r integer
+---@field shoot_light_flash_g integer
+---@field shoot_light_flash_b integer
+---@field create_shell_casing boolean
+---@field shell_casing_material string
+---@field muzzle_flash_file string
+---@field bounces_left integer
+---@field bounce_energy number
+---@field bounce_always boolean
+---@field bounce_at_any_angle boolean
+---@field attach_to_parent_trigger boolean
+---@field bounce_fx_file string
+---@field angular_velocity number
+---@field velocity_sets_rotation boolean
+---@field velocity_sets_scale boolean
+---@field velocity_sets_scale_coeff number
+---@field velocity_sets_y_flip boolean
+---@field velocity_updates_animation number
+---@field ground_penetration_coeff number
+---@field ground_penetration_max_durability_to_destroy integer
+---@field go_through_this_material string
+---@field do_moveto_update boolean
+---@field on_death_duplicate_remaining integer
+---@field on_death_gfx_leave_sprite boolean
+---@field on_death_explode boolean
+---@field on_death_emit_particle boolean
+---@field on_death_emit_particle_count integer
+---@field die_on_liquid_collision boolean
+---@field die_on_low_velocity boolean
+---@field die_on_low_velocity_limit number
+---@field on_death_emit_particle_type string
+---@field on_death_particle_check_concrete boolean
+---@field ground_collision_fx boolean
+---@field explosion_dont_damage_shooter boolean
+---@field on_death_item_pickable_radius number
+---@field penetrate_world boolean
+---@field penetrate_world_velocity_coeff number
+---@field penetrate_entities boolean
+---@field on_collision_die boolean
+---@field on_collision_remove_projectile boolean
+---@field on_collision_spawn_entity boolean
+---@field spawn_entity string
+---@field spawn_entity_is_projectile boolean
+---@field physics_impulse_coeff number
+---@field damage_every_x_frames integer
+---@field damage_scaled_by_speed boolean
+---@field damage_scale_max_speed number
+---@field collide_with_entities boolean
+---@field collide_with_tag string
+---@field dont_collide_with_tag string
+---@field collide_with_shooter_frames integer
+---@field friendly_fire boolean
+---@field damage number
+---@field knockback_force number
+---@field ragdoll_force_multiplier number
+---@field hit_particle_force_multiplier number
+---@field blood_count_multiplier number
+---@field damage_game_effect_entities string
+---@field never_hit_player boolean
+---@field collect_materials_to_shooter boolean
+---@field play_damage_sounds boolean
+---@field mLastFrameDamaged integer
+---@field config ConfigGunActionInfo
+---@field config_explosion ConfigExplosion
+---@field damage_by_type ConfigDamagesByType
+---@field damage_critical ConfigDamageCritical
+---@field projectile_type PROJECTILE_TYPE::Enum
+---@field shell_casing_offset Vec2
+---@field ragdoll_fx_on_collision RAGDOLL_FX::Enum
+---@field mWhoShot EntityID
+---@field mWhoShotEntityTypeID EntityTypeID
+---@field mShooterHerdId integer
+---@field mStartingLifetime integer
+---@field mEntityThatShot EntityID
+---@field mTriggers ProjectileTriggers
+---@field mDamagedEntities VEC_ENTITY
+---@field mInitialSpeed number
+
+---@alias ProjectileComponent.field
+---| '"lifetime"' integer
+---| '"lifetime_randomness"' integer
+---| '"on_lifetime_out_explode"' boolean
+---| '"collide_with_world"' boolean
+---| '"speed_min"' number
+---| '"speed_max"' number
+---| '"friction"' number
+---| '"direction_random_rad"' number
+---| '"direction_nonrandom_rad"' number
+---| '"lob_min"' number
+---| '"lob_max"' number
+---| '"camera_shake_when_shot"' number
+---| '"shoot_light_flash_radius"' number
+---| '"shoot_light_flash_r"' integer
+---| '"shoot_light_flash_g"' integer
+---| '"shoot_light_flash_b"' integer
+---| '"create_shell_casing"' boolean
+---| '"shell_casing_material"' string
+---| '"muzzle_flash_file"' string
+---| '"bounces_left"' integer
+---| '"bounce_energy"' number
+---| '"bounce_always"' boolean
+---| '"bounce_at_any_angle"' boolean
+---| '"attach_to_parent_trigger"' boolean
+---| '"bounce_fx_file"' string
+---| '"angular_velocity"' number
+---| '"velocity_sets_rotation"' boolean
+---| '"velocity_sets_scale"' boolean
+---| '"velocity_sets_scale_coeff"' number
+---| '"velocity_sets_y_flip"' boolean
+---| '"velocity_updates_animation"' number
+---| '"ground_penetration_coeff"' number
+---| '"ground_penetration_max_durability_to_destroy"' integer
+---| '"go_through_this_material"' string
+---| '"do_moveto_update"' boolean
+---| '"on_death_duplicate_remaining"' integer
+---| '"on_death_gfx_leave_sprite"' boolean
+---| '"on_death_explode"' boolean
+---| '"on_death_emit_particle"' boolean
+---| '"on_death_emit_particle_count"' integer
+---| '"die_on_liquid_collision"' boolean
+---| '"die_on_low_velocity"' boolean
+---| '"die_on_low_velocity_limit"' number
+---| '"on_death_emit_particle_type"' string
+---| '"on_death_particle_check_concrete"' boolean
+---| '"ground_collision_fx"' boolean
+---| '"explosion_dont_damage_shooter"' boolean
+---| '"on_death_item_pickable_radius"' number
+---| '"penetrate_world"' boolean
+---| '"penetrate_world_velocity_coeff"' number
+---| '"penetrate_entities"' boolean
+---| '"on_collision_die"' boolean
+---| '"on_collision_remove_projectile"' boolean
+---| '"on_collision_spawn_entity"' boolean
+---| '"spawn_entity"' string
+---| '"spawn_entity_is_projectile"' boolean
+---| '"physics_impulse_coeff"' number
+---| '"damage_every_x_frames"' integer
+---| '"damage_scaled_by_speed"' boolean
+---| '"damage_scale_max_speed"' number
+---| '"collide_with_entities"' boolean
+---| '"collide_with_tag"' string
+---| '"dont_collide_with_tag"' string
+---| '"collide_with_shooter_frames"' integer
+---| '"friendly_fire"' boolean
+---| '"damage"' number
+---| '"knockback_force"' number
+---| '"ragdoll_force_multiplier"' number
+---| '"hit_particle_force_multiplier"' number
+---| '"blood_count_multiplier"' number
+---| '"damage_game_effect_entities"' string
+---| '"never_hit_player"' boolean
+---| '"collect_materials_to_shooter"' boolean
+---| '"play_damage_sounds"' boolean
+---| '"mLastFrameDamaged"' integer
+---| '"config"' ConfigGunActionInfo
+---| '"config_explosion"' ConfigExplosion
+---| '"damage_by_type"' ConfigDamagesByType
+---| '"damage_critical"' ConfigDamageCritical
+---| '"projectile_type"' PROJECTILE_TYPE::Enum
+---| '"shell_casing_offset"' Vec2
+---| '"ragdoll_fx_on_collision"' RAGDOLL_FX::Enum
+---| '"mWhoShot"' EntityID
+---| '"mWhoShotEntityTypeID"' EntityTypeID
+---| '"mShooterHerdId"' integer
+---| '"mStartingLifetime"' integer
+---| '"mEntityThatShot"' EntityID
+---| '"mTriggers"' ProjectileTriggers
+---| '"mDamagedEntities"' VEC_ENTITY
+---| '"mInitialSpeed"' number
+
+---@class (exact) RotateTowardsComponents
+---@overload fun(): RotateTowardsComponent
+---@field enabled fun(self: RotateTowardsComponents, enabled: boolean): RotateTowardsComponents
+---@field tagged fun(self: RotateTowardsComponents, tag: string): RotateTowardsComponents
+---@field with_field fun(self: RotateTowardsComponents, field: RotateTowardsComponent.field, value: any): RotateTowardsComponents
+---@field add fun(self: RotateTowardsComponents, fields: RotateTowardsComponent.partial): RotateTowardsComponent
+
+---@class (exact) RotateTowardsComponent.partial
+---@field entity_with_tag string?
+
+---@class (exact) RotateTowardsComponent : Component
+---@field entity_with_tag string
+
+---@alias RotateTowardsComponent.field
+---| '"entity_with_tag"' string
+
+---@class (exact) SetLightAlphaFromVelocityComponents
+---@overload fun(): SetLightAlphaFromVelocityComponent
+---@field enabled fun(self: SetLightAlphaFromVelocityComponents, enabled: boolean): SetLightAlphaFromVelocityComponents
+---@field tagged fun(self: SetLightAlphaFromVelocityComponents, tag: string): SetLightAlphaFromVelocityComponents
+---@field with_field fun(self: SetLightAlphaFromVelocityComponents, field: SetLightAlphaFromVelocityComponent.field, value: any): SetLightAlphaFromVelocityComponents
+---@field add fun(self: SetLightAlphaFromVelocityComponents, fields: SetLightAlphaFromVelocityComponent.partial): SetLightAlphaFromVelocityComponent
+
+---@class (exact) SetLightAlphaFromVelocityComponent.partial
+---@field max_velocity number?
+---@field mPrevPosition Vec2?
+
+---@class (exact) SetLightAlphaFromVelocityComponent : Component
+---@field max_velocity number
+---@field mPrevPosition Vec2
+
+---@alias SetLightAlphaFromVelocityComponent.field
+---| '"max_velocity"' number
+---| '"mPrevPosition"' Vec2
+
+---@class (exact) SetStartVelocityComponents
+---@overload fun(): SetStartVelocityComponent
+---@field enabled fun(self: SetStartVelocityComponents, enabled: boolean): SetStartVelocityComponents
+---@field tagged fun(self: SetStartVelocityComponents, tag: string): SetStartVelocityComponents
+---@field with_field fun(self: SetStartVelocityComponents, field: SetStartVelocityComponent.field, value: any): SetStartVelocityComponents
+---@field add fun(self: SetStartVelocityComponents, fields: SetStartVelocityComponent.partial): SetStartVelocityComponent
+
+---@class (exact) SetStartVelocityComponent.partial
+---@field velocity Vec2?
+---@field randomize_angle ValueRange?
+---@field randomize_speed ValueRange?
+
+---@class (exact) SetStartVelocityComponent : Component
+---@field velocity Vec2
+---@field randomize_angle ValueRange
+---@field randomize_speed ValueRange
+
+---@alias SetStartVelocityComponent.field
+---| '"velocity"' Vec2
+---| '"randomize_angle"' ValueRange
+---| '"randomize_speed"' ValueRange
+
+---@class (exact) ShotEffectComponents
+---@overload fun(): ShotEffectComponent
+---@field enabled fun(self: ShotEffectComponents, enabled: boolean): ShotEffectComponents
+---@field tagged fun(self: ShotEffectComponents, tag: string): ShotEffectComponents
+---@field with_field fun(self: ShotEffectComponents, field: ShotEffectComponent.field, value: any): ShotEffectComponents
+---@field add fun(self: ShotEffectComponents, fields: ShotEffectComponent.partial): ShotEffectComponent
+
+---@class (exact) ShotEffectComponent.partial
+---@field extra_modifier string?
+---@field condition_effect GAME_EFFECT::Enum?
+---@field condition_status StatusEffectType?
+
+---@class (exact) ShotEffectComponent : Component
+---@field extra_modifier string
+---@field condition_effect GAME_EFFECT::Enum
+---@field condition_status StatusEffectType
+
+---@alias ShotEffectComponent.field
+---| '"extra_modifier"' string
+---| '"condition_effect"' GAME_EFFECT::Enum
+---| '"condition_status"' StatusEffectType
+
+---@class (exact) SimplePhysicsComponents
+---@overload fun(): SimplePhysicsComponent
+---@field enabled fun(self: SimplePhysicsComponents, enabled: boolean): SimplePhysicsComponents
+---@field tagged fun(self: SimplePhysicsComponents, tag: string): SimplePhysicsComponents
+---@field with_field fun(self: SimplePhysicsComponents, field: SimplePhysicsComponent.field, value: any): SimplePhysicsComponents
+---@field add fun(self: SimplePhysicsComponents, fields: SimplePhysicsComponent.partial): SimplePhysicsComponent
+
+---@class (exact) SimplePhysicsComponent.partial
+---@field can_go_up boolean?
+---@field mOldPosition Vec2?
+
+---@class (exact) SimplePhysicsComponent : Component
+---@field can_go_up boolean
+---@field mOldPosition Vec2
+
+---@alias SimplePhysicsComponent.field
+---| '"can_go_up"' boolean
+---| '"mOldPosition"' Vec2
+
+---@class (exact) SineWaveComponents
+---@overload fun(): SineWaveComponent
+---@field enabled fun(self: SineWaveComponents, enabled: boolean): SineWaveComponents
+---@field tagged fun(self: SineWaveComponents, tag: string): SineWaveComponents
+---@field with_field fun(self: SineWaveComponents, field: SineWaveComponent.field, value: any): SineWaveComponents
+---@field add fun(self: SineWaveComponents, fields: SineWaveComponent.partial): SineWaveComponent
+
+---@class (exact) SineWaveComponent.partial
+---@field sinewave_freq number?
+---@field sinewave_m number?
+---@field lifetime integer?
+
+---@class (exact) SineWaveComponent : Component
+---@field sinewave_freq number
+---@field sinewave_m number
+---@field lifetime integer
+
+---@alias SineWaveComponent.field
+---| '"sinewave_freq"' number
+---| '"sinewave_m"' number
+---| '"lifetime"' integer
+
+---@class (exact) SpriteAnimatorComponents
+---@overload fun(): SpriteAnimatorComponent
+---@field enabled fun(self: SpriteAnimatorComponents, enabled: boolean): SpriteAnimatorComponents
+---@field tagged fun(self: SpriteAnimatorComponents, tag: string): SpriteAnimatorComponents
+---@field with_field fun(self: SpriteAnimatorComponents, field: SpriteAnimatorComponent.field, value: any): SpriteAnimatorComponents
+---@field add fun(self: SpriteAnimatorComponents, fields: SpriteAnimatorComponent.partial): SpriteAnimatorComponent
+
+---@class (exact) SpriteAnimatorComponent.partial
+---@field target_sprite_comp_name string?
+---@field rotate_to_surface_normal boolean?
+---@field mStates STACK_ANIMATIONSTATE?
+---@field mCachedTargetSpriteTag ComponentTags?
+---@field mSendOnFinishedMessageName string?
+
+---@class (exact) SpriteAnimatorComponent : Component
+---@field target_sprite_comp_name string
+---@field rotate_to_surface_normal boolean
+---@field mStates STACK_ANIMATIONSTATE
+---@field mCachedTargetSpriteTag ComponentTags
+---@field mSendOnFinishedMessageName string
+
+---@alias SpriteAnimatorComponent.field
+---| '"target_sprite_comp_name"' string
+---| '"rotate_to_surface_normal"' boolean
+---| '"mStates"' STACK_ANIMATIONSTATE
+---| '"mCachedTargetSpriteTag"' ComponentTags
+---| '"mSendOnFinishedMessageName"' string
+
+---@class (exact) SpriteComponents
+---@overload fun(): SpriteComponent
+---@field enabled fun(self: SpriteComponents, enabled: boolean): SpriteComponents
+---@field tagged fun(self: SpriteComponents, tag: string): SpriteComponents
+---@field with_field fun(self: SpriteComponents, field: SpriteComponent.field, value: any): SpriteComponents
+---@field add fun(self: SpriteComponents, fields: SpriteComponent.partial): SpriteComponent
+
+---@class (exact) SpriteComponent.partial
+---@field image_file string?
+---@field ui_is_parent boolean?
+---@field is_text_sprite boolean?
+---@field offset_x number?
+---@field offset_y number?
+---@field alpha number?
+---@field visible boolean?
+---@field emissive boolean?
+---@field additive boolean?
+---@field fog_of_war_hole boolean?
+---@field smooth_filtering boolean?
+---@field rect_animation string?
+---@field next_rect_animation string?
+---@field text string?
+---@field z_index number?
+---@field update_transform boolean?
+---@field update_transform_rotation boolean?
+---@field kill_entity_after_finished boolean?
+---@field has_special_scale boolean?
+---@field special_scale_x number?
+---@field special_scale_y number?
+---@field never_ragdollify_on_death boolean?
+---@field transform_offset Vec2?
+---@field offset_animator_offset Vec2?
+---@field mSprite as::Sprite*?
+---@field mRenderList SpriteRenderList*?
+---@field mRenderListHandle integer?
+
+---@class (exact) SpriteComponent : Component
+---@field image_file string
+---@field ui_is_parent boolean
+---@field is_text_sprite boolean
+---@field offset_x number
+---@field offset_y number
+---@field alpha number
+---@field visible boolean
+---@field emissive boolean
+---@field additive boolean
+---@field fog_of_war_hole boolean
+---@field smooth_filtering boolean
+---@field rect_animation string
+---@field next_rect_animation string
+---@field text string
+---@field z_index number
+---@field update_transform boolean
+---@field update_transform_rotation boolean
+---@field kill_entity_after_finished boolean
+---@field has_special_scale boolean
+---@field special_scale_x number
+---@field special_scale_y number
+---@field never_ragdollify_on_death boolean
+---@field transform_offset Vec2
+---@field offset_animator_offset Vec2
+---@field mSprite as::Sprite*
+---@field mRenderList SpriteRenderList*
+---@field mRenderListHandle integer
+
+---@alias SpriteComponent.field
+---| '"image_file"' string
+---| '"ui_is_parent"' boolean
+---| '"is_text_sprite"' boolean
+---| '"offset_x"' number
+---| '"offset_y"' number
+---| '"alpha"' number
+---| '"visible"' boolean
+---| '"emissive"' boolean
+---| '"additive"' boolean
+---| '"fog_of_war_hole"' boolean
+---| '"smooth_filtering"' boolean
+---| '"rect_animation"' string
+---| '"next_rect_animation"' string
+---| '"text"' string
+---| '"z_index"' number
+---| '"update_transform"' boolean
+---| '"update_transform_rotation"' boolean
+---| '"kill_entity_after_finished"' boolean
+---| '"has_special_scale"' boolean
+---| '"special_scale_x"' number
+---| '"special_scale_y"' number
+---| '"never_ragdollify_on_death"' boolean
+---| '"transform_offset"' Vec2
+---| '"offset_animator_offset"' Vec2
+---| '"mSprite"' as::Sprite*
+---| '"mRenderList"' SpriteRenderList*
+---| '"mRenderListHandle"' integer
+
+---@class (exact) SpriteOffsetAnimatorComponents
+---@overload fun(): SpriteOffsetAnimatorComponent
+---@field enabled fun(self: SpriteOffsetAnimatorComponents, enabled: boolean): SpriteOffsetAnimatorComponents
+---@field tagged fun(self: SpriteOffsetAnimatorComponents, tag: string): SpriteOffsetAnimatorComponents
+---@field with_field fun(self: SpriteOffsetAnimatorComponents, field: SpriteOffsetAnimatorComponent.field, value: any): SpriteOffsetAnimatorComponents
+---@field add fun(self: SpriteOffsetAnimatorComponents, fields: SpriteOffsetAnimatorComponent.partial): SpriteOffsetAnimatorComponent
+
+---@class (exact) SpriteOffsetAnimatorComponent.partial
+---@field x_amount number?
+---@field x_speed number?
+---@field y_amount number?
+---@field y_speed number?
+---@field sprite_id integer?
+---@field x_phase number?
+---@field x_phase_offset number?
+
+---@class (exact) SpriteOffsetAnimatorComponent : Component
+---@field x_amount number
+---@field x_speed number
+---@field y_amount number
+---@field y_speed number
+---@field sprite_id integer
+---@field x_phase number
+---@field x_phase_offset number
+
+---@alias SpriteOffsetAnimatorComponent.field
+---| '"x_amount"' number
+---| '"x_speed"' number
+---| '"y_amount"' number
+---| '"y_speed"' number
+---| '"sprite_id"' integer
+---| '"x_phase"' number
+---| '"x_phase_offset"' number
+
+---@class (exact) SpriteParticleEmitterComponents
+---@overload fun(): SpriteParticleEmitterComponent
+---@field enabled fun(self: SpriteParticleEmitterComponents, enabled: boolean): SpriteParticleEmitterComponents
+---@field tagged fun(self: SpriteParticleEmitterComponents, tag: string): SpriteParticleEmitterComponents
+---@field with_field fun(self: SpriteParticleEmitterComponents, field: SpriteParticleEmitterComponent.field, value: any): SpriteParticleEmitterComponents
+---@field add fun(self: SpriteParticleEmitterComponents, fields: SpriteParticleEmitterComponent.partial): SpriteParticleEmitterComponent
+
+---@class (exact) SpriteParticleEmitterComponent.partial
+---@field sprite_file string?
+---@field sprite_centered boolean?
+---@field sprite_random_rotation boolean?
+---@field render_back boolean?
+---@field delay number?
+---@field lifetime number?
+---@field additive boolean?
+---@field emissive boolean?
+---@field velocity_slowdown number?
+---@field rotation number?
+---@field angular_velocity number?
+---@field use_velocity_as_rotation boolean?
+---@field use_rotation_from_velocity_component boolean?
+---@field use_rotation_from_entity boolean?
+---@field entity_velocity_multiplier number?
+---@field z_index number?
+---@field randomize_position_inside_hitbox boolean?
+---@field velocity_always_away_from_center boolean?
+---@field camera_bound boolean?
+---@field camera_distance number?
+---@field is_emitting boolean?
+---@field count_min integer?
+---@field count_max integer?
+---@field emission_interval_min_frames integer?
+---@field emission_interval_max_frames integer?
+---@field entity_file string?
+---@field color types::fcolor?
+---@field color_change types::fcolor?
+---@field velocity Vec2?
+---@field gravity Vec2?
+---@field scale Vec2?
+---@field scale_velocity Vec2?
+---@field randomize_lifetime ValueRange?
+---@field randomize_position types::aabb?
+---@field randomize_velocity types::aabb?
+---@field randomize_scale types::aabb?
+---@field randomize_rotation ValueRange?
+---@field randomize_angular_velocity ValueRange?
+---@field randomize_alpha ValueRange?
+---@field randomize_animation_speed_coeff ValueRange?
+---@field expand_randomize_position Vec2?
+---@field mNextEmitFrame integer?
+
+---@class (exact) SpriteParticleEmitterComponent : Component
+---@field sprite_file string
+---@field sprite_centered boolean
+---@field sprite_random_rotation boolean
+---@field render_back boolean
+---@field delay number
+---@field lifetime number
+---@field additive boolean
+---@field emissive boolean
+---@field velocity_slowdown number
+---@field rotation number
+---@field angular_velocity number
+---@field use_velocity_as_rotation boolean
+---@field use_rotation_from_velocity_component boolean
+---@field use_rotation_from_entity boolean
+---@field entity_velocity_multiplier number
+---@field z_index number
+---@field randomize_position_inside_hitbox boolean
+---@field velocity_always_away_from_center boolean
+---@field camera_bound boolean
+---@field camera_distance number
+---@field is_emitting boolean
+---@field count_min integer
+---@field count_max integer
+---@field emission_interval_min_frames integer
+---@field emission_interval_max_frames integer
+---@field entity_file string
+---@field color types::fcolor
+---@field color_change types::fcolor
+---@field velocity Vec2
+---@field gravity Vec2
+---@field scale Vec2
+---@field scale_velocity Vec2
+---@field randomize_lifetime ValueRange
+---@field randomize_position types::aabb
+---@field randomize_velocity types::aabb
+---@field randomize_scale types::aabb
+---@field randomize_rotation ValueRange
+---@field randomize_angular_velocity ValueRange
+---@field randomize_alpha ValueRange
+---@field randomize_animation_speed_coeff ValueRange
+---@field expand_randomize_position Vec2
+---@field mNextEmitFrame integer
+
+---@alias SpriteParticleEmitterComponent.field
+---| '"sprite_file"' string
+---| '"sprite_centered"' boolean
+---| '"sprite_random_rotation"' boolean
+---| '"render_back"' boolean
+---| '"delay"' number
+---| '"lifetime"' number
+---| '"additive"' boolean
+---| '"emissive"' boolean
+---| '"velocity_slowdown"' number
+---| '"rotation"' number
+---| '"angular_velocity"' number
+---| '"use_velocity_as_rotation"' boolean
+---| '"use_rotation_from_velocity_component"' boolean
+---| '"use_rotation_from_entity"' boolean
+---| '"entity_velocity_multiplier"' number
+---| '"z_index"' number
+---| '"randomize_position_inside_hitbox"' boolean
+---| '"velocity_always_away_from_center"' boolean
+---| '"camera_bound"' boolean
+---| '"camera_distance"' number
+---| '"is_emitting"' boolean
+---| '"count_min"' integer
+---| '"count_max"' integer
+---| '"emission_interval_min_frames"' integer
+---| '"emission_interval_max_frames"' integer
+---| '"entity_file"' string
+---| '"color"' types::fcolor
+---| '"color_change"' types::fcolor
+---| '"velocity"' Vec2
+---| '"gravity"' Vec2
+---| '"scale"' Vec2
+---| '"scale_velocity"' Vec2
+---| '"randomize_lifetime"' ValueRange
+---| '"randomize_position"' types::aabb
+---| '"randomize_velocity"' types::aabb
+---| '"randomize_scale"' types::aabb
+---| '"randomize_rotation"' ValueRange
+---| '"randomize_angular_velocity"' ValueRange
+---| '"randomize_alpha"' ValueRange
+---| '"randomize_animation_speed_coeff"' ValueRange
+---| '"expand_randomize_position"' Vec2
+---| '"mNextEmitFrame"' integer
+
+---@class (exact) SpriteStainsComponents
+---@overload fun(): SpriteStainsComponent
+---@field enabled fun(self: SpriteStainsComponents, enabled: boolean): SpriteStainsComponents
+---@field tagged fun(self: SpriteStainsComponents, tag: string): SpriteStainsComponents
+---@field with_field fun(self: SpriteStainsComponents, field: SpriteStainsComponent.field, value: any): SpriteStainsComponents
+---@field add fun(self: SpriteStainsComponents, fields: SpriteStainsComponent.partial): SpriteStainsComponent
+
+---@class (exact) SpriteStainsComponent.partial
+---@field sprite_id integer?
+---@field fade_stains_towards_srite_top boolean?
+---@field stain_shaken_drop_chance_multiplier integer?
+---@field mData SpriteStains*?
+---@field mTextureHandle VirtualTextureHandle?
+---@field mState SpriteStainsState?
+
+---@class (exact) SpriteStainsComponent : Component
+---@field sprite_id integer
+---@field fade_stains_towards_srite_top boolean
+---@field stain_shaken_drop_chance_multiplier integer
+---@field mData SpriteStains*
+---@field mTextureHandle VirtualTextureHandle
+---@field mState SpriteStainsState
+
+---@alias SpriteStainsComponent.field
+---| '"sprite_id"' integer
+---| '"fade_stains_towards_srite_top"' boolean
+---| '"stain_shaken_drop_chance_multiplier"' integer
+---| '"mData"' SpriteStains*
+---| '"mTextureHandle"' VirtualTextureHandle
+---| '"mState"' SpriteStainsState
+
+---@class (exact) StatusEffectDataComponents
+---@overload fun(): StatusEffectDataComponent
+---@field enabled fun(self: StatusEffectDataComponents, enabled: boolean): StatusEffectDataComponents
+---@field tagged fun(self: StatusEffectDataComponents, tag: string): StatusEffectDataComponents
+---@field with_field fun(self: StatusEffectDataComponents, field: StatusEffectDataComponent.field, value: any): StatusEffectDataComponents
+---@field add fun(self: StatusEffectDataComponents, fields: StatusEffectDataComponent.partial): StatusEffectDataComponent
+
+---@class (exact) StatusEffectDataComponent.partial
+---@field stain_effects VECTOR_FLOAT?
+---@field stain_effect_cooldowns VECTOR_INT32?
+---@field effects_previous VECTOR_FLOAT?
+---@field ingestion_effects VECTOR_FLOAT?
+---@field ingestion_effect_causes VEC_OF_MATERIALS?
+---@field ingestion_effect_causes_many VECTOR_INT32?
+---@field mLastAttackingPlayerFrame integer?
+---@field mStainEffectsSmoothedForUI VECTOR_FLOAT?
+---@field mHasChildIconsCached boolean?
+
+---@class (exact) StatusEffectDataComponent : Component
+---@field stain_effects VECTOR_FLOAT
+---@field stain_effect_cooldowns VECTOR_INT32
+---@field effects_previous VECTOR_FLOAT
+---@field ingestion_effects VECTOR_FLOAT
+---@field ingestion_effect_causes VEC_OF_MATERIALS
+---@field ingestion_effect_causes_many VECTOR_INT32
+---@field mLastAttackingPlayerFrame integer
+---@field mStainEffectsSmoothedForUI VECTOR_FLOAT
+---@field mHasChildIconsCached boolean
+
+---@alias StatusEffectDataComponent.field
+---| '"stain_effects"' VECTOR_FLOAT
+---| '"stain_effect_cooldowns"' VECTOR_INT32
+---| '"effects_previous"' VECTOR_FLOAT
+---| '"ingestion_effects"' VECTOR_FLOAT
+---| '"ingestion_effect_causes"' VEC_OF_MATERIALS
+---| '"ingestion_effect_causes_many"' VECTOR_INT32
+---| '"mLastAttackingPlayerFrame"' integer
+---| '"mStainEffectsSmoothedForUI"' VECTOR_FLOAT
+---| '"mHasChildIconsCached"' boolean
+
+---@class (exact) StreamingKeepAliveComponents
+---@overload fun(): StreamingKeepAliveComponent
+---@field enabled fun(self: StreamingKeepAliveComponents, enabled: boolean): StreamingKeepAliveComponents
+---@field tagged fun(self: StreamingKeepAliveComponents, tag: string): StreamingKeepAliveComponents
+---@field with_field fun(self: StreamingKeepAliveComponents, field: StreamingKeepAliveComponent.field, value: any): StreamingKeepAliveComponents
+---@field add fun(self: StreamingKeepAliveComponents, fields: StreamingKeepAliveComponent.partial): StreamingKeepAliveComponent
+
+---@class (exact) StreamingKeepAliveComponent.partial
+---@field TEMP_TEMPY number?
+---@field TEMP_TEMP_TEMP number?
+
+---@class (exact) StreamingKeepAliveComponent : Component
+---@field TEMP_TEMPY number
+---@field TEMP_TEMP_TEMP number
+
+---@alias StreamingKeepAliveComponent.field
+---| '"TEMP_TEMPY"' number
+---| '"TEMP_TEMP_TEMP"' number
+
+---@class (exact) TelekinesisComponents
+---@overload fun(): TelekinesisComponent
+---@field enabled fun(self: TelekinesisComponents, enabled: boolean): TelekinesisComponents
+---@field tagged fun(self: TelekinesisComponents, tag: string): TelekinesisComponents
+---@field with_field fun(self: TelekinesisComponents, field: TelekinesisComponent.field, value: any): TelekinesisComponents
+---@field add fun(self: TelekinesisComponents, fields: TelekinesisComponent.partial): TelekinesisComponent
+
+---@class (exact) TelekinesisComponent.partial
+---@field min_size integer?
+---@field max_size integer?
+---@field radius number?
+---@field throw_speed number?
+---@field target_distance number?
+---@field kick_to_use boolean?
+---@field mState integer?
+---@field mBodyID integer?
+---@field mStartBodyMaxExtent number?
+---@field mStartAimAngle number?
+---@field mStartBodyAngle number?
+---@field mStartBodyDistance number?
+---@field mStartTime number?
+---@field mMinBodyDistance number?
+---@field mInteract boolean?
+
+---@class (exact) TelekinesisComponent : Component
+---@field min_size integer
+---@field max_size integer
+---@field radius number
+---@field throw_speed number
+---@field target_distance number
+---@field kick_to_use boolean
+---@field mState integer
+---@field mBodyID integer
+---@field mStartBodyMaxExtent number
+---@field mStartAimAngle number
+---@field mStartBodyAngle number
+---@field mStartBodyDistance number
+---@field mStartTime number
+---@field mMinBodyDistance number
+---@field mInteract boolean
+
+---@alias TelekinesisComponent.field
+---| '"min_size"' integer
+---| '"max_size"' integer
+---| '"radius"' number
+---| '"throw_speed"' number
+---| '"target_distance"' number
+---| '"kick_to_use"' boolean
+---| '"mState"' integer
+---| '"mBodyID"' integer
+---| '"mStartBodyMaxExtent"' number
+---| '"mStartAimAngle"' number
+---| '"mStartBodyAngle"' number
+---| '"mStartBodyDistance"' number
+---| '"mStartTime"' number
+---| '"mMinBodyDistance"' number
+---| '"mInteract"' boolean
+
+---@class (exact) TeleportProjectileComponents
+---@overload fun(): TeleportProjectileComponent
+---@field enabled fun(self: TeleportProjectileComponents, enabled: boolean): TeleportProjectileComponents
+---@field tagged fun(self: TeleportProjectileComponents, tag: string): TeleportProjectileComponents
+---@field with_field fun(self: TeleportProjectileComponents, field: TeleportProjectileComponent.field, value: any): TeleportProjectileComponents
+---@field add fun(self: TeleportProjectileComponents, fields: TeleportProjectileComponent.partial): TeleportProjectileComponent
+
+---@class (exact) TeleportProjectileComponent.partial
+---@field min_distance_from_wall number?
+---@field actionable_lifetime integer?
+---@field reset_shooter_y_vel boolean?
+---@field mWhoShot EntityID?
+
+---@class (exact) TeleportProjectileComponent : Component
+---@field min_distance_from_wall number
+---@field actionable_lifetime integer
+---@field reset_shooter_y_vel boolean
+---@field mWhoShot EntityID
+
+---@alias TeleportProjectileComponent.field
+---| '"min_distance_from_wall"' number
+---| '"actionable_lifetime"' integer
+---| '"reset_shooter_y_vel"' boolean
+---| '"mWhoShot"' EntityID
+
+---@class (exact) TextLogComponents
+---@overload fun(): TextLogComponent
+---@field enabled fun(self: TextLogComponents, enabled: boolean): TextLogComponents
+---@field tagged fun(self: TextLogComponents, tag: string): TextLogComponents
+---@field with_field fun(self: TextLogComponents, field: TextLogComponent.field, value: any): TextLogComponents
+---@field add fun(self: TextLogComponents, fields: TextLogComponent.partial): TextLogComponent
+
+---@class (exact) TextLogComponent.partial
+---@field key string?
+---@field image_filename string?
+---@field mCachedName string?
+
+---@class (exact) TextLogComponent : Component
+---@field key string
+---@field image_filename string
+---@field mCachedName string
+
+---@alias TextLogComponent.field
+---| '"key"' string
+---| '"image_filename"' string
+---| '"mCachedName"' string
+
+---@class (exact) TorchComponents
+---@overload fun(): TorchComponent
+---@field enabled fun(self: TorchComponents, enabled: boolean): TorchComponents
+---@field tagged fun(self: TorchComponents, tag: string): TorchComponents
+---@field with_field fun(self: TorchComponents, field: TorchComponent.field, value: any): TorchComponents
+---@field add fun(self: TorchComponents, fields: TorchComponent.partial): TorchComponent
+
+---@class (exact) TorchComponent.partial
+---@field probability_of_ignition_attempt integer?
+---@field suffocation_check_offset_y number?
+---@field frames_suffocated_to_extinguish integer?
+---@field extinguishable boolean?
+---@field fire_audio_weight number?
+---@field mFlickerOffset number?
+---@field mFramesSuffocated integer?
+---@field mIsOn boolean?
+---@field mFireIsBurningPrev boolean?
+
+---@class (exact) TorchComponent : Component
+---@field probability_of_ignition_attempt integer
+---@field suffocation_check_offset_y number
+---@field frames_suffocated_to_extinguish integer
+---@field extinguishable boolean
+---@field fire_audio_weight number
+---@field mFlickerOffset number
+---@field mFramesSuffocated integer
+---@field mIsOn boolean
+---@field mFireIsBurningPrev boolean
+
+---@alias TorchComponent.field
+---| '"probability_of_ignition_attempt"' integer
+---| '"suffocation_check_offset_y"' number
+---| '"frames_suffocated_to_extinguish"' integer
+---| '"extinguishable"' boolean
+---| '"fire_audio_weight"' number
+---| '"mFlickerOffset"' number
+---| '"mFramesSuffocated"' integer
+---| '"mIsOn"' boolean
+---| '"mFireIsBurningPrev"' boolean
+
+---@class (exact) UIIconComponents
+---@overload fun(): UIIconComponent
+---@field enabled fun(self: UIIconComponents, enabled: boolean): UIIconComponents
+---@field tagged fun(self: UIIconComponents, tag: string): UIIconComponents
+---@field with_field fun(self: UIIconComponents, field: UIIconComponent.field, value: any): UIIconComponents
+---@field add fun(self: UIIconComponents, fields: UIIconComponent.partial): UIIconComponent
+
+---@class (exact) UIIconComponent.partial
+---@field icon_sprite_file string?
+---@field name string?
+---@field description string?
+---@field display_above_head boolean?
+---@field display_in_hud boolean?
+---@field is_perk boolean?
+
+---@class (exact) UIIconComponent : Component
+---@field icon_sprite_file string
+---@field name string
+---@field description string
+---@field display_above_head boolean
+---@field display_in_hud boolean
+---@field is_perk boolean
+
+---@alias UIIconComponent.field
+---| '"icon_sprite_file"' string
+---| '"name"' string
+---| '"description"' string
+---| '"display_above_head"' boolean
+---| '"display_in_hud"' boolean
+---| '"is_perk"' boolean
+
+---@class (exact) UIInfoComponents
+---@overload fun(): UIInfoComponent
+---@field enabled fun(self: UIInfoComponents, enabled: boolean): UIInfoComponents
+---@field tagged fun(self: UIInfoComponents, tag: string): UIInfoComponents
+---@field with_field fun(self: UIInfoComponents, field: UIInfoComponent.field, value: any): UIInfoComponents
+---@field add fun(self: UIInfoComponents, fields: UIInfoComponent.partial): UIInfoComponent
+
+---@class (exact) UIInfoComponent.partial
+---@field name string?
+
+---@class (exact) UIInfoComponent : Component
+---@field name string
+
+---@alias UIInfoComponent.field
+---| '"name"' string
+
+---@class (exact) VariableStorageComponents
+---@overload fun(): VariableStorageComponent
+---@field enabled fun(self: VariableStorageComponents, enabled: boolean): VariableStorageComponents
+---@field tagged fun(self: VariableStorageComponents, tag: string): VariableStorageComponents
+---@field with_field fun(self: VariableStorageComponents, field: VariableStorageComponent.field, value: any): VariableStorageComponents
+---@field add fun(self: VariableStorageComponents, fields: VariableStorageComponent.partial): VariableStorageComponent
+
+---@class (exact) VariableStorageComponent.partial
+---@field name string?
+---@field value_string string?
+---@field value_int integer?
+---@field value_bool boolean?
+---@field value_float number?
+
+---@class (exact) VariableStorageComponent : Component
+---@field name string
+---@field value_string string
+---@field value_int integer
+---@field value_bool boolean
+---@field value_float number
+
+---@alias VariableStorageComponent.field
+---| '"name"' string
+---| '"value_string"' string
+---| '"value_int"' integer
+---| '"value_bool"' boolean
+---| '"value_float"' number
+
+---@class (exact) VelocityComponents
+---@overload fun(): VelocityComponent
+---@field enabled fun(self: VelocityComponents, enabled: boolean): VelocityComponents
+---@field tagged fun(self: VelocityComponents, tag: string): VelocityComponents
+---@field with_field fun(self: VelocityComponents, field: VelocityComponent.field, value: any): VelocityComponents
+---@field add fun(self: VelocityComponents, fields: VelocityComponent.partial): VelocityComponent
+
+---@class (exact) VelocityComponent.partial
+---@field gravity_x number?
+---@field gravity_y number?
+---@field mass number?
+---@field air_friction number?
+---@field terminal_velocity number?
+---@field apply_terminal_velocity boolean?
+---@field updates_velocity boolean?
+---@field displace_liquid boolean?
+---@field affect_physics_bodies boolean?
+---@field limit_to_max_velocity boolean?
+---@field liquid_death_threshold integer?
+---@field liquid_drag number?
+---@field mVelocity Vec2?
+---@field mPrevVelocity Vec2?
+---@field mLatestLiquidHitCount integer?
+---@field mAverageLiquidHitCount integer?
+---@field mPrevPosition Vec2?
+
+---@class (exact) VelocityComponent : Component
+---@field gravity_x number
+---@field gravity_y number
+---@field mass number
+---@field air_friction number
+---@field terminal_velocity number
+---@field apply_terminal_velocity boolean
+---@field updates_velocity boolean
+---@field displace_liquid boolean
+---@field affect_physics_bodies boolean
+---@field limit_to_max_velocity boolean
+---@field liquid_death_threshold integer
+---@field liquid_drag number
+---@field mVelocity Vec2
+---@field mPrevVelocity Vec2
+---@field mLatestLiquidHitCount integer
+---@field mAverageLiquidHitCount integer
+---@field mPrevPosition Vec2
+
+---@alias VelocityComponent.field
+---| '"gravity_x"' number
+---| '"gravity_y"' number
+---| '"mass"' number
+---| '"air_friction"' number
+---| '"terminal_velocity"' number
+---| '"apply_terminal_velocity"' boolean
+---| '"updates_velocity"' boolean
+---| '"displace_liquid"' boolean
+---| '"affect_physics_bodies"' boolean
+---| '"limit_to_max_velocity"' boolean
+---| '"liquid_death_threshold"' integer
+---| '"liquid_drag"' number
+---| '"mVelocity"' Vec2
+---| '"mPrevVelocity"' Vec2
+---| '"mLatestLiquidHitCount"' integer
+---| '"mAverageLiquidHitCount"' integer
+---| '"mPrevPosition"' Vec2
+
+---@class (exact) VerletPhysicsComponents
+---@overload fun(): VerletPhysicsComponent
+---@field enabled fun(self: VerletPhysicsComponents, enabled: boolean): VerletPhysicsComponents
+---@field tagged fun(self: VerletPhysicsComponents, tag: string): VerletPhysicsComponents
+---@field with_field fun(self: VerletPhysicsComponents, field: VerletPhysicsComponent.field, value: any): VerletPhysicsComponents
+---@field add fun(self: VerletPhysicsComponents, fields: VerletPhysicsComponent.partial): VerletPhysicsComponent
+
+---@class (exact) VerletPhysicsComponent.partial
+---@field num_points integer?
+---@field num_links integer?
+---@field width integer?
+---@field resting_distance number?
+---@field mass_min number?
+---@field mass_max number?
+---@field stiffness number?
+---@field velocity_dampening number?
+---@field liquid_damping number?
+---@field gets_entity_velocity_coeff number?
+---@field collide_with_cells boolean?
+---@field simulate_gravity boolean?
+---@field simulate_wind boolean?
+---@field wind_change_speed number?
+---@field constrain_stretching boolean?
+---@field pixelate_sprite_transforms boolean?
+---@field scale_sprite_x boolean?
+---@field follow_entity_transform boolean?
+---@field animation_amount number?
+---@field animation_speed number?
+---@field animation_energy number?
+---@field cloth_sprite_z_index number?
+---@field stain_cells_probability integer?
+---@field m_is_culled_previous boolean?
+---@field type VERLET_TYPE::Enum?
+---@field animation_target_offset Vec2?
+---@field cloth_color_edge integer?
+---@field cloth_color integer?
+---@field m_position_previous Vec2?
+---@field colors UintArrayInline?
+---@field materials UintArrayInline?
+---@field masses FloatArrayInline?
+---@field positions Vec2ArrayInline?
+---@field positions_prev Vec2ArrayInline?
+---@field velocities Vec2ArrayInline?
+---@field dampenings FloatArrayInline?
+---@field freedoms FloatArrayInline?
+---@field links VerletLinkArrayInline?
+---@field sprite VerletSprite*?
+
+---@class (exact) VerletPhysicsComponent : Component
+---@field num_points integer
+---@field num_links integer
+---@field width integer
+---@field resting_distance number
+---@field mass_min number
+---@field mass_max number
+---@field stiffness number
+---@field velocity_dampening number
+---@field liquid_damping number
+---@field gets_entity_velocity_coeff number
+---@field collide_with_cells boolean
+---@field simulate_gravity boolean
+---@field simulate_wind boolean
+---@field wind_change_speed number
+---@field constrain_stretching boolean
+---@field pixelate_sprite_transforms boolean
+---@field scale_sprite_x boolean
+---@field follow_entity_transform boolean
+---@field animation_amount number
+---@field animation_speed number
+---@field animation_energy number
+---@field cloth_sprite_z_index number
+---@field stain_cells_probability integer
+---@field m_is_culled_previous boolean
+---@field type VERLET_TYPE::Enum
+---@field animation_target_offset Vec2
+---@field cloth_color_edge integer
+---@field cloth_color integer
+---@field m_position_previous Vec2
+---@field colors UintArrayInline
+---@field materials UintArrayInline
+---@field masses FloatArrayInline
+---@field positions Vec2ArrayInline
+---@field positions_prev Vec2ArrayInline
+---@field velocities Vec2ArrayInline
+---@field dampenings FloatArrayInline
+---@field freedoms FloatArrayInline
+---@field links VerletLinkArrayInline
+---@field sprite VerletSprite*
+
+---@alias VerletPhysicsComponent.field
+---| '"num_points"' integer
+---| '"num_links"' integer
+---| '"width"' integer
+---| '"resting_distance"' number
+---| '"mass_min"' number
+---| '"mass_max"' number
+---| '"stiffness"' number
+---| '"velocity_dampening"' number
+---| '"liquid_damping"' number
+---| '"gets_entity_velocity_coeff"' number
+---| '"collide_with_cells"' boolean
+---| '"simulate_gravity"' boolean
+---| '"simulate_wind"' boolean
+---| '"wind_change_speed"' number
+---| '"constrain_stretching"' boolean
+---| '"pixelate_sprite_transforms"' boolean
+---| '"scale_sprite_x"' boolean
+---| '"follow_entity_transform"' boolean
+---| '"animation_amount"' number
+---| '"animation_speed"' number
+---| '"animation_energy"' number
+---| '"cloth_sprite_z_index"' number
+---| '"stain_cells_probability"' integer
+---| '"m_is_culled_previous"' boolean
+---| '"type"' VERLET_TYPE::Enum
+---| '"animation_target_offset"' Vec2
+---| '"cloth_color_edge"' integer
+---| '"cloth_color"' integer
+---| '"m_position_previous"' Vec2
+---| '"colors"' UintArrayInline
+---| '"materials"' UintArrayInline
+---| '"masses"' FloatArrayInline
+---| '"positions"' Vec2ArrayInline
+---| '"positions_prev"' Vec2ArrayInline
+---| '"velocities"' Vec2ArrayInline
+---| '"dampenings"' FloatArrayInline
+---| '"freedoms"' FloatArrayInline
+---| '"links"' VerletLinkArrayInline
+---| '"sprite"' VerletSprite*
+
+---@class (exact) VerletWeaponComponents
+---@overload fun(): VerletWeaponComponent
+---@field enabled fun(self: VerletWeaponComponents, enabled: boolean): VerletWeaponComponents
+---@field tagged fun(self: VerletWeaponComponents, tag: string): VerletWeaponComponents
+---@field with_field fun(self: VerletWeaponComponents, field: VerletWeaponComponent.field, value: any): VerletWeaponComponents
+---@field add fun(self: VerletWeaponComponents, fields: VerletWeaponComponent.partial): VerletWeaponComponent
+
+---@class (exact) VerletWeaponComponent.partial
+---@field damage_radius number?
+---@field physics_force_radius number?
+---@field damage_min_step number?
+---@field damage_max number?
+---@field damage_coeff number?
+---@field impulse_coeff number?
+---@field fade_duration_frames integer?
+---@field physics_impulse_coeff number?
+---@field mPlayerCooldownEnd integer?
+
+---@class (exact) VerletWeaponComponent : Component
+---@field damage_radius number
+---@field physics_force_radius number
+---@field damage_min_step number
+---@field damage_max number
+---@field damage_coeff number
+---@field impulse_coeff number
+---@field fade_duration_frames integer
+---@field physics_impulse_coeff number
+---@field mPlayerCooldownEnd integer
+
+---@alias VerletWeaponComponent.field
+---| '"damage_radius"' number
+---| '"physics_force_radius"' number
+---| '"damage_min_step"' number
+---| '"damage_max"' number
+---| '"damage_coeff"' number
+---| '"impulse_coeff"' number
+---| '"fade_duration_frames"' integer
+---| '"physics_impulse_coeff"' number
+---| '"mPlayerCooldownEnd"' integer
+
+---@class (exact) VerletWorldJointComponents
+---@overload fun(): VerletWorldJointComponent
+---@field enabled fun(self: VerletWorldJointComponents, enabled: boolean): VerletWorldJointComponents
+---@field tagged fun(self: VerletWorldJointComponents, tag: string): VerletWorldJointComponents
+---@field with_field fun(self: VerletWorldJointComponents, field: VerletWorldJointComponent.field, value: any): VerletWorldJointComponents
+---@field add fun(self: VerletWorldJointComponents, fields: VerletWorldJointComponent.partial): VerletWorldJointComponent
+
+---@class (exact) VerletWorldJointComponent.partial
+---@field verlet_point_index integer?
+---@field world_position Vec2?
+---@field mUpdated boolean?
+---@field mCell grid::ICell*?
+
+---@class (exact) VerletWorldJointComponent : Component
+---@field verlet_point_index integer
+---@field world_position Vec2
+---@field mUpdated boolean
+---@field mCell grid::ICell*
+
+---@alias VerletWorldJointComponent.field
+---| '"verlet_point_index"' integer
+---| '"world_position"' Vec2
+---| '"mUpdated"' boolean
+---| '"mCell"' grid::ICell*
+
+---@class (exact) WalletComponents
+---@overload fun(): WalletComponent
+---@field enabled fun(self: WalletComponents, enabled: boolean): WalletComponents
+---@field tagged fun(self: WalletComponents, tag: string): WalletComponents
+---@field with_field fun(self: WalletComponents, field: WalletComponent.field, value: any): WalletComponents
+---@field add fun(self: WalletComponents, fields: WalletComponent.partial): WalletComponent
+
+---@class (exact) WalletComponent.partial
+---@field money integer?
+---@field money_spent integer?
+---@field mMoneyPrevFrame integer?
+---@field mHasReachedInf boolean?
+
+---@class (exact) WalletComponent : Component
+---@field money integer
+---@field money_spent integer
+---@field mMoneyPrevFrame integer
+---@field mHasReachedInf boolean
+
+---@alias WalletComponent.field
+---| '"money"' integer
+---| '"money_spent"' integer
+---| '"mMoneyPrevFrame"' integer
+---| '"mHasReachedInf"' boolean
+
+---@class (exact) WalletValuableComponents
+---@overload fun(): WalletValuableComponent
+---@field enabled fun(self: WalletValuableComponents, enabled: boolean): WalletValuableComponents
+---@field tagged fun(self: WalletValuableComponents, tag: string): WalletValuableComponents
+---@field with_field fun(self: WalletValuableComponents, field: WalletValuableComponent.field, value: any): WalletValuableComponents
+---@field add fun(self: WalletValuableComponents, fields: WalletValuableComponent.partial): WalletValuableComponent
+
+---@class (exact) WalletValuableComponent.partial
+---@field money_value integer?
+
+---@class (exact) WalletValuableComponent : Component
+---@field money_value integer
+
+---@alias WalletValuableComponent.field
+---| '"money_value"' integer
+
+---@class (exact) WorldStateComponents
+---@overload fun(): WorldStateComponent
+---@field enabled fun(self: WorldStateComponents, enabled: boolean): WorldStateComponents
+---@field tagged fun(self: WorldStateComponents, tag: string): WorldStateComponents
+---@field with_field fun(self: WorldStateComponents, field: WorldStateComponent.field, value: any): WorldStateComponents
+---@field add fun(self: WorldStateComponents, fields: WorldStateComponent.partial): WorldStateComponent
+
+---@class (exact) WorldStateComponent.partial
+---@field is_initialized boolean?
+---@field time number?
+---@field time_total number?
+---@field time_dt number?
+---@field day_count integer?
+---@field rain number?
+---@field rain_target number?
+---@field fog number?
+---@field fog_target number?
+---@field intro_weather boolean?
+---@field wind number?
+---@field wind_speed number?
+---@field wind_speed_sin_t number?
+---@field wind_speed_sin number?
+---@field clouds_01_target number?
+---@field clouds_02_target number?
+---@field gradient_sky_alpha_target number?
+---@field sky_sunset_alpha_target number?
+---@field lightning_count integer?
+---@field next_portal_id integer?
+---@field session_stat_file string?
+---@field player_polymorph_count integer?
+---@field player_polymorph_random_count integer?
+---@field player_did_infinite_spell_count integer?
+---@field player_did_damage_over_1milj integer?
+---@field player_living_with_minus_hp integer?
+---@field global_genome_relations_modifier number?
+---@field mods_have_been_active_during_this_run boolean?
+---@field twitch_has_been_active_during_this_run boolean?
+---@field next_cut_through_world_id integer?
+---@field perk_infinite_spells boolean?
+---@field perk_trick_kills_blood_money boolean?
+---@field perk_hp_drop_chance integer?
+---@field perk_gold_is_forever boolean?
+---@field perk_rats_player_friendly boolean?
+---@field EVERYTHING_TO_GOLD boolean?
+---@field material_everything_to_gold string?
+---@field material_everything_to_gold_static string?
+---@field INFINITE_GOLD_HAPPENING boolean?
+---@field ENDING_HAPPINESS_HAPPENING boolean?
+---@field ENDING_HAPPINESS_FRAMES integer?
+---@field ENDING_HAPPINESS boolean?
+---@field mFlashAlpha number?
+---@field DEBUG_LOADED_FROM_AUTOSAVE integer?
+---@field DEBUG_LOADED_FROM_OLD_VERSION integer?
+---@field player_spawn_location Vec2?
+---@field lua_globals MAP_STRING_STRING?
+---@field pending_portals VEC_PENDINGPORTAL?
+---@field apparitions_per_level VECTOR_INT32?
+---@field npc_parties VEC_NPCPARTY?
+---@field orbs_found_thisrun VECTOR_INT32?
+---@field flags VECTOR_STRING?
+---@field changed_materials VECTOR_STRING?
+---@field cuts_through_world VEC_CUTTHROUGHWORLD?
+---@field gore_multiplier integer?
+---@field trick_kill_gold_multiplier integer?
+---@field damage_flash_multiplier number?
+---@field open_fog_of_war_everywhere boolean?
+---@field consume_actions boolean?
+---@field rain_target_extra number?
+---@field fog_target_extra number?
+---@field perk_rats_player_friendly_prev boolean?
+
+---@class (exact) WorldStateComponent : Component
+---@field is_initialized boolean
+---@field time number
+---@field time_total number
+---@field time_dt number
+---@field day_count integer
+---@field rain number
+---@field rain_target number
+---@field fog number
+---@field fog_target number
+---@field intro_weather boolean
+---@field wind number
+---@field wind_speed number
+---@field wind_speed_sin_t number
+---@field wind_speed_sin number
+---@field clouds_01_target number
+---@field clouds_02_target number
+---@field gradient_sky_alpha_target number
+---@field sky_sunset_alpha_target number
+---@field lightning_count integer
+---@field next_portal_id integer
+---@field session_stat_file string
+---@field player_polymorph_count integer
+---@field player_polymorph_random_count integer
+---@field player_did_infinite_spell_count integer
+---@field player_did_damage_over_1milj integer
+---@field player_living_with_minus_hp integer
+---@field global_genome_relations_modifier number
+---@field mods_have_been_active_during_this_run boolean
+---@field twitch_has_been_active_during_this_run boolean
+---@field next_cut_through_world_id integer
+---@field perk_infinite_spells boolean
+---@field perk_trick_kills_blood_money boolean
+---@field perk_hp_drop_chance integer
+---@field perk_gold_is_forever boolean
+---@field perk_rats_player_friendly boolean
+---@field EVERYTHING_TO_GOLD boolean
+---@field material_everything_to_gold string
+---@field material_everything_to_gold_static string
+---@field INFINITE_GOLD_HAPPENING boolean
+---@field ENDING_HAPPINESS_HAPPENING boolean
+---@field ENDING_HAPPINESS_FRAMES integer
+---@field ENDING_HAPPINESS boolean
+---@field mFlashAlpha number
+---@field DEBUG_LOADED_FROM_AUTOSAVE integer
+---@field DEBUG_LOADED_FROM_OLD_VERSION integer
+---@field player_spawn_location Vec2
+---@field lua_globals MAP_STRING_STRING
+---@field pending_portals VEC_PENDINGPORTAL
+---@field apparitions_per_level VECTOR_INT32
+---@field npc_parties VEC_NPCPARTY
+---@field orbs_found_thisrun VECTOR_INT32
+---@field flags VECTOR_STRING
+---@field changed_materials VECTOR_STRING
+---@field cuts_through_world VEC_CUTTHROUGHWORLD
+---@field gore_multiplier integer
+---@field trick_kill_gold_multiplier integer
+---@field damage_flash_multiplier number
+---@field open_fog_of_war_everywhere boolean
+---@field consume_actions boolean
+---@field rain_target_extra number
+---@field fog_target_extra number
+---@field perk_rats_player_friendly_prev boolean
+
+---@alias WorldStateComponent.field
+---| '"is_initialized"' boolean
+---| '"time"' number
+---| '"time_total"' number
+---| '"time_dt"' number
+---| '"day_count"' integer
+---| '"rain"' number
+---| '"rain_target"' number
+---| '"fog"' number
+---| '"fog_target"' number
+---| '"intro_weather"' boolean
+---| '"wind"' number
+---| '"wind_speed"' number
+---| '"wind_speed_sin_t"' number
+---| '"wind_speed_sin"' number
+---| '"clouds_01_target"' number
+---| '"clouds_02_target"' number
+---| '"gradient_sky_alpha_target"' number
+---| '"sky_sunset_alpha_target"' number
+---| '"lightning_count"' integer
+---| '"next_portal_id"' integer
+---| '"session_stat_file"' string
+---| '"player_polymorph_count"' integer
+---| '"player_polymorph_random_count"' integer
+---| '"player_did_infinite_spell_count"' integer
+---| '"player_did_damage_over_1milj"' integer
+---| '"player_living_with_minus_hp"' integer
+---| '"global_genome_relations_modifier"' number
+---| '"mods_have_been_active_during_this_run"' boolean
+---| '"twitch_has_been_active_during_this_run"' boolean
+---| '"next_cut_through_world_id"' integer
+---| '"perk_infinite_spells"' boolean
+---| '"perk_trick_kills_blood_money"' boolean
+---| '"perk_hp_drop_chance"' integer
+---| '"perk_gold_is_forever"' boolean
+---| '"perk_rats_player_friendly"' boolean
+---| '"EVERYTHING_TO_GOLD"' boolean
+---| '"material_everything_to_gold"' string
+---| '"material_everything_to_gold_static"' string
+---| '"INFINITE_GOLD_HAPPENING"' boolean
+---| '"ENDING_HAPPINESS_HAPPENING"' boolean
+---| '"ENDING_HAPPINESS_FRAMES"' integer
+---| '"ENDING_HAPPINESS"' boolean
+---| '"mFlashAlpha"' number
+---| '"DEBUG_LOADED_FROM_AUTOSAVE"' integer
+---| '"DEBUG_LOADED_FROM_OLD_VERSION"' integer
+---| '"player_spawn_location"' Vec2
+---| '"lua_globals"' MAP_STRING_STRING
+---| '"pending_portals"' VEC_PENDINGPORTAL
+---| '"apparitions_per_level"' VECTOR_INT32
+---| '"npc_parties"' VEC_NPCPARTY
+---| '"orbs_found_thisrun"' VECTOR_INT32
+---| '"flags"' VECTOR_STRING
+---| '"changed_materials"' VECTOR_STRING
+---| '"cuts_through_world"' VEC_CUTTHROUGHWORLD
+---| '"gore_multiplier"' integer
+---| '"trick_kill_gold_multiplier"' integer
+---| '"damage_flash_multiplier"' number
+---| '"open_fog_of_war_everywhere"' boolean
+---| '"consume_actions"' boolean
+---| '"rain_target_extra"' number
+---| '"fog_target_extra"' number
+---| '"perk_rats_player_friendly_prev"' boolean
+
+---@class (exact) WormAIComponents
+---@overload fun(): WormAIComponent
+---@field enabled fun(self: WormAIComponents, enabled: boolean): WormAIComponents
+---@field tagged fun(self: WormAIComponents, tag: string): WormAIComponents
+---@field with_field fun(self: WormAIComponents, field: WormAIComponent.field, value: any): WormAIComponents
+---@field add fun(self: WormAIComponents, fields: WormAIComponent.partial): WormAIComponent
+
+---@class (exact) WormAIComponent.partial
+---@field speed number?
+---@field speed_hunt number?
+---@field direction_adjust_speed number?
+---@field direction_adjust_speed_hunt number?
+---@field random_target_box_radius number?
+---@field new_hunt_target_check_every integer?
+---@field new_random_target_check_every integer?
+---@field hunt_box_radius number?
+---@field cocoon_food_required integer?
+---@field cocoon_entity string?
+---@field give_up_area_radius number?
+---@field give_up_time_frames integer?
+---@field debug_follow_mouse boolean?
+---@field mRandomTarget Vec2?
+---@field mTargetEntityId integer?
+---@field mNextTargetCheckFrame integer?
+---@field mNextHuntTargetCheckFrame integer?
+---@field mGiveUpStarted integer?
+---@field mGiveUpAreaMinX integer?
+---@field mGiveUpAreaMinY integer?
+---@field mGiveUpAreaMaxX integer?
+---@field mGiveUpAreaMaxY integer?
+
+---@class (exact) WormAIComponent : Component
+---@field speed number
+---@field speed_hunt number
+---@field direction_adjust_speed number
+---@field direction_adjust_speed_hunt number
+---@field random_target_box_radius number
+---@field new_hunt_target_check_every integer
+---@field new_random_target_check_every integer
+---@field hunt_box_radius number
+---@field cocoon_food_required integer
+---@field cocoon_entity string
+---@field give_up_area_radius number
+---@field give_up_time_frames integer
+---@field debug_follow_mouse boolean
+---@field mRandomTarget Vec2
+---@field mTargetEntityId integer
+---@field mNextTargetCheckFrame integer
+---@field mNextHuntTargetCheckFrame integer
+---@field mGiveUpStarted integer
+---@field mGiveUpAreaMinX integer
+---@field mGiveUpAreaMinY integer
+---@field mGiveUpAreaMaxX integer
+---@field mGiveUpAreaMaxY integer
+
+---@alias WormAIComponent.field
+---| '"speed"' number
+---| '"speed_hunt"' number
+---| '"direction_adjust_speed"' number
+---| '"direction_adjust_speed_hunt"' number
+---| '"random_target_box_radius"' number
+---| '"new_hunt_target_check_every"' integer
+---| '"new_random_target_check_every"' integer
+---| '"hunt_box_radius"' number
+---| '"cocoon_food_required"' integer
+---| '"cocoon_entity"' string
+---| '"give_up_area_radius"' number
+---| '"give_up_time_frames"' integer
+---| '"debug_follow_mouse"' boolean
+---| '"mRandomTarget"' Vec2
+---| '"mTargetEntityId"' integer
+---| '"mNextTargetCheckFrame"' integer
+---| '"mNextHuntTargetCheckFrame"' integer
+---| '"mGiveUpStarted"' integer
+---| '"mGiveUpAreaMinX"' integer
+---| '"mGiveUpAreaMinY"' integer
+---| '"mGiveUpAreaMaxX"' integer
+---| '"mGiveUpAreaMaxY"' integer
+
+---@class (exact) WormAttractorComponents
+---@overload fun(): WormAttractorComponent
+---@field enabled fun(self: WormAttractorComponents, enabled: boolean): WormAttractorComponents
+---@field tagged fun(self: WormAttractorComponents, tag: string): WormAttractorComponents
+---@field with_field fun(self: WormAttractorComponents, field: WormAttractorComponent.field, value: any): WormAttractorComponents
+---@field add fun(self: WormAttractorComponents, fields: WormAttractorComponent.partial): WormAttractorComponent
+
+---@class (exact) WormAttractorComponent.partial
+---@field direction integer?
+---@field radius number?
+
+---@class (exact) WormAttractorComponent : Component
+---@field direction integer
+---@field radius number
+
+---@alias WormAttractorComponent.field
+---| '"direction"' integer
+---| '"radius"' number
+
+---@class (exact) WormComponents
+---@overload fun(): WormComponent
+---@field enabled fun(self: WormComponents, enabled: boolean): WormComponents
+---@field tagged fun(self: WormComponents, tag: string): WormComponents
+---@field with_field fun(self: WormComponents, field: WormComponent.field, value: any): WormComponents
+---@field add fun(self: WormComponents, fields: WormComponent.partial): WormComponent
+
+---@class (exact) WormComponent.partial
+---@field speed number?
+---@field acceleration number?
+---@field gravity number?
+---@field tail_gravity number?
+---@field part_distance number?
+---@field ground_check_offset integer?
+---@field hitbox_radius number?
+---@field bite_damage number?
+---@field target_kill_radius number?
+---@field target_kill_ragdoll_force number?
+---@field jump_cam_shake number?
+---@field jump_cam_shake_distance number?
+---@field eat_anim_wait_mult number?
+---@field ragdoll_filename string?
+---@field is_water_worm boolean?
+---@field max_speed number?
+---@field ground_decceleration number?
+---@field mTargetVec Vec2?
+---@field mGravVelocity number?
+---@field mSpeed number?
+---@field mTargetPosition Vec2?
+---@field mTargetSpeed number?
+---@field mOnGroundPrev boolean?
+---@field mMaterialIdPrev integer?
+---@field mFrameNextDamage integer?
+---@field mDirectionAdjustSpeed number?
+---@field mPrevPositions WormPartPositions?
+
+---@class (exact) WormComponent : Component
+---@field speed number
+---@field acceleration number
+---@field gravity number
+---@field tail_gravity number
+---@field part_distance number
+---@field ground_check_offset integer
+---@field hitbox_radius number
+---@field bite_damage number
+---@field target_kill_radius number
+---@field target_kill_ragdoll_force number
+---@field jump_cam_shake number
+---@field jump_cam_shake_distance number
+---@field eat_anim_wait_mult number
+---@field ragdoll_filename string
+---@field is_water_worm boolean
+---@field max_speed number
+---@field ground_decceleration number
+---@field mTargetVec Vec2
+---@field mGravVelocity number
+---@field mSpeed number
+---@field mTargetPosition Vec2
+---@field mTargetSpeed number
+---@field mOnGroundPrev boolean
+---@field mMaterialIdPrev integer
+---@field mFrameNextDamage integer
+---@field mDirectionAdjustSpeed number
+---@field mPrevPositions WormPartPositions
+
+---@alias WormComponent.field
+---| '"speed"' number
+---| '"acceleration"' number
+---| '"gravity"' number
+---| '"tail_gravity"' number
+---| '"part_distance"' number
+---| '"ground_check_offset"' integer
+---| '"hitbox_radius"' number
+---| '"bite_damage"' number
+---| '"target_kill_radius"' number
+---| '"target_kill_ragdoll_force"' number
+---| '"jump_cam_shake"' number
+---| '"jump_cam_shake_distance"' number
+---| '"eat_anim_wait_mult"' number
+---| '"ragdoll_filename"' string
+---| '"is_water_worm"' boolean
+---| '"max_speed"' number
+---| '"ground_decceleration"' number
+---| '"mTargetVec"' Vec2
+---| '"mGravVelocity"' number
+---| '"mSpeed"' number
+---| '"mTargetPosition"' Vec2
+---| '"mTargetSpeed"' number
+---| '"mOnGroundPrev"' boolean
+---| '"mMaterialIdPrev"' integer
+---| '"mFrameNextDamage"' integer
+---| '"mDirectionAdjustSpeed"' number
+---| '"mPrevPositions"' WormPartPositions
+
+---@class (exact) WormPlayerComponents
+---@overload fun(): WormPlayerComponent
+---@field enabled fun(self: WormPlayerComponents, enabled: boolean): WormPlayerComponents
+---@field tagged fun(self: WormPlayerComponents, tag: string): WormPlayerComponents
+---@field with_field fun(self: WormPlayerComponents, field: WormPlayerComponent.field, value: any): WormPlayerComponents
+---@field add fun(self: WormPlayerComponents, fields: WormPlayerComponent.partial): WormPlayerComponent
+
+---@class (exact) WormPlayerComponent.partial
+---@field mPrevPosition Vec2?
+---@field mDirection Vec2?
+
+---@class (exact) WormPlayerComponent : Component
+---@field mPrevPosition Vec2
+---@field mDirection Vec2
+
+---@alias WormPlayerComponent.field
+---| '"mPrevPosition"' Vec2
+---| '"mDirection"' Vec2
