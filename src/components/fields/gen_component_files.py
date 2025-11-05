@@ -111,10 +111,10 @@ def get_types(src: str) -> dict[str, dict[str, ComponentField]]:
             ty = "".join([x for x in line[:27].split(" ") if x != ""])
             field_name = line[28:].split(" ")[0]
         assert name != error, "Missing component name"
-        normalised = normalise_types(ty)
         default_offset = 92
         if special:
             default_offset += len(ty) - 27 + 3
+        ty = normalise_types(ty)
         default = line[default_offset:].split(" ")[0]
         remainder = line[default_offset + len(default) + 1 :]
         remainder = remainder.lstrip()
@@ -129,13 +129,16 @@ def get_types(src: str) -> dict[str, dict[str, ComponentField]]:
             val_range = ""
             comment = remainder
 
+        if ty == "string":
+            val_range = ""
+            if len(default) > 0 and default[0] != '"':
+                default = f'"{default}"'
+
         comment = comment[1:-1]
         if comment == "TODO: Comment":
             comment = ""
 
-        components[name][field_name] = ComponentField(
-            normalised, default, val_range, comment
-        )
+        components[name][field_name] = ComponentField(ty, default, val_range, comment)
 
     permitted_types = set(["number", "integer", "string", "boolean", "Vec2"])
     # these need to get turned into a lua type
@@ -273,7 +276,7 @@ def gen_component_type(component_ty: str) -> str:
     fields = f"---@alias {key_ty}" if not empty else ""
 
     for field, ty in field_collection.items():
-        suffix = f"{f"`{field} = {ty.default} {ty.range}` " if ty.default != "" else ""}{ty.comment}"
+        suffix = f"{f"`{field} = {ty.default}{f" {ty.range}" if ty.range != "" else ""}` " if ty.default != "" else ""}{ty.comment}"
         suffix_typed = (
             f"`{ty.ty} {suffix[1:]}"
             if len(suffix) > 0 and suffix[0] == "`"

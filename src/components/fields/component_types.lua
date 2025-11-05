@@ -8,7 +8,7 @@
 ---@field add fun(self: ParticleEmitterComponents, fields: ParticleEmitterComponent.partial?): ParticleEmitterComponent
 
 ---@class (exact) ParticleEmitterComponent.partial
----@field emitted_material_name string? `emitted_material_name = blood [0, 1]`
+---@field emitted_material_name string? `emitted_material_name = "blood"`
 ---@field create_real_particles boolean? `create_real_particles = 0 [0, 1]` used to be emit_real_particles - creates these particles in the grid, if that happens velocity and lifetime are ignored
 ---@field emit_real_particles boolean? `emit_real_particles = 0 [0, 1]` this creates particles that will behave like particles, but work outside of the screen
 ---@field emit_cosmetic_particles boolean? `emit_cosmetic_particles = 0 [0, 1]` particle does have collisions, but no other physical interactions with the world. the particles are culled outside camera region
@@ -80,7 +80,7 @@
 ---@field m_particle_attractor_id integer? `m_particle_attractor_id = -1 [0, 1]`
 
 ---@class (exact) ParticleEmitterComponent : Component
----@field emitted_material_name string `emitted_material_name = blood [0, 1]`
+---@field emitted_material_name string `emitted_material_name = "blood"`
 ---@field create_real_particles boolean `create_real_particles = 0 [0, 1]` used to be emit_real_particles - creates these particles in the grid, if that happens velocity and lifetime are ignored
 ---@field emit_real_particles boolean `emit_real_particles = 0 [0, 1]` this creates particles that will behave like particles, but work outside of the screen
 ---@field emit_cosmetic_particles boolean `emit_cosmetic_particles = 0 [0, 1]` particle does have collisions, but no other physical interactions with the world. the particles are culled outside camera region
@@ -152,7 +152,7 @@
 ---@field m_particle_attractor_id integer `m_particle_attractor_id = -1 [0, 1]`
 
 ---@alias ParticleEmitterComponent.field
----| '"emitted_material_name"' `string emitted_material_name = blood [0, 1]`
+---| '"emitted_material_name"' `string emitted_material_name = "blood"`
 ---| '"create_real_particles"' `boolean create_real_particles = 0 [0, 1]` used to be emit_real_particles - creates these particles in the grid, if that happens velocity and lifetime are ignored
 ---| '"emit_real_particles"' `boolean emit_real_particles = 0 [0, 1]` this creates particles that will behave like particles, but work outside of the screen
 ---| '"emit_cosmetic_particles"' `boolean emit_cosmetic_particles = 0 [0, 1]` particle does have collisions, but no other physical interactions with the world. the particles are culled outside camera region
@@ -263,7 +263,7 @@
 
 ---@class (exact) InventoryComponent.partial
 ---@field ui_container_type integer? `ui_container_type = 1 [0, 1]` UI_CONTAINER_TYPES enum
----@field ui_element_sprite string? `ui_element_sprite = data/ui_gfx/inventory/inventory_box.png [0, 1]` ui back sprite
+---@field ui_element_sprite string? `ui_element_sprite = "data/ui_gfx/inventory/inventory_box.png"` ui back sprite
 ---@field actions string? list of actions, used for serialization
 ---@field ui_container_size Vec2? ui size, how many items x*y we can fit in
 ---@field ui_element_size Vec2? ui size
@@ -271,7 +271,7 @@
 
 ---@class (exact) InventoryComponent : Component
 ---@field ui_container_type integer `ui_container_type = 1 [0, 1]` UI_CONTAINER_TYPES enum
----@field ui_element_sprite string `ui_element_sprite = data/ui_gfx/inventory/inventory_box.png [0, 1]` ui back sprite
+---@field ui_element_sprite string `ui_element_sprite = "data/ui_gfx/inventory/inventory_box.png"` ui back sprite
 ---@field actions string list of actions, used for serialization
 ---@field ui_container_size Vec2 ui size, how many items x*y we can fit in
 ---@field ui_element_size Vec2 ui size
@@ -279,7 +279,7 @@
 
 ---@alias InventoryComponent.field
 ---| '"ui_container_type"' `integer ui_container_type = 1 [0, 1]` UI_CONTAINER_TYPES enum
----| '"ui_element_sprite"' `string ui_element_sprite = data/ui_gfx/inventory/inventory_box.png [0, 1]` ui back sprite
+---| '"ui_element_sprite"' `string ui_element_sprite = "data/ui_gfx/inventory/inventory_box.png"` ui back sprite
 ---| '"actions"' `string` list of actions, used for serialization
 ---| '"ui_container_size"' `Vec2` ui size, how many items x*y we can fit in
 ---| '"ui_element_size"' `Vec2` ui size
@@ -460,8 +460,8 @@
 ---@class (exact) TeleportComponent.partial
 ---@field target_x_is_absolute_position boolean? `target_x_is_absolute_position = 0 [0, 1]` If set, target position x is in world coordinates, otherwise it's an offset
 ---@field target_y_is_absolute_position boolean? `target_y_is_absolute_position = 0 [0, 1]` If set, target position y is in world coordinates, otherwise it's an offset
----@field source_particle_fx_file string? `source_particle_fx_file = data/entities/particles/teleportation_source.xml [0, 1]` This entity is loaded at the source position when teleportation occurs
----@field target_particle_fx_file string? `target_particle_fx_file = data/entities/particles/teleportation_target.xml [0, 1]` This entity is loaded at the target position when teleportation occurs
+---@field source_particle_fx_file string? `source_particle_fx_file = "data/entities/particles/teleportation_source.xml"` This entity is loaded at the source position when teleportation occurs
+---@field target_particle_fx_file string? `target_particle_fx_file = "data/entities/particles/teleportation_target.xml"` This entity is loaded at the target position when teleportation occurs
 ---@field load_collapse_entity boolean? `load_collapse_entity = 1 [0, 1]` if we don't want things to collapse after the teleport
 ---@field target Vec2? Where should we teleport
 ---@field safety_counter integer? `safety_counter = 0 [0, 1]` used to keep track that we're not stuck in waiting for a pixel scene to load, that is not going to be loaded
@@ -471,8 +471,8 @@
 ---@class (exact) TeleportComponent : Component
 ---@field target_x_is_absolute_position boolean `target_x_is_absolute_position = 0 [0, 1]` If set, target position x is in world coordinates, otherwise it's an offset
 ---@field target_y_is_absolute_position boolean `target_y_is_absolute_position = 0 [0, 1]` If set, target position y is in world coordinates, otherwise it's an offset
----@field source_particle_fx_file string `source_particle_fx_file = data/entities/particles/teleportation_source.xml [0, 1]` This entity is loaded at the source position when teleportation occurs
----@field target_particle_fx_file string `target_particle_fx_file = data/entities/particles/teleportation_target.xml [0, 1]` This entity is loaded at the target position when teleportation occurs
+---@field source_particle_fx_file string `source_particle_fx_file = "data/entities/particles/teleportation_source.xml"` This entity is loaded at the source position when teleportation occurs
+---@field target_particle_fx_file string `target_particle_fx_file = "data/entities/particles/teleportation_target.xml"` This entity is loaded at the target position when teleportation occurs
 ---@field load_collapse_entity boolean `load_collapse_entity = 1 [0, 1]` if we don't want things to collapse after the teleport
 ---@field target Vec2 Where should we teleport
 ---@field safety_counter integer `safety_counter = 0 [0, 1]` used to keep track that we're not stuck in waiting for a pixel scene to load, that is not going to be loaded
@@ -482,8 +482,8 @@
 ---@alias TeleportComponent.field
 ---| '"target_x_is_absolute_position"' `boolean target_x_is_absolute_position = 0 [0, 1]` If set, target position x is in world coordinates, otherwise it's an offset
 ---| '"target_y_is_absolute_position"' `boolean target_y_is_absolute_position = 0 [0, 1]` If set, target position y is in world coordinates, otherwise it's an offset
----| '"source_particle_fx_file"' `string source_particle_fx_file = data/entities/particles/teleportation_source.xml [0, 1]` This entity is loaded at the source position when teleportation occurs
----| '"target_particle_fx_file"' `string target_particle_fx_file = data/entities/particles/teleportation_target.xml [0, 1]` This entity is loaded at the target position when teleportation occurs
+---| '"source_particle_fx_file"' `string source_particle_fx_file = "data/entities/particles/teleportation_source.xml"` This entity is loaded at the source position when teleportation occurs
+---| '"target_particle_fx_file"' `string target_particle_fx_file = "data/entities/particles/teleportation_target.xml"` This entity is loaded at the target position when teleportation occurs
 ---| '"load_collapse_entity"' `boolean load_collapse_entity = 1 [0, 1]` if we don't want things to collapse after the teleport
 ---| '"target"' `Vec2` Where should we teleport
 ---| '"safety_counter"' `integer safety_counter = 0 [0, 1]` used to keep track that we're not stuck in waiting for a pixel scene to load, that is not going to be loaded
@@ -505,7 +505,7 @@
 ---@field state_duration_frames integer? `state_duration_frames = 45 [0, 1000]` How long do we stay in the attack state, before other states are allowed?
 ---@field frames_between integer? `frames_between = 180 [0, 1000]` The minimum number of frames we wait between these attacks
 ---@field frames_between_global integer? `frames_between_global = 30 [0, 1000]` The minimum number of frames we wait after this attack before doing any other ranged attack
----@field animation_name string? `animation_name = attack_ranged [0, 1]` The animation to play when performing this attack
+---@field animation_name string? `animation_name = "attack_ranged"` The animation to play when performing this attack
 ---@field attack_landing_ranged_enabled boolean? `attack_landing_ranged_enabled = 0 [0, 1]` If 1, we try to land before doing the attack, if there's ground near nearby under us
 ---@field attack_ranged_action_frame integer? `attack_ranged_action_frame = 2 [0, 1000]` The frame of the 'attack_ranged' animation during which the ranged attack actually occurs
 ---@field attack_ranged_offset_x number? `attack_ranged_offset_x = 0 [-1000, 1000]` 'attack_ranged_entity_file' is created here when performing a ranged attack
@@ -514,7 +514,7 @@
 ---@field attack_ranged_root_offset_y number? `attack_ranged_root_offset_y = 0 [-1000, 1000]`
 ---@field attack_ranged_use_message boolean? `attack_ranged_use_message = 0 [0, 1]` If 1, we do ranged attacks by sending a Message_UseItem
 ---@field attack_ranged_predict boolean? `attack_ranged_predict = 0 [0, 1]` If 1, we attempt to predict target movement and shoot accordingly
----@field attack_ranged_entity_file string? `attack_ranged_entity_file = data/entities/projectiles/spear.xml [0, 1]` File to projectile entity that is created when performing a ranged attack
+---@field attack_ranged_entity_file string? `attack_ranged_entity_file = "data/entities/projectiles/spear.xml"` File to projectile entity that is created when performing a ranged attack
 ---@field attack_ranged_entity_count_min integer? `attack_ranged_entity_count_min = 1 [0, 1000]` Minimum number of projectiles shot when performing a ranged attack
 ---@field attack_ranged_entity_count_max integer? `attack_ranged_entity_count_max = 1 [0, 1000]` Maximum number of projectiles shot when performing a ranged attack
 ---@field attack_ranged_use_laser_sight boolean? `attack_ranged_use_laser_sight = 0 [0, 1]` If 1, we draw a laser sight to our target. Requires entity to have a sprite with tag 'laser_sight'
@@ -532,7 +532,7 @@
 ---@field state_duration_frames integer `state_duration_frames = 45 [0, 1000]` How long do we stay in the attack state, before other states are allowed?
 ---@field frames_between integer `frames_between = 180 [0, 1000]` The minimum number of frames we wait between these attacks
 ---@field frames_between_global integer `frames_between_global = 30 [0, 1000]` The minimum number of frames we wait after this attack before doing any other ranged attack
----@field animation_name string `animation_name = attack_ranged [0, 1]` The animation to play when performing this attack
+---@field animation_name string `animation_name = "attack_ranged"` The animation to play when performing this attack
 ---@field attack_landing_ranged_enabled boolean `attack_landing_ranged_enabled = 0 [0, 1]` If 1, we try to land before doing the attack, if there's ground near nearby under us
 ---@field attack_ranged_action_frame integer `attack_ranged_action_frame = 2 [0, 1000]` The frame of the 'attack_ranged' animation during which the ranged attack actually occurs
 ---@field attack_ranged_offset_x number `attack_ranged_offset_x = 0 [-1000, 1000]` 'attack_ranged_entity_file' is created here when performing a ranged attack
@@ -541,7 +541,7 @@
 ---@field attack_ranged_root_offset_y number `attack_ranged_root_offset_y = 0 [-1000, 1000]`
 ---@field attack_ranged_use_message boolean `attack_ranged_use_message = 0 [0, 1]` If 1, we do ranged attacks by sending a Message_UseItem
 ---@field attack_ranged_predict boolean `attack_ranged_predict = 0 [0, 1]` If 1, we attempt to predict target movement and shoot accordingly
----@field attack_ranged_entity_file string `attack_ranged_entity_file = data/entities/projectiles/spear.xml [0, 1]` File to projectile entity that is created when performing a ranged attack
+---@field attack_ranged_entity_file string `attack_ranged_entity_file = "data/entities/projectiles/spear.xml"` File to projectile entity that is created when performing a ranged attack
 ---@field attack_ranged_entity_count_min integer `attack_ranged_entity_count_min = 1 [0, 1000]` Minimum number of projectiles shot when performing a ranged attack
 ---@field attack_ranged_entity_count_max integer `attack_ranged_entity_count_max = 1 [0, 1000]` Maximum number of projectiles shot when performing a ranged attack
 ---@field attack_ranged_use_laser_sight boolean `attack_ranged_use_laser_sight = 0 [0, 1]` If 1, we draw a laser sight to our target. Requires entity to have a sprite with tag 'laser_sight'
@@ -559,7 +559,7 @@
 ---| '"state_duration_frames"' `integer state_duration_frames = 45 [0, 1000]` How long do we stay in the attack state, before other states are allowed?
 ---| '"frames_between"' `integer frames_between = 180 [0, 1000]` The minimum number of frames we wait between these attacks
 ---| '"frames_between_global"' `integer frames_between_global = 30 [0, 1000]` The minimum number of frames we wait after this attack before doing any other ranged attack
----| '"animation_name"' `string animation_name = attack_ranged [0, 1]` The animation to play when performing this attack
+---| '"animation_name"' `string animation_name = "attack_ranged"` The animation to play when performing this attack
 ---| '"attack_landing_ranged_enabled"' `boolean attack_landing_ranged_enabled = 0 [0, 1]` If 1, we try to land before doing the attack, if there's ground near nearby under us
 ---| '"attack_ranged_action_frame"' `integer attack_ranged_action_frame = 2 [0, 1000]` The frame of the 'attack_ranged' animation during which the ranged attack actually occurs
 ---| '"attack_ranged_offset_x"' `number attack_ranged_offset_x = 0 [-1000, 1000]` 'attack_ranged_entity_file' is created here when performing a ranged attack
@@ -568,7 +568,7 @@
 ---| '"attack_ranged_root_offset_y"' `number attack_ranged_root_offset_y = 0 [-1000, 1000]`
 ---| '"attack_ranged_use_message"' `boolean attack_ranged_use_message = 0 [0, 1]` If 1, we do ranged attacks by sending a Message_UseItem
 ---| '"attack_ranged_predict"' `boolean attack_ranged_predict = 0 [0, 1]` If 1, we attempt to predict target movement and shoot accordingly
----| '"attack_ranged_entity_file"' `string attack_ranged_entity_file = data/entities/projectiles/spear.xml [0, 1]` File to projectile entity that is created when performing a ranged attack
+---| '"attack_ranged_entity_file"' `string attack_ranged_entity_file = "data/entities/projectiles/spear.xml"` File to projectile entity that is created when performing a ranged attack
 ---| '"attack_ranged_entity_count_min"' `integer attack_ranged_entity_count_min = 1 [0, 1000]` Minimum number of projectiles shot when performing a ranged attack
 ---| '"attack_ranged_entity_count_max"' `integer attack_ranged_entity_count_max = 1 [0, 1000]` Maximum number of projectiles shot when performing a ranged attack
 ---| '"attack_ranged_use_laser_sight"' `boolean attack_ranged_use_laser_sight = 0 [0, 1]` If 1, we draw a laser sight to our target. Requires entity to have a sprite with tag 'laser_sight'
@@ -622,7 +622,7 @@
 ---@field item_recoil_max number? `item_recoil_max = 1 [0, 1]` Maximum distance moved by recoil
 ---@field item_recoil_offset_coeff number? `item_recoil_offset_coeff = 1 [0, 1]` Item distance moved by recoil = mItemRecoil * item_recoil_offset_coeff
 ---@field item_recoil_rotation_coeff number? `item_recoil_rotation_coeff = 5 [0, 1]` Item rotation by recoil = mItemRecoil * item_recoil_rotation_coeff
----@field base_item_file string? `base_item_file = data/entities/base_item.xml [0, 1]` when dropping / throwing the item, this is the base_item that we add the ability component to
+---@field base_item_file string? `base_item_file = "data/entities/base_item.xml"` when dropping / throwing the item, this is the base_item that we add the ability component to
 ---@field use_entity_file_as_projectile_info_proxy boolean? `use_entity_file_as_projectile_info_proxy = 0 [0, 1]`
 ---@field click_to_use boolean? `click_to_use = 1 [0, 1]`
 ---@field stat_times_player_has_shot integer? `stat_times_player_has_shot = 0 [0, 1]` used to track how many times player has shot this 'ability'
@@ -633,13 +633,13 @@
 ---@field max_amount_in_inventory integer? `max_amount_in_inventory = 1 [0, 1]`
 ---@field amount_in_inventory integer? `amount_in_inventory = 1 [0, 1]`
 ---@field drop_as_item_on_death boolean? `drop_as_item_on_death = 1 [0, 1]`
----@field ui_name string? `ui_name = [NOT_SET] [0, 1]` way to name the weapons
+---@field ui_name string? `ui_name = "[NOT_SET]"` way to name the weapons
 ---@field use_gun_script boolean? `use_gun_script = 0 [0, 1]` If 1, the default ability behaviour is replaced with one that uses the lua gun system.
 ---@field is_petris_gun boolean? `is_petris_gun = 0 [0, 1]` if 1, TODO( PETRI)
 ---@field gun_level integer? `gun_level = 1 [1, 10]` the level of the wand, set in gun_procedural.lua
 ---@field add_these_child_actions string? e.g. 'bullet,bullet,damage' ... actions are parsed into a string. These are added as actual entities when the item is initialized
 ---@field current_slot_durability integer? `current_slot_durability = -1 [0, 1]` After this many slots the last slot of the gun is removed. -1 means not initialized/infinite.
----@field slot_consumption_function string? `slot_consumption_function = _get_gun_slot_durability_default [0, 1]` Name of the lua function in 'gun.lua' that is called to calculate durability of the last slot in the gun
+---@field slot_consumption_function string? `slot_consumption_function = "_get_gun_slot_durability_default"` Name of the lua function in 'gun.lua' that is called to calculate durability of the last slot in the gun
 ---@field mNextFrameUsable integer? `mNextFrameUsable = 0 [0, 1]` hax, don't touch!
 ---@field mCastDelayStartFrame integer? `mCastDelayStartFrame = 0 [0, 1]` hax, don't touch!
 ---@field mReloadFramesLeft integer? `mReloadFramesLeft = 0 [0, 1]` hax, don't touch!
@@ -673,7 +673,7 @@
 ---@field item_recoil_max number `item_recoil_max = 1 [0, 1]` Maximum distance moved by recoil
 ---@field item_recoil_offset_coeff number `item_recoil_offset_coeff = 1 [0, 1]` Item distance moved by recoil = mItemRecoil * item_recoil_offset_coeff
 ---@field item_recoil_rotation_coeff number `item_recoil_rotation_coeff = 5 [0, 1]` Item rotation by recoil = mItemRecoil * item_recoil_rotation_coeff
----@field base_item_file string `base_item_file = data/entities/base_item.xml [0, 1]` when dropping / throwing the item, this is the base_item that we add the ability component to
+---@field base_item_file string `base_item_file = "data/entities/base_item.xml"` when dropping / throwing the item, this is the base_item that we add the ability component to
 ---@field use_entity_file_as_projectile_info_proxy boolean `use_entity_file_as_projectile_info_proxy = 0 [0, 1]`
 ---@field click_to_use boolean `click_to_use = 1 [0, 1]`
 ---@field stat_times_player_has_shot integer `stat_times_player_has_shot = 0 [0, 1]` used to track how many times player has shot this 'ability'
@@ -684,13 +684,13 @@
 ---@field max_amount_in_inventory integer `max_amount_in_inventory = 1 [0, 1]`
 ---@field amount_in_inventory integer `amount_in_inventory = 1 [0, 1]`
 ---@field drop_as_item_on_death boolean `drop_as_item_on_death = 1 [0, 1]`
----@field ui_name string `ui_name = [NOT_SET] [0, 1]` way to name the weapons
+---@field ui_name string `ui_name = "[NOT_SET]"` way to name the weapons
 ---@field use_gun_script boolean `use_gun_script = 0 [0, 1]` If 1, the default ability behaviour is replaced with one that uses the lua gun system.
 ---@field is_petris_gun boolean `is_petris_gun = 0 [0, 1]` if 1, TODO( PETRI)
 ---@field gun_level integer `gun_level = 1 [1, 10]` the level of the wand, set in gun_procedural.lua
 ---@field add_these_child_actions string e.g. 'bullet,bullet,damage' ... actions are parsed into a string. These are added as actual entities when the item is initialized
 ---@field current_slot_durability integer `current_slot_durability = -1 [0, 1]` After this many slots the last slot of the gun is removed. -1 means not initialized/infinite.
----@field slot_consumption_function string `slot_consumption_function = _get_gun_slot_durability_default [0, 1]` Name of the lua function in 'gun.lua' that is called to calculate durability of the last slot in the gun
+---@field slot_consumption_function string `slot_consumption_function = "_get_gun_slot_durability_default"` Name of the lua function in 'gun.lua' that is called to calculate durability of the last slot in the gun
 ---@field mNextFrameUsable integer `mNextFrameUsable = 0 [0, 1]` hax, don't touch!
 ---@field mCastDelayStartFrame integer `mCastDelayStartFrame = 0 [0, 1]` hax, don't touch!
 ---@field mReloadFramesLeft integer `mReloadFramesLeft = 0 [0, 1]` hax, don't touch!
@@ -724,7 +724,7 @@
 ---| '"item_recoil_max"' `number item_recoil_max = 1 [0, 1]` Maximum distance moved by recoil
 ---| '"item_recoil_offset_coeff"' `number item_recoil_offset_coeff = 1 [0, 1]` Item distance moved by recoil = mItemRecoil * item_recoil_offset_coeff
 ---| '"item_recoil_rotation_coeff"' `number item_recoil_rotation_coeff = 5 [0, 1]` Item rotation by recoil = mItemRecoil * item_recoil_rotation_coeff
----| '"base_item_file"' `string base_item_file = data/entities/base_item.xml [0, 1]` when dropping / throwing the item, this is the base_item that we add the ability component to
+---| '"base_item_file"' `string base_item_file = "data/entities/base_item.xml"` when dropping / throwing the item, this is the base_item that we add the ability component to
 ---| '"use_entity_file_as_projectile_info_proxy"' `boolean use_entity_file_as_projectile_info_proxy = 0 [0, 1]`
 ---| '"click_to_use"' `boolean click_to_use = 1 [0, 1]`
 ---| '"stat_times_player_has_shot"' `integer stat_times_player_has_shot = 0 [0, 1]` used to track how many times player has shot this 'ability'
@@ -735,13 +735,13 @@
 ---| '"max_amount_in_inventory"' `integer max_amount_in_inventory = 1 [0, 1]`
 ---| '"amount_in_inventory"' `integer amount_in_inventory = 1 [0, 1]`
 ---| '"drop_as_item_on_death"' `boolean drop_as_item_on_death = 1 [0, 1]`
----| '"ui_name"' `string ui_name = [NOT_SET] [0, 1]` way to name the weapons
+---| '"ui_name"' `string ui_name = "[NOT_SET]"` way to name the weapons
 ---| '"use_gun_script"' `boolean use_gun_script = 0 [0, 1]` If 1, the default ability behaviour is replaced with one that uses the lua gun system.
 ---| '"is_petris_gun"' `boolean is_petris_gun = 0 [0, 1]` if 1, TODO( PETRI)
 ---| '"gun_level"' `integer gun_level = 1 [1, 10]` the level of the wand, set in gun_procedural.lua
 ---| '"add_these_child_actions"' `string` e.g. 'bullet,bullet,damage' ... actions are parsed into a string. These are added as actual entities when the item is initialized
 ---| '"current_slot_durability"' `integer current_slot_durability = -1 [0, 1]` After this many slots the last slot of the gun is removed. -1 means not initialized/infinite.
----| '"slot_consumption_function"' `string slot_consumption_function = _get_gun_slot_durability_default [0, 1]` Name of the lua function in 'gun.lua' that is called to calculate durability of the last slot in the gun
+---| '"slot_consumption_function"' `string slot_consumption_function = "_get_gun_slot_durability_default"` Name of the lua function in 'gun.lua' that is called to calculate durability of the last slot in the gun
 ---| '"mNextFrameUsable"' `integer mNextFrameUsable = 0 [0, 1]` hax, don't touch!
 ---| '"mCastDelayStartFrame"' `integer mCastDelayStartFrame = 0 [0, 1]` hax, don't touch!
 ---| '"mReloadFramesLeft"' `integer mReloadFramesLeft = 0 [0, 1]` hax, don't touch!
@@ -907,7 +907,7 @@
 ---@field attack_ranged_offset_y number? `attack_ranged_offset_y = 0 [-1000, 1000]` 'attack_ranged_entity_file' is created here when performing a ranged attack
 ---@field attack_ranged_use_message boolean? `attack_ranged_use_message = 0 [0, 1]` If 1, we do ranged attacks by sending a Message_UseItem
 ---@field attack_ranged_predict boolean? `attack_ranged_predict = 0 [0, 1]` If 1, we attempt to predict target movement and shoot accordingly
----@field attack_ranged_entity_file string? `attack_ranged_entity_file = data/entities/projectiles/spear.xml [0, 1]` File to projectile entity that is created when performing a ranged attack
+---@field attack_ranged_entity_file string? `attack_ranged_entity_file = "data/entities/projectiles/spear.xml"` File to projectile entity that is created when performing a ranged attack
 ---@field attack_ranged_entity_count_min integer? `attack_ranged_entity_count_min = 1 [0, 1000]` Minimum number of projectiles shot when performing a ranged attack
 ---@field attack_ranged_entity_count_max integer? `attack_ranged_entity_count_max = 1 [0, 1000]` Maximum number of projectiles shot when performing a ranged attack
 ---@field attack_ranged_use_laser_sight boolean? `attack_ranged_use_laser_sight = 0 [0, 1]` If 1, we draw a laser sight to our target. Requires entity to have a sprite with tag 'laser_sight'
@@ -1028,7 +1028,7 @@
 ---@field attack_ranged_offset_y number `attack_ranged_offset_y = 0 [-1000, 1000]` 'attack_ranged_entity_file' is created here when performing a ranged attack
 ---@field attack_ranged_use_message boolean `attack_ranged_use_message = 0 [0, 1]` If 1, we do ranged attacks by sending a Message_UseItem
 ---@field attack_ranged_predict boolean `attack_ranged_predict = 0 [0, 1]` If 1, we attempt to predict target movement and shoot accordingly
----@field attack_ranged_entity_file string `attack_ranged_entity_file = data/entities/projectiles/spear.xml [0, 1]` File to projectile entity that is created when performing a ranged attack
+---@field attack_ranged_entity_file string `attack_ranged_entity_file = "data/entities/projectiles/spear.xml"` File to projectile entity that is created when performing a ranged attack
 ---@field attack_ranged_entity_count_min integer `attack_ranged_entity_count_min = 1 [0, 1000]` Minimum number of projectiles shot when performing a ranged attack
 ---@field attack_ranged_entity_count_max integer `attack_ranged_entity_count_max = 1 [0, 1000]` Maximum number of projectiles shot when performing a ranged attack
 ---@field attack_ranged_use_laser_sight boolean `attack_ranged_use_laser_sight = 0 [0, 1]` If 1, we draw a laser sight to our target. Requires entity to have a sprite with tag 'laser_sight'
@@ -1149,7 +1149,7 @@
 ---| '"attack_ranged_offset_y"' `number attack_ranged_offset_y = 0 [-1000, 1000]` 'attack_ranged_entity_file' is created here when performing a ranged attack
 ---| '"attack_ranged_use_message"' `boolean attack_ranged_use_message = 0 [0, 1]` If 1, we do ranged attacks by sending a Message_UseItem
 ---| '"attack_ranged_predict"' `boolean attack_ranged_predict = 0 [0, 1]` If 1, we attempt to predict target movement and shoot accordingly
----| '"attack_ranged_entity_file"' `string attack_ranged_entity_file = data/entities/projectiles/spear.xml [0, 1]` File to projectile entity that is created when performing a ranged attack
+---| '"attack_ranged_entity_file"' `string attack_ranged_entity_file = "data/entities/projectiles/spear.xml"` File to projectile entity that is created when performing a ranged attack
 ---| '"attack_ranged_entity_count_min"' `integer attack_ranged_entity_count_min = 1 [0, 1000]` Minimum number of projectiles shot when performing a ranged attack
 ---| '"attack_ranged_entity_count_max"' `integer attack_ranged_entity_count_max = 1 [0, 1000]` Maximum number of projectiles shot when performing a ranged attack
 ---| '"attack_ranged_use_laser_sight"' `boolean attack_ranged_use_laser_sight = 0 [0, 1]` If 1, we draw a laser sight to our target. Requires entity to have a sprite with tag 'laser_sight'
@@ -1256,8 +1256,8 @@
 ---@field damage_per_frame number? `damage_per_frame = 10 [0, 256]`
 ---@field update_every_n_frame integer? `update_every_n_frame = 1 [0, 60]`
 ---@field entity_responsible EntityID? `entity_responsible = 0 [0, 1]` if NULL, will try to figure out who to blame
----@field death_cause string? `death_cause = $damage_curse [0, 60]`
----@field entities_with_tag string? `entities_with_tag = mortal [0, 1]` damage entities with this tag
+---@field death_cause string? `death_cause = "$damage_curse"`
+---@field entities_with_tag string? `entities_with_tag = "mortal"` damage entities with this tag
 ---@field aabb_min Vec2?
 ---@field aabb_max Vec2?
 ---@field damage_type DAMAGE_TYPES::Enum? the damage type
@@ -1267,8 +1267,8 @@
 ---@field damage_per_frame number `damage_per_frame = 10 [0, 256]`
 ---@field update_every_n_frame integer `update_every_n_frame = 1 [0, 60]`
 ---@field entity_responsible EntityID `entity_responsible = 0 [0, 1]` if NULL, will try to figure out who to blame
----@field death_cause string `death_cause = $damage_curse [0, 60]`
----@field entities_with_tag string `entities_with_tag = mortal [0, 1]` damage entities with this tag
+---@field death_cause string `death_cause = "$damage_curse"`
+---@field entities_with_tag string `entities_with_tag = "mortal"` damage entities with this tag
 ---@field aabb_min Vec2
 ---@field aabb_max Vec2
 ---@field damage_type DAMAGE_TYPES::Enum the damage type
@@ -1278,8 +1278,8 @@
 ---| '"damage_per_frame"' `number damage_per_frame = 10 [0, 256]`
 ---| '"update_every_n_frame"' `integer update_every_n_frame = 1 [0, 60]`
 ---| '"entity_responsible"' `EntityID entity_responsible = 0 [0, 1]` if NULL, will try to figure out who to blame
----| '"death_cause"' `string death_cause = $damage_curse [0, 60]`
----| '"entities_with_tag"' `string entities_with_tag = mortal [0, 1]` damage entities with this tag
+---| '"death_cause"' `string death_cause = "$damage_curse"`
+---| '"entities_with_tag"' `string entities_with_tag = "mortal"` damage entities with this tag
 ---| '"aabb_min"' `Vec2`
 ---| '"aabb_max"' `Vec2`
 ---| '"damage_type"' `DAMAGE_TYPES::Enum` the damage type
@@ -1531,9 +1531,9 @@
 ---@field jump_cam_shake number? `jump_cam_shake = 20 [0, 10000]`
 ---@field jump_cam_shake_distance number? `jump_cam_shake_distance = 256 [0, 10000]`
 ---@field eat_anim_wait_mult number? `eat_anim_wait_mult = 0.05 [0, 10000]`
----@field projectile_1 string? `projectile_1 = data/entities/projectiles/bossdragon.xml [0, 1]`
+---@field projectile_1 string? `projectile_1 = "data/entities/projectiles/bossdragon.xml"`
 ---@field projectile_1_count integer? `projectile_1_count = 2 [0, 10]`
----@field projectile_2 string? `projectile_2 = data/entities/projectiles/bossdragon_ray.xml [0, 1]`
+---@field projectile_2 string? `projectile_2 = "data/entities/projectiles/bossdragon_ray.xml"`
 ---@field projectile_2_count integer? `projectile_2_count = 5 [0, 10]`
 ---@field ragdoll_filename string?
 ---@field mTargetEntityId integer? `mTargetEntityId = 0 [0, 1]`
@@ -1574,9 +1574,9 @@
 ---@field jump_cam_shake number `jump_cam_shake = 20 [0, 10000]`
 ---@field jump_cam_shake_distance number `jump_cam_shake_distance = 256 [0, 10000]`
 ---@field eat_anim_wait_mult number `eat_anim_wait_mult = 0.05 [0, 10000]`
----@field projectile_1 string `projectile_1 = data/entities/projectiles/bossdragon.xml [0, 1]`
+---@field projectile_1 string `projectile_1 = "data/entities/projectiles/bossdragon.xml"`
 ---@field projectile_1_count integer `projectile_1_count = 2 [0, 10]`
----@field projectile_2 string `projectile_2 = data/entities/projectiles/bossdragon_ray.xml [0, 1]`
+---@field projectile_2 string `projectile_2 = "data/entities/projectiles/bossdragon_ray.xml"`
 ---@field projectile_2_count integer `projectile_2_count = 5 [0, 10]`
 ---@field ragdoll_filename string
 ---@field mTargetEntityId integer `mTargetEntityId = 0 [0, 1]`
@@ -1617,9 +1617,9 @@
 ---| '"jump_cam_shake"' `number jump_cam_shake = 20 [0, 10000]`
 ---| '"jump_cam_shake_distance"' `number jump_cam_shake_distance = 256 [0, 10000]`
 ---| '"eat_anim_wait_mult"' `number eat_anim_wait_mult = 0.05 [0, 10000]`
----| '"projectile_1"' `string projectile_1 = data/entities/projectiles/bossdragon.xml [0, 1]`
+---| '"projectile_1"' `string projectile_1 = "data/entities/projectiles/bossdragon.xml"`
 ---| '"projectile_1_count"' `integer projectile_1_count = 2 [0, 10]`
----| '"projectile_2"' `string projectile_2 = data/entities/projectiles/bossdragon_ray.xml [0, 1]`
+---| '"projectile_2"' `string projectile_2 = "data/entities/projectiles/bossdragon_ray.xml"`
 ---| '"projectile_2_count"' `integer projectile_2_count = 5 [0, 10]`
 ---| '"ragdoll_filename"' `string`
 ---| '"mTargetEntityId"' `integer mTargetEntityId = 0 [0, 1]`
@@ -2118,7 +2118,7 @@
 ---@field width number? `width = 32 [0, 100]`
 ---@field height number? `height = 32 [0, 100]`
 ---@field radius number? `radius = 32 [0, 100]`
----@field required_tag string? `required_tag = mortal [0, 1]`
+---@field required_tag string? `required_tag = "mortal"`
 ---@field remove_component_when_triggered boolean? `remove_component_when_triggered = 0 [0, 1]`
 ---@field destroy_this_entity_when_triggered boolean? `destroy_this_entity_when_triggered = 1 [0, 1]`
 ---@field timer_for_destruction integer? `timer_for_destruction = 0 [0, 60]`
@@ -2130,7 +2130,7 @@
 ---@field width number `width = 32 [0, 100]`
 ---@field height number `height = 32 [0, 100]`
 ---@field radius number `radius = 32 [0, 100]`
----@field required_tag string `required_tag = mortal [0, 1]`
+---@field required_tag string `required_tag = "mortal"`
 ---@field remove_component_when_triggered boolean `remove_component_when_triggered = 0 [0, 1]`
 ---@field destroy_this_entity_when_triggered boolean `destroy_this_entity_when_triggered = 1 [0, 1]`
 ---@field timer_for_destruction integer `timer_for_destruction = 0 [0, 60]`
@@ -2142,7 +2142,7 @@
 ---| '"width"' `number width = 32 [0, 100]`
 ---| '"height"' `number height = 32 [0, 100]`
 ---| '"radius"' `number radius = 32 [0, 100]`
----| '"required_tag"' `string required_tag = mortal [0, 1]`
+---| '"required_tag"' `string required_tag = "mortal"`
 ---| '"remove_component_when_triggered"' `boolean remove_component_when_triggered = 0 [0, 1]`
 ---| '"destroy_this_entity_when_triggered"' `boolean destroy_this_entity_when_triggered = 1 [0, 1]`
 ---| '"timer_for_destruction"' `integer timer_for_destruction = 0 [0, 60]`
@@ -2670,17 +2670,17 @@
 ---@field minimum_knockback_force number? `minimum_knockback_force = 0 [0, 1]` Minimum knockback force required to do the knockback
 ---@field materials_damage boolean? `materials_damage = 1 [0, 1]` should materials do damage or not?
 ---@field material_damage_min_cell_count integer? `material_damage_min_cell_count = 4 [0, 1]` if material damage is received from less than 'material_damage_min_cell_count' this frame, it is ignored
----@field materials_that_damage string? `materials_that_damage = acid [0, 1]` list of materials that do damage, separated by ',' e.g. 'acid, fire, smoke'
----@field materials_how_much_damage string? `materials_how_much_damage = 0.1 [0, 1]` list of damage amount per material in materials_that_damage, separated by ','
+---@field materials_that_damage string? `materials_that_damage = "acid"` list of materials that do damage, separated by ',' e.g. 'acid, fire, smoke'
+---@field materials_how_much_damage string? `materials_how_much_damage = "0.1"` list of damage amount per material in materials_that_damage, separated by ','
 ---@field materials_damage_proportional_to_maxhp boolean? `materials_damage_proportional_to_maxhp = 0 [0, 1]` if damage from materials is proportional to max hp, instead of just damage
 ---@field physics_objects_damage boolean? `physics_objects_damage = 0 [0, 1]` if true, will take damage from physics objects that hit it
 ---@field materials_create_messages boolean? `materials_create_messages = 0 [0, 1]` should collisions with certain materials create messages or not?
----@field materials_that_create_messages string? `materials_that_create_messages = meat [0, 1]` list of materials that generate CollisionWithCell messages, separated by ',' e.g. 'acid, fire, smoke'
----@field ragdoll_filenames_file string? `ragdoll_filenames_file = data/temp/ragdoll/filenames.txt [0, 1]` the file from which to load a ragdoll on death'
----@field ragdoll_material string? `ragdoll_material = meat [0, 1]` what material is the ragdoll made out of
+---@field materials_that_create_messages string? `materials_that_create_messages = "meat"` list of materials that generate CollisionWithCell messages, separated by ',' e.g. 'acid, fire, smoke'
+---@field ragdoll_filenames_file string? `ragdoll_filenames_file = "data/temp/ragdoll/filenames.txt"` the file from which to load a ragdoll on death'
+---@field ragdoll_material string? `ragdoll_material = "meat"` what material is the ragdoll made out of
 ---@field ragdoll_offset_x number? `ragdoll_offset_x = 0 [0, 1]` where should the ragdoll be created relative to our entity position'
 ---@field ragdoll_offset_y number? `ragdoll_offset_y = 0 [0, 1]` where should the ragdoll be created relative to our entity position'
----@field blood_material string? `blood_material = blood_fading [0, 1]` this is the material that gets thrown as particles when this entity takes damage
+---@field blood_material string? `blood_material = "blood_fading"` this is the material that gets thrown as particles when this entity takes damage
 ---@field blood_spray_material string? this is the material that gets thrown as particles when this entity sprays blood on death
 ---@field blood_spray_create_some_cosmetic boolean? `blood_spray_create_some_cosmetic = 0 [0, 1]` if true, we force some blood spray particles to be cosmetic (can be enabled to avoid making a huge mess of blood spray)
 ---@field blood_multiplier number? `blood_multiplier = 1 [0, 10]` how much blood, this is the multiplier used for sprouting lots or little blood
@@ -2763,17 +2763,17 @@
 ---@field minimum_knockback_force number `minimum_knockback_force = 0 [0, 1]` Minimum knockback force required to do the knockback
 ---@field materials_damage boolean `materials_damage = 1 [0, 1]` should materials do damage or not?
 ---@field material_damage_min_cell_count integer `material_damage_min_cell_count = 4 [0, 1]` if material damage is received from less than 'material_damage_min_cell_count' this frame, it is ignored
----@field materials_that_damage string `materials_that_damage = acid [0, 1]` list of materials that do damage, separated by ',' e.g. 'acid, fire, smoke'
----@field materials_how_much_damage string `materials_how_much_damage = 0.1 [0, 1]` list of damage amount per material in materials_that_damage, separated by ','
+---@field materials_that_damage string `materials_that_damage = "acid"` list of materials that do damage, separated by ',' e.g. 'acid, fire, smoke'
+---@field materials_how_much_damage string `materials_how_much_damage = "0.1"` list of damage amount per material in materials_that_damage, separated by ','
 ---@field materials_damage_proportional_to_maxhp boolean `materials_damage_proportional_to_maxhp = 0 [0, 1]` if damage from materials is proportional to max hp, instead of just damage
 ---@field physics_objects_damage boolean `physics_objects_damage = 0 [0, 1]` if true, will take damage from physics objects that hit it
 ---@field materials_create_messages boolean `materials_create_messages = 0 [0, 1]` should collisions with certain materials create messages or not?
----@field materials_that_create_messages string `materials_that_create_messages = meat [0, 1]` list of materials that generate CollisionWithCell messages, separated by ',' e.g. 'acid, fire, smoke'
----@field ragdoll_filenames_file string `ragdoll_filenames_file = data/temp/ragdoll/filenames.txt [0, 1]` the file from which to load a ragdoll on death'
----@field ragdoll_material string `ragdoll_material = meat [0, 1]` what material is the ragdoll made out of
+---@field materials_that_create_messages string `materials_that_create_messages = "meat"` list of materials that generate CollisionWithCell messages, separated by ',' e.g. 'acid, fire, smoke'
+---@field ragdoll_filenames_file string `ragdoll_filenames_file = "data/temp/ragdoll/filenames.txt"` the file from which to load a ragdoll on death'
+---@field ragdoll_material string `ragdoll_material = "meat"` what material is the ragdoll made out of
 ---@field ragdoll_offset_x number `ragdoll_offset_x = 0 [0, 1]` where should the ragdoll be created relative to our entity position'
 ---@field ragdoll_offset_y number `ragdoll_offset_y = 0 [0, 1]` where should the ragdoll be created relative to our entity position'
----@field blood_material string `blood_material = blood_fading [0, 1]` this is the material that gets thrown as particles when this entity takes damage
+---@field blood_material string `blood_material = "blood_fading"` this is the material that gets thrown as particles when this entity takes damage
 ---@field blood_spray_material string this is the material that gets thrown as particles when this entity sprays blood on death
 ---@field blood_spray_create_some_cosmetic boolean `blood_spray_create_some_cosmetic = 0 [0, 1]` if true, we force some blood spray particles to be cosmetic (can be enabled to avoid making a huge mess of blood spray)
 ---@field blood_multiplier number `blood_multiplier = 1 [0, 10]` how much blood, this is the multiplier used for sprouting lots or little blood
@@ -2856,17 +2856,17 @@
 ---| '"minimum_knockback_force"' `number minimum_knockback_force = 0 [0, 1]` Minimum knockback force required to do the knockback
 ---| '"materials_damage"' `boolean materials_damage = 1 [0, 1]` should materials do damage or not?
 ---| '"material_damage_min_cell_count"' `integer material_damage_min_cell_count = 4 [0, 1]` if material damage is received from less than 'material_damage_min_cell_count' this frame, it is ignored
----| '"materials_that_damage"' `string materials_that_damage = acid [0, 1]` list of materials that do damage, separated by ',' e.g. 'acid, fire, smoke'
----| '"materials_how_much_damage"' `string materials_how_much_damage = 0.1 [0, 1]` list of damage amount per material in materials_that_damage, separated by ','
+---| '"materials_that_damage"' `string materials_that_damage = "acid"` list of materials that do damage, separated by ',' e.g. 'acid, fire, smoke'
+---| '"materials_how_much_damage"' `string materials_how_much_damage = "0.1"` list of damage amount per material in materials_that_damage, separated by ','
 ---| '"materials_damage_proportional_to_maxhp"' `boolean materials_damage_proportional_to_maxhp = 0 [0, 1]` if damage from materials is proportional to max hp, instead of just damage
 ---| '"physics_objects_damage"' `boolean physics_objects_damage = 0 [0, 1]` if true, will take damage from physics objects that hit it
 ---| '"materials_create_messages"' `boolean materials_create_messages = 0 [0, 1]` should collisions with certain materials create messages or not?
----| '"materials_that_create_messages"' `string materials_that_create_messages = meat [0, 1]` list of materials that generate CollisionWithCell messages, separated by ',' e.g. 'acid, fire, smoke'
----| '"ragdoll_filenames_file"' `string ragdoll_filenames_file = data/temp/ragdoll/filenames.txt [0, 1]` the file from which to load a ragdoll on death'
----| '"ragdoll_material"' `string ragdoll_material = meat [0, 1]` what material is the ragdoll made out of
+---| '"materials_that_create_messages"' `string materials_that_create_messages = "meat"` list of materials that generate CollisionWithCell messages, separated by ',' e.g. 'acid, fire, smoke'
+---| '"ragdoll_filenames_file"' `string ragdoll_filenames_file = "data/temp/ragdoll/filenames.txt"` the file from which to load a ragdoll on death'
+---| '"ragdoll_material"' `string ragdoll_material = "meat"` what material is the ragdoll made out of
 ---| '"ragdoll_offset_x"' `number ragdoll_offset_x = 0 [0, 1]` where should the ragdoll be created relative to our entity position'
 ---| '"ragdoll_offset_y"' `number ragdoll_offset_y = 0 [0, 1]` where should the ragdoll be created relative to our entity position'
----| '"blood_material"' `string blood_material = blood_fading [0, 1]` this is the material that gets thrown as particles when this entity takes damage
+---| '"blood_material"' `string blood_material = "blood_fading"` this is the material that gets thrown as particles when this entity takes damage
 ---| '"blood_spray_material"' `string` this is the material that gets thrown as particles when this entity sprays blood on death
 ---| '"blood_spray_create_some_cosmetic"' `boolean blood_spray_create_some_cosmetic = 0 [0, 1]` if true, we force some blood spray particles to be cosmetic (can be enabled to avoid making a huge mess of blood spray)
 ---| '"blood_multiplier"' `number blood_multiplier = 1 [0, 10]` how much blood, this is the multiplier used for sprouting lots or little blood
@@ -2944,8 +2944,8 @@
 ---@field target_vec_max_len number? `target_vec_max_len = 5 [0, 1]`
 ---@field knockback_multiplier number? `knockback_multiplier = 1 [0, 1]`
 ---@field time_between_damaging integer? `time_between_damaging = 20 [0, 1]`
----@field damage_description string? `damage_description = bite [0, 1]`
----@field target_tag string? `target_tag = mortal [0, 1]`
+---@field damage_description string? `damage_description = "bite"`
+---@field target_tag string? `target_tag = "mortal"`
 ---@field damage_type DAMAGE_TYPES::Enum? the damage type
 ---@field ragdoll_fx RAGDOLL_FX::Enum?
 ---@field mVelocity Vec2?
@@ -2958,8 +2958,8 @@
 ---@field target_vec_max_len number `target_vec_max_len = 5 [0, 1]`
 ---@field knockback_multiplier number `knockback_multiplier = 1 [0, 1]`
 ---@field time_between_damaging integer `time_between_damaging = 20 [0, 1]`
----@field damage_description string `damage_description = bite [0, 1]`
----@field target_tag string `target_tag = mortal [0, 1]`
+---@field damage_description string `damage_description = "bite"`
+---@field target_tag string `target_tag = "mortal"`
 ---@field damage_type DAMAGE_TYPES::Enum the damage type
 ---@field ragdoll_fx RAGDOLL_FX::Enum
 ---@field mVelocity Vec2
@@ -2972,8 +2972,8 @@
 ---| '"target_vec_max_len"' `number target_vec_max_len = 5 [0, 1]`
 ---| '"knockback_multiplier"' `number knockback_multiplier = 1 [0, 1]`
 ---| '"time_between_damaging"' `integer time_between_damaging = 20 [0, 1]`
----| '"damage_description"' `string damage_description = bite [0, 1]`
----| '"target_tag"' `string target_tag = mortal [0, 1]`
+---| '"damage_description"' `string damage_description = "bite"`
+---| '"target_tag"' `string target_tag = "mortal"`
 ---| '"damage_type"' `DAMAGE_TYPES::Enum` the damage type
 ---| '"ragdoll_fx"' `RAGDOLL_FX::Enum`
 ---| '"mVelocity"' `Vec2`
@@ -3066,13 +3066,13 @@
 ---@field add fun(self: DroneLauncherComponents, fields: DroneLauncherComponent.partial?): DroneLauncherComponent
 
 ---@class (exact) DroneLauncherComponent.partial
----@field drone_entity_file string? `drone_entity_file = data/entities/misc/player_drone.xml [0, 1]`
+---@field drone_entity_file string? `drone_entity_file = "data/entities/misc/player_drone.xml"`
 
 ---@class (exact) DroneLauncherComponent : Component
----@field drone_entity_file string `drone_entity_file = data/entities/misc/player_drone.xml [0, 1]`
+---@field drone_entity_file string `drone_entity_file = "data/entities/misc/player_drone.xml"`
 
 ---@alias DroneLauncherComponent.field
----| '"drone_entity_file"' `string drone_entity_file = data/entities/misc/player_drone.xml [0, 1]`
+---| '"drone_entity_file"' `string drone_entity_file = "data/entities/misc/player_drone.xml"`
 
 ---@class (exact) DrugEffectComponents
 ---@overload fun(): DrugEffectComponent
@@ -3456,7 +3456,7 @@
 
 ---@class (exact) GameAreaEffectComponent.partial
 ---@field radius number? `radius = 0 [0, 3.5]` what's the radius (in pixels) of the area effect
----@field collide_with_tag string? `collide_with_tag = hittable [0, 1]` the tags we're looking for
+---@field collide_with_tag string? `collide_with_tag = "hittable"` the tags we're looking for
 ---@field frame_length integer? `frame_length = -1 [0, 1]` if not 0 will reapply this effect after this many frames have gone by
 ---@field game_effect_entitities std::vector<std::string>? just a vector of the game_effect entities
 ---@field mEntitiesAppliedOutTo std::vector<EntityID>?
@@ -3464,7 +3464,7 @@
 
 ---@class (exact) GameAreaEffectComponent : Component
 ---@field radius number `radius = 0 [0, 3.5]` what's the radius (in pixels) of the area effect
----@field collide_with_tag string `collide_with_tag = hittable [0, 1]` the tags we're looking for
+---@field collide_with_tag string `collide_with_tag = "hittable"` the tags we're looking for
 ---@field frame_length integer `frame_length = -1 [0, 1]` if not 0 will reapply this effect after this many frames have gone by
 ---@field game_effect_entitities std::vector<std::string> just a vector of the game_effect entities
 ---@field mEntitiesAppliedOutTo std::vector<EntityID>
@@ -3472,7 +3472,7 @@
 
 ---@alias GameAreaEffectComponent.field
 ---| '"radius"' `number radius = 0 [0, 3.5]` what's the radius (in pixels) of the area effect
----| '"collide_with_tag"' `string collide_with_tag = hittable [0, 1]` the tags we're looking for
+---| '"collide_with_tag"' `string collide_with_tag = "hittable"` the tags we're looking for
 ---| '"frame_length"' `integer frame_length = -1 [0, 1]` if not 0 will reapply this effect after this many frames have gone by
 ---| '"game_effect_entitities"' `std::vector<std::string>` just a vector of the game_effect entities
 ---| '"mEntitiesAppliedOutTo"' `std::vector<EntityID>`
@@ -3704,7 +3704,7 @@
 ---@field aggressiveness number? `aggressiveness = 100 [0, 1]` if higher than relations then will attack
 ---@field max_distance_from_home number? `max_distance_from_home = 300 [0, 1]` how far from home can we go?
 ---@field die_if_no_home boolean? `die_if_no_home = 1 [0, 1]` if set to false will die, if it can't find home
----@field target_tag string? `target_tag = player_unit [0, 1]` if something else (like mortal), will attack the home
+---@field target_tag string? `target_tag = "player_unit"` if something else (like mortal), will attack the home
 ---@field velocity Vec2?
 ---@field mEntityHome EntityID? `mEntityHome = 0 [0, 1]` where is our home?
 ---@field mFramesWithoutHome integer? `mFramesWithoutHome = 0 [0, 1]`
@@ -3720,7 +3720,7 @@
 ---@field aggressiveness number `aggressiveness = 100 [0, 1]` if higher than relations then will attack
 ---@field max_distance_from_home number `max_distance_from_home = 300 [0, 1]` how far from home can we go?
 ---@field die_if_no_home boolean `die_if_no_home = 1 [0, 1]` if set to false will die, if it can't find home
----@field target_tag string `target_tag = player_unit [0, 1]` if something else (like mortal), will attack the home
+---@field target_tag string `target_tag = "player_unit"` if something else (like mortal), will attack the home
 ---@field velocity Vec2
 ---@field mEntityHome EntityID `mEntityHome = 0 [0, 1]` where is our home?
 ---@field mFramesWithoutHome integer `mFramesWithoutHome = 0 [0, 1]`
@@ -3736,7 +3736,7 @@
 ---| '"aggressiveness"' `number aggressiveness = 100 [0, 1]` if higher than relations then will attack
 ---| '"max_distance_from_home"' `number max_distance_from_home = 300 [0, 1]` how far from home can we go?
 ---| '"die_if_no_home"' `boolean die_if_no_home = 1 [0, 1]` if set to false will die, if it can't find home
----| '"target_tag"' `string target_tag = player_unit [0, 1]` if something else (like mortal), will attack the home
+---| '"target_tag"' `string target_tag = "player_unit"` if something else (like mortal), will attack the home
 ---| '"velocity"' `Vec2`
 ---| '"mEntityHome"' `EntityID mEntityHome = 0 [0, 1]` where is our home?
 ---| '"mFramesWithoutHome"' `integer mFramesWithoutHome = 0 [0, 1]`
@@ -3869,7 +3869,7 @@
 ---@field add fun(self: HomingComponents, fields: HomingComponent.partial?): HomingComponent
 
 ---@class (exact) HomingComponent.partial
----@field target_tag string? `target_tag = homing_target [0, 1]`
+---@field target_tag string? `target_tag = "homing_target"`
 ---@field target_who_shot boolean? `target_who_shot = 0 [0, 1]` If 1, targets who shot the projectile, ignores 'target_tag'.
 ---@field detect_distance number? `detect_distance = 150 [0, 1000]`
 ---@field homing_velocity_multiplier number? `homing_velocity_multiplier = 0.9 [-100, 100]`
@@ -3880,7 +3880,7 @@
 ---@field look_for_root_entities_only boolean? `look_for_root_entities_only = 0 [0, 1]` if set, will only look for entities that are _not_ child entities.
 
 ---@class (exact) HomingComponent : Component
----@field target_tag string `target_tag = homing_target [0, 1]`
+---@field target_tag string `target_tag = "homing_target"`
 ---@field target_who_shot boolean `target_who_shot = 0 [0, 1]` If 1, targets who shot the projectile, ignores 'target_tag'.
 ---@field detect_distance number `detect_distance = 150 [0, 1000]`
 ---@field homing_velocity_multiplier number `homing_velocity_multiplier = 0.9 [-100, 100]`
@@ -3891,7 +3891,7 @@
 ---@field look_for_root_entities_only boolean `look_for_root_entities_only = 0 [0, 1]` if set, will only look for entities that are _not_ child entities.
 
 ---@alias HomingComponent.field
----| '"target_tag"' `string target_tag = homing_target [0, 1]`
+---| '"target_tag"' `string target_tag = "homing_target"`
 ---| '"target_who_shot"' `boolean target_who_shot = 0 [0, 1]` If 1, targets who shot the projectile, ignores 'target_tag'.
 ---| '"detect_distance"' `number detect_distance = 150 [0, 1000]`
 ---| '"homing_velocity_multiplier"' `number homing_velocity_multiplier = 0.9 [-100, 100]`
@@ -3935,7 +3935,7 @@
 ---@field leg_velocity_coeff number? `leg_velocity_coeff = 15 [0, 1]`
 ---@field targeting_radius number? `targeting_radius = 120 [0, 1]`
 ---@field targeting_raytrace boolean? `targeting_raytrace = 1 [0, 1]`
----@field target_entities_with_tag string? `target_entities_with_tag = mortal [0, 1]`
+---@field target_entities_with_tag string? `target_entities_with_tag = "mortal"`
 ---@field mTarget Vec2?
 ---@field mTargetEntity EntityID? `mTargetEntity = 0 [0, 1]`
 ---@field mStateTimer number? `mStateTimer = 0 [0, 1]`
@@ -3945,7 +3945,7 @@
 ---@field leg_velocity_coeff number `leg_velocity_coeff = 15 [0, 1]`
 ---@field targeting_radius number `targeting_radius = 120 [0, 1]`
 ---@field targeting_raytrace boolean `targeting_raytrace = 1 [0, 1]`
----@field target_entities_with_tag string `target_entities_with_tag = mortal [0, 1]`
+---@field target_entities_with_tag string `target_entities_with_tag = "mortal"`
 ---@field mTarget Vec2
 ---@field mTargetEntity EntityID `mTargetEntity = 0 [0, 1]`
 ---@field mStateTimer number `mStateTimer = 0 [0, 1]`
@@ -3955,7 +3955,7 @@
 ---| '"leg_velocity_coeff"' `number leg_velocity_coeff = 15 [0, 1]`
 ---| '"targeting_radius"' `number targeting_radius = 120 [0, 1]`
 ---| '"targeting_raytrace"' `boolean targeting_raytrace = 1 [0, 1]`
----| '"target_entities_with_tag"' `string target_entities_with_tag = mortal [0, 1]`
+---| '"target_entities_with_tag"' `string target_entities_with_tag = "mortal"`
 ---| '"mTarget"' `Vec2`
 ---| '"mTargetEntity"' `EntityID mTargetEntity = 0 [0, 1]`
 ---| '"mStateTimer"' `number mStateTimer = 0 [0, 1]`
@@ -4857,7 +4857,7 @@
 ---@field add fun(self: LightningComponents, fields: LightningComponent.partial?): LightningComponent
 
 ---@class (exact) LightningComponent.partial
----@field sprite_lightning_file string? `sprite_lightning_file = data/particles/lightning_ray.png [0, 1]` particle effect, from where the file is loaded that lightning is generated from
+---@field sprite_lightning_file string? `sprite_lightning_file = "data/particles/lightning_ray.png"` particle effect, from where the file is loaded that lightning is generated from
 ---@field is_projectile boolean? `is_projectile = 0 [0, 1]` if this is true, it's a projectile lightning and looks for ProjectileComponent and uses the data from there to move it
 ---@field explosion_type integer? `explosion_type = 1 [0, 1]` 1 = lightning trail
 ---@field arc_lifetime integer? `arc_lifetime = 60 [0, 1]` remaining number of frames the arc exists
@@ -4866,7 +4866,7 @@
 ---@field mArcTarget EntityID? `mArcTarget = 0 [0, 1]` if 'mArcTarget' points to an existing entity a lighting arc will be created between this entity and 'mArcTarget'
 
 ---@class (exact) LightningComponent : Component
----@field sprite_lightning_file string `sprite_lightning_file = data/particles/lightning_ray.png [0, 1]` particle effect, from where the file is loaded that lightning is generated from
+---@field sprite_lightning_file string `sprite_lightning_file = "data/particles/lightning_ray.png"` particle effect, from where the file is loaded that lightning is generated from
 ---@field is_projectile boolean `is_projectile = 0 [0, 1]` if this is true, it's a projectile lightning and looks for ProjectileComponent and uses the data from there to move it
 ---@field explosion_type integer `explosion_type = 1 [0, 1]` 1 = lightning trail
 ---@field arc_lifetime integer `arc_lifetime = 60 [0, 1]` remaining number of frames the arc exists
@@ -4875,7 +4875,7 @@
 ---@field mArcTarget EntityID `mArcTarget = 0 [0, 1]` if 'mArcTarget' points to an existing entity a lighting arc will be created between this entity and 'mArcTarget'
 
 ---@alias LightningComponent.field
----| '"sprite_lightning_file"' `string sprite_lightning_file = data/particles/lightning_ray.png [0, 1]` particle effect, from where the file is loaded that lightning is generated from
+---| '"sprite_lightning_file"' `string sprite_lightning_file = "data/particles/lightning_ray.png"` particle effect, from where the file is loaded that lightning is generated from
 ---| '"is_projectile"' `boolean is_projectile = 0 [0, 1]` if this is true, it's a projectile lightning and looks for ProjectileComponent and uses the data from there to move it
 ---| '"explosion_type"' `integer explosion_type = 1 [0, 1]` 1 = lightning trail
 ---| '"arc_lifetime"' `integer arc_lifetime = 60 [0, 1]` remaining number of frames the arc exists
@@ -4997,7 +4997,7 @@
 ---@field chunk_probability number? `chunk_probability = 0 [0, 1]` if > 0, will drop box2d chunks of the ceiling
 ---@field chunk_max_angle number? `chunk_max_angle = 0.7 [0, 1]` how much raytraces go to different directions around the up-vector. pi=full circle
 ---@field chunk_count integer? `chunk_count = -1 [0, 1]` how many chunks are we allowed to do, -1 = infinite
----@field collapse_images string? `collapse_images = data/procedural_gfx/collapse_big/$[0-14].png [0, 1]` loads these files randomly to do the collapse shapes
+---@field collapse_images string? `collapse_images = "data/procedural_gfx/collapse_big/$[0-14].png"` loads these files randomly to do the collapse shapes
 ---@field chunk_material integer? `chunk_material = 0 [0, 1]` String name of chunk material
 ---@field mChunkCount integer? `mChunkCount = 0 [0, 1]` how many chunks are we allowed to do, -1 = infinite
 
@@ -5011,7 +5011,7 @@
 ---@field chunk_probability number `chunk_probability = 0 [0, 1]` if > 0, will drop box2d chunks of the ceiling
 ---@field chunk_max_angle number `chunk_max_angle = 0.7 [0, 1]` how much raytraces go to different directions around the up-vector. pi=full circle
 ---@field chunk_count integer `chunk_count = -1 [0, 1]` how many chunks are we allowed to do, -1 = infinite
----@field collapse_images string `collapse_images = data/procedural_gfx/collapse_big/$[0-14].png [0, 1]` loads these files randomly to do the collapse shapes
+---@field collapse_images string `collapse_images = "data/procedural_gfx/collapse_big/$[0-14].png"` loads these files randomly to do the collapse shapes
 ---@field chunk_material integer `chunk_material = 0 [0, 1]` String name of chunk material
 ---@field mChunkCount integer `mChunkCount = 0 [0, 1]` how many chunks are we allowed to do, -1 = infinite
 
@@ -5025,7 +5025,7 @@
 ---| '"chunk_probability"' `number chunk_probability = 0 [0, 1]` if > 0, will drop box2d chunks of the ceiling
 ---| '"chunk_max_angle"' `number chunk_max_angle = 0.7 [0, 1]` how much raytraces go to different directions around the up-vector. pi=full circle
 ---| '"chunk_count"' `integer chunk_count = -1 [0, 1]` how many chunks are we allowed to do, -1 = infinite
----| '"collapse_images"' `string collapse_images = data/procedural_gfx/collapse_big/$[0-14].png [0, 1]` loads these files randomly to do the collapse shapes
+---| '"collapse_images"' `string collapse_images = "data/procedural_gfx/collapse_big/$[0-14].png"` loads these files randomly to do the collapse shapes
 ---| '"chunk_material"' `integer chunk_material = 0 [0, 1]` String name of chunk material
 ---| '"mChunkCount"' `integer mChunkCount = 0 [0, 1]` how many chunks are we allowed to do, -1 = infinite
 
@@ -6347,7 +6347,7 @@
 ---@field image_file string? loads pixelsprite based on this file
 ---@field anchor_x integer? `anchor_x = 0 [0, 3.5]` the anchor and center_offset
 ---@field anchor_y integer? `anchor_y = 0 [0, 3.5]` the anchor and center_offset
----@field material string? `material = wood_loose [0, 1]` what's the material that things are made out of, TODO - change this into MetaCustom
+---@field material string? `material = "wood_loose"` what's the material that things are made out of, TODO - change this into MetaCustom
 ---@field diggable boolean? `diggable = 1 [0, 1]` if 1, this can be broken with digger
 ---@field clean_overlapping_pixels boolean? `clean_overlapping_pixels = 1 [0, 1]` cleans up the pixels that are ovelapping in the world
 ---@field kill_when_sprite_dies boolean? `kill_when_sprite_dies = 1 [0, 1]` kills the entity, if the pixel sprite is dead (empty)
@@ -6357,7 +6357,7 @@
 ---@field image_file string loads pixelsprite based on this file
 ---@field anchor_x integer `anchor_x = 0 [0, 3.5]` the anchor and center_offset
 ---@field anchor_y integer `anchor_y = 0 [0, 3.5]` the anchor and center_offset
----@field material string `material = wood_loose [0, 1]` what's the material that things are made out of, TODO - change this into MetaCustom
+---@field material string `material = "wood_loose"` what's the material that things are made out of, TODO - change this into MetaCustom
 ---@field diggable boolean `diggable = 1 [0, 1]` if 1, this can be broken with digger
 ---@field clean_overlapping_pixels boolean `clean_overlapping_pixels = 1 [0, 1]` cleans up the pixels that are ovelapping in the world
 ---@field kill_when_sprite_dies boolean `kill_when_sprite_dies = 1 [0, 1]` kills the entity, if the pixel sprite is dead (empty)
@@ -6367,7 +6367,7 @@
 ---| '"image_file"' `string` loads pixelsprite based on this file
 ---| '"anchor_x"' `integer anchor_x = 0 [0, 3.5]` the anchor and center_offset
 ---| '"anchor_y"' `integer anchor_y = 0 [0, 3.5]` the anchor and center_offset
----| '"material"' `string material = wood_loose [0, 1]` what's the material that things are made out of, TODO - change this into MetaCustom
+---| '"material"' `string material = "wood_loose"` what's the material that things are made out of, TODO - change this into MetaCustom
 ---| '"diggable"' `boolean diggable = 1 [0, 1]` if 1, this can be broken with digger
 ---| '"clean_overlapping_pixels"' `boolean clean_overlapping_pixels = 1 [0, 1]` cleans up the pixels that are ovelapping in the world
 ---| '"kill_when_sprite_dies"' `boolean kill_when_sprite_dies = 1 [0, 1]` kills the entity, if the pixel sprite is dead (empty)
@@ -6662,7 +6662,7 @@
 ---@field shoot_light_flash_g integer? `shoot_light_flash_g = 180 [0, 255]`
 ---@field shoot_light_flash_b integer? `shoot_light_flash_b = 150 [0, 255]`
 ---@field create_shell_casing boolean? `create_shell_casing = 0 [0, 1]` should we create shell casings?
----@field shell_casing_material string? `shell_casing_material = brass [0, 1]` material of the shell casing
+---@field shell_casing_material string? `shell_casing_material = "brass"` material of the shell casing
 ---@field muzzle_flash_file string? this entity is created along with the projectile, oriented along the projectile's path
 ---@field bounces_left integer? `bounces_left = 0 [0, 1e+008]`
 ---@field bounce_energy number? `bounce_energy = 0.5 [0, 1]` when bouncing, velocity is multiplied by this
@@ -6706,7 +6706,7 @@
 ---@field damage_scaled_by_speed boolean? `damage_scaled_by_speed = 0 [0, 1]` if 1, damage is multiplied by (projectile speed / original projectile speed) ratio
 ---@field damage_scale_max_speed number? `damage_scale_max_speed = 0 [0, 1]` if > 0 and damage_scaled_by_speed = 1, will use this instead of mInitialSpeed when calculating the damage
 ---@field collide_with_entities boolean? `collide_with_entities = 1 [0, 1]` if 1, looks for entities with tag, collide_with_tag and collides with them, giving them damage
----@field collide_with_tag string? `collide_with_tag = hittable [0, 1]` default: mortal, if you needed can be changed to something more specific
+---@field collide_with_tag string? `collide_with_tag = "hittable"` default: mortal, if you needed can be changed to something more specific
 ---@field dont_collide_with_tag string? if set will ignore entities with this tag
 ---@field collide_with_shooter_frames integer? `collide_with_shooter_frames = -1 [0, 1]` remember friendly_fire 1, if -1 won't collide with shooter at all, otherwise uses the value as frame count and while it's running won't damage the shooter
 ---@field friendly_fire boolean? `friendly_fire = 0 [0, 1]` if true, will damage same herd id
@@ -6753,7 +6753,7 @@
 ---@field shoot_light_flash_g integer `shoot_light_flash_g = 180 [0, 255]`
 ---@field shoot_light_flash_b integer `shoot_light_flash_b = 150 [0, 255]`
 ---@field create_shell_casing boolean `create_shell_casing = 0 [0, 1]` should we create shell casings?
----@field shell_casing_material string `shell_casing_material = brass [0, 1]` material of the shell casing
+---@field shell_casing_material string `shell_casing_material = "brass"` material of the shell casing
 ---@field muzzle_flash_file string this entity is created along with the projectile, oriented along the projectile's path
 ---@field bounces_left integer `bounces_left = 0 [0, 1e+008]`
 ---@field bounce_energy number `bounce_energy = 0.5 [0, 1]` when bouncing, velocity is multiplied by this
@@ -6797,7 +6797,7 @@
 ---@field damage_scaled_by_speed boolean `damage_scaled_by_speed = 0 [0, 1]` if 1, damage is multiplied by (projectile speed / original projectile speed) ratio
 ---@field damage_scale_max_speed number `damage_scale_max_speed = 0 [0, 1]` if > 0 and damage_scaled_by_speed = 1, will use this instead of mInitialSpeed when calculating the damage
 ---@field collide_with_entities boolean `collide_with_entities = 1 [0, 1]` if 1, looks for entities with tag, collide_with_tag and collides with them, giving them damage
----@field collide_with_tag string `collide_with_tag = hittable [0, 1]` default: mortal, if you needed can be changed to something more specific
+---@field collide_with_tag string `collide_with_tag = "hittable"` default: mortal, if you needed can be changed to something more specific
 ---@field dont_collide_with_tag string if set will ignore entities with this tag
 ---@field collide_with_shooter_frames integer `collide_with_shooter_frames = -1 [0, 1]` remember friendly_fire 1, if -1 won't collide with shooter at all, otherwise uses the value as frame count and while it's running won't damage the shooter
 ---@field friendly_fire boolean `friendly_fire = 0 [0, 1]` if true, will damage same herd id
@@ -6844,7 +6844,7 @@
 ---| '"shoot_light_flash_g"' `integer shoot_light_flash_g = 180 [0, 255]`
 ---| '"shoot_light_flash_b"' `integer shoot_light_flash_b = 150 [0, 255]`
 ---| '"create_shell_casing"' `boolean create_shell_casing = 0 [0, 1]` should we create shell casings?
----| '"shell_casing_material"' `string shell_casing_material = brass [0, 1]` material of the shell casing
+---| '"shell_casing_material"' `string shell_casing_material = "brass"` material of the shell casing
 ---| '"muzzle_flash_file"' `string` this entity is created along with the projectile, oriented along the projectile's path
 ---| '"bounces_left"' `integer bounces_left = 0 [0, 1e+008]`
 ---| '"bounce_energy"' `number bounce_energy = 0.5 [0, 1]` when bouncing, velocity is multiplied by this
@@ -6888,7 +6888,7 @@
 ---| '"damage_scaled_by_speed"' `boolean damage_scaled_by_speed = 0 [0, 1]` if 1, damage is multiplied by (projectile speed / original projectile speed) ratio
 ---| '"damage_scale_max_speed"' `number damage_scale_max_speed = 0 [0, 1]` if > 0 and damage_scaled_by_speed = 1, will use this instead of mInitialSpeed when calculating the damage
 ---| '"collide_with_entities"' `boolean collide_with_entities = 1 [0, 1]` if 1, looks for entities with tag, collide_with_tag and collides with them, giving them damage
----| '"collide_with_tag"' `string collide_with_tag = hittable [0, 1]` default: mortal, if you needed can be changed to something more specific
+---| '"collide_with_tag"' `string collide_with_tag = "hittable"` default: mortal, if you needed can be changed to something more specific
 ---| '"dont_collide_with_tag"' `string` if set will ignore entities with this tag
 ---| '"collide_with_shooter_frames"' `integer collide_with_shooter_frames = -1 [0, 1]` remember friendly_fire 1, if -1 won't collide with shooter at all, otherwise uses the value as frame count and while it's running won't damage the shooter
 ---| '"friendly_fire"' `boolean friendly_fire = 0 [0, 1]` if true, will damage same herd id
@@ -6925,13 +6925,13 @@
 ---@field add fun(self: RotateTowardsComponents, fields: RotateTowardsComponent.partial?): RotateTowardsComponent
 
 ---@class (exact) RotateTowardsComponent.partial
----@field entity_with_tag string? `entity_with_tag = player_unit [0, 1]` will rotate this entity towards the closest entity with tag
+---@field entity_with_tag string? `entity_with_tag = "player_unit"` will rotate this entity towards the closest entity with tag
 
 ---@class (exact) RotateTowardsComponent : Component
----@field entity_with_tag string `entity_with_tag = player_unit [0, 1]` will rotate this entity towards the closest entity with tag
+---@field entity_with_tag string `entity_with_tag = "player_unit"` will rotate this entity towards the closest entity with tag
 
 ---@alias RotateTowardsComponent.field
----| '"entity_with_tag"' `string entity_with_tag = player_unit [0, 1]` will rotate this entity towards the closest entity with tag
+---| '"entity_with_tag"' `string entity_with_tag = "player_unit"` will rotate this entity towards the closest entity with tag
 
 ---@class (exact) SetLightAlphaFromVelocityComponents
 ---@overload fun(): SetLightAlphaFromVelocityComponent
@@ -7042,17 +7042,17 @@
 ---@field add fun(self: SpriteAnimatorComponents, fields: SpriteAnimatorComponent.partial?): SpriteAnimatorComponent
 
 ---@class (exact) SpriteAnimatorComponent.partial
----@field target_sprite_comp_name string? `target_sprite_comp_name = character [0, 1]`
+---@field target_sprite_comp_name string? `target_sprite_comp_name = "character"`
 ---@field rotate_to_surface_normal boolean? `rotate_to_surface_normal = 0 [0, 1]`
 ---@field mSendOnFinishedMessageName string?
 
 ---@class (exact) SpriteAnimatorComponent : Component
----@field target_sprite_comp_name string `target_sprite_comp_name = character [0, 1]`
+---@field target_sprite_comp_name string `target_sprite_comp_name = "character"`
 ---@field rotate_to_surface_normal boolean `rotate_to_surface_normal = 0 [0, 1]`
 ---@field mSendOnFinishedMessageName string
 
 ---@alias SpriteAnimatorComponent.field
----| '"target_sprite_comp_name"' `string target_sprite_comp_name = character [0, 1]`
+---| '"target_sprite_comp_name"' `string target_sprite_comp_name = "character"`
 ---| '"rotate_to_surface_normal"' `boolean rotate_to_surface_normal = 0 [0, 1]`
 ---| '"mSendOnFinishedMessageName"' `string`
 
@@ -7064,7 +7064,7 @@
 ---@field add fun(self: SpriteComponents, fields: SpriteComponent.partial?): SpriteComponent
 
 ---@class (exact) SpriteComponent.partial
----@field image_file string? `image_file = data/temp/temp_gun.png [0, 1]`
+---@field image_file string? `image_file = "data/temp/temp_gun.png"`
 ---@field ui_is_parent boolean? `ui_is_parent = 0 [0, 1]` Adds this to the GG.GetUISprite() as a child, instead of the mSpriteContainer
 ---@field is_text_sprite boolean? `is_text_sprite = 0 [0, 1]` if you want to load a text sprite, set this to true and image_file to a font file
 ---@field offset_x number? `offset_x = 0 [-24, 24]`
@@ -7091,7 +7091,7 @@
 ---@field mRenderListHandle integer? `mRenderListHandle = -1 [0, 1]`
 
 ---@class (exact) SpriteComponent : Component
----@field image_file string `image_file = data/temp/temp_gun.png [0, 1]`
+---@field image_file string `image_file = "data/temp/temp_gun.png"`
 ---@field ui_is_parent boolean `ui_is_parent = 0 [0, 1]` Adds this to the GG.GetUISprite() as a child, instead of the mSpriteContainer
 ---@field is_text_sprite boolean `is_text_sprite = 0 [0, 1]` if you want to load a text sprite, set this to true and image_file to a font file
 ---@field offset_x number `offset_x = 0 [-24, 24]`
@@ -7118,7 +7118,7 @@
 ---@field mRenderListHandle integer `mRenderListHandle = -1 [0, 1]`
 
 ---@alias SpriteComponent.field
----| '"image_file"' `string image_file = data/temp/temp_gun.png [0, 1]`
+---| '"image_file"' `string image_file = "data/temp/temp_gun.png"`
 ---| '"ui_is_parent"' `boolean ui_is_parent = 0 [0, 1]` Adds this to the GG.GetUISprite() as a child, instead of the mSpriteContainer
 ---| '"is_text_sprite"' `boolean is_text_sprite = 0 [0, 1]` if you want to load a text sprite, set this to true and image_file to a font file
 ---| '"offset_x"' `number offset_x = 0 [-24, 24]`
@@ -7950,8 +7950,8 @@
 ---@field perk_gold_is_forever boolean? `perk_gold_is_forever = 0 [0, 1]` drop_money.lua - checks if this is true and removes Lifetime_Component from gold nuggets
 ---@field perk_rats_player_friendly boolean? `perk_rats_player_friendly = 0 [0, 1]` if 1, rats don't attack player herd and the other way round. this is a persistent change
 ---@field EVERYTHING_TO_GOLD boolean? `EVERYTHING_TO_GOLD = 0 [0, 1]` if true everything will be gold + used to track if the wallet should go to infinite
----@field material_everything_to_gold string? `material_everything_to_gold = gold [0, 1]`
----@field material_everything_to_gold_static string? `material_everything_to_gold_static = gold_static [0, 1]`
+---@field material_everything_to_gold string? `material_everything_to_gold = "gold"`
+---@field material_everything_to_gold_static string? `material_everything_to_gold_static = "gold_static"`
 ---@field INFINITE_GOLD_HAPPENING boolean? `INFINITE_GOLD_HAPPENING = 0 [0, 1]` the secret ending with infinite gold
 ---@field ENDING_HAPPINESS_HAPPENING boolean? `ENDING_HAPPINESS_HAPPENING = 0 [0, 1]` if true, will do the animations for happiness ending
 ---@field ENDING_HAPPINESS_FRAMES integer? `ENDING_HAPPINESS_FRAMES = 0 [0, 1]` to keep track of the animation
@@ -8010,8 +8010,8 @@
 ---@field perk_gold_is_forever boolean `perk_gold_is_forever = 0 [0, 1]` drop_money.lua - checks if this is true and removes Lifetime_Component from gold nuggets
 ---@field perk_rats_player_friendly boolean `perk_rats_player_friendly = 0 [0, 1]` if 1, rats don't attack player herd and the other way round. this is a persistent change
 ---@field EVERYTHING_TO_GOLD boolean `EVERYTHING_TO_GOLD = 0 [0, 1]` if true everything will be gold + used to track if the wallet should go to infinite
----@field material_everything_to_gold string `material_everything_to_gold = gold [0, 1]`
----@field material_everything_to_gold_static string `material_everything_to_gold_static = gold_static [0, 1]`
+---@field material_everything_to_gold string `material_everything_to_gold = "gold"`
+---@field material_everything_to_gold_static string `material_everything_to_gold_static = "gold_static"`
 ---@field INFINITE_GOLD_HAPPENING boolean `INFINITE_GOLD_HAPPENING = 0 [0, 1]` the secret ending with infinite gold
 ---@field ENDING_HAPPINESS_HAPPENING boolean `ENDING_HAPPINESS_HAPPENING = 0 [0, 1]` if true, will do the animations for happiness ending
 ---@field ENDING_HAPPINESS_FRAMES integer `ENDING_HAPPINESS_FRAMES = 0 [0, 1]` to keep track of the animation
@@ -8070,8 +8070,8 @@
 ---| '"perk_gold_is_forever"' `boolean perk_gold_is_forever = 0 [0, 1]` drop_money.lua - checks if this is true and removes Lifetime_Component from gold nuggets
 ---| '"perk_rats_player_friendly"' `boolean perk_rats_player_friendly = 0 [0, 1]` if 1, rats don't attack player herd and the other way round. this is a persistent change
 ---| '"EVERYTHING_TO_GOLD"' `boolean EVERYTHING_TO_GOLD = 0 [0, 1]` if true everything will be gold + used to track if the wallet should go to infinite
----| '"material_everything_to_gold"' `string material_everything_to_gold = gold [0, 1]`
----| '"material_everything_to_gold_static"' `string material_everything_to_gold_static = gold_static [0, 1]`
+---| '"material_everything_to_gold"' `string material_everything_to_gold = "gold"`
+---| '"material_everything_to_gold_static"' `string material_everything_to_gold_static = "gold_static"`
 ---| '"INFINITE_GOLD_HAPPENING"' `boolean INFINITE_GOLD_HAPPENING = 0 [0, 1]` the secret ending with infinite gold
 ---| '"ENDING_HAPPINESS_HAPPENING"' `boolean ENDING_HAPPINESS_HAPPENING = 0 [0, 1]` if true, will do the animations for happiness ending
 ---| '"ENDING_HAPPINESS_FRAMES"' `integer ENDING_HAPPINESS_FRAMES = 0 [0, 1]` to keep track of the animation
