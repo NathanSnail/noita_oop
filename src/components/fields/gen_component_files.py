@@ -23,6 +23,8 @@ def normalise_types(ty: str) -> str:
         "float": "number",
         "double": "number",
         "std::string": "string",
+        "std_string": "string",
+        "USTRING": "string",
         "vec2": "Vec2",
         "ivec2": "Vec2",
         "int32": "integer",
@@ -32,6 +34,14 @@ def normalise_types(ty: str) -> str:
         "uint64": "integer",
         "int16": "integer",
         "uint16": "integer",
+        "VECTOR_STR": "std::vector<std::string>",
+        "VECTOR_STRING": "std::vector<std::string>",
+        "VECTOR_ENTITYID": "std::vector<EntityID>",
+        "VEC_ENTITY": "std::vector<EntityID>",
+        "VECTOR_INT": "std::vector<int>",
+        "VECTOR_INT32": "std::vector<int>",
+        "VECTOR_FLOAT": "std::vector<float>",
+        "b2Vec2": "Vec2",
     }
     lens = "LensValue<"
     if ty[: len(lens)] == lens:
@@ -64,7 +74,7 @@ def get_types(src: str) -> dict[str, dict[str, ComponentField]]:
         },
         "TeleportComponent": {"state": "TeleportComponentState::Enum"},
     }
-    content = {
+    components = {
         component: {field_name: ComponentField(field_ty, "", "", "")}
         for component, fields in basic_content.items()
         for field_name, field_ty in fields.items()
@@ -78,8 +88,8 @@ def get_types(src: str) -> dict[str, dict[str, ComponentField]]:
             continue
         if line[0] != " ":
             name = line
-            if name not in content.keys():
-                content[name] = {}
+            if name not in components.keys():
+                components[name] = {}
             continue
         if line[1] == "-":
             continue
@@ -92,12 +102,12 @@ def get_types(src: str) -> dict[str, dict[str, ComponentField]]:
                     break
             if matching_item is None:
                 raise Exception("error missing seperator", line)
-            field = matching_item[0]
+            field_name = matching_item[0]
             ty = matching_item[1]
             special = True
         else:
             ty = "".join([x for x in line[:27].split(" ") if x != ""])
-            field = line[28:].split(" ")[0]
+            field_name = line[28:].split(" ")[0]
         assert name != error, "Missing component name"
         normalised = normalise_types(ty)
         default_offset = 92
@@ -121,8 +131,106 @@ def get_types(src: str) -> dict[str, dict[str, ComponentField]]:
         if comment == "TODO: Comment":
             comment = ""
 
-        content[name][field] = ComponentField(normalised, default, val_range, comment)
-    return content
+        components[name][field_name] = ComponentField(
+            normalised, default, val_range, comment
+        )
+
+    permitted_types = set(["number", "integer", "string", "boolean", "Vec2"])
+    # these need to get turned into a lua type
+    unimplemeted_types = set(
+        [
+            "ValueRange",
+            "PARTICLE_EMITTER_CUSTOM_STYLE::Enum",
+            "EXPLOSION_TRIGGER_TYPE::Enum",
+            "ConfigExplosion",
+            "MOVETOSURFACE_TYPE::Enum",  # this component seemingly gets deleted instantly? might be able to construct with an enum value
+            "ENTITY_VEC",
+            "types::aabb",
+            "ConfigGun",
+            "ConfigGunActionInfo",
+            "EntityTags",
+            "EntityID",
+            "ARC_TYPE::Enum",
+            "DAMAGE_TYPES::Enum",
+            "types::xform",
+            "AudioSourceHandle",
+            "VEC_OF_MATERIALS",
+            "ConfigDamagesByType",
+            "RAGDOLL_FX::Enum",
+            "std::vector<int>",  # TODO: sometimes these are material ids
+            "std::vector<float>",
+            "EntityTypeID",
+            "ConfigDrugFx",
+            "std::vector<std::string>",
+            "std::vector<EntityID>",
+            "GAME_EFFECT::Enum",
+            "VISITED_VEC",
+            "HIT_EFFECT::Enum",
+            "INVENTORY_KIND::Enum",
+            "ConfigLaser",
+            "ValueRangeInt",
+            "LUA_VM_TYPE::Enum",
+            "MATERIAL_VEC_DOUBLES",
+            "types::iaabb",
+            "JOINT_TYPE::Enum",
+            "Vec2ArrayInline",
+            "ConfigDamageCritical",
+            "PROJECTILE_TYPE::Enum",
+            "types::fcolor",
+            "SpriteStainsState",
+            "VERLET_TYPE::Enum",
+            "FloatArrayInline",
+        ]
+    )
+    permitted_types = permitted_types.union(unimplemeted_types)
+    # cannot be interacted with from lua
+    banned_types = set(
+        [
+            "INVENTORYITEM_VECTOR",
+            "MSG_QUEUE_PATH_FINDING_RESULT",
+            "VECTOR_JUMPPARAMS",
+            "PathFindingInput",
+            "VECTOR_PATHNODE",
+            "PathFindingResultNode",
+            "PathFindingNodeHandle",
+            "PathFindingComponentState::Enum",
+            "NINJA_ROPE_SEGMENT_VECTOR",
+            "TeleportComponentState::Enum",
+            "AI_STATE_STACK",
+            "RtsUnitGoal",
+            "CharacterStatsModifier",
+            "StatusEffectType",
+            "IKLimbAttackerState",
+            "IKLimbStateVec",
+            "std::set<int32>",
+            "ValueMap",
+            "b2ObjectID",
+            "ProjectileTriggers",
+            "STACK_ANIMATIONSTATE",
+            "ComponentTags",
+            "VirtualTextureHandle",
+            "UintArrayInline",
+            "VerletLinkArrayInline",
+            "MAP_STRING_STRING",
+            "VEC_PENDINGPORTAL",
+            "VEC_NPCPARTY",
+            "VEC_CUTTHROUGHWORLD",
+            "WormPartPositions",
+        ]
+    )
+
+    for component_name, component in components.items():
+        delete = []
+        for field_name, field in component.items():
+            if field.ty in banned_types or field.ty[-1] == "*":
+                delete.append(field_name)
+                continue
+            assert (
+                field.ty in permitted_types
+            ), f"Bad type {field.ty} for {component_name}::{field_name}"
+        for field_name in delete:
+            component.pop(field_name)
+    return components
 
 
 components = get_types(open(COMP_DOCS, "r").read())

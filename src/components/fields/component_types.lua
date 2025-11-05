@@ -6,7 +6,6 @@
 ---@field add fun(self: ParticleEmitterComponents, fields: ParticleEmitterComponent.partial?): ParticleEmitterComponent
 
 ---@class (exact) ParticleEmitterComponent.partial
----@field m_cached_image_animation ParticleEmitter_Animation*?
 ---@field emitted_material_name string? `emitted_material_name = blood [0, 1]`
 ---@field create_real_particles boolean? `create_real_particles = 0 [0, 1]` used to be emit_real_particles - creates these particles in the grid, if that happens velocity and lifetime are ignored
 ---@field emit_real_particles boolean? `emit_real_particles = 0 [0, 1]` this creates particles that will behave like particles, but work outside of the screen
@@ -76,11 +75,9 @@
 ---@field m_has_emitted boolean? `m_has_emitted = 0 [0, 1]`
 ---@field m_last_emit_position Vec2?
 ---@field m_image_based_animation_time number? `m_image_based_animation_time = 0 [0, 1]`
----@field m_collision_angles float*?
 ---@field m_particle_attractor_id integer? `m_particle_attractor_id = -1 [0, 1]`
 
 ---@class (exact) ParticleEmitterComponent : Component
----@field m_cached_image_animation ParticleEmitter_Animation*
 ---@field emitted_material_name string `emitted_material_name = blood [0, 1]`
 ---@field create_real_particles boolean `create_real_particles = 0 [0, 1]` used to be emit_real_particles - creates these particles in the grid, if that happens velocity and lifetime are ignored
 ---@field emit_real_particles boolean `emit_real_particles = 0 [0, 1]` this creates particles that will behave like particles, but work outside of the screen
@@ -150,11 +147,9 @@
 ---@field m_has_emitted boolean `m_has_emitted = 0 [0, 1]`
 ---@field m_last_emit_position Vec2
 ---@field m_image_based_animation_time number `m_image_based_animation_time = 0 [0, 1]`
----@field m_collision_angles float*
 ---@field m_particle_attractor_id integer `m_particle_attractor_id = -1 [0, 1]`
 
 ---@alias ParticleEmitterComponent.field
----| '"m_cached_image_animation"' `ParticleEmitter_Animation*`
 ---| '"emitted_material_name"' `string emitted_material_name = blood [0, 1]`
 ---| '"create_real_particles"' `boolean create_real_particles = 0 [0, 1]` used to be emit_real_particles - creates these particles in the grid, if that happens velocity and lifetime are ignored
 ---| '"emit_real_particles"' `boolean emit_real_particles = 0 [0, 1]` this creates particles that will behave like particles, but work outside of the screen
@@ -224,7 +219,6 @@
 ---| '"m_has_emitted"' `boolean m_has_emitted = 0 [0, 1]`
 ---| '"m_last_emit_position"' `Vec2`
 ---| '"m_image_based_animation_time"' `number m_image_based_animation_time = 0 [0, 1]`
----| '"m_collision_angles"' `float*`
 ---| '"m_particle_attractor_id"' `integer m_particle_attractor_id = -1 [0, 1]`
 
 ---@class (exact) ExplosionComponents
@@ -266,34 +260,28 @@
 ---@field add fun(self: InventoryComponents, fields: InventoryComponent.partial?): InventoryComponent
 
 ---@class (exact) InventoryComponent.partial
----@field update_listener InvenentoryUpdateListener*? listener to keep ui up with ability changes
 ---@field ui_container_type integer? `ui_container_type = 1 [0, 1]` UI_CONTAINER_TYPES enum
 ---@field ui_element_sprite string? `ui_element_sprite = data/ui_gfx/inventory/inventory_box.png [0, 1]` ui back sprite
 ---@field actions string? list of actions, used for serialization
 ---@field ui_container_size Vec2? ui size, how many items x*y we can fit in
 ---@field ui_element_size Vec2? ui size
 ---@field ui_position_on_screen Vec2? where do we load this on screen
----@field items INVENTORYITEM_VECTOR?
 
 ---@class (exact) InventoryComponent : Component
----@field update_listener InvenentoryUpdateListener* listener to keep ui up with ability changes
 ---@field ui_container_type integer `ui_container_type = 1 [0, 1]` UI_CONTAINER_TYPES enum
 ---@field ui_element_sprite string `ui_element_sprite = data/ui_gfx/inventory/inventory_box.png [0, 1]` ui back sprite
 ---@field actions string list of actions, used for serialization
 ---@field ui_container_size Vec2 ui size, how many items x*y we can fit in
 ---@field ui_element_size Vec2 ui size
 ---@field ui_position_on_screen Vec2 where do we load this on screen
----@field items INVENTORYITEM_VECTOR
 
 ---@alias InventoryComponent.field
----| '"update_listener"' `InvenentoryUpdateListener*` listener to keep ui up with ability changes
 ---| '"ui_container_type"' `integer ui_container_type = 1 [0, 1]` UI_CONTAINER_TYPES enum
 ---| '"ui_element_sprite"' `string ui_element_sprite = data/ui_gfx/inventory/inventory_box.png [0, 1]` ui back sprite
 ---| '"actions"' `string` list of actions, used for serialization
 ---| '"ui_container_size"' `Vec2` ui size, how many items x*y we can fit in
 ---| '"ui_element_size"' `Vec2` ui size
 ---| '"ui_position_on_screen"' `Vec2` where do we load this on screen
----| '"items"' `INVENTORYITEM_VECTOR`
 
 ---@class (exact) PathFindingComponents
 ---@overload fun(): PathFindingComponent
@@ -303,7 +291,6 @@
 ---@field add fun(self: PathFindingComponents, fields: PathFindingComponent.partial?): PathFindingComponent
 
 ---@class (exact) PathFindingComponent.partial
----@field job_result_receiver MSG_QUEUE_PATH_FINDING_RESULT?
 ---@field search_depth_max_no_goal integer? `search_depth_max_no_goal = 20 [0, 1e+006]`
 ---@field iterations_max_no_goal integer? `iterations_max_no_goal = 1500 [0, 1e+006]`
 ---@field search_depth_max_with_goal integer? `search_depth_max_with_goal = 2500 [0, 1e+006]`
@@ -327,31 +314,20 @@
 ---@field initial_jump_max_distance_x number? `initial_jump_max_distance_x = 100 [0, 1000]`
 ---@field initial_jump_max_distance_y number? `initial_jump_max_distance_y = 80 [0, 1000]`
 ---@field read_state integer? `read_state = 0 [0, 1]` Read only value to get mState as an integer. Used to detect when the worst cheesers are trying to cheese our beloved squidward.
----@field jump_trajectories VECTOR_JUMPPARAMS?
----@field input PathFindingInput?
 ---@field waiting_for boolean? `waiting_for = 0 [0, 1]`
 ---@field next_search_frame integer? `next_search_frame = 0 [0, 1]`
----@field path VECTOR_PATHNODE?
----@field path_next_node PathFindingResultNode?
 ---@field path_next_node_vector_to Vec2?
 ---@field path_next_node_distance_to number? `path_next_node_distance_to = 0 [0, 1]`
----@field path_previous_node PathFindingNodeHandle?
 ---@field path_frames_stuck integer? `path_frames_stuck = 0 [0, 1]`
 ---@field path_is_stuck boolean? `path_is_stuck = 0 [0, 1]`
 ---@field path_last_frame_with_job integer? `path_last_frame_with_job = 0 [0, 1]`
----@field mLogic PathFindingLogic*? this defines what is an acceptable path
----@field mFallbackLogic PathFindingLogic*? we use this to define an acceptable path if mLogic doesn't return one
----@field mSelectedLogic PathFindingLogic*?
 ---@field mEnabled boolean? `mEnabled = 0 [0, 1]`
----@field mState PathFindingComponentState::Enum?
 ---@field mTimesStuck integer? `mTimesStuck = 0 [0, 1]`
 ---@field mNextClearDontApproachListFrame integer? `mNextClearDontApproachListFrame = 0 [0, 1]`
 ---@field mNodeProximityCheckCorrectionY number? `mNodeProximityCheckCorrectionY = 0 [0, 1]`
----@field debug_path VECTOR_PATHNODE?
 ---@field jump_velocity_multiplier number?
 
 ---@class (exact) PathFindingComponent : Component
----@field job_result_receiver MSG_QUEUE_PATH_FINDING_RESULT
 ---@field search_depth_max_no_goal integer `search_depth_max_no_goal = 20 [0, 1e+006]`
 ---@field iterations_max_no_goal integer `iterations_max_no_goal = 1500 [0, 1e+006]`
 ---@field search_depth_max_with_goal integer `search_depth_max_with_goal = 2500 [0, 1e+006]`
@@ -375,31 +351,20 @@
 ---@field initial_jump_max_distance_x number `initial_jump_max_distance_x = 100 [0, 1000]`
 ---@field initial_jump_max_distance_y number `initial_jump_max_distance_y = 80 [0, 1000]`
 ---@field read_state integer `read_state = 0 [0, 1]` Read only value to get mState as an integer. Used to detect when the worst cheesers are trying to cheese our beloved squidward.
----@field jump_trajectories VECTOR_JUMPPARAMS
----@field input PathFindingInput
 ---@field waiting_for boolean `waiting_for = 0 [0, 1]`
 ---@field next_search_frame integer `next_search_frame = 0 [0, 1]`
----@field path VECTOR_PATHNODE
----@field path_next_node PathFindingResultNode
 ---@field path_next_node_vector_to Vec2
 ---@field path_next_node_distance_to number `path_next_node_distance_to = 0 [0, 1]`
----@field path_previous_node PathFindingNodeHandle
 ---@field path_frames_stuck integer `path_frames_stuck = 0 [0, 1]`
 ---@field path_is_stuck boolean `path_is_stuck = 0 [0, 1]`
 ---@field path_last_frame_with_job integer `path_last_frame_with_job = 0 [0, 1]`
----@field mLogic PathFindingLogic* this defines what is an acceptable path
----@field mFallbackLogic PathFindingLogic* we use this to define an acceptable path if mLogic doesn't return one
----@field mSelectedLogic PathFindingLogic*
 ---@field mEnabled boolean `mEnabled = 0 [0, 1]`
----@field mState PathFindingComponentState::Enum
 ---@field mTimesStuck integer `mTimesStuck = 0 [0, 1]`
 ---@field mNextClearDontApproachListFrame integer `mNextClearDontApproachListFrame = 0 [0, 1]`
 ---@field mNodeProximityCheckCorrectionY number `mNodeProximityCheckCorrectionY = 0 [0, 1]`
----@field debug_path VECTOR_PATHNODE
 ---@field jump_velocity_multiplier number
 
 ---@alias PathFindingComponent.field
----| '"job_result_receiver"' `MSG_QUEUE_PATH_FINDING_RESULT`
 ---| '"search_depth_max_no_goal"' `integer search_depth_max_no_goal = 20 [0, 1e+006]`
 ---| '"iterations_max_no_goal"' `integer iterations_max_no_goal = 1500 [0, 1e+006]`
 ---| '"search_depth_max_with_goal"' `integer search_depth_max_with_goal = 2500 [0, 1e+006]`
@@ -423,27 +388,17 @@
 ---| '"initial_jump_max_distance_x"' `number initial_jump_max_distance_x = 100 [0, 1000]`
 ---| '"initial_jump_max_distance_y"' `number initial_jump_max_distance_y = 80 [0, 1000]`
 ---| '"read_state"' `integer read_state = 0 [0, 1]` Read only value to get mState as an integer. Used to detect when the worst cheesers are trying to cheese our beloved squidward.
----| '"jump_trajectories"' `VECTOR_JUMPPARAMS`
----| '"input"' `PathFindingInput`
 ---| '"waiting_for"' `boolean waiting_for = 0 [0, 1]`
 ---| '"next_search_frame"' `integer next_search_frame = 0 [0, 1]`
----| '"path"' `VECTOR_PATHNODE`
----| '"path_next_node"' `PathFindingResultNode`
 ---| '"path_next_node_vector_to"' `Vec2`
 ---| '"path_next_node_distance_to"' `number path_next_node_distance_to = 0 [0, 1]`
----| '"path_previous_node"' `PathFindingNodeHandle`
 ---| '"path_frames_stuck"' `integer path_frames_stuck = 0 [0, 1]`
 ---| '"path_is_stuck"' `boolean path_is_stuck = 0 [0, 1]`
 ---| '"path_last_frame_with_job"' `integer path_last_frame_with_job = 0 [0, 1]`
----| '"mLogic"' `PathFindingLogic*` this defines what is an acceptable path
----| '"mFallbackLogic"' `PathFindingLogic*` we use this to define an acceptable path if mLogic doesn't return one
----| '"mSelectedLogic"' `PathFindingLogic*`
 ---| '"mEnabled"' `boolean mEnabled = 0 [0, 1]`
----| '"mState"' `PathFindingComponentState::Enum`
 ---| '"mTimesStuck"' `integer mTimesStuck = 0 [0, 1]`
 ---| '"mNextClearDontApproachListFrame"' `integer mNextClearDontApproachListFrame = 0 [0, 1]`
 ---| '"mNodeProximityCheckCorrectionY"' `number mNodeProximityCheckCorrectionY = 0 [0, 1]`
----| '"debug_path"' `VECTOR_PATHNODE`
 ---| '"jump_velocity_multiplier"' `number`
 
 ---@class (exact) MoveToSurfaceOnCreateComponents
@@ -482,17 +437,14 @@
 ---@field add fun(self: NinjaRopeComponents, fields: NinjaRopeComponent.partial?): NinjaRopeComponent
 
 ---@class (exact) NinjaRopeComponent.partial
----@field mSegments NINJA_ROPE_SEGMENT_VECTOR?
 ---@field max_length number? `max_length = 356 [0, 2000]`
 ---@field mLength number? `mLength = 0 [0, 2000]`
 
 ---@class (exact) NinjaRopeComponent : Component
----@field mSegments NINJA_ROPE_SEGMENT_VECTOR
 ---@field max_length number `max_length = 356 [0, 2000]`
 ---@field mLength number `mLength = 0 [0, 2000]`
 
 ---@alias NinjaRopeComponent.field
----| '"mSegments"' `NINJA_ROPE_SEGMENT_VECTOR`
 ---| '"max_length"' `number max_length = 356 [0, 2000]`
 ---| '"mLength"' `number mLength = 0 [0, 2000]`
 
@@ -504,7 +456,6 @@
 ---@field add fun(self: TeleportComponents, fields: TeleportComponent.partial?): TeleportComponent
 
 ---@class (exact) TeleportComponent.partial
----@field state TeleportComponentState::Enum?
 ---@field target_x_is_absolute_position boolean? `target_x_is_absolute_position = 0 [0, 1]` If set, target position x is in world coordinates, otherwise it's an offset
 ---@field target_y_is_absolute_position boolean? `target_y_is_absolute_position = 0 [0, 1]` If set, target position y is in world coordinates, otherwise it's an offset
 ---@field source_particle_fx_file string? `source_particle_fx_file = data/entities/particles/teleportation_source.xml [0, 1]` This entity is loaded at the source position when teleportation occurs
@@ -516,7 +467,6 @@
 ---@field source_location_camera_aabb types::aabb?
 
 ---@class (exact) TeleportComponent : Component
----@field state TeleportComponentState::Enum
 ---@field target_x_is_absolute_position boolean `target_x_is_absolute_position = 0 [0, 1]` If set, target position x is in world coordinates, otherwise it's an offset
 ---@field target_y_is_absolute_position boolean `target_y_is_absolute_position = 0 [0, 1]` If set, target position y is in world coordinates, otherwise it's an offset
 ---@field source_particle_fx_file string `source_particle_fx_file = data/entities/particles/teleportation_source.xml [0, 1]` This entity is loaded at the source position when teleportation occurs
@@ -528,7 +478,6 @@
 ---@field source_location_camera_aabb types::aabb
 
 ---@alias TeleportComponent.field
----| '"state"' `TeleportComponentState::Enum`
 ---| '"target_x_is_absolute_position"' `boolean target_x_is_absolute_position = 0 [0, 1]` If set, target position x is in world coordinates, otherwise it's an offset
 ---| '"target_y_is_absolute_position"' `boolean target_y_is_absolute_position = 0 [0, 1]` If set, target position y is in world coordinates, otherwise it's an offset
 ---| '"source_particle_fx_file"' `string source_particle_fx_file = data/entities/particles/teleportation_source.xml [0, 1]` This entity is loaded at the source position when teleportation occurs
@@ -636,15 +585,12 @@
 
 ---@class (exact) AIComponent.partial
 ---@field TEMP_TEMP_TEMP number? `TEMP_TEMP_TEMP = 0 [0, 3.5]`
----@field data AIData*?
 
 ---@class (exact) AIComponent : Component
 ---@field TEMP_TEMP_TEMP number `TEMP_TEMP_TEMP = 0 [0, 3.5]`
----@field data AIData*
 
 ---@alias AIComponent.field
 ---| '"TEMP_TEMP_TEMP"' `number TEMP_TEMP_TEMP = 0 [0, 3.5]`
----| '"data"' `AIData*`
 
 ---@class (exact) AbilityComponents
 ---@overload fun(): AbilityComponent
@@ -691,7 +637,7 @@
 ---@field gun_level integer? `gun_level = 1 [1, 10]` the level of the wand, set in gun_procedural.lua
 ---@field add_these_child_actions string? e.g. 'bullet,bullet,damage' ... actions are parsed into a string. These are added as actual entities when the item is initialized
 ---@field current_slot_durability integer? `current_slot_durability = -1 [0, 1]` After this many slots the last slot of the gun is removed. -1 means not initialized/infinite.
----@field slot_consumption_function std_string? `slot_consumption_function = _get_gun_slot_durability_default [0, 1]` Name of the lua function in 'gun.lua' that is called to calculate durability of the last slot in the gun
+---@field slot_consumption_function string? `slot_consumption_function = _get_gun_slot_durability_default [0, 1]` Name of the lua function in 'gun.lua' that is called to calculate durability of the last slot in the gun
 ---@field mNextFrameUsable integer? `mNextFrameUsable = 0 [0, 1]` hax, don't touch!
 ---@field mCastDelayStartFrame integer? `mCastDelayStartFrame = 0 [0, 1]` hax, don't touch!
 ---@field mReloadFramesLeft integer? `mReloadFramesLeft = 0 [0, 1]` hax, don't touch!
@@ -742,7 +688,7 @@
 ---@field gun_level integer `gun_level = 1 [1, 10]` the level of the wand, set in gun_procedural.lua
 ---@field add_these_child_actions string e.g. 'bullet,bullet,damage' ... actions are parsed into a string. These are added as actual entities when the item is initialized
 ---@field current_slot_durability integer `current_slot_durability = -1 [0, 1]` After this many slots the last slot of the gun is removed. -1 means not initialized/infinite.
----@field slot_consumption_function std_string `slot_consumption_function = _get_gun_slot_durability_default [0, 1]` Name of the lua function in 'gun.lua' that is called to calculate durability of the last slot in the gun
+---@field slot_consumption_function string `slot_consumption_function = _get_gun_slot_durability_default [0, 1]` Name of the lua function in 'gun.lua' that is called to calculate durability of the last slot in the gun
 ---@field mNextFrameUsable integer `mNextFrameUsable = 0 [0, 1]` hax, don't touch!
 ---@field mCastDelayStartFrame integer `mCastDelayStartFrame = 0 [0, 1]` hax, don't touch!
 ---@field mReloadFramesLeft integer `mReloadFramesLeft = 0 [0, 1]` hax, don't touch!
@@ -793,7 +739,7 @@
 ---| '"gun_level"' `integer gun_level = 1 [1, 10]` the level of the wand, set in gun_procedural.lua
 ---| '"add_these_child_actions"' `string` e.g. 'bullet,bullet,damage' ... actions are parsed into a string. These are added as actual entities when the item is initialized
 ---| '"current_slot_durability"' `integer current_slot_durability = -1 [0, 1]` After this many slots the last slot of the gun is removed. -1 means not initialized/infinite.
----| '"slot_consumption_function"' `std_string slot_consumption_function = _get_gun_slot_durability_default [0, 1]` Name of the lua function in 'gun.lua' that is called to calculate durability of the last slot in the gun
+---| '"slot_consumption_function"' `string slot_consumption_function = _get_gun_slot_durability_default [0, 1]` Name of the lua function in 'gun.lua' that is called to calculate durability of the last slot in the gun
 ---| '"mNextFrameUsable"' `integer mNextFrameUsable = 0 [0, 1]` hax, don't touch!
 ---| '"mCastDelayStartFrame"' `integer mCastDelayStartFrame = 0 [0, 1]` hax, don't touch!
 ---| '"mReloadFramesLeft"' `integer mReloadFramesLeft = 0 [0, 1]` hax, don't touch!
@@ -994,7 +940,6 @@
 ---@field food_material integer? `food_material = 0 [0, 1]` The cell material we eat if encountering said material and 'needs_food' is 1
 ---@field food_particle_effect_material integer? `food_particle_effect_material = 0 [0, 1]` We create particles made of this material when eating if 'food_eating_create_particles' is 1
 ---@field mAggression number? the greater this value the more likely we're to attack creatures from other herds
----@field mAiStateStack AI_STATE_STACK? a stack of actions and times they take, we can push new actions to the front and pop them from there
 ---@field mAiStateLastSwitchFrame integer? `mAiStateLastSwitchFrame = 0 [0, 1]` when was the last time we switched a state
 ---@field mAiStatePrev integer? `mAiStatePrev = 0 [0, 1]` previous AI state
 ---@field mCreatureDetectionNextCheck integer? `mCreatureDetectionNextCheck = 0 [0, 1]` threat/prey check, next time we check for threat/prey
@@ -1029,7 +974,6 @@
 ---@field mNextMeleeAttackDamage number? `mNextMeleeAttackDamage = 0 [0, 1]` the amount of damage our next melee attack will cause. used by finishing move logic
 ---@field mMeleeAttacking boolean? `mMeleeAttacking = 0 [0, 1]` 1, if we're doing a melee attack
 ---@field mMeleeAttackDashNextFrame integer? `mMeleeAttackDashNextFrame = 0 [0, 1]` the next frame we can perform a melee attack
----@field mCurrentJob RtsUnitGoal? info about our current job. sorta legacy and could be simplified because the RTS logic is not used anywhere but doesn't have much overhead either.
 
 ---@class (exact) AnimalAIComponent : Component
 ---@field ai_state integer `ai_state = 0 [0, 20]` Current state of ai, defines what the animal is doing
@@ -1117,7 +1061,6 @@
 ---@field food_material integer `food_material = 0 [0, 1]` The cell material we eat if encountering said material and 'needs_food' is 1
 ---@field food_particle_effect_material integer `food_particle_effect_material = 0 [0, 1]` We create particles made of this material when eating if 'food_eating_create_particles' is 1
 ---@field mAggression number the greater this value the more likely we're to attack creatures from other herds
----@field mAiStateStack AI_STATE_STACK a stack of actions and times they take, we can push new actions to the front and pop them from there
 ---@field mAiStateLastSwitchFrame integer `mAiStateLastSwitchFrame = 0 [0, 1]` when was the last time we switched a state
 ---@field mAiStatePrev integer `mAiStatePrev = 0 [0, 1]` previous AI state
 ---@field mCreatureDetectionNextCheck integer `mCreatureDetectionNextCheck = 0 [0, 1]` threat/prey check, next time we check for threat/prey
@@ -1152,7 +1095,6 @@
 ---@field mNextMeleeAttackDamage number `mNextMeleeAttackDamage = 0 [0, 1]` the amount of damage our next melee attack will cause. used by finishing move logic
 ---@field mMeleeAttacking boolean `mMeleeAttacking = 0 [0, 1]` 1, if we're doing a melee attack
 ---@field mMeleeAttackDashNextFrame integer `mMeleeAttackDashNextFrame = 0 [0, 1]` the next frame we can perform a melee attack
----@field mCurrentJob RtsUnitGoal info about our current job. sorta legacy and could be simplified because the RTS logic is not used anywhere but doesn't have much overhead either.
 
 ---@alias AnimalAIComponent.field
 ---| '"ai_state"' `integer ai_state = 0 [0, 20]` Current state of ai, defines what the animal is doing
@@ -1240,7 +1182,6 @@
 ---| '"food_material"' `integer food_material = 0 [0, 1]` The cell material we eat if encountering said material and 'needs_food' is 1
 ---| '"food_particle_effect_material"' `integer food_particle_effect_material = 0 [0, 1]` We create particles made of this material when eating if 'food_eating_create_particles' is 1
 ---| '"mAggression"' `number` the greater this value the more likely we're to attack creatures from other herds
----| '"mAiStateStack"' `AI_STATE_STACK` a stack of actions and times they take, we can push new actions to the front and pop them from there
 ---| '"mAiStateLastSwitchFrame"' `integer mAiStateLastSwitchFrame = 0 [0, 1]` when was the last time we switched a state
 ---| '"mAiStatePrev"' `integer mAiStatePrev = 0 [0, 1]` previous AI state
 ---| '"mCreatureDetectionNextCheck"' `integer mCreatureDetectionNextCheck = 0 [0, 1]` threat/prey check, next time we check for threat/prey
@@ -1275,7 +1216,6 @@
 ---| '"mNextMeleeAttackDamage"' `number mNextMeleeAttackDamage = 0 [0, 1]` the amount of damage our next melee attack will cause. used by finishing move logic
 ---| '"mMeleeAttacking"' `boolean mMeleeAttacking = 0 [0, 1]` 1, if we're doing a melee attack
 ---| '"mMeleeAttackDashNextFrame"' `integer mMeleeAttackDashNextFrame = 0 [0, 1]` the next frame we can perform a melee attack
----| '"mCurrentJob"' `RtsUnitGoal` info about our current job. sorta legacy and could be simplified because the RTS logic is not used anywhere but doesn't have much overhead either.
 
 ---@class (exact) ArcComponents
 ---@overload fun(): ArcComponent
@@ -1502,17 +1442,14 @@
 
 ---@class (exact) BiomeTrackerComponent.partial
 ---@field limit_to_every_n_frame integer? `limit_to_every_n_frame = 0 [0, 1]` if > 1, we will only check the biome every n frames
----@field unsafe_current_biome Biome*? DO NOT ACCESS, since this can be in valid
 ---@field current_biome_name string? used to track in which biome we are at
 
 ---@class (exact) BiomeTrackerComponent : Component
 ---@field limit_to_every_n_frame integer `limit_to_every_n_frame = 0 [0, 1]` if > 1, we will only check the biome every n frames
----@field unsafe_current_biome Biome* DO NOT ACCESS, since this can be in valid
 ---@field current_biome_name string used to track in which biome we are at
 
 ---@alias BiomeTrackerComponent.field
 ---| '"limit_to_every_n_frame"' `integer limit_to_every_n_frame = 0 [0, 1]` if > 1, we will only check the biome every n frames
----| '"unsafe_current_biome"' `Biome*` DO NOT ACCESS, since this can be in valid
 ---| '"current_biome_name"' `string` used to track in which biome we are at
 
 ---@class (exact) BlackHoleComponents
@@ -2159,17 +2096,14 @@
 ---@overload fun(): CharacterStatsComponent
 ---@field enabled fun(self: CharacterStatsComponents, enabled: boolean): CharacterStatsComponents
 ---@field tagged fun(self: CharacterStatsComponents, tag: string): CharacterStatsComponents
----@field with_field fun(self: CharacterStatsComponents, field: CharacterStatsComponent.field, value: any): CharacterStatsComponents
+
 ---@field add fun(self: CharacterStatsComponents, fields: CharacterStatsComponent.partial?): CharacterStatsComponent
 
 ---@class (exact) CharacterStatsComponent.partial
----@field stats CharacterStatsModifier?
 
 ---@class (exact) CharacterStatsComponent : Component
----@field stats CharacterStatsModifier
 
----@alias CharacterStatsComponent.field
----| '"stats"' `CharacterStatsModifier`
+
 
 ---@class (exact) CollisionTriggerComponents
 ---@overload fun(): CollisionTriggerComponent
@@ -3522,25 +3456,25 @@
 ---@field radius number? `radius = 0 [0, 3.5]` what's the radius (in pixels) of the area effect
 ---@field collide_with_tag string? `collide_with_tag = hittable [0, 1]` the tags we're looking for
 ---@field frame_length integer? `frame_length = -1 [0, 1]` if not 0 will reapply this effect after this many frames have gone by
----@field game_effect_entitities VECTOR_STR? just a vector of the game_effect entities
----@field mEntitiesAppliedOutTo VECTOR_ENTITYID?
----@field mEntitiesAppliedFrame VECTOR_INT?
+---@field game_effect_entitities std::vector<std::string>? just a vector of the game_effect entities
+---@field mEntitiesAppliedOutTo std::vector<EntityID>?
+---@field mEntitiesAppliedFrame std::vector<int>?
 
 ---@class (exact) GameAreaEffectComponent : Component
 ---@field radius number `radius = 0 [0, 3.5]` what's the radius (in pixels) of the area effect
 ---@field collide_with_tag string `collide_with_tag = hittable [0, 1]` the tags we're looking for
 ---@field frame_length integer `frame_length = -1 [0, 1]` if not 0 will reapply this effect after this many frames have gone by
----@field game_effect_entitities VECTOR_STR just a vector of the game_effect entities
----@field mEntitiesAppliedOutTo VECTOR_ENTITYID
----@field mEntitiesAppliedFrame VECTOR_INT
+---@field game_effect_entitities std::vector<std::string> just a vector of the game_effect entities
+---@field mEntitiesAppliedOutTo std::vector<EntityID>
+---@field mEntitiesAppliedFrame std::vector<int>
 
 ---@alias GameAreaEffectComponent.field
 ---| '"radius"' `number radius = 0 [0, 3.5]` what's the radius (in pixels) of the area effect
 ---| '"collide_with_tag"' `string collide_with_tag = hittable [0, 1]` the tags we're looking for
 ---| '"frame_length"' `integer frame_length = -1 [0, 1]` if not 0 will reapply this effect after this many frames have gone by
----| '"game_effect_entitities"' `VECTOR_STR` just a vector of the game_effect entities
----| '"mEntitiesAppliedOutTo"' `VECTOR_ENTITYID`
----| '"mEntitiesAppliedFrame"' `VECTOR_INT`
+---| '"game_effect_entitities"' `std::vector<std::string>` just a vector of the game_effect entities
+---| '"mEntitiesAppliedOutTo"' `std::vector<EntityID>`
+---| '"mEntitiesAppliedFrame"' `std::vector<int>`
 
 ---@class (exact) GameEffectComponents
 ---@overload fun(): GameEffectComponent
@@ -3558,7 +3492,7 @@
 ---@field ragdoll_effect_custom_entity_file string? an entity that is loaded to each ragdoll part if 'ragdoll_effect' is set to 'CUSTOM_RAGDOLL_ENTITY'
 ---@field ragdoll_fx_custom_entity_apply_only_to_largest_body boolean? `ragdoll_fx_custom_entity_apply_only_to_largest_body = 0 [0, 1]` if 1, 'ragdoll_effect_custom_entity_file' is loaded only to the largest piece in the ragdoll
 ---@field polymorph_target string? when doing a polymorph, this is what we convert it to
----@field mSerializedData USTRING? polymorph stores the serialized entity here...
+---@field mSerializedData string? polymorph stores the serialized entity here...
 ---@field mCaster EntityID? `mCaster = 0 [0, 1]` Contains a handle to the caster of this GameEffect
 ---@field mCasterHerdId integer? `mCasterHerdId = 0 [0, 1]` Contains the herd if of the caster of this GameEffect
 ---@field teleportation_probability integer? `teleportation_probability = 600 [0, 1]` How likely is it that we teleport, larger = less often
@@ -3579,7 +3513,6 @@
 ---@field effect GAME_EFFECT::Enum? GAME_EFFECT
 ---@field ragdoll_effect RAGDOLL_FX::Enum? if set, will use this for ragdoll effect
 ---@field ragdoll_material integer? `ragdoll_material = 0 [0, 1]` converts to string name of the material that ragdoll is made out of
----@field causing_status_effect StatusEffectType? `causing_status_effect = 0 [0, 1]` Status effect that caused this game effect, if any
 
 ---@class (exact) GameEffectComponent : Component
 ---@field custom_effect_id string if 'effect' is set to 'CUSTOM', this will define effect uniqueness.
@@ -3590,7 +3523,7 @@
 ---@field ragdoll_effect_custom_entity_file string an entity that is loaded to each ragdoll part if 'ragdoll_effect' is set to 'CUSTOM_RAGDOLL_ENTITY'
 ---@field ragdoll_fx_custom_entity_apply_only_to_largest_body boolean `ragdoll_fx_custom_entity_apply_only_to_largest_body = 0 [0, 1]` if 1, 'ragdoll_effect_custom_entity_file' is loaded only to the largest piece in the ragdoll
 ---@field polymorph_target string when doing a polymorph, this is what we convert it to
----@field mSerializedData USTRING polymorph stores the serialized entity here...
+---@field mSerializedData string polymorph stores the serialized entity here...
 ---@field mCaster EntityID `mCaster = 0 [0, 1]` Contains a handle to the caster of this GameEffect
 ---@field mCasterHerdId integer `mCasterHerdId = 0 [0, 1]` Contains the herd if of the caster of this GameEffect
 ---@field teleportation_probability integer `teleportation_probability = 600 [0, 1]` How likely is it that we teleport, larger = less often
@@ -3611,7 +3544,6 @@
 ---@field effect GAME_EFFECT::Enum GAME_EFFECT
 ---@field ragdoll_effect RAGDOLL_FX::Enum if set, will use this for ragdoll effect
 ---@field ragdoll_material integer `ragdoll_material = 0 [0, 1]` converts to string name of the material that ragdoll is made out of
----@field causing_status_effect StatusEffectType `causing_status_effect = 0 [0, 1]` Status effect that caused this game effect, if any
 
 ---@alias GameEffectComponent.field
 ---| '"custom_effect_id"' `string` if 'effect' is set to 'CUSTOM', this will define effect uniqueness.
@@ -3622,7 +3554,7 @@
 ---| '"ragdoll_effect_custom_entity_file"' `string` an entity that is loaded to each ragdoll part if 'ragdoll_effect' is set to 'CUSTOM_RAGDOLL_ENTITY'
 ---| '"ragdoll_fx_custom_entity_apply_only_to_largest_body"' `boolean ragdoll_fx_custom_entity_apply_only_to_largest_body = 0 [0, 1]` if 1, 'ragdoll_effect_custom_entity_file' is loaded only to the largest piece in the ragdoll
 ---| '"polymorph_target"' `string` when doing a polymorph, this is what we convert it to
----| '"mSerializedData"' `USTRING` polymorph stores the serialized entity here...
+---| '"mSerializedData"' `string` polymorph stores the serialized entity here...
 ---| '"mCaster"' `EntityID mCaster = 0 [0, 1]` Contains a handle to the caster of this GameEffect
 ---| '"mCasterHerdId"' `integer mCasterHerdId = 0 [0, 1]` Contains the herd if of the caster of this GameEffect
 ---| '"teleportation_probability"' `integer teleportation_probability = 600 [0, 1]` How likely is it that we teleport, larger = less often
@@ -3643,7 +3575,6 @@
 ---| '"effect"' `GAME_EFFECT::Enum` GAME_EFFECT
 ---| '"ragdoll_effect"' `RAGDOLL_FX::Enum` if set, will use this for ragdoll effect
 ---| '"ragdoll_material"' `integer ragdoll_material = 0 [0, 1]` converts to string name of the material that ragdoll is made out of
----| '"causing_status_effect"' `StatusEffectType causing_status_effect = 0 [0, 1]` Status effect that caused this game effect, if any
 
 ---@class (exact) GameLogComponents
 ---@overload fun(): GameLogComponent
@@ -3823,35 +3754,29 @@
 ---@field mana_current number? `mana_current = 0 [0, 1000]` How much mana the player now has to use
 ---@field mana_max number? `mana_max = 500 [0, 1000]` Max size of the mana pool
 ---@field gold number? `gold = 0 [0, 1000]` How much gold the player has
----@field god_entity Entity*?
 
 ---@class (exact) GodInfoComponent : Component
 ---@field mana_current number `mana_current = 0 [0, 1000]` How much mana the player now has to use
 ---@field mana_max number `mana_max = 500 [0, 1000]` Max size of the mana pool
 ---@field gold number `gold = 0 [0, 1000]` How much gold the player has
----@field god_entity Entity*
 
 ---@alias GodInfoComponent.field
 ---| '"mana_current"' `number mana_current = 0 [0, 1000]` How much mana the player now has to use
 ---| '"mana_max"' `number mana_max = 500 [0, 1000]` Max size of the mana pool
 ---| '"gold"' `number gold = 0 [0, 1000]` How much gold the player has
----| '"god_entity"' `Entity*`
 
 ---@class (exact) GunComponents
 ---@overload fun(): GunComponent
 ---@field enabled fun(self: GunComponents, enabled: boolean): GunComponents
 ---@field tagged fun(self: GunComponents, tag: string): GunComponents
----@field with_field fun(self: GunComponents, field: GunComponent.field, value: any): GunComponents
+
 ---@field add fun(self: GunComponents, fields: GunComponent.partial?): GunComponent
 
 ---@class (exact) GunComponent.partial
----@field mLuaManager LuaManager*?
 
 ---@class (exact) GunComponent : Component
----@field mLuaManager LuaManager*
 
----@alias GunComponent.field
----| '"mLuaManager"' `LuaManager*`
+
 
 ---@class (exact) HealthBarComponents
 ---@overload fun(): HealthBarComponent
@@ -3877,21 +3802,18 @@
 ---@field value integer? `value = 0 [0, 100]` Usage depends on selected 'effect_hit'
 ---@field value_string string? Usage depends on selected 'effect_hit'
 ---@field condition_effect GAME_EFFECT::Enum? Hit entity needs to have this 'GAME_EFFECT' for effects to apply. If both 'condition_effect' and 'condition_status' are set, they are combined with AND logic
----@field condition_status StatusEffectType? `condition_status = 0 [0, 1]` Hit entity needs to have this 'STATUS_EFFECT' for effects to apply
 ---@field effect_hit HIT_EFFECT::Enum? What kind of 'HIT_EFFECT' is applied to hit entity if condition is true
 
 ---@class (exact) HitEffectComponent : Component
 ---@field value integer `value = 0 [0, 100]` Usage depends on selected 'effect_hit'
 ---@field value_string string Usage depends on selected 'effect_hit'
 ---@field condition_effect GAME_EFFECT::Enum Hit entity needs to have this 'GAME_EFFECT' for effects to apply. If both 'condition_effect' and 'condition_status' are set, they are combined with AND logic
----@field condition_status StatusEffectType `condition_status = 0 [0, 1]` Hit entity needs to have this 'STATUS_EFFECT' for effects to apply
 ---@field effect_hit HIT_EFFECT::Enum What kind of 'HIT_EFFECT' is applied to hit entity if condition is true
 
 ---@alias HitEffectComponent.field
 ---| '"value"' `integer value = 0 [0, 100]` Usage depends on selected 'effect_hit'
 ---| '"value_string"' `string` Usage depends on selected 'effect_hit'
 ---| '"condition_effect"' `GAME_EFFECT::Enum` Hit entity needs to have this 'GAME_EFFECT' for effects to apply. If both 'condition_effect' and 'condition_status' are set, they are combined with AND logic
----| '"condition_status"' `StatusEffectType condition_status = 0 [0, 1]` Hit entity needs to have this 'STATUS_EFFECT' for effects to apply
 ---| '"effect_hit"' `HIT_EFFECT::Enum` What kind of 'HIT_EFFECT' is applied to hit entity if condition is true
 
 ---@class (exact) HitboxComponents
@@ -4014,7 +3936,6 @@
 ---@field target_entities_with_tag string? `target_entities_with_tag = mortal [0, 1]`
 ---@field mTarget Vec2?
 ---@field mTargetEntity EntityID? `mTargetEntity = 0 [0, 1]`
----@field mState IKLimbAttackerState?
 ---@field mStateTimer number? `mStateTimer = 0 [0, 1]`
 
 ---@class (exact) IKLimbAttackerComponent : Component
@@ -4025,7 +3946,6 @@
 ---@field target_entities_with_tag string `target_entities_with_tag = mortal [0, 1]`
 ---@field mTarget Vec2
 ---@field mTargetEntity EntityID `mTargetEntity = 0 [0, 1]`
----@field mState IKLimbAttackerState
 ---@field mStateTimer number `mStateTimer = 0 [0, 1]`
 
 ---@alias IKLimbAttackerComponent.field
@@ -4036,7 +3956,6 @@
 ---| '"target_entities_with_tag"' `string target_entities_with_tag = mortal [0, 1]`
 ---| '"mTarget"' `Vec2`
 ---| '"mTargetEntity"' `EntityID mTargetEntity = 0 [0, 1]`
----| '"mState"' `IKLimbAttackerState`
 ---| '"mStateTimer"' `number mStateTimer = 0 [0, 1]`
 
 ---@class (exact) IKLimbComponents
@@ -4145,7 +4064,6 @@
 ---@field is_limp boolean? `is_limp = 0 [0, 1]` If 1, will apply verlet animation to simulate ragdoll-like limbs
 ---@field ray_skip_material integer? `ray_skip_material = 0 [0, 1]` String name of material to not cast rays against. Defaults to 'aluminium'
 ---@field mPrevBodyPosition Vec2?
----@field mLimbStates IKLimbStateVec?
 ---@field mHasGroundAttachmentOnAnyLeg boolean? `mHasGroundAttachmentOnAnyLeg = 0 [0, 1]` Will be set to true if at least one leg is attached to ground.
 
 ---@class (exact) IKLimbsAnimatorComponent : Component
@@ -4158,7 +4076,6 @@
 ---@field is_limp boolean `is_limp = 0 [0, 1]` If 1, will apply verlet animation to simulate ragdoll-like limbs
 ---@field ray_skip_material integer `ray_skip_material = 0 [0, 1]` String name of material to not cast rays against. Defaults to 'aluminium'
 ---@field mPrevBodyPosition Vec2
----@field mLimbStates IKLimbStateVec
 ---@field mHasGroundAttachmentOnAnyLeg boolean `mHasGroundAttachmentOnAnyLeg = 0 [0, 1]` Will be set to true if at least one leg is attached to ground.
 
 ---@alias IKLimbsAnimatorComponent.field
@@ -4171,7 +4088,6 @@
 ---| '"is_limp"' `boolean is_limp = 0 [0, 1]` If 1, will apply verlet animation to simulate ragdoll-like limbs
 ---| '"ray_skip_material"' `integer ray_skip_material = 0 [0, 1]` String name of material to not cast rays against. Defaults to 'aluminium'
 ---| '"mPrevBodyPosition"' `Vec2`
----| '"mLimbStates"' `IKLimbStateVec`
 ---| '"mHasGroundAttachmentOnAnyLeg"' `boolean mHasGroundAttachmentOnAnyLeg = 0 [0, 1]` Will be set to true if at least one leg is attached to ground.
 
 ---@class (exact) IngestionComponents
@@ -4192,7 +4108,6 @@
 ---@field m_ingestion_cooldown_frames integer? `m_ingestion_cooldown_frames = 0 [0, 1]` Next frame ingestion_size cooldown can occur
 ---@field m_next_overeating_msg_frame integer? `m_next_overeating_msg_frame = 0 [0, 1]`
 ---@field m_ingestion_satiation_material_tag_cached string?
----@field m_ingestion_satiation_material_cache std::set<int32>?
 ---@field m_damage_effect_lifetime integer? `m_damage_effect_lifetime = 0 [0, 1]`
 
 ---@class (exact) IngestionComponent : Component
@@ -4206,7 +4121,6 @@
 ---@field m_ingestion_cooldown_frames integer `m_ingestion_cooldown_frames = 0 [0, 1]` Next frame ingestion_size cooldown can occur
 ---@field m_next_overeating_msg_frame integer `m_next_overeating_msg_frame = 0 [0, 1]`
 ---@field m_ingestion_satiation_material_tag_cached string
----@field m_ingestion_satiation_material_cache std::set<int32>
 ---@field m_damage_effect_lifetime integer `m_damage_effect_lifetime = 0 [0, 1]`
 
 ---@alias IngestionComponent.field
@@ -4220,7 +4134,6 @@
 ---| '"m_ingestion_cooldown_frames"' `integer m_ingestion_cooldown_frames = 0 [0, 1]` Next frame ingestion_size cooldown can occur
 ---| '"m_next_overeating_msg_frame"' `integer m_next_overeating_msg_frame = 0 [0, 1]`
 ---| '"m_ingestion_satiation_material_tag_cached"' `string`
----| '"m_ingestion_satiation_material_cache"' `std::set<int32>`
 ---| '"m_damage_effect_lifetime"' `integer m_damage_effect_lifetime = 0 [0, 1]`
 
 ---@class (exact) InheritTransformComponents
@@ -4357,10 +4270,8 @@
 ---@field has_opened_inventory_edit boolean? `has_opened_inventory_edit = 0 [0, 1]`
 ---@field wallet_money_target integer? `wallet_money_target = 0 [0, 1]`
 ---@field mDisplayFireRateWaitBar boolean? `mDisplayFireRateWaitBar = 0 [0, 1]` hax, don't touch!
----@field imgui ImGuiContext*?
 ---@field mLastFrameInteracted integer? `mLastFrameInteracted = -100 [0, 1]`
 ---@field mLastFrameActionsVisible integer? `mLastFrameActionsVisible = -1 [0, 1]`
----@field mLastPurchasedAction Entity*?
 ---@field mActive boolean? `mActive = 0 [0, 1]`
 ---@field mAlpha number? `mAlpha = 1 [0, 1]`
 ---@field mBackgroundOverlayAlpha number? `mBackgroundOverlayAlpha = 0 [0, 1]`
@@ -4373,10 +4284,8 @@
 ---@field has_opened_inventory_edit boolean `has_opened_inventory_edit = 0 [0, 1]`
 ---@field wallet_money_target integer `wallet_money_target = 0 [0, 1]`
 ---@field mDisplayFireRateWaitBar boolean `mDisplayFireRateWaitBar = 0 [0, 1]` hax, don't touch!
----@field imgui ImGuiContext*
 ---@field mLastFrameInteracted integer `mLastFrameInteracted = -100 [0, 1]`
 ---@field mLastFrameActionsVisible integer `mLastFrameActionsVisible = -1 [0, 1]`
----@field mLastPurchasedAction Entity*
 ---@field mActive boolean `mActive = 0 [0, 1]`
 ---@field mAlpha number `mAlpha = 1 [0, 1]`
 ---@field mBackgroundOverlayAlpha number `mBackgroundOverlayAlpha = 0 [0, 1]`
@@ -4389,10 +4298,8 @@
 ---| '"has_opened_inventory_edit"' `boolean has_opened_inventory_edit = 0 [0, 1]`
 ---| '"wallet_money_target"' `integer wallet_money_target = 0 [0, 1]`
 ---| '"mDisplayFireRateWaitBar"' `boolean mDisplayFireRateWaitBar = 0 [0, 1]` hax, don't touch!
----| '"imgui"' `ImGuiContext*`
 ---| '"mLastFrameInteracted"' `integer mLastFrameInteracted = -100 [0, 1]`
 ---| '"mLastFrameActionsVisible"' `integer mLastFrameActionsVisible = -1 [0, 1]`
----| '"mLastPurchasedAction"' `Entity*`
 ---| '"mActive"' `boolean mActive = 0 [0, 1]`
 ---| '"mAlpha"' `number mAlpha = 1 [0, 1]`
 ---| '"mBackgroundOverlayAlpha"' `number mBackgroundOverlayAlpha = 0 [0, 1]`
@@ -4915,7 +4822,6 @@
 ---@field fade_out_time number? `fade_out_time = 0 [0, 5]` time in seconds, if not 0, this is how long this takes to die, when the component is destroyed
 ---@field blinking_freq number? `blinking_freq = 1 [0, 1]` if less than 1, will blink randomly when rand() < blinking_freq
 ---@field mAlpha number? `mAlpha = 1 [0, 1]`
----@field mSprite as::Sprite*?
 
 ---@class (exact) LightComponent : Component
 ---@field update_properties boolean `update_properties = 0 [0, 1]` turn this on if you expect this to function like the other components
@@ -4928,7 +4834,6 @@
 ---@field fade_out_time number `fade_out_time = 0 [0, 5]` time in seconds, if not 0, this is how long this takes to die, when the component is destroyed
 ---@field blinking_freq number `blinking_freq = 1 [0, 1]` if less than 1, will blink randomly when rand() < blinking_freq
 ---@field mAlpha number `mAlpha = 1 [0, 1]`
----@field mSprite as::Sprite*
 
 ---@alias LightComponent.field
 ---| '"update_properties"' `boolean update_properties = 0 [0, 1]` turn this on if you expect this to function like the other components
@@ -4941,7 +4846,6 @@
 ---| '"fade_out_time"' `number fade_out_time = 0 [0, 5]` time in seconds, if not 0, this is how long this takes to die, when the component is destroyed
 ---| '"blinking_freq"' `number blinking_freq = 1 [0, 1]` if less than 1, will blink randomly when rand() < blinking_freq
 ---| '"mAlpha"' `number mAlpha = 1 [0, 1]`
----| '"mSprite"' `as::Sprite*`
 
 ---@class (exact) LightningComponents
 ---@overload fun(): LightningComponent
@@ -5172,8 +5076,6 @@
 ---@field vm_type LUA_VM_TYPE::Enum? Do we share a single Lua virtual machine for everyone who runs 'script_source_file' ('SHARED_BY_MANY_COMPONENTS'), create one VM per one LuaComponent and reuse the VM in case the component runs the script multiple times ('ONE_PER_COMPONENT_INSTANCE'), or create a new VM every time the script is executed ('CREATE_NEW_EVERY_EXECUTION', deprecated)?
 ---@field mNextExecutionTime integer? `mNextExecutionTime = -1 [0, 1]`
 ---@field mTimesExecuted integer? `mTimesExecuted = 0 [0, 1]`
----@field mLuaManager LuaManager*?
----@field mPersistentValues ValueMap?
 
 ---@class (exact) LuaComponent : Component
 ---@field script_source_file string
@@ -5217,8 +5119,6 @@
 ---@field vm_type LUA_VM_TYPE::Enum Do we share a single Lua virtual machine for everyone who runs 'script_source_file' ('SHARED_BY_MANY_COMPONENTS'), create one VM per one LuaComponent and reuse the VM in case the component runs the script multiple times ('ONE_PER_COMPONENT_INSTANCE'), or create a new VM every time the script is executed ('CREATE_NEW_EVERY_EXECUTION', deprecated)?
 ---@field mNextExecutionTime integer `mNextExecutionTime = -1 [0, 1]`
 ---@field mTimesExecuted integer `mTimesExecuted = 0 [0, 1]`
----@field mLuaManager LuaManager*
----@field mPersistentValues ValueMap
 
 ---@alias LuaComponent.field
 ---| '"script_source_file"' `string`
@@ -5262,8 +5162,6 @@
 ---| '"vm_type"' `LUA_VM_TYPE::Enum` Do we share a single Lua virtual machine for everyone who runs 'script_source_file' ('SHARED_BY_MANY_COMPONENTS'), create one VM per one LuaComponent and reuse the VM in case the component runs the script multiple times ('ONE_PER_COMPONENT_INSTANCE'), or create a new VM every time the script is executed ('CREATE_NEW_EVERY_EXECUTION', deprecated)?
 ---| '"mNextExecutionTime"' `integer mNextExecutionTime = -1 [0, 1]`
 ---| '"mTimesExecuted"' `integer mTimesExecuted = 0 [0, 1]`
----| '"mLuaManager"' `LuaManager*`
----| '"mPersistentValues"' `ValueMap`
 
 ---@class (exact) MagicConvertMaterialComponents
 ---@overload fun(): MagicConvertMaterialComponent
@@ -5686,21 +5584,18 @@
 ---@field marker_offset_x number? `marker_offset_x = 0 [-1000, 1000]`
 ---@field marker_offset_y number? `marker_offset_y = 0 [-1000, 1000]`
 ---@field player_marker_radius number? `player_marker_radius = 0 [0, 128]`
----@field mNode PathFindingNodeHandle? we change the work state of this node. thus we need to keep a reference to it
 
 ---@class (exact) PathFindingGridMarkerComponent : Component
 ---@field marker_work_flag integer `marker_work_flag = 0 [0, 255]`
 ---@field marker_offset_x number `marker_offset_x = 0 [-1000, 1000]`
 ---@field marker_offset_y number `marker_offset_y = 0 [-1000, 1000]`
 ---@field player_marker_radius number `player_marker_radius = 0 [0, 128]`
----@field mNode PathFindingNodeHandle we change the work state of this node. thus we need to keep a reference to it
 
 ---@alias PathFindingGridMarkerComponent.field
 ---| '"marker_work_flag"' `integer marker_work_flag = 0 [0, 255]`
 ---| '"marker_offset_x"' `number marker_offset_x = 0 [-1000, 1000]`
 ---| '"marker_offset_y"' `number marker_offset_y = 0 [-1000, 1000]`
 ---| '"player_marker_radius"' `number player_marker_radius = 0 [0, 128]`
----| '"mNode"' `PathFindingNodeHandle` we change the work state of this node. thus we need to keep a reference to it
 
 ---@class (exact) PhysicsAIComponents
 ---@overload fun(): PhysicsAIComponent
@@ -5813,7 +5708,6 @@
 ---@field add fun(self: PhysicsBody2Components, fields: PhysicsBody2Component.partial?): PhysicsBody2Component
 
 ---@class (exact) PhysicsBody2Component.partial
----@field mBodyId b2ObjectID? `mBodyId = 0 [0, 1]` this is mBody->GetBodyId() - not to be confused with uid, has to be tracked separately, since the mBody pointer is not unique
 ---@field linear_damping number? `linear_damping = 0 [0, 1]`
 ---@field angular_damping number? `angular_damping = 0 [0, 1]`
 ---@field allow_sleep boolean? `allow_sleep = 1 [0, 1]`
@@ -5839,13 +5733,11 @@
 ---@field mActiveState boolean? `mActiveState = 0 [0, 1]` private variable, please don't mess around with this
 ---@field mPixelCountOrig integer? `mPixelCountOrig = 0 [0, 1]` the number of pixels the body had when it was originally created
 ---@field mLocalPosition Vec2? private variable, please don't mess around with this
----@field mBody b2Body*?
 ---@field mInitialized boolean? `mInitialized = 0 [0, 1]` private variable, please don't mess around with this
 ---@field mPixelCount integer? `mPixelCount = 0 [0, 1]` if set, tracks the number of csolidcells the body has
 ---@field mRefreshed boolean? `mRefreshed = 0 [0, 1]` this is sure the bodies are only parsed once
 
 ---@class (exact) PhysicsBody2Component : Component
----@field mBodyId b2ObjectID `mBodyId = 0 [0, 1]` this is mBody->GetBodyId() - not to be confused with uid, has to be tracked separately, since the mBody pointer is not unique
 ---@field linear_damping number `linear_damping = 0 [0, 1]`
 ---@field angular_damping number `angular_damping = 0 [0, 1]`
 ---@field allow_sleep boolean `allow_sleep = 1 [0, 1]`
@@ -5871,13 +5763,11 @@
 ---@field mActiveState boolean `mActiveState = 0 [0, 1]` private variable, please don't mess around with this
 ---@field mPixelCountOrig integer `mPixelCountOrig = 0 [0, 1]` the number of pixels the body had when it was originally created
 ---@field mLocalPosition Vec2 private variable, please don't mess around with this
----@field mBody b2Body*
 ---@field mInitialized boolean `mInitialized = 0 [0, 1]` private variable, please don't mess around with this
 ---@field mPixelCount integer `mPixelCount = 0 [0, 1]` if set, tracks the number of csolidcells the body has
 ---@field mRefreshed boolean `mRefreshed = 0 [0, 1]` this is sure the bodies are only parsed once
 
 ---@alias PhysicsBody2Component.field
----| '"mBodyId"' `b2ObjectID mBodyId = 0 [0, 1]` this is mBody->GetBodyId() - not to be confused with uid, has to be tracked separately, since the mBody pointer is not unique
 ---| '"linear_damping"' `number linear_damping = 0 [0, 1]`
 ---| '"angular_damping"' `number angular_damping = 0 [0, 1]`
 ---| '"allow_sleep"' `boolean allow_sleep = 1 [0, 1]`
@@ -5903,7 +5793,6 @@
 ---| '"mActiveState"' `boolean mActiveState = 0 [0, 1]` private variable, please don't mess around with this
 ---| '"mPixelCountOrig"' `integer mPixelCountOrig = 0 [0, 1]` the number of pixels the body had when it was originally created
 ---| '"mLocalPosition"' `Vec2` private variable, please don't mess around with this
----| '"mBody"' `b2Body*`
 ---| '"mInitialized"' `boolean mInitialized = 0 [0, 1]` private variable, please don't mess around with this
 ---| '"mPixelCount"' `integer mPixelCount = 0 [0, 1]` if set, tracks the number of csolidcells the body has
 ---| '"mRefreshed"' `boolean mRefreshed = 0 [0, 1]` this is sure the bodies are only parsed once
@@ -5963,10 +5852,8 @@
 ---@field randomize_init_velocity boolean? `randomize_init_velocity = 0 [0, 1]` randomizes the init velocity
 ---@field mActiveState boolean? `mActiveState = 0 [0, 1]` private variable, please don't mess around with this
 ---@field initial_velocity Vec2? if you want a velocity at the start, set it here
----@field mBody b2Body*?
----@field mBodyId b2ObjectID? `mBodyId = 0 [0, 1]` this is mBody->GetBodyId() - not to be confused with uid shit, has to be tracked separately, since the mBody pointer is not unique
 ---@field mPixelCount integer? `mPixelCount = 0 [0, 1]` if set, tracks the number of csolidcells the body has
----@field mLocalPosition b2Vec2?
+---@field mLocalPosition Vec2?
 ---@field mRefreshed boolean? `mRefreshed = 0 [0, 1]` this is sure the bodies are only parsed once
 
 ---@class (exact) PhysicsBodyComponent : Component
@@ -5998,10 +5885,8 @@
 ---@field randomize_init_velocity boolean `randomize_init_velocity = 0 [0, 1]` randomizes the init velocity
 ---@field mActiveState boolean `mActiveState = 0 [0, 1]` private variable, please don't mess around with this
 ---@field initial_velocity Vec2 if you want a velocity at the start, set it here
----@field mBody b2Body*
----@field mBodyId b2ObjectID `mBodyId = 0 [0, 1]` this is mBody->GetBodyId() - not to be confused with uid shit, has to be tracked separately, since the mBody pointer is not unique
 ---@field mPixelCount integer `mPixelCount = 0 [0, 1]` if set, tracks the number of csolidcells the body has
----@field mLocalPosition b2Vec2
+---@field mLocalPosition Vec2
 ---@field mRefreshed boolean `mRefreshed = 0 [0, 1]` this is sure the bodies are only parsed once
 
 ---@alias PhysicsBodyComponent.field
@@ -6033,10 +5918,8 @@
 ---| '"randomize_init_velocity"' `boolean randomize_init_velocity = 0 [0, 1]` randomizes the init velocity
 ---| '"mActiveState"' `boolean mActiveState = 0 [0, 1]` private variable, please don't mess around with this
 ---| '"initial_velocity"' `Vec2` if you want a velocity at the start, set it here
----| '"mBody"' `b2Body*`
----| '"mBodyId"' `b2ObjectID mBodyId = 0 [0, 1]` this is mBody->GetBodyId() - not to be confused with uid shit, has to be tracked separately, since the mBody pointer is not unique
 ---| '"mPixelCount"' `integer mPixelCount = 0 [0, 1]` if set, tracks the number of csolidcells the body has
----| '"mLocalPosition"' `b2Vec2`
+---| '"mLocalPosition"' `Vec2`
 ---| '"mRefreshed"' `boolean mRefreshed = 0 [0, 1]` this is sure the bodies are only parsed once
 
 ---@class (exact) PhysicsImageShapeComponents
@@ -6057,7 +5940,6 @@
 ---@field z number? `z = 0 [0, 1]` offset in the z direction
 ---@field image_file string? the png file from which the body is created from
 ---@field material integer? `material = 0 [0, 1]` the material from which the body is created
----@field mBody b2Body*? used in joint creation phase
 
 ---@class (exact) PhysicsImageShapeComponent : Component
 ---@field is_root boolean `is_root = 0 [0, 1]` if 1, PhysicsBody2Component will use this to figure out where the entity is located
@@ -6070,7 +5952,6 @@
 ---@field z number `z = 0 [0, 1]` offset in the z direction
 ---@field image_file string the png file from which the body is created from
 ---@field material integer `material = 0 [0, 1]` the material from which the body is created
----@field mBody b2Body* used in joint creation phase
 
 ---@alias PhysicsImageShapeComponent.field
 ---| '"is_root"' `boolean is_root = 0 [0, 1]` if 1, PhysicsBody2Component will use this to figure out where the entity is located
@@ -6083,7 +5964,6 @@
 ---| '"z"' `number z = 0 [0, 1]` offset in the z direction
 ---| '"image_file"' `string` the png file from which the body is created from
 ---| '"material"' `integer material = 0 [0, 1]` the material from which the body is created
----| '"mBody"' `b2Body*` used in joint creation phase
 
 ---@class (exact) PhysicsJoint2Components
 ---@overload fun(): PhysicsJoint2Component
@@ -6195,7 +6075,6 @@
 ---@field mMotorSpeed number? `mMotorSpeed = 0 [0, 20]` if enabled this gets set to speed
 ---@field mMaxMotorTorque number? `mMaxMotorTorque = 1 [0, 1]` max torque for motor
 ---@field type JOINT_TYPE::Enum? Enum - JOINT_TYPE
----@field mJoint b2Joint*?
 
 ---@class (exact) PhysicsJointComponent : Component
 ---@field nail_to_wall boolean `nail_to_wall = 0 [0, 1]`
@@ -6211,7 +6090,6 @@
 ---@field mMotorSpeed number `mMotorSpeed = 0 [0, 20]` if enabled this gets set to speed
 ---@field mMaxMotorTorque number `mMaxMotorTorque = 1 [0, 1]` max torque for motor
 ---@field type JOINT_TYPE::Enum Enum - JOINT_TYPE
----@field mJoint b2Joint*
 
 ---@alias PhysicsJointComponent.field
 ---| '"nail_to_wall"' `boolean nail_to_wall = 0 [0, 1]`
@@ -6227,7 +6105,6 @@
 ---| '"mMotorSpeed"' `number mMotorSpeed = 0 [0, 20]` if enabled this gets set to speed
 ---| '"mMaxMotorTorque"' `number mMaxMotorTorque = 1 [0, 1]` max torque for motor
 ---| '"type"' `JOINT_TYPE::Enum` Enum - JOINT_TYPE
----| '"mJoint"' `b2Joint*`
 
 ---@class (exact) PhysicsKeepInWorldComponents
 ---@overload fun(): PhysicsKeepInWorldComponent
@@ -6272,8 +6149,6 @@
 ---@field isBroken boolean? `isBroken = 0 [0, 1]`
 ---@field leftJointPos Vec2?
 ---@field rightJointPos Vec2?
----@field leftJoint b2WeldJoint*?
----@field rightJoint b2WeldJoint*?
 
 ---@class (exact) PhysicsPickUpComponent : Component
 ---@field pick_up_strength number `pick_up_strength = 200 [0, 1]`
@@ -6283,8 +6158,6 @@
 ---@field isBroken boolean `isBroken = 0 [0, 1]`
 ---@field leftJointPos Vec2
 ---@field rightJointPos Vec2
----@field leftJoint b2WeldJoint*
----@field rightJoint b2WeldJoint*
 
 ---@alias PhysicsPickUpComponent.field
 ---| '"pick_up_strength"' `number pick_up_strength = 200 [0, 1]`
@@ -6294,8 +6167,6 @@
 ---| '"isBroken"' `boolean isBroken = 0 [0, 1]`
 ---| '"leftJointPos"' `Vec2`
 ---| '"rightJointPos"' `Vec2`
----| '"leftJoint"' `b2WeldJoint*`
----| '"rightJoint"' `b2WeldJoint*`
 
 ---@class (exact) PhysicsRagdollComponents
 ---@overload fun(): PhysicsRagdollComponent
@@ -6309,21 +6180,18 @@
 ---@field filenames string? a list of body parts as png images, separate the files by ','. e.g. 'data/temp/ragdoll/leg.png, data/temp/ragdoll/head.png,...'
 ---@field offset_x number? `offset_x = 0 [0, 20]` offset of where the ragdoll will be created
 ---@field offset_y number? `offset_y = 0 [0, 20]` offset of where the ragdoll will be created
----@field bodies std::vector<b2Body*>*?
 
 ---@class (exact) PhysicsRagdollComponent : Component
 ---@field filename string file that should include just a list of other files, that have all the parts
 ---@field filenames string a list of body parts as png images, separate the files by ','. e.g. 'data/temp/ragdoll/leg.png, data/temp/ragdoll/head.png,...'
 ---@field offset_x number `offset_x = 0 [0, 20]` offset of where the ragdoll will be created
 ---@field offset_y number `offset_y = 0 [0, 20]` offset of where the ragdoll will be created
----@field bodies std::vector<b2Body*>*
 
 ---@alias PhysicsRagdollComponent.field
 ---| '"filename"' `string` file that should include just a list of other files, that have all the parts
 ---| '"filenames"' `string` a list of body parts as png images, separate the files by ','. e.g. 'data/temp/ragdoll/leg.png, data/temp/ragdoll/head.png,...'
 ---| '"offset_x"' `number offset_x = 0 [0, 20]` offset of where the ragdoll will be created
 ---| '"offset_y"' `number offset_y = 0 [0, 20]` offset of where the ragdoll will be created
----| '"bodies"' `std::vector<b2Body*>*`
 
 ---@class (exact) PhysicsShapeComponents
 ---@overload fun(): PhysicsShapeComponent
@@ -6482,7 +6350,6 @@
 ---@field clean_overlapping_pixels boolean? `clean_overlapping_pixels = 1 [0, 1]` cleans up the pixels that are ovelapping in the world
 ---@field kill_when_sprite_dies boolean? `kill_when_sprite_dies = 1 [0, 1]` kills the entity, if the pixel sprite is dead (empty)
 ---@field create_box2d_bodies boolean? `create_box2d_bodies = 0 [0, 1]` if true, will create new pixel sprites with box2d bodies, instead of gridworld cells
----@field mPixelSprite PixelSprite*?
 
 ---@class (exact) PixelSpriteComponent : Component
 ---@field image_file string loads pixelsprite based on this file
@@ -6493,7 +6360,6 @@
 ---@field clean_overlapping_pixels boolean `clean_overlapping_pixels = 1 [0, 1]` cleans up the pixels that are ovelapping in the world
 ---@field kill_when_sprite_dies boolean `kill_when_sprite_dies = 1 [0, 1]` kills the entity, if the pixel sprite is dead (empty)
 ---@field create_box2d_bodies boolean `create_box2d_bodies = 0 [0, 1]` if true, will create new pixel sprites with box2d bodies, instead of gridworld cells
----@field mPixelSprite PixelSprite*
 
 ---@alias PixelSpriteComponent.field
 ---| '"image_file"' `string` loads pixelsprite based on this file
@@ -6504,7 +6370,6 @@
 ---| '"clean_overlapping_pixels"' `boolean clean_overlapping_pixels = 1 [0, 1]` cleans up the pixels that are ovelapping in the world
 ---| '"kill_when_sprite_dies"' `boolean kill_when_sprite_dies = 1 [0, 1]` kills the entity, if the pixel sprite is dead (empty)
 ---| '"create_box2d_bodies"' `boolean create_box2d_bodies = 0 [0, 1]` if true, will create new pixel sprites with box2d bodies, instead of gridworld cells
----| '"mPixelSprite"' `PixelSprite*`
 
 ---@class (exact) PlatformShooterPlayerComponents
 ---@overload fun(): PlatformShooterPlayerComponent
@@ -6641,7 +6506,6 @@
 ---@field stuck_in_ground_counter integer? `stuck_in_ground_counter = 0 [0, 1]` used this mostly for player to figure out if it's stuck in ground
 ---@field DEBUG_stuck_in_static_ground integer? `DEBUG_stuck_in_static_ground = 0 [0, 1]` used to report error + also to free the player in case something horrible has gone wrong
 ---@field mCollidedHorizontally boolean? `mCollidedHorizontally = 0 [0, 1]`
----@field mPhysicsCollisionHax b2Body*? hax
 
 ---@class (exact) PlayerCollisionComponent : Component
 ---@field getting_crushed_threshold integer `getting_crushed_threshold = 5 [0, 100]`
@@ -6650,7 +6514,6 @@
 ---@field stuck_in_ground_counter integer `stuck_in_ground_counter = 0 [0, 1]` used this mostly for player to figure out if it's stuck in ground
 ---@field DEBUG_stuck_in_static_ground integer `DEBUG_stuck_in_static_ground = 0 [0, 1]` used to report error + also to free the player in case something horrible has gone wrong
 ---@field mCollidedHorizontally boolean `mCollidedHorizontally = 0 [0, 1]`
----@field mPhysicsCollisionHax b2Body* hax
 
 ---@alias PlayerCollisionComponent.field
 ---| '"getting_crushed_threshold"' `integer getting_crushed_threshold = 5 [0, 100]`
@@ -6659,7 +6522,6 @@
 ---| '"stuck_in_ground_counter"' `integer stuck_in_ground_counter = 0 [0, 1]` used this mostly for player to figure out if it's stuck in ground
 ---| '"DEBUG_stuck_in_static_ground"' `integer DEBUG_stuck_in_static_ground = 0 [0, 1]` used to report error + also to free the player in case something horrible has gone wrong
 ---| '"mCollidedHorizontally"' `boolean mCollidedHorizontally = 0 [0, 1]`
----| '"mPhysicsCollisionHax"' `b2Body*` hax
 
 ---@class (exact) PlayerStatsComponents
 ---@overload fun(): PlayerStatsComponent
@@ -6868,8 +6730,7 @@
 ---@field mShooterHerdId integer? `mShooterHerdId = 0 [0, 1]` the herdid of mWhoShot, unless friendly fire
 ---@field mStartingLifetime integer? `mStartingLifetime = 0 [0, 1]`
 ---@field mEntityThatShot EntityID? `mEntityThatShot = 0 [0, 1]` for triggers, if shot from a trigger this should point to the projectile entity that shot this. Otherwise this should be the same as mWhoShot. NOTE! Not really tested properly so might break.
----@field mTriggers ProjectileTriggers?
----@field mDamagedEntities VEC_ENTITY?
+---@field mDamagedEntities std::vector<EntityID>?
 ---@field mInitialSpeed number? `mInitialSpeed = -1 [0, 1]`
 
 ---@class (exact) ProjectileComponent : Component
@@ -6960,8 +6821,7 @@
 ---@field mShooterHerdId integer `mShooterHerdId = 0 [0, 1]` the herdid of mWhoShot, unless friendly fire
 ---@field mStartingLifetime integer `mStartingLifetime = 0 [0, 1]`
 ---@field mEntityThatShot EntityID `mEntityThatShot = 0 [0, 1]` for triggers, if shot from a trigger this should point to the projectile entity that shot this. Otherwise this should be the same as mWhoShot. NOTE! Not really tested properly so might break.
----@field mTriggers ProjectileTriggers
----@field mDamagedEntities VEC_ENTITY
+---@field mDamagedEntities std::vector<EntityID>
 ---@field mInitialSpeed number `mInitialSpeed = -1 [0, 1]`
 
 ---@alias ProjectileComponent.field
@@ -7052,8 +6912,7 @@
 ---| '"mShooterHerdId"' `integer mShooterHerdId = 0 [0, 1]` the herdid of mWhoShot, unless friendly fire
 ---| '"mStartingLifetime"' `integer mStartingLifetime = 0 [0, 1]`
 ---| '"mEntityThatShot"' `EntityID mEntityThatShot = 0 [0, 1]` for triggers, if shot from a trigger this should point to the projectile entity that shot this. Otherwise this should be the same as mWhoShot. NOTE! Not really tested properly so might break.
----| '"mTriggers"' `ProjectileTriggers`
----| '"mDamagedEntities"' `VEC_ENTITY`
+---| '"mDamagedEntities"' `std::vector<EntityID>`
 ---| '"mInitialSpeed"' `number mInitialSpeed = -1 [0, 1]`
 
 ---@class (exact) RotateTowardsComponents
@@ -7123,17 +6982,14 @@
 ---@class (exact) ShotEffectComponent.partial
 ---@field extra_modifier string? name of modifier function executed per projectile from 'gun_extra_modifiers.lua'
 ---@field condition_effect GAME_EFFECT::Enum? Shooting entity needs to have this 'GAME_EFFECT' for effects to apply. If both 'condition_effect' and 'condition_status' are set, they are combined with AND logic
----@field condition_status StatusEffectType? `condition_status = 0 [0, 1]` Shooting entity needs to have this 'STATUS_EFFECT' for effects to apply
 
 ---@class (exact) ShotEffectComponent : Component
 ---@field extra_modifier string name of modifier function executed per projectile from 'gun_extra_modifiers.lua'
 ---@field condition_effect GAME_EFFECT::Enum Shooting entity needs to have this 'GAME_EFFECT' for effects to apply. If both 'condition_effect' and 'condition_status' are set, they are combined with AND logic
----@field condition_status StatusEffectType `condition_status = 0 [0, 1]` Shooting entity needs to have this 'STATUS_EFFECT' for effects to apply
 
 ---@alias ShotEffectComponent.field
 ---| '"extra_modifier"' `string` name of modifier function executed per projectile from 'gun_extra_modifiers.lua'
 ---| '"condition_effect"' `GAME_EFFECT::Enum` Shooting entity needs to have this 'GAME_EFFECT' for effects to apply. If both 'condition_effect' and 'condition_status' are set, they are combined with AND logic
----| '"condition_status"' `StatusEffectType condition_status = 0 [0, 1]` Shooting entity needs to have this 'STATUS_EFFECT' for effects to apply
 
 ---@class (exact) SimplePhysicsComponents
 ---@overload fun(): SimplePhysicsComponent
@@ -7186,22 +7042,16 @@
 ---@class (exact) SpriteAnimatorComponent.partial
 ---@field target_sprite_comp_name string? `target_sprite_comp_name = character [0, 1]`
 ---@field rotate_to_surface_normal boolean? `rotate_to_surface_normal = 0 [0, 1]`
----@field mStates STACK_ANIMATIONSTATE?
----@field mCachedTargetSpriteTag ComponentTags?
 ---@field mSendOnFinishedMessageName string?
 
 ---@class (exact) SpriteAnimatorComponent : Component
 ---@field target_sprite_comp_name string `target_sprite_comp_name = character [0, 1]`
 ---@field rotate_to_surface_normal boolean `rotate_to_surface_normal = 0 [0, 1]`
----@field mStates STACK_ANIMATIONSTATE
----@field mCachedTargetSpriteTag ComponentTags
 ---@field mSendOnFinishedMessageName string
 
 ---@alias SpriteAnimatorComponent.field
 ---| '"target_sprite_comp_name"' `string target_sprite_comp_name = character [0, 1]`
 ---| '"rotate_to_surface_normal"' `boolean rotate_to_surface_normal = 0 [0, 1]`
----| '"mStates"' `STACK_ANIMATIONSTATE`
----| '"mCachedTargetSpriteTag"' `ComponentTags`
 ---| '"mSendOnFinishedMessageName"' `string`
 
 ---@class (exact) SpriteComponents
@@ -7236,8 +7086,6 @@
 ---@field never_ragdollify_on_death boolean? `never_ragdollify_on_death = 0 [0, 1]`
 ---@field transform_offset Vec2?
 ---@field offset_animator_offset Vec2? used by SpriteOffsetAnimator
----@field mSprite as::Sprite*?
----@field mRenderList SpriteRenderList*?
 ---@field mRenderListHandle integer? `mRenderListHandle = -1 [0, 1]`
 
 ---@class (exact) SpriteComponent : Component
@@ -7265,8 +7113,6 @@
 ---@field never_ragdollify_on_death boolean `never_ragdollify_on_death = 0 [0, 1]`
 ---@field transform_offset Vec2
 ---@field offset_animator_offset Vec2 used by SpriteOffsetAnimator
----@field mSprite as::Sprite*
----@field mRenderList SpriteRenderList*
 ---@field mRenderListHandle integer `mRenderListHandle = -1 [0, 1]`
 
 ---@alias SpriteComponent.field
@@ -7294,8 +7140,6 @@
 ---| '"never_ragdollify_on_death"' `boolean never_ragdollify_on_death = 0 [0, 1]`
 ---| '"transform_offset"' `Vec2`
 ---| '"offset_animator_offset"' `Vec2` used by SpriteOffsetAnimator
----| '"mSprite"' `as::Sprite*`
----| '"mRenderList"' `SpriteRenderList*`
 ---| '"mRenderListHandle"' `integer mRenderListHandle = -1 [0, 1]`
 
 ---@class (exact) SpriteOffsetAnimatorComponents
@@ -7482,24 +7326,18 @@
 ---@field sprite_id integer? `sprite_id = 0 [0, 10]` which sprite (in the order in which they appear in the entity) are we going to stain?
 ---@field fade_stains_towards_srite_top boolean? `fade_stains_towards_srite_top = 1 [0, 1]` if 1, shades get less opaque near the top of the sprite
 ---@field stain_shaken_drop_chance_multiplier integer? how quickly stains are dropped relative to normal drop speed
----@field mData SpriteStains*?
----@field mTextureHandle VirtualTextureHandle?
 ---@field mState SpriteStainsState?
 
 ---@class (exact) SpriteStainsComponent : Component
 ---@field sprite_id integer `sprite_id = 0 [0, 10]` which sprite (in the order in which they appear in the entity) are we going to stain?
 ---@field fade_stains_towards_srite_top boolean `fade_stains_towards_srite_top = 1 [0, 1]` if 1, shades get less opaque near the top of the sprite
 ---@field stain_shaken_drop_chance_multiplier integer how quickly stains are dropped relative to normal drop speed
----@field mData SpriteStains*
----@field mTextureHandle VirtualTextureHandle
 ---@field mState SpriteStainsState
 
 ---@alias SpriteStainsComponent.field
 ---| '"sprite_id"' `integer sprite_id = 0 [0, 10]` which sprite (in the order in which they appear in the entity) are we going to stain?
 ---| '"fade_stains_towards_srite_top"' `boolean fade_stains_towards_srite_top = 1 [0, 1]` if 1, shades get less opaque near the top of the sprite
 ---| '"stain_shaken_drop_chance_multiplier"' `integer` how quickly stains are dropped relative to normal drop speed
----| '"mData"' `SpriteStains*`
----| '"mTextureHandle"' `VirtualTextureHandle`
 ---| '"mState"' `SpriteStainsState`
 
 ---@class (exact) StatusEffectDataComponents
@@ -7510,36 +7348,36 @@
 ---@field add fun(self: StatusEffectDataComponents, fields: StatusEffectDataComponent.partial?): StatusEffectDataComponent
 
 ---@class (exact) StatusEffectDataComponent.partial
----@field stain_effects VECTOR_FLOAT?
----@field stain_effect_cooldowns VECTOR_INT32?
----@field effects_previous VECTOR_FLOAT?
----@field ingestion_effects VECTOR_FLOAT?
+---@field stain_effects std::vector<float>?
+---@field stain_effect_cooldowns std::vector<int>?
+---@field effects_previous std::vector<float>?
+---@field ingestion_effects std::vector<float>?
 ---@field ingestion_effect_causes VEC_OF_MATERIALS?
----@field ingestion_effect_causes_many VECTOR_INT32?
+---@field ingestion_effect_causes_many std::vector<int>?
 ---@field mLastAttackingPlayerFrame integer? `mLastAttackingPlayerFrame = -99999 [0, 1]`
----@field mStainEffectsSmoothedForUI VECTOR_FLOAT?
+---@field mStainEffectsSmoothedForUI std::vector<float>?
 ---@field mHasChildIconsCached boolean? `mHasChildIconsCached = 0 [0, 1]`
 
 ---@class (exact) StatusEffectDataComponent : Component
----@field stain_effects VECTOR_FLOAT
----@field stain_effect_cooldowns VECTOR_INT32
----@field effects_previous VECTOR_FLOAT
----@field ingestion_effects VECTOR_FLOAT
+---@field stain_effects std::vector<float>
+---@field stain_effect_cooldowns std::vector<int>
+---@field effects_previous std::vector<float>
+---@field ingestion_effects std::vector<float>
 ---@field ingestion_effect_causes VEC_OF_MATERIALS
----@field ingestion_effect_causes_many VECTOR_INT32
+---@field ingestion_effect_causes_many std::vector<int>
 ---@field mLastAttackingPlayerFrame integer `mLastAttackingPlayerFrame = -99999 [0, 1]`
----@field mStainEffectsSmoothedForUI VECTOR_FLOAT
+---@field mStainEffectsSmoothedForUI std::vector<float>
 ---@field mHasChildIconsCached boolean `mHasChildIconsCached = 0 [0, 1]`
 
 ---@alias StatusEffectDataComponent.field
----| '"stain_effects"' `VECTOR_FLOAT`
----| '"stain_effect_cooldowns"' `VECTOR_INT32`
----| '"effects_previous"' `VECTOR_FLOAT`
----| '"ingestion_effects"' `VECTOR_FLOAT`
+---| '"stain_effects"' `std::vector<float>`
+---| '"stain_effect_cooldowns"' `std::vector<int>`
+---| '"effects_previous"' `std::vector<float>`
+---| '"ingestion_effects"' `std::vector<float>`
 ---| '"ingestion_effect_causes"' `VEC_OF_MATERIALS`
----| '"ingestion_effect_causes_many"' `VECTOR_INT32`
+---| '"ingestion_effect_causes_many"' `std::vector<int>`
 ---| '"mLastAttackingPlayerFrame"' `integer mLastAttackingPlayerFrame = -99999 [0, 1]`
----| '"mStainEffectsSmoothedForUI"' `VECTOR_FLOAT`
+---| '"mStainEffectsSmoothedForUI"' `std::vector<float>`
 ---| '"mHasChildIconsCached"' `boolean mHasChildIconsCached = 0 [0, 1]`
 
 ---@class (exact) StreamingKeepAliveComponents
@@ -7882,16 +7720,12 @@
 ---@field cloth_color_edge integer? `cloth_color_edge = 4288376730 [0, 1]`
 ---@field cloth_color integer? `cloth_color = 4286534774 [0, 1]`
 ---@field m_position_previous Vec2?
----@field colors UintArrayInline?
----@field materials UintArrayInline?
 ---@field masses FloatArrayInline?
 ---@field positions Vec2ArrayInline?
 ---@field positions_prev Vec2ArrayInline?
 ---@field velocities Vec2ArrayInline?
 ---@field dampenings FloatArrayInline?
 ---@field freedoms FloatArrayInline?
----@field links VerletLinkArrayInline?
----@field sprite VerletSprite*?
 
 ---@class (exact) VerletPhysicsComponent : Component
 ---@field num_points integer `num_points = 2 [0, 1]`
@@ -7923,16 +7757,12 @@
 ---@field cloth_color_edge integer `cloth_color_edge = 4288376730 [0, 1]`
 ---@field cloth_color integer `cloth_color = 4286534774 [0, 1]`
 ---@field m_position_previous Vec2
----@field colors UintArrayInline
----@field materials UintArrayInline
 ---@field masses FloatArrayInline
 ---@field positions Vec2ArrayInline
 ---@field positions_prev Vec2ArrayInline
 ---@field velocities Vec2ArrayInline
 ---@field dampenings FloatArrayInline
 ---@field freedoms FloatArrayInline
----@field links VerletLinkArrayInline
----@field sprite VerletSprite*
 
 ---@alias VerletPhysicsComponent.field
 ---| '"num_points"' `integer num_points = 2 [0, 1]`
@@ -7964,16 +7794,12 @@
 ---| '"cloth_color_edge"' `integer cloth_color_edge = 4288376730 [0, 1]`
 ---| '"cloth_color"' `integer cloth_color = 4286534774 [0, 1]`
 ---| '"m_position_previous"' `Vec2`
----| '"colors"' `UintArrayInline`
----| '"materials"' `UintArrayInline`
 ---| '"masses"' `FloatArrayInline`
 ---| '"positions"' `Vec2ArrayInline`
 ---| '"positions_prev"' `Vec2ArrayInline`
 ---| '"velocities"' `Vec2ArrayInline`
 ---| '"dampenings"' `FloatArrayInline`
 ---| '"freedoms"' `FloatArrayInline`
----| '"links"' `VerletLinkArrayInline`
----| '"sprite"' `VerletSprite*`
 
 ---@class (exact) VerletWeaponComponents
 ---@overload fun(): VerletWeaponComponent
@@ -8026,19 +7852,16 @@
 ---@field verlet_point_index integer? `verlet_point_index = 0 [0, 32]` Index of the verlet point we attach
 ---@field world_position Vec2? Where we attach the verlet point
 ---@field mUpdated boolean? `mUpdated = 0 [0, 1]`
----@field mCell grid::ICell*?
 
 ---@class (exact) VerletWorldJointComponent : Component
 ---@field verlet_point_index integer `verlet_point_index = 0 [0, 32]` Index of the verlet point we attach
 ---@field world_position Vec2 Where we attach the verlet point
 ---@field mUpdated boolean `mUpdated = 0 [0, 1]`
----@field mCell grid::ICell*
 
 ---@alias VerletWorldJointComponent.field
 ---| '"verlet_point_index"' `integer verlet_point_index = 0 [0, 32]` Index of the verlet point we attach
 ---| '"world_position"' `Vec2` Where we attach the verlet point
 ---| '"mUpdated"' `boolean mUpdated = 0 [0, 1]`
----| '"mCell"' `grid::ICell*`
 
 ---@class (exact) WalletComponents
 ---@overload fun(): WalletComponent
@@ -8135,14 +7958,10 @@
 ---@field DEBUG_LOADED_FROM_AUTOSAVE integer? `DEBUG_LOADED_FROM_AUTOSAVE = 0 [0, 1]` how many times have loaded from autosaves
 ---@field DEBUG_LOADED_FROM_OLD_VERSION integer? `DEBUG_LOADED_FROM_OLD_VERSION = 0 [0, 1]` how many times have we loaded from an old version of the game
 ---@field player_spawn_location Vec2?
----@field lua_globals MAP_STRING_STRING?
----@field pending_portals VEC_PENDINGPORTAL?
----@field apparitions_per_level VECTOR_INT32?
----@field npc_parties VEC_NPCPARTY?
----@field orbs_found_thisrun VECTOR_INT32?
----@field flags VECTOR_STRING?
----@field changed_materials VECTOR_STRING? pairs of materials changed via ConvertMaterialEverywhere(). stored so these can be restored when loading a save
----@field cuts_through_world VEC_CUTTHROUGHWORLD?
+---@field apparitions_per_level std::vector<int>?
+---@field orbs_found_thisrun std::vector<int>?
+---@field flags std::vector<std::string>?
+---@field changed_materials std::vector<std::string>? pairs of materials changed via ConvertMaterialEverywhere(). stored so these can be restored when loading a save
 ---@field gore_multiplier integer?
 ---@field trick_kill_gold_multiplier integer?
 ---@field damage_flash_multiplier number?
@@ -8199,14 +8018,10 @@
 ---@field DEBUG_LOADED_FROM_AUTOSAVE integer `DEBUG_LOADED_FROM_AUTOSAVE = 0 [0, 1]` how many times have loaded from autosaves
 ---@field DEBUG_LOADED_FROM_OLD_VERSION integer `DEBUG_LOADED_FROM_OLD_VERSION = 0 [0, 1]` how many times have we loaded from an old version of the game
 ---@field player_spawn_location Vec2
----@field lua_globals MAP_STRING_STRING
----@field pending_portals VEC_PENDINGPORTAL
----@field apparitions_per_level VECTOR_INT32
----@field npc_parties VEC_NPCPARTY
----@field orbs_found_thisrun VECTOR_INT32
----@field flags VECTOR_STRING
----@field changed_materials VECTOR_STRING pairs of materials changed via ConvertMaterialEverywhere(). stored so these can be restored when loading a save
----@field cuts_through_world VEC_CUTTHROUGHWORLD
+---@field apparitions_per_level std::vector<int>
+---@field orbs_found_thisrun std::vector<int>
+---@field flags std::vector<std::string>
+---@field changed_materials std::vector<std::string> pairs of materials changed via ConvertMaterialEverywhere(). stored so these can be restored when loading a save
 ---@field gore_multiplier integer
 ---@field trick_kill_gold_multiplier integer
 ---@field damage_flash_multiplier number
@@ -8263,14 +8078,10 @@
 ---| '"DEBUG_LOADED_FROM_AUTOSAVE"' `integer DEBUG_LOADED_FROM_AUTOSAVE = 0 [0, 1]` how many times have loaded from autosaves
 ---| '"DEBUG_LOADED_FROM_OLD_VERSION"' `integer DEBUG_LOADED_FROM_OLD_VERSION = 0 [0, 1]` how many times have we loaded from an old version of the game
 ---| '"player_spawn_location"' `Vec2`
----| '"lua_globals"' `MAP_STRING_STRING`
----| '"pending_portals"' `VEC_PENDINGPORTAL`
----| '"apparitions_per_level"' `VECTOR_INT32`
----| '"npc_parties"' `VEC_NPCPARTY`
----| '"orbs_found_thisrun"' `VECTOR_INT32`
----| '"flags"' `VECTOR_STRING`
----| '"changed_materials"' `VECTOR_STRING` pairs of materials changed via ConvertMaterialEverywhere(). stored so these can be restored when loading a save
----| '"cuts_through_world"' `VEC_CUTTHROUGHWORLD`
+---| '"apparitions_per_level"' `std::vector<int>`
+---| '"orbs_found_thisrun"' `std::vector<int>`
+---| '"flags"' `std::vector<std::string>`
+---| '"changed_materials"' `std::vector<std::string>` pairs of materials changed via ConvertMaterialEverywhere(). stored so these can be restored when loading a save
 ---| '"gore_multiplier"' `integer`
 ---| '"trick_kill_gold_multiplier"' `integer`
 ---| '"damage_flash_multiplier"' `number`
@@ -8412,7 +8223,6 @@
 ---@field mMaterialIdPrev integer? `mMaterialIdPrev = 0 [0, 1]`
 ---@field mFrameNextDamage integer? `mFrameNextDamage = 0 [0, 1]`
 ---@field mDirectionAdjustSpeed number? `mDirectionAdjustSpeed = 1 [0, 1]`
----@field mPrevPositions WormPartPositions?
 
 ---@class (exact) WormComponent : Component
 ---@field speed number `speed = 1 [0, 10000]`
@@ -8441,7 +8251,6 @@
 ---@field mMaterialIdPrev integer `mMaterialIdPrev = 0 [0, 1]`
 ---@field mFrameNextDamage integer `mFrameNextDamage = 0 [0, 1]`
 ---@field mDirectionAdjustSpeed number `mDirectionAdjustSpeed = 1 [0, 1]`
----@field mPrevPositions WormPartPositions
 
 ---@alias WormComponent.field
 ---| '"speed"' `number speed = 1 [0, 10000]`
@@ -8470,7 +8279,6 @@
 ---| '"mMaterialIdPrev"' `integer mMaterialIdPrev = 0 [0, 1]`
 ---| '"mFrameNextDamage"' `integer mFrameNextDamage = 0 [0, 1]`
 ---| '"mDirectionAdjustSpeed"' `number mDirectionAdjustSpeed = 1 [0, 1]`
----| '"mPrevPositions"' `WormPartPositions`
 
 ---@class (exact) WormPlayerComponents
 ---@overload fun(): WormPlayerComponent
