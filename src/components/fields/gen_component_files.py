@@ -154,11 +154,15 @@ def gen_component_type(component_ty: str) -> str:
     partial_ty = f"{component_ty}.partial"
     key_ty = f"{component_ty}.field"
 
+    field_collection = components[component_ty]
+
+    empty = len(field_collection) == 0
+
     component_partial = f"---@class (exact) {partial_ty}"
     component_full = f"---@class (exact) {component_ty} : Component"
-    fields = f"---@alias {key_ty}"
+    fields = f"---@alias {key_ty}" if not empty else ""
 
-    for field, ty in components[component_ty].items():
+    for field, ty in field_collection.items():
         suffix = f"{f"`{field} = {ty.default} {ty.range}` " if ty.default != "" else ""}{ty.comment}"
         suffix_typed = (
             f"`{ty.ty} {suffix[1:]}"
@@ -173,7 +177,7 @@ def gen_component_type(component_ty: str) -> str:
 ---@overload fun(): {component_ty}
 ---@field enabled fun(self: {components_ty}, enabled: boolean): {components_ty}
 ---@field tagged fun(self: {components_ty}, tag: string): {components_ty}
----@field with_field fun(self: {components_ty}, field: {key_ty}, value: any): {components_ty}
+{f"---@field with_field fun(self: {components_ty}, field: {key_ty}, value: any): {components_ty}" if not empty else ""}
 ---@field add fun(self: {components_ty}, fields: {partial_ty}): {component_ty}
 
 {component_partial}
