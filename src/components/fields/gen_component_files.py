@@ -178,7 +178,7 @@ def gen_component_type(component_ty: str) -> str:
 ---@field enabled fun(self: {components_ty}, enabled: boolean): {components_ty}
 ---@field tagged fun(self: {components_ty}, tag: string): {components_ty}
 {f"---@field with_field fun(self: {components_ty}, field: {key_ty}, value: any): {components_ty}" if not empty else ""}
----@field add fun(self: {components_ty}, fields: {partial_ty}): {component_ty}
+---@field add fun(self: {components_ty}, fields: {partial_ty}?): {component_ty}
 
 {component_partial}
 

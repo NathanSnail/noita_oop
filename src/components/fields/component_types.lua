@@ -3,7 +3,7 @@
 ---@field enabled fun(self: ParticleEmitterComponents, enabled: boolean): ParticleEmitterComponents
 ---@field tagged fun(self: ParticleEmitterComponents, tag: string): ParticleEmitterComponents
 ---@field with_field fun(self: ParticleEmitterComponents, field: ParticleEmitterComponent.field, value: any): ParticleEmitterComponents
----@field add fun(self: ParticleEmitterComponents, fields: ParticleEmitterComponent.partial): ParticleEmitterComponent
+---@field add fun(self: ParticleEmitterComponents, fields: ParticleEmitterComponent.partial?): ParticleEmitterComponent
 
 ---@class (exact) ParticleEmitterComponent.partial
 ---@field m_cached_image_animation ParticleEmitter_Animation*?
@@ -232,7 +232,7 @@
 ---@field enabled fun(self: ExplosionComponents, enabled: boolean): ExplosionComponents
 ---@field tagged fun(self: ExplosionComponents, tag: string): ExplosionComponents
 ---@field with_field fun(self: ExplosionComponents, field: ExplosionComponent.field, value: any): ExplosionComponents
----@field add fun(self: ExplosionComponents, fields: ExplosionComponent.partial): ExplosionComponent
+---@field add fun(self: ExplosionComponents, fields: ExplosionComponent.partial?): ExplosionComponent
 
 ---@class (exact) ExplosionComponent.partial
 ---@field trigger EXPLOSION_TRIGGER_TYPE::Enum? what triggers the explosion
@@ -263,7 +263,7 @@
 ---@field enabled fun(self: InventoryComponents, enabled: boolean): InventoryComponents
 ---@field tagged fun(self: InventoryComponents, tag: string): InventoryComponents
 ---@field with_field fun(self: InventoryComponents, field: InventoryComponent.field, value: any): InventoryComponents
----@field add fun(self: InventoryComponents, fields: InventoryComponent.partial): InventoryComponent
+---@field add fun(self: InventoryComponents, fields: InventoryComponent.partial?): InventoryComponent
 
 ---@class (exact) InventoryComponent.partial
 ---@field update_listener InvenentoryUpdateListener*? listener to keep ui up with ability changes
@@ -300,7 +300,7 @@
 ---@field enabled fun(self: PathFindingComponents, enabled: boolean): PathFindingComponents
 ---@field tagged fun(self: PathFindingComponents, tag: string): PathFindingComponents
 ---@field with_field fun(self: PathFindingComponents, field: PathFindingComponent.field, value: any): PathFindingComponents
----@field add fun(self: PathFindingComponents, fields: PathFindingComponent.partial): PathFindingComponent
+---@field add fun(self: PathFindingComponents, fields: PathFindingComponent.partial?): PathFindingComponent
 
 ---@class (exact) PathFindingComponent.partial
 ---@field job_result_receiver MSG_QUEUE_PATH_FINDING_RESULT?
@@ -451,7 +451,7 @@
 ---@field enabled fun(self: MoveToSurfaceOnCreateComponents, enabled: boolean): MoveToSurfaceOnCreateComponents
 ---@field tagged fun(self: MoveToSurfaceOnCreateComponents, tag: string): MoveToSurfaceOnCreateComponents
 ---@field with_field fun(self: MoveToSurfaceOnCreateComponents, field: MoveToSurfaceOnCreateComponent.field, value: any): MoveToSurfaceOnCreateComponents
----@field add fun(self: MoveToSurfaceOnCreateComponents, fields: MoveToSurfaceOnCreateComponent.partial): MoveToSurfaceOnCreateComponent
+---@field add fun(self: MoveToSurfaceOnCreateComponents, fields: MoveToSurfaceOnCreateComponent.partial?): MoveToSurfaceOnCreateComponent
 
 ---@class (exact) MoveToSurfaceOnCreateComponent.partial
 ---@field type MOVETOSURFACE_TYPE::Enum?
@@ -479,7 +479,7 @@
 ---@field enabled fun(self: NinjaRopeComponents, enabled: boolean): NinjaRopeComponents
 ---@field tagged fun(self: NinjaRopeComponents, tag: string): NinjaRopeComponents
 ---@field with_field fun(self: NinjaRopeComponents, field: NinjaRopeComponent.field, value: any): NinjaRopeComponents
----@field add fun(self: NinjaRopeComponents, fields: NinjaRopeComponent.partial): NinjaRopeComponent
+---@field add fun(self: NinjaRopeComponents, fields: NinjaRopeComponent.partial?): NinjaRopeComponent
 
 ---@class (exact) NinjaRopeComponent.partial
 ---@field mSegments NINJA_ROPE_SEGMENT_VECTOR?
@@ -501,7 +501,7 @@
 ---@field enabled fun(self: TeleportComponents, enabled: boolean): TeleportComponents
 ---@field tagged fun(self: TeleportComponents, tag: string): TeleportComponents
 ---@field with_field fun(self: TeleportComponents, field: TeleportComponent.field, value: any): TeleportComponents
----@field add fun(self: TeleportComponents, fields: TeleportComponent.partial): TeleportComponent
+---@field add fun(self: TeleportComponents, fields: TeleportComponent.partial?): TeleportComponent
 
 ---@class (exact) TeleportComponent.partial
 ---@field state TeleportComponentState::Enum?
@@ -544,7 +544,7 @@
 ---@field enabled fun(self: AIAttackComponents, enabled: boolean): AIAttackComponents
 ---@field tagged fun(self: AIAttackComponents, tag: string): AIAttackComponents
 ---@field with_field fun(self: AIAttackComponents, field: AIAttackComponent.field, value: any): AIAttackComponents
----@field add fun(self: AIAttackComponents, fields: AIAttackComponent.partial): AIAttackComponent
+---@field add fun(self: AIAttackComponents, fields: AIAttackComponent.partial?): AIAttackComponent
 
 ---@class (exact) AIAttackComponent.partial
 ---@field use_probability integer? `use_probability = 100 [0, 100]` The probability for using this attack if it's otherwise possible
@@ -632,7 +632,7 @@
 ---@field enabled fun(self: AIComponents, enabled: boolean): AIComponents
 ---@field tagged fun(self: AIComponents, tag: string): AIComponents
 ---@field with_field fun(self: AIComponents, field: AIComponent.field, value: any): AIComponents
----@field add fun(self: AIComponents, fields: AIComponent.partial): AIComponent
+---@field add fun(self: AIComponents, fields: AIComponent.partial?): AIComponent
 
 ---@class (exact) AIComponent.partial
 ---@field TEMP_TEMP_TEMP number? `TEMP_TEMP_TEMP = 0 [0, 3.5]`
@@ -651,7 +651,7 @@
 ---@field enabled fun(self: AbilityComponents, enabled: boolean): AbilityComponents
 ---@field tagged fun(self: AbilityComponents, tag: string): AbilityComponents
 ---@field with_field fun(self: AbilityComponents, field: AbilityComponent.field, value: any): AbilityComponents
----@field add fun(self: AbilityComponents, fields: AbilityComponent.partial): AbilityComponent
+---@field add fun(self: AbilityComponents, fields: AbilityComponent.partial?): AbilityComponent
 
 ---@class (exact) AbilityComponent.partial
 ---@field cooldown_frames integer? `cooldown_frames = 0 [0, 60000]`
@@ -811,7 +811,7 @@
 ---@field enabled fun(self: AdvancedFishAIComponents, enabled: boolean): AdvancedFishAIComponents
 ---@field tagged fun(self: AdvancedFishAIComponents, tag: string): AdvancedFishAIComponents
 ---@field with_field fun(self: AdvancedFishAIComponents, field: AdvancedFishAIComponent.field, value: any): AdvancedFishAIComponents
----@field add fun(self: AdvancedFishAIComponents, fields: AdvancedFishAIComponent.partial): AdvancedFishAIComponent
+---@field add fun(self: AdvancedFishAIComponents, fields: AdvancedFishAIComponent.partial?): AdvancedFishAIComponent
 
 ---@class (exact) AdvancedFishAIComponent.partial
 ---@field move_check_range_min number? `move_check_range_min = 16 [0, 2]`
@@ -869,7 +869,7 @@
 ---@field enabled fun(self: AltarComponents, enabled: boolean): AltarComponents
 ---@field tagged fun(self: AltarComponents, tag: string): AltarComponents
 ---@field with_field fun(self: AltarComponents, field: AltarComponent.field, value: any): AltarComponents
----@field add fun(self: AltarComponents, fields: AltarComponent.partial): AltarComponent
+---@field add fun(self: AltarComponents, fields: AltarComponent.partial?): AltarComponent
 
 ---@class (exact) AltarComponent.partial
 ---@field recognized_entity_tags string?
@@ -906,7 +906,7 @@
 ---@field enabled fun(self: AnimalAIComponents, enabled: boolean): AnimalAIComponents
 ---@field tagged fun(self: AnimalAIComponents, tag: string): AnimalAIComponents
 ---@field with_field fun(self: AnimalAIComponents, field: AnimalAIComponent.field, value: any): AnimalAIComponents
----@field add fun(self: AnimalAIComponents, fields: AnimalAIComponent.partial): AnimalAIComponent
+---@field add fun(self: AnimalAIComponents, fields: AnimalAIComponent.partial?): AnimalAIComponent
 
 ---@class (exact) AnimalAIComponent.partial
 ---@field ai_state integer? `ai_state = 0 [0, 20]` Current state of ai, defines what the animal is doing
@@ -1282,7 +1282,7 @@
 ---@field enabled fun(self: ArcComponents, enabled: boolean): ArcComponents
 ---@field tagged fun(self: ArcComponents, tag: string): ArcComponents
 ---@field with_field fun(self: ArcComponents, field: ArcComponent.field, value: any): ArcComponents
----@field add fun(self: ArcComponents, fields: ArcComponent.partial): ArcComponent
+---@field add fun(self: ArcComponents, fields: ArcComponent.partial?): ArcComponent
 
 ---@class (exact) ArcComponent.partial
 ---@field lifetime integer? `lifetime = 60 [0, 1]` remaining number of frames the arc exists
@@ -1307,7 +1307,7 @@
 ---@field enabled fun(self: AreaDamageComponents, enabled: boolean): AreaDamageComponents
 ---@field tagged fun(self: AreaDamageComponents, tag: string): AreaDamageComponents
 ---@field with_field fun(self: AreaDamageComponents, field: AreaDamageComponent.field, value: any): AreaDamageComponents
----@field add fun(self: AreaDamageComponents, fields: AreaDamageComponent.partial): AreaDamageComponent
+---@field add fun(self: AreaDamageComponents, fields: AreaDamageComponent.partial?): AreaDamageComponent
 
 ---@class (exact) AreaDamageComponent.partial
 ---@field circle_radius number? `circle_radius = 0 [0, 1]` if > 0, will only damage entities inside the aabb rectangle which are closer than 'circle_radius' to the aabb center.
@@ -1347,7 +1347,7 @@
 ---@field enabled fun(self: AttachToEntityComponents, enabled: boolean): AttachToEntityComponents
 ---@field tagged fun(self: AttachToEntityComponents, tag: string): AttachToEntityComponents
 ---@field with_field fun(self: AttachToEntityComponents, field: AttachToEntityComponent.field, value: any): AttachToEntityComponents
----@field add fun(self: AttachToEntityComponents, fields: AttachToEntityComponent.partial): AttachToEntityComponent
+---@field add fun(self: AttachToEntityComponents, fields: AttachToEntityComponent.partial?): AttachToEntityComponent
 
 ---@class (exact) AttachToEntityComponent.partial
 ---@field only_position boolean? `only_position = 0 [0, 1]` if 1, we only inherit position. it is calculated as follows: target_position + target_offset * target_scale
@@ -1384,7 +1384,7 @@
 ---@field enabled fun(self: AudioComponents, enabled: boolean): AudioComponents
 ---@field tagged fun(self: AudioComponents, tag: string): AudioComponents
 ---@field with_field fun(self: AudioComponents, field: AudioComponent.field, value: any): AudioComponents
----@field add fun(self: AudioComponents, fields: AudioComponent.partial): AudioComponent
+---@field add fun(self: AudioComponents, fields: AudioComponent.partial?): AudioComponent
 
 ---@class (exact) AudioComponent.partial
 ---@field file string?
@@ -1424,7 +1424,7 @@
 ---@field enabled fun(self: AudioListenerComponents, enabled: boolean): AudioListenerComponents
 ---@field tagged fun(self: AudioListenerComponents, tag: string): AudioListenerComponents
 ---@field with_field fun(self: AudioListenerComponents, field: AudioListenerComponent.field, value: any): AudioListenerComponents
----@field add fun(self: AudioListenerComponents, fields: AudioListenerComponent.partial): AudioListenerComponent
+---@field add fun(self: AudioListenerComponents, fields: AudioListenerComponent.partial?): AudioListenerComponent
 
 ---@class (exact) AudioListenerComponent.partial
 ---@field z number? `z = 0 [-500, 500]`
@@ -1440,7 +1440,7 @@
 ---@field enabled fun(self: AudioLoopComponents, enabled: boolean): AudioLoopComponents
 ---@field tagged fun(self: AudioLoopComponents, tag: string): AudioLoopComponents
 ---@field with_field fun(self: AudioLoopComponents, field: AudioLoopComponent.field, value: any): AudioLoopComponents
----@field add fun(self: AudioLoopComponents, fields: AudioLoopComponent.partial): AudioLoopComponent
+---@field add fun(self: AudioLoopComponents, fields: AudioLoopComponent.partial?): AudioLoopComponent
 
 ---@class (exact) AudioLoopComponent.partial
 ---@field file string?
@@ -1498,7 +1498,7 @@
 ---@field enabled fun(self: BiomeTrackerComponents, enabled: boolean): BiomeTrackerComponents
 ---@field tagged fun(self: BiomeTrackerComponents, tag: string): BiomeTrackerComponents
 ---@field with_field fun(self: BiomeTrackerComponents, field: BiomeTrackerComponent.field, value: any): BiomeTrackerComponents
----@field add fun(self: BiomeTrackerComponents, fields: BiomeTrackerComponent.partial): BiomeTrackerComponent
+---@field add fun(self: BiomeTrackerComponents, fields: BiomeTrackerComponent.partial?): BiomeTrackerComponent
 
 ---@class (exact) BiomeTrackerComponent.partial
 ---@field limit_to_every_n_frame integer? `limit_to_every_n_frame = 0 [0, 1]` if > 1, we will only check the biome every n frames
@@ -1520,7 +1520,7 @@
 ---@field enabled fun(self: BlackHoleComponents, enabled: boolean): BlackHoleComponents
 ---@field tagged fun(self: BlackHoleComponents, tag: string): BlackHoleComponents
 ---@field with_field fun(self: BlackHoleComponents, field: BlackHoleComponent.field, value: any): BlackHoleComponents
----@field add fun(self: BlackHoleComponents, fields: BlackHoleComponent.partial): BlackHoleComponent
+---@field add fun(self: BlackHoleComponents, fields: BlackHoleComponent.partial?): BlackHoleComponent
 
 ---@class (exact) BlackHoleComponent.partial
 ---@field radius number? `radius = 16 [0, 128]`
@@ -1548,7 +1548,7 @@
 ---@field enabled fun(self: BookComponents, enabled: boolean): BookComponents
 ---@field tagged fun(self: BookComponents, tag: string): BookComponents
 ---@field with_field fun(self: BookComponents, field: BookComponent.field, value: any): BookComponents
----@field add fun(self: BookComponents, fields: BookComponent.partial): BookComponent
+---@field add fun(self: BookComponents, fields: BookComponent.partial?): BookComponent
 
 ---@class (exact) BookComponent.partial
 ---@field TEMP_TEMPY number? `TEMP_TEMPY = 0 [0, 3.5]`
@@ -1567,7 +1567,7 @@
 ---@field enabled fun(self: BossDragonComponents, enabled: boolean): BossDragonComponents
 ---@field tagged fun(self: BossDragonComponents, tag: string): BossDragonComponents
 ---@field with_field fun(self: BossDragonComponents, field: BossDragonComponent.field, value: any): BossDragonComponents
----@field add fun(self: BossDragonComponents, fields: BossDragonComponent.partial): BossDragonComponent
+---@field add fun(self: BossDragonComponents, fields: BossDragonComponent.partial?): BossDragonComponent
 
 ---@class (exact) BossDragonComponent.partial
 ---@field speed number? `speed = 1 [0, 10000]`
@@ -1703,7 +1703,7 @@
 ---@field enabled fun(self: BossHealthBarComponents, enabled: boolean): BossHealthBarComponents
 ---@field tagged fun(self: BossHealthBarComponents, tag: string): BossHealthBarComponents
 ---@field with_field fun(self: BossHealthBarComponents, field: BossHealthBarComponent.field, value: any): BossHealthBarComponents
----@field add fun(self: BossHealthBarComponents, fields: BossHealthBarComponent.partial): BossHealthBarComponent
+---@field add fun(self: BossHealthBarComponents, fields: BossHealthBarComponent.partial?): BossHealthBarComponent
 
 ---@class (exact) BossHealthBarComponent.partial
 ---@field gui boolean? `gui = 1 [0, 1]`
@@ -1731,7 +1731,7 @@
 ---@field enabled fun(self: CameraBoundComponents, enabled: boolean): CameraBoundComponents
 ---@field tagged fun(self: CameraBoundComponents, tag: string): CameraBoundComponents
 ---@field with_field fun(self: CameraBoundComponents, field: CameraBoundComponent.field, value: any): CameraBoundComponents
----@field add fun(self: CameraBoundComponents, fields: CameraBoundComponent.partial): CameraBoundComponent
+---@field add fun(self: CameraBoundComponents, fields: CameraBoundComponent.partial?): CameraBoundComponent
 
 ---@class (exact) CameraBoundComponent.partial
 ---@field enabled boolean? `enabled = 1 [0, 1]` If enabled, kills this component if it's outside the camera distance
@@ -1762,7 +1762,7 @@
 ---@field enabled fun(self: CardinalMovementComponents, enabled: boolean): CardinalMovementComponents
 ---@field tagged fun(self: CardinalMovementComponents, tag: string): CardinalMovementComponents
 ---@field with_field fun(self: CardinalMovementComponents, field: CardinalMovementComponent.field, value: any): CardinalMovementComponents
----@field add fun(self: CardinalMovementComponents, fields: CardinalMovementComponent.partial): CardinalMovementComponent
+---@field add fun(self: CardinalMovementComponents, fields: CardinalMovementComponent.partial?): CardinalMovementComponent
 
 ---@class (exact) CardinalMovementComponent.partial
 ---@field horizontal_movement boolean? `horizontal_movement = 1 [0, 1]` allow horizontal movement
@@ -1787,7 +1787,7 @@
 ---@field enabled fun(self: CellEaterComponents, enabled: boolean): CellEaterComponents
 ---@field tagged fun(self: CellEaterComponents, tag: string): CellEaterComponents
 ---@field with_field fun(self: CellEaterComponents, field: CellEaterComponent.field, value: any): CellEaterComponents
----@field add fun(self: CellEaterComponents, fields: CellEaterComponent.partial): CellEaterComponent
+---@field add fun(self: CellEaterComponents, fields: CellEaterComponent.partial?): CellEaterComponent
 
 ---@class (exact) CellEaterComponent.partial
 ---@field radius number? `radius = 10 [0, 100]`
@@ -1824,7 +1824,7 @@
 ---@field enabled fun(self: CharacterCollisionComponents, enabled: boolean): CharacterCollisionComponents
 ---@field tagged fun(self: CharacterCollisionComponents, tag: string): CharacterCollisionComponents
 ---@field with_field fun(self: CharacterCollisionComponents, field: CharacterCollisionComponent.field, value: any): CharacterCollisionComponents
----@field add fun(self: CharacterCollisionComponents, fields: CharacterCollisionComponent.partial): CharacterCollisionComponent
+---@field add fun(self: CharacterCollisionComponents, fields: CharacterCollisionComponent.partial?): CharacterCollisionComponent
 
 ---@class (exact) CharacterCollisionComponent.partial
 ---@field getting_crushed_threshold integer? `getting_crushed_threshold = 5 [0, 100]`
@@ -1852,7 +1852,7 @@
 ---@field enabled fun(self: CharacterDataComponents, enabled: boolean): CharacterDataComponents
 ---@field tagged fun(self: CharacterDataComponents, tag: string): CharacterDataComponents
 ---@field with_field fun(self: CharacterDataComponents, field: CharacterDataComponent.field, value: any): CharacterDataComponents
----@field add fun(self: CharacterDataComponents, fields: CharacterDataComponent.partial): CharacterDataComponent
+---@field add fun(self: CharacterDataComponents, fields: CharacterDataComponent.partial?): CharacterDataComponent
 
 ---@class (exact) CharacterDataComponent.partial
 ---@field platforming_type integer? `platforming_type = 0 [0, 3]` 0 = oldest, 1 = newer, 2 = safest
@@ -1994,7 +1994,7 @@
 ---@field enabled fun(self: CharacterPlatformingComponents, enabled: boolean): CharacterPlatformingComponents
 ---@field tagged fun(self: CharacterPlatformingComponents, tag: string): CharacterPlatformingComponents
 ---@field with_field fun(self: CharacterPlatformingComponents, field: CharacterPlatformingComponent.field, value: any): CharacterPlatformingComponents
----@field add fun(self: CharacterPlatformingComponents, fields: CharacterPlatformingComponent.partial): CharacterPlatformingComponent
+---@field add fun(self: CharacterPlatformingComponents, fields: CharacterPlatformingComponent.partial?): CharacterPlatformingComponent
 
 ---@class (exact) CharacterPlatformingComponent.partial
 ---@field jump_velocity_x number? `jump_velocity_x = 0 [0, 500]`
@@ -2160,7 +2160,7 @@
 ---@field enabled fun(self: CharacterStatsComponents, enabled: boolean): CharacterStatsComponents
 ---@field tagged fun(self: CharacterStatsComponents, tag: string): CharacterStatsComponents
 ---@field with_field fun(self: CharacterStatsComponents, field: CharacterStatsComponent.field, value: any): CharacterStatsComponents
----@field add fun(self: CharacterStatsComponents, fields: CharacterStatsComponent.partial): CharacterStatsComponent
+---@field add fun(self: CharacterStatsComponents, fields: CharacterStatsComponent.partial?): CharacterStatsComponent
 
 ---@class (exact) CharacterStatsComponent.partial
 ---@field stats CharacterStatsModifier?
@@ -2176,7 +2176,7 @@
 ---@field enabled fun(self: CollisionTriggerComponents, enabled: boolean): CollisionTriggerComponents
 ---@field tagged fun(self: CollisionTriggerComponents, tag: string): CollisionTriggerComponents
 ---@field with_field fun(self: CollisionTriggerComponents, field: CollisionTriggerComponent.field, value: any): CollisionTriggerComponents
----@field add fun(self: CollisionTriggerComponents, fields: CollisionTriggerComponent.partial): CollisionTriggerComponent
+---@field add fun(self: CollisionTriggerComponents, fields: CollisionTriggerComponent.partial?): CollisionTriggerComponent
 
 ---@class (exact) CollisionTriggerComponent.partial
 ---@field width number? `width = 32 [0, 100]`
@@ -2219,7 +2219,7 @@
 ---@field enabled fun(self: ConsumableTeleportComponents, enabled: boolean): ConsumableTeleportComponents
 ---@field tagged fun(self: ConsumableTeleportComponents, tag: string): ConsumableTeleportComponents
 ---@field with_field fun(self: ConsumableTeleportComponents, field: ConsumableTeleportComponent.field, value: any): ConsumableTeleportComponents
----@field add fun(self: ConsumableTeleportComponents, fields: ConsumableTeleportComponent.partial): ConsumableTeleportComponent
+---@field add fun(self: ConsumableTeleportComponents, fields: ConsumableTeleportComponent.partial?): ConsumableTeleportComponent
 
 ---@class (exact) ConsumableTeleportComponent.partial
 ---@field create_other_end boolean? `create_other_end = 0 [0, 1]`
@@ -2256,7 +2256,7 @@
 ---@field enabled fun(self: ControllerGoombaAIComponents, enabled: boolean): ControllerGoombaAIComponents
 ---@field tagged fun(self: ControllerGoombaAIComponents, tag: string): ControllerGoombaAIComponents
 ---@field with_field fun(self: ControllerGoombaAIComponents, field: ControllerGoombaAIComponent.field, value: any): ControllerGoombaAIComponents
----@field add fun(self: ControllerGoombaAIComponents, fields: ControllerGoombaAIComponent.partial): ControllerGoombaAIComponent
+---@field add fun(self: ControllerGoombaAIComponents, fields: ControllerGoombaAIComponent.partial?): ControllerGoombaAIComponent
 
 ---@class (exact) ControllerGoombaAIComponent.partial
 ---@field auto_turn_around_enabled boolean? `auto_turn_around_enabled = 1 [0, 1]` disable this if you don't want creature to 'look around', while standing still
@@ -2311,7 +2311,7 @@
 ---@field enabled fun(self: ControlsComponents, enabled: boolean): ControlsComponents
 ---@field tagged fun(self: ControlsComponents, tag: string): ControlsComponents
 ---@field with_field fun(self: ControlsComponents, field: ControlsComponent.field, value: any): ControlsComponents
----@field add fun(self: ControlsComponents, fields: ControlsComponent.partial): ControlsComponent
+---@field add fun(self: ControlsComponents, fields: ControlsComponent.partial?): ControlsComponent
 
 ---@class (exact) ControlsComponent.partial
 ---@field polymorph_hax boolean? `polymorph_hax = 0 [0, 1]`
@@ -2582,7 +2582,7 @@
 ---@field enabled fun(self: CrawlerAnimalComponents, enabled: boolean): CrawlerAnimalComponents
 ---@field tagged fun(self: CrawlerAnimalComponents, tag: string): CrawlerAnimalComponents
 ---@field with_field fun(self: CrawlerAnimalComponents, field: CrawlerAnimalComponent.field, value: any): CrawlerAnimalComponents
----@field add fun(self: CrawlerAnimalComponents, fields: CrawlerAnimalComponent.partial): CrawlerAnimalComponent
+---@field add fun(self: CrawlerAnimalComponents, fields: CrawlerAnimalComponent.partial?): CrawlerAnimalComponent
 
 ---@class (exact) CrawlerAnimalComponent.partial
 ---@field ray_length number? `ray_length = 5 [0, 100]`
@@ -2697,7 +2697,7 @@
 ---@field enabled fun(self: CutThroughWorldDoneHereComponents, enabled: boolean): CutThroughWorldDoneHereComponents
 ---@field tagged fun(self: CutThroughWorldDoneHereComponents, tag: string): CutThroughWorldDoneHereComponents
 ---@field with_field fun(self: CutThroughWorldDoneHereComponents, field: CutThroughWorldDoneHereComponent.field, value: any): CutThroughWorldDoneHereComponents
----@field add fun(self: CutThroughWorldDoneHereComponents, fields: CutThroughWorldDoneHereComponent.partial): CutThroughWorldDoneHereComponent
+---@field add fun(self: CutThroughWorldDoneHereComponents, fields: CutThroughWorldDoneHereComponent.partial?): CutThroughWorldDoneHereComponent
 
 ---@class (exact) CutThroughWorldDoneHereComponent.partial
 ---@field id_of_done_cut integer? `id_of_done_cut = 0 [0, 1]`
@@ -2713,7 +2713,7 @@
 ---@field enabled fun(self: DamageModelComponents, enabled: boolean): DamageModelComponents
 ---@field tagged fun(self: DamageModelComponents, tag: string): DamageModelComponents
 ---@field with_field fun(self: DamageModelComponents, field: DamageModelComponent.field, value: any): DamageModelComponents
----@field add fun(self: DamageModelComponents, fields: DamageModelComponent.partial): DamageModelComponent
+---@field add fun(self: DamageModelComponents, fields: DamageModelComponent.partial?): DamageModelComponent
 
 ---@class (exact) DamageModelComponent.partial
 ---@field hp number? `hp = 1 [0, 4]` hit points at the moment
@@ -2999,7 +2999,7 @@
 ---@field enabled fun(self: DamageNearbyEntitiesComponents, enabled: boolean): DamageNearbyEntitiesComponents
 ---@field tagged fun(self: DamageNearbyEntitiesComponents, tag: string): DamageNearbyEntitiesComponents
 ---@field with_field fun(self: DamageNearbyEntitiesComponents, field: DamageNearbyEntitiesComponent.field, value: any): DamageNearbyEntitiesComponents
----@field add fun(self: DamageNearbyEntitiesComponents, fields: DamageNearbyEntitiesComponent.partial): DamageNearbyEntitiesComponent
+---@field add fun(self: DamageNearbyEntitiesComponents, fields: DamageNearbyEntitiesComponent.partial?): DamageNearbyEntitiesComponent
 
 ---@class (exact) DamageNearbyEntitiesComponent.partial
 ---@field radius number? `radius = 10 [0, 1]`
@@ -3048,7 +3048,7 @@
 ---@field enabled fun(self: DebugFollowMouseComponents, enabled: boolean): DebugFollowMouseComponents
 ---@field tagged fun(self: DebugFollowMouseComponents, tag: string): DebugFollowMouseComponents
 
----@field add fun(self: DebugFollowMouseComponents, fields: DebugFollowMouseComponent.partial): DebugFollowMouseComponent
+---@field add fun(self: DebugFollowMouseComponents, fields: DebugFollowMouseComponent.partial?): DebugFollowMouseComponent
 
 ---@class (exact) DebugFollowMouseComponent.partial
 
@@ -3061,7 +3061,7 @@
 ---@field enabled fun(self: DebugLogMessagesComponents, enabled: boolean): DebugLogMessagesComponents
 ---@field tagged fun(self: DebugLogMessagesComponents, tag: string): DebugLogMessagesComponents
 ---@field with_field fun(self: DebugLogMessagesComponents, field: DebugLogMessagesComponent.field, value: any): DebugLogMessagesComponents
----@field add fun(self: DebugLogMessagesComponents, fields: DebugLogMessagesComponent.partial): DebugLogMessagesComponent
+---@field add fun(self: DebugLogMessagesComponents, fields: DebugLogMessagesComponent.partial?): DebugLogMessagesComponent
 
 ---@class (exact) DebugLogMessagesComponent.partial
 ---@field TEMP_TEMPY number? `TEMP_TEMPY = 0 [0, 3.5]`
@@ -3080,7 +3080,7 @@
 ---@field enabled fun(self: DebugSpatialVisualizerComponents, enabled: boolean): DebugSpatialVisualizerComponents
 ---@field tagged fun(self: DebugSpatialVisualizerComponents, tag: string): DebugSpatialVisualizerComponents
 ---@field with_field fun(self: DebugSpatialVisualizerComponents, field: DebugSpatialVisualizerComponent.field, value: any): DebugSpatialVisualizerComponents
----@field add fun(self: DebugSpatialVisualizerComponents, fields: DebugSpatialVisualizerComponent.partial): DebugSpatialVisualizerComponent
+---@field add fun(self: DebugSpatialVisualizerComponents, fields: DebugSpatialVisualizerComponent.partial?): DebugSpatialVisualizerComponent
 
 ---@class (exact) DebugSpatialVisualizerComponent.partial
 ---@field min_x number? `min_x = 0 [0, 1]`
@@ -3108,7 +3108,7 @@
 ---@field enabled fun(self: DieIfSpeedBelowComponents, enabled: boolean): DieIfSpeedBelowComponents
 ---@field tagged fun(self: DieIfSpeedBelowComponents, tag: string): DieIfSpeedBelowComponents
 ---@field with_field fun(self: DieIfSpeedBelowComponents, field: DieIfSpeedBelowComponent.field, value: any): DieIfSpeedBelowComponents
----@field add fun(self: DieIfSpeedBelowComponents, fields: DieIfSpeedBelowComponent.partial): DieIfSpeedBelowComponent
+---@field add fun(self: DieIfSpeedBelowComponents, fields: DieIfSpeedBelowComponent.partial?): DieIfSpeedBelowComponent
 
 ---@class (exact) DieIfSpeedBelowComponent.partial
 ---@field min_speed number? `min_speed = 1 [0, 1000]` The entity that owns this component is killed if its speed (via VelocityComponent) falls below this value.
@@ -3127,7 +3127,7 @@
 ---@field enabled fun(self: DroneLauncherComponents, enabled: boolean): DroneLauncherComponents
 ---@field tagged fun(self: DroneLauncherComponents, tag: string): DroneLauncherComponents
 ---@field with_field fun(self: DroneLauncherComponents, field: DroneLauncherComponent.field, value: any): DroneLauncherComponents
----@field add fun(self: DroneLauncherComponents, fields: DroneLauncherComponent.partial): DroneLauncherComponent
+---@field add fun(self: DroneLauncherComponents, fields: DroneLauncherComponent.partial?): DroneLauncherComponent
 
 ---@class (exact) DroneLauncherComponent.partial
 ---@field drone_entity_file string? `drone_entity_file = data/entities/misc/player_drone.xml [0, 1]`
@@ -3143,7 +3143,7 @@
 ---@field enabled fun(self: DrugEffectComponents, enabled: boolean): DrugEffectComponents
 ---@field tagged fun(self: DrugEffectComponents, tag: string): DrugEffectComponents
 ---@field with_field fun(self: DrugEffectComponents, field: DrugEffectComponent.field, value: any): DrugEffectComponents
----@field add fun(self: DrugEffectComponents, fields: DrugEffectComponent.partial): DrugEffectComponent
+---@field add fun(self: DrugEffectComponents, fields: DrugEffectComponent.partial?): DrugEffectComponent
 
 ---@class (exact) DrugEffectComponent.partial
 ---@field drug_fx_target ConfigDrugFx?
@@ -3162,7 +3162,7 @@
 ---@field enabled fun(self: DrugEffectModifierComponents, enabled: boolean): DrugEffectModifierComponents
 ---@field tagged fun(self: DrugEffectModifierComponents, tag: string): DrugEffectModifierComponents
 ---@field with_field fun(self: DrugEffectModifierComponents, field: DrugEffectModifierComponent.field, value: any): DrugEffectModifierComponents
----@field add fun(self: DrugEffectModifierComponents, fields: DrugEffectModifierComponent.partial): DrugEffectModifierComponent
+---@field add fun(self: DrugEffectModifierComponents, fields: DrugEffectModifierComponent.partial?): DrugEffectModifierComponent
 
 ---@class (exact) DrugEffectModifierComponent.partial
 ---@field fx_add ConfigDrugFx?
@@ -3181,7 +3181,7 @@
 ---@field enabled fun(self: ElectricChargeComponents, enabled: boolean): ElectricChargeComponents
 ---@field tagged fun(self: ElectricChargeComponents, tag: string): ElectricChargeComponents
 ---@field with_field fun(self: ElectricChargeComponents, field: ElectricChargeComponent.field, value: any): ElectricChargeComponents
----@field add fun(self: ElectricChargeComponents, fields: ElectricChargeComponent.partial): ElectricChargeComponent
+---@field add fun(self: ElectricChargeComponents, fields: ElectricChargeComponent.partial?): ElectricChargeComponent
 
 ---@class (exact) ElectricChargeComponent.partial
 ---@field charge_time_frames integer? `charge_time_frames = 120 [0, 240]`
@@ -3212,7 +3212,7 @@
 ---@field enabled fun(self: ElectricityComponents, enabled: boolean): ElectricityComponents
 ---@field tagged fun(self: ElectricityComponents, tag: string): ElectricityComponents
 ---@field with_field fun(self: ElectricityComponents, field: ElectricityComponent.field, value: any): ElectricityComponents
----@field add fun(self: ElectricityComponents, fields: ElectricityComponent.partial): ElectricityComponent
+---@field add fun(self: ElectricityComponents, fields: ElectricityComponent.partial?): ElectricityComponent
 
 ---@class (exact) ElectricityComponent.partial
 ---@field energy integer? `energy = 1000 [0, 10000]`
@@ -3273,7 +3273,7 @@
 ---@field enabled fun(self: ElectricityReceiverComponents, enabled: boolean): ElectricityReceiverComponents
 ---@field tagged fun(self: ElectricityReceiverComponents, tag: string): ElectricityReceiverComponents
 ---@field with_field fun(self: ElectricityReceiverComponents, field: ElectricityReceiverComponent.field, value: any): ElectricityReceiverComponents
----@field add fun(self: ElectricityReceiverComponents, fields: ElectricityReceiverComponent.partial): ElectricityReceiverComponent
+---@field add fun(self: ElectricityReceiverComponents, fields: ElectricityReceiverComponent.partial?): ElectricityReceiverComponent
 
 ---@class (exact) ElectricityReceiverComponent.partial
 ---@field offset_x integer? `offset_x = 0 [1, 3]`
@@ -3313,7 +3313,7 @@
 ---@field enabled fun(self: ElectricitySourceComponents, enabled: boolean): ElectricitySourceComponents
 ---@field tagged fun(self: ElectricitySourceComponents, tag: string): ElectricitySourceComponents
 ---@field with_field fun(self: ElectricitySourceComponents, field: ElectricitySourceComponent.field, value: any): ElectricitySourceComponents
----@field add fun(self: ElectricitySourceComponents, fields: ElectricitySourceComponent.partial): ElectricitySourceComponent
+---@field add fun(self: ElectricitySourceComponents, fields: ElectricitySourceComponent.partial?): ElectricitySourceComponent
 
 ---@class (exact) ElectricitySourceComponent.partial
 ---@field radius integer? `radius = 5 [1, 16]`
@@ -3335,7 +3335,7 @@
 ---@field enabled fun(self: EndingMcGuffinComponents, enabled: boolean): EndingMcGuffinComponents
 ---@field tagged fun(self: EndingMcGuffinComponents, tag: string): EndingMcGuffinComponents
 ---@field with_field fun(self: EndingMcGuffinComponents, field: EndingMcGuffinComponent.field, value: any): EndingMcGuffinComponents
----@field add fun(self: EndingMcGuffinComponents, fields: EndingMcGuffinComponent.partial): EndingMcGuffinComponent
+---@field add fun(self: EndingMcGuffinComponents, fields: EndingMcGuffinComponent.partial?): EndingMcGuffinComponent
 
 ---@class (exact) EndingMcGuffinComponent.partial
 ---@field TEMP_TEMPY number? `TEMP_TEMPY = 0 [0, 3.5]`
@@ -3354,7 +3354,7 @@
 ---@field enabled fun(self: EnergyShieldComponents, enabled: boolean): EnergyShieldComponents
 ---@field tagged fun(self: EnergyShieldComponents, tag: string): EnergyShieldComponents
 ---@field with_field fun(self: EnergyShieldComponents, field: EnergyShieldComponent.field, value: any): EnergyShieldComponents
----@field add fun(self: EnergyShieldComponents, fields: EnergyShieldComponent.partial): EnergyShieldComponent
+---@field add fun(self: EnergyShieldComponents, fields: EnergyShieldComponent.partial?): EnergyShieldComponent
 
 ---@class (exact) EnergyShieldComponent.partial
 ---@field radius number? `radius = 16 [0, 100]`
@@ -3391,7 +3391,7 @@
 ---@field enabled fun(self: ExplodeOnDamageComponents, enabled: boolean): ExplodeOnDamageComponents
 ---@field tagged fun(self: ExplodeOnDamageComponents, tag: string): ExplodeOnDamageComponents
 ---@field with_field fun(self: ExplodeOnDamageComponents, field: ExplodeOnDamageComponent.field, value: any): ExplodeOnDamageComponents
----@field add fun(self: ExplodeOnDamageComponents, fields: ExplodeOnDamageComponent.partial): ExplodeOnDamageComponent
+---@field add fun(self: ExplodeOnDamageComponents, fields: ExplodeOnDamageComponent.partial?): ExplodeOnDamageComponent
 
 ---@class (exact) ExplodeOnDamageComponent.partial
 ---@field explode_on_death_percent number? `explode_on_death_percent = 1 [0, 1]` rolls a dice (0 - 1) if we explode on death
@@ -3422,7 +3422,7 @@
 ---@field enabled fun(self: FishAIComponents, enabled: boolean): FishAIComponents
 ---@field tagged fun(self: FishAIComponents, tag: string): FishAIComponents
 ---@field with_field fun(self: FishAIComponents, field: FishAIComponent.field, value: any): FishAIComponents
----@field add fun(self: FishAIComponents, fields: FishAIComponent.partial): FishAIComponent
+---@field add fun(self: FishAIComponents, fields: FishAIComponent.partial?): FishAIComponent
 
 ---@class (exact) FishAIComponent.partial
 ---@field direction integer? `direction = 0 [-1, 1]`
@@ -3456,7 +3456,7 @@
 ---@field enabled fun(self: FlyingComponents, enabled: boolean): FlyingComponents
 ---@field tagged fun(self: FlyingComponents, tag: string): FlyingComponents
 ---@field with_field fun(self: FlyingComponents, field: FlyingComponent.field, value: any): FlyingComponents
----@field add fun(self: FlyingComponents, fields: FlyingComponent.partial): FlyingComponent
+---@field add fun(self: FlyingComponents, fields: FlyingComponent.partial?): FlyingComponent
 
 ---@class (exact) FlyingComponent.partial
 ---@field type integer? `type = 0 [0, 1]` type of flight, 1 = perlin noise
@@ -3484,7 +3484,7 @@
 ---@field enabled fun(self: FogOfWarRadiusComponents, enabled: boolean): FogOfWarRadiusComponents
 ---@field tagged fun(self: FogOfWarRadiusComponents, tag: string): FogOfWarRadiusComponents
 ---@field with_field fun(self: FogOfWarRadiusComponents, field: FogOfWarRadiusComponent.field, value: any): FogOfWarRadiusComponents
----@field add fun(self: FogOfWarRadiusComponents, fields: FogOfWarRadiusComponent.partial): FogOfWarRadiusComponent
+---@field add fun(self: FogOfWarRadiusComponents, fields: FogOfWarRadiusComponent.partial?): FogOfWarRadiusComponent
 
 ---@class (exact) FogOfWarRadiusComponent.partial
 ---@field radius number? `radius = 256 [0, 1024]` 256 is the default player has
@@ -3500,7 +3500,7 @@
 ---@field enabled fun(self: FogOfWarRemoverComponents, enabled: boolean): FogOfWarRemoverComponents
 ---@field tagged fun(self: FogOfWarRemoverComponents, tag: string): FogOfWarRemoverComponents
 ---@field with_field fun(self: FogOfWarRemoverComponents, field: FogOfWarRemoverComponent.field, value: any): FogOfWarRemoverComponents
----@field add fun(self: FogOfWarRemoverComponents, fields: FogOfWarRemoverComponent.partial): FogOfWarRemoverComponent
+---@field add fun(self: FogOfWarRemoverComponents, fields: FogOfWarRemoverComponent.partial?): FogOfWarRemoverComponent
 
 ---@class (exact) FogOfWarRemoverComponent.partial
 ---@field radius number? `radius = 140 [0, 2000]`
@@ -3516,7 +3516,7 @@
 ---@field enabled fun(self: GameAreaEffectComponents, enabled: boolean): GameAreaEffectComponents
 ---@field tagged fun(self: GameAreaEffectComponents, tag: string): GameAreaEffectComponents
 ---@field with_field fun(self: GameAreaEffectComponents, field: GameAreaEffectComponent.field, value: any): GameAreaEffectComponents
----@field add fun(self: GameAreaEffectComponents, fields: GameAreaEffectComponent.partial): GameAreaEffectComponent
+---@field add fun(self: GameAreaEffectComponents, fields: GameAreaEffectComponent.partial?): GameAreaEffectComponent
 
 ---@class (exact) GameAreaEffectComponent.partial
 ---@field radius number? `radius = 0 [0, 3.5]` what's the radius (in pixels) of the area effect
@@ -3547,7 +3547,7 @@
 ---@field enabled fun(self: GameEffectComponents, enabled: boolean): GameEffectComponents
 ---@field tagged fun(self: GameEffectComponents, tag: string): GameEffectComponents
 ---@field with_field fun(self: GameEffectComponents, field: GameEffectComponent.field, value: any): GameEffectComponents
----@field add fun(self: GameEffectComponents, fields: GameEffectComponent.partial): GameEffectComponent
+---@field add fun(self: GameEffectComponents, fields: GameEffectComponent.partial?): GameEffectComponent
 
 ---@class (exact) GameEffectComponent.partial
 ---@field custom_effect_id string? if 'effect' is set to 'CUSTOM', this will define effect uniqueness.
@@ -3650,7 +3650,7 @@
 ---@field enabled fun(self: GameLogComponents, enabled: boolean): GameLogComponents
 ---@field tagged fun(self: GameLogComponents, tag: string): GameLogComponents
 ---@field with_field fun(self: GameLogComponents, field: GameLogComponent.field, value: any): GameLogComponents
----@field add fun(self: GameLogComponents, fields: GameLogComponent.partial): GameLogComponent
+---@field add fun(self: GameLogComponents, fields: GameLogComponent.partial?): GameLogComponent
 
 ---@class (exact) GameLogComponent.partial
 ---@field report_death boolean? `report_death = 1 [0, 1]` switches on reporting things
@@ -3678,7 +3678,7 @@
 ---@field enabled fun(self: GameStatsComponents, enabled: boolean): GameStatsComponents
 ---@field tagged fun(self: GameStatsComponents, tag: string): GameStatsComponents
 ---@field with_field fun(self: GameStatsComponents, field: GameStatsComponent.field, value: any): GameStatsComponents
----@field add fun(self: GameStatsComponents, fields: GameStatsComponent.partial): GameStatsComponent
+---@field add fun(self: GameStatsComponents, fields: GameStatsComponent.partial?): GameStatsComponent
 
 ---@class (exact) GameStatsComponent.partial
 ---@field name string? no one uses the name variable on entity, so we have to do this to make it happen
@@ -3709,7 +3709,7 @@
 ---@field enabled fun(self: GasBubbleComponents, enabled: boolean): GasBubbleComponents
 ---@field tagged fun(self: GasBubbleComponents, tag: string): GasBubbleComponents
 ---@field with_field fun(self: GasBubbleComponents, field: GasBubbleComponent.field, value: any): GasBubbleComponents
----@field add fun(self: GasBubbleComponents, fields: GasBubbleComponent.partial): GasBubbleComponent
+---@field add fun(self: GasBubbleComponents, fields: GasBubbleComponent.partial?): GasBubbleComponent
 
 ---@class (exact) GasBubbleComponent.partial
 ---@field acceleration number? `acceleration = -1 [-100, 0]`
@@ -3731,7 +3731,7 @@
 ---@field enabled fun(self: GenomeDataComponents, enabled: boolean): GenomeDataComponents
 ---@field tagged fun(self: GenomeDataComponents, tag: string): GenomeDataComponents
 ---@field with_field fun(self: GenomeDataComponents, field: GenomeDataComponent.field, value: any): GenomeDataComponents
----@field add fun(self: GenomeDataComponents, fields: GenomeDataComponent.partial): GenomeDataComponent
+---@field add fun(self: GenomeDataComponents, fields: GenomeDataComponent.partial?): GenomeDataComponent
 
 ---@class (exact) GenomeDataComponent.partial
 ---@field is_predator boolean? `is_predator = 0 [0, 1]` Predators are considered threats by other species and hunt for food.
@@ -3762,7 +3762,7 @@
 ---@field enabled fun(self: GhostComponents, enabled: boolean): GhostComponents
 ---@field tagged fun(self: GhostComponents, tag: string): GhostComponents
 ---@field with_field fun(self: GhostComponents, field: GhostComponent.field, value: any): GhostComponents
----@field add fun(self: GhostComponents, fields: GhostComponent.partial): GhostComponent
+---@field add fun(self: GhostComponents, fields: GhostComponent.partial?): GhostComponent
 
 ---@class (exact) GhostComponent.partial
 ---@field speed number? `speed = 5 [0, 1]` pixels per second
@@ -3817,7 +3817,7 @@
 ---@field enabled fun(self: GodInfoComponents, enabled: boolean): GodInfoComponents
 ---@field tagged fun(self: GodInfoComponents, tag: string): GodInfoComponents
 ---@field with_field fun(self: GodInfoComponents, field: GodInfoComponent.field, value: any): GodInfoComponents
----@field add fun(self: GodInfoComponents, fields: GodInfoComponent.partial): GodInfoComponent
+---@field add fun(self: GodInfoComponents, fields: GodInfoComponent.partial?): GodInfoComponent
 
 ---@class (exact) GodInfoComponent.partial
 ---@field mana_current number? `mana_current = 0 [0, 1000]` How much mana the player now has to use
@@ -3842,7 +3842,7 @@
 ---@field enabled fun(self: GunComponents, enabled: boolean): GunComponents
 ---@field tagged fun(self: GunComponents, tag: string): GunComponents
 ---@field with_field fun(self: GunComponents, field: GunComponent.field, value: any): GunComponents
----@field add fun(self: GunComponents, fields: GunComponent.partial): GunComponent
+---@field add fun(self: GunComponents, fields: GunComponent.partial?): GunComponent
 
 ---@class (exact) GunComponent.partial
 ---@field mLuaManager LuaManager*?
@@ -3858,7 +3858,7 @@
 ---@field enabled fun(self: HealthBarComponents, enabled: boolean): HealthBarComponents
 ---@field tagged fun(self: HealthBarComponents, tag: string): HealthBarComponents
 
----@field add fun(self: HealthBarComponents, fields: HealthBarComponent.partial): HealthBarComponent
+---@field add fun(self: HealthBarComponents, fields: HealthBarComponent.partial?): HealthBarComponent
 
 ---@class (exact) HealthBarComponent.partial
 
@@ -3871,7 +3871,7 @@
 ---@field enabled fun(self: HitEffectComponents, enabled: boolean): HitEffectComponents
 ---@field tagged fun(self: HitEffectComponents, tag: string): HitEffectComponents
 ---@field with_field fun(self: HitEffectComponents, field: HitEffectComponent.field, value: any): HitEffectComponents
----@field add fun(self: HitEffectComponents, fields: HitEffectComponent.partial): HitEffectComponent
+---@field add fun(self: HitEffectComponents, fields: HitEffectComponent.partial?): HitEffectComponent
 
 ---@class (exact) HitEffectComponent.partial
 ---@field value integer? `value = 0 [0, 100]` Usage depends on selected 'effect_hit'
@@ -3899,7 +3899,7 @@
 ---@field enabled fun(self: HitboxComponents, enabled: boolean): HitboxComponents
 ---@field tagged fun(self: HitboxComponents, tag: string): HitboxComponents
 ---@field with_field fun(self: HitboxComponents, field: HitboxComponent.field, value: any): HitboxComponents
----@field add fun(self: HitboxComponents, fields: HitboxComponent.partial): HitboxComponent
+---@field add fun(self: HitboxComponents, fields: HitboxComponent.partial?): HitboxComponent
 
 ---@class (exact) HitboxComponent.partial
 ---@field is_player boolean? `is_player = 0 [0, 1]`
@@ -3942,7 +3942,7 @@
 ---@field enabled fun(self: HomingComponents, enabled: boolean): HomingComponents
 ---@field tagged fun(self: HomingComponents, tag: string): HomingComponents
 ---@field with_field fun(self: HomingComponents, field: HomingComponent.field, value: any): HomingComponents
----@field add fun(self: HomingComponents, fields: HomingComponent.partial): HomingComponent
+---@field add fun(self: HomingComponents, fields: HomingComponent.partial?): HomingComponent
 
 ---@class (exact) HomingComponent.partial
 ---@field target_tag string? `target_tag = homing_target [0, 1]`
@@ -3982,7 +3982,7 @@
 ---@field enabled fun(self: HotspotComponents, enabled: boolean): HotspotComponents
 ---@field tagged fun(self: HotspotComponents, tag: string): HotspotComponents
 ---@field with_field fun(self: HotspotComponents, field: HotspotComponent.field, value: any): HotspotComponents
----@field add fun(self: HotspotComponents, fields: HotspotComponent.partial): HotspotComponent
+---@field add fun(self: HotspotComponents, fields: HotspotComponent.partial?): HotspotComponent
 
 ---@class (exact) HotspotComponent.partial
 ---@field transform_with_scale boolean? `transform_with_scale = 1 [0, 1]`
@@ -4004,7 +4004,7 @@
 ---@field enabled fun(self: IKLimbAttackerComponents, enabled: boolean): IKLimbAttackerComponents
 ---@field tagged fun(self: IKLimbAttackerComponents, tag: string): IKLimbAttackerComponents
 ---@field with_field fun(self: IKLimbAttackerComponents, field: IKLimbAttackerComponent.field, value: any): IKLimbAttackerComponents
----@field add fun(self: IKLimbAttackerComponents, fields: IKLimbAttackerComponent.partial): IKLimbAttackerComponent
+---@field add fun(self: IKLimbAttackerComponents, fields: IKLimbAttackerComponent.partial?): IKLimbAttackerComponent
 
 ---@class (exact) IKLimbAttackerComponent.partial
 ---@field radius number? `radius = 54 [0, 1]`
@@ -4044,7 +4044,7 @@
 ---@field enabled fun(self: IKLimbComponents, enabled: boolean): IKLimbComponents
 ---@field tagged fun(self: IKLimbComponents, tag: string): IKLimbComponents
 ---@field with_field fun(self: IKLimbComponents, field: IKLimbComponent.field, value: any): IKLimbComponents
----@field add fun(self: IKLimbComponents, fields: IKLimbComponent.partial): IKLimbComponent
+---@field add fun(self: IKLimbComponents, fields: IKLimbComponent.partial?): IKLimbComponent
 
 ---@class (exact) IKLimbComponent.partial
 ---@field length number? `length = 40 [0, 1]`
@@ -4087,7 +4087,7 @@
 ---@field enabled fun(self: IKLimbWalkerComponents, enabled: boolean): IKLimbWalkerComponents
 ---@field tagged fun(self: IKLimbWalkerComponents, tag: string): IKLimbWalkerComponents
 ---@field with_field fun(self: IKLimbWalkerComponents, field: IKLimbWalkerComponent.field, value: any): IKLimbWalkerComponents
----@field add fun(self: IKLimbWalkerComponents, fields: IKLimbWalkerComponent.partial): IKLimbWalkerComponent
+---@field add fun(self: IKLimbWalkerComponents, fields: IKLimbWalkerComponent.partial?): IKLimbWalkerComponent
 
 ---@class (exact) IKLimbWalkerComponent.partial
 ---@field ground_attachment_min_spread number? `ground_attachment_min_spread = 16 [0, 1]`
@@ -4133,7 +4133,7 @@
 ---@field enabled fun(self: IKLimbsAnimatorComponents, enabled: boolean): IKLimbsAnimatorComponents
 ---@field tagged fun(self: IKLimbsAnimatorComponents, tag: string): IKLimbsAnimatorComponents
 ---@field with_field fun(self: IKLimbsAnimatorComponents, field: IKLimbsAnimatorComponent.field, value: any): IKLimbsAnimatorComponents
----@field add fun(self: IKLimbsAnimatorComponents, fields: IKLimbsAnimatorComponent.partial): IKLimbsAnimatorComponent
+---@field add fun(self: IKLimbsAnimatorComponents, fields: IKLimbsAnimatorComponent.partial?): IKLimbsAnimatorComponent
 
 ---@class (exact) IKLimbsAnimatorComponent.partial
 ---@field future_state_samples integer? `future_state_samples = 10 [0, 1]` The number of future animation states evaluated to find the next state
@@ -4179,7 +4179,7 @@
 ---@field enabled fun(self: IngestionComponents, enabled: boolean): IngestionComponents
 ---@field tagged fun(self: IngestionComponents, tag: string): IngestionComponents
 ---@field with_field fun(self: IngestionComponents, field: IngestionComponent.field, value: any): IngestionComponents
----@field add fun(self: IngestionComponents, fields: IngestionComponent.partial): IngestionComponent
+---@field add fun(self: IngestionComponents, fields: IngestionComponent.partial?): IngestionComponent
 
 ---@class (exact) IngestionComponent.partial
 ---@field ingestion_size integer? `ingestion_size = 0 [0, 1]` How many units of material we currently store
@@ -4228,7 +4228,7 @@
 ---@field enabled fun(self: InheritTransformComponents, enabled: boolean): InheritTransformComponents
 ---@field tagged fun(self: InheritTransformComponents, tag: string): InheritTransformComponents
 ---@field with_field fun(self: InheritTransformComponents, field: InheritTransformComponent.field, value: any): InheritTransformComponents
----@field add fun(self: InheritTransformComponents, fields: InheritTransformComponent.partial): InheritTransformComponent
+---@field add fun(self: InheritTransformComponents, fields: InheritTransformComponent.partial?): InheritTransformComponent
 
 ---@class (exact) InheritTransformComponent.partial
 ---@field use_root_parent boolean? `use_root_parent = 0 [0, 1]` if 1, we use the root of our entity hierarchy instead of the immediate parent
@@ -4265,7 +4265,7 @@
 ---@field enabled fun(self: InteractableComponents, enabled: boolean): InteractableComponents
 ---@field tagged fun(self: InteractableComponents, tag: string): InteractableComponents
 ---@field with_field fun(self: InteractableComponents, field: InteractableComponent.field, value: any): InteractableComponents
----@field add fun(self: InteractableComponents, fields: InteractableComponent.partial): InteractableComponent
+---@field add fun(self: InteractableComponents, fields: InteractableComponent.partial?): InteractableComponent
 
 ---@class (exact) InteractableComponent.partial
 ---@field radius number? `radius = 10 [0, 1]` Distance from entity position where interaction is possible
@@ -4290,7 +4290,7 @@
 ---@field enabled fun(self: Inventory2Components, enabled: boolean): Inventory2Components
 ---@field tagged fun(self: Inventory2Components, tag: string): Inventory2Components
 ---@field with_field fun(self: Inventory2Components, field: Inventory2Component.field, value: any): Inventory2Components
----@field add fun(self: Inventory2Components, fields: Inventory2Component.partial): Inventory2Component
+---@field add fun(self: Inventory2Components, fields: Inventory2Component.partial?): Inventory2Component
 
 ---@class (exact) Inventory2Component.partial
 ---@field quick_inventory_slots integer? `quick_inventory_slots = 10 [0, 30]`
@@ -4351,7 +4351,7 @@
 ---@field enabled fun(self: InventoryGuiComponents, enabled: boolean): InventoryGuiComponents
 ---@field tagged fun(self: InventoryGuiComponents, tag: string): InventoryGuiComponents
 ---@field with_field fun(self: InventoryGuiComponents, field: InventoryGuiComponent.field, value: any): InventoryGuiComponents
----@field add fun(self: InventoryGuiComponents, fields: InventoryGuiComponent.partial): InventoryGuiComponent
+---@field add fun(self: InventoryGuiComponents, fields: InventoryGuiComponent.partial?): InventoryGuiComponent
 
 ---@class (exact) InventoryGuiComponent.partial
 ---@field has_opened_inventory_edit boolean? `has_opened_inventory_edit = 0 [0, 1]`
@@ -4406,7 +4406,7 @@
 ---@field enabled fun(self: ItemAIKnowledgeComponents, enabled: boolean): ItemAIKnowledgeComponents
 ---@field tagged fun(self: ItemAIKnowledgeComponents, tag: string): ItemAIKnowledgeComponents
 ---@field with_field fun(self: ItemAIKnowledgeComponents, field: ItemAIKnowledgeComponent.field, value: any): ItemAIKnowledgeComponents
----@field add fun(self: ItemAIKnowledgeComponents, fields: ItemAIKnowledgeComponent.partial): ItemAIKnowledgeComponent
+---@field add fun(self: ItemAIKnowledgeComponents, fields: ItemAIKnowledgeComponent.partial?): ItemAIKnowledgeComponent
 
 ---@class (exact) ItemAIKnowledgeComponent.partial
 ---@field is_ranged_weapon boolean? `is_ranged_weapon = 0 [0, 1]`
@@ -4458,7 +4458,7 @@
 ---@field enabled fun(self: ItemActionComponents, enabled: boolean): ItemActionComponents
 ---@field tagged fun(self: ItemActionComponents, tag: string): ItemActionComponents
 ---@field with_field fun(self: ItemActionComponents, field: ItemActionComponent.field, value: any): ItemActionComponents
----@field add fun(self: ItemActionComponents, fields: ItemActionComponent.partial): ItemActionComponent
+---@field add fun(self: ItemActionComponents, fields: ItemActionComponent.partial?): ItemActionComponent
 
 ---@class (exact) ItemActionComponent.partial
 ---@field action_id string? the name ID of the action
@@ -4474,7 +4474,7 @@
 ---@field enabled fun(self: ItemAlchemyComponents, enabled: boolean): ItemAlchemyComponents
 ---@field tagged fun(self: ItemAlchemyComponents, tag: string): ItemAlchemyComponents
 ---@field with_field fun(self: ItemAlchemyComponents, field: ItemAlchemyComponent.field, value: any): ItemAlchemyComponents
----@field add fun(self: ItemAlchemyComponents, fields: ItemAlchemyComponent.partial): ItemAlchemyComponent
+---@field add fun(self: ItemAlchemyComponents, fields: ItemAlchemyComponent.partial?): ItemAlchemyComponent
 
 ---@class (exact) ItemAlchemyComponent.partial
 ---@field material_make_always_cast integer? `material_make_always_cast = 0 [0, 1]`
@@ -4505,7 +4505,7 @@
 ---@field enabled fun(self: ItemChestComponents, enabled: boolean): ItemChestComponents
 ---@field tagged fun(self: ItemChestComponents, tag: string): ItemChestComponents
 ---@field with_field fun(self: ItemChestComponents, field: ItemChestComponent.field, value: any): ItemChestComponents
----@field add fun(self: ItemChestComponents, fields: ItemChestComponent.partial): ItemChestComponent
+---@field add fun(self: ItemChestComponents, fields: ItemChestComponent.partial?): ItemChestComponent
 
 ---@class (exact) ItemChestComponent.partial
 ---@field item_count_min integer? `item_count_min = 0 [0, 1e+006]`
@@ -4542,7 +4542,7 @@
 ---@field enabled fun(self: ItemComponents, enabled: boolean): ItemComponents
 ---@field tagged fun(self: ItemComponents, tag: string): ItemComponents
 ---@field with_field fun(self: ItemComponents, field: ItemComponent.field, value: any): ItemComponents
----@field add fun(self: ItemComponents, fields: ItemComponent.partial): ItemComponent
+---@field add fun(self: ItemComponents, fields: ItemComponent.partial?): ItemComponent
 
 ---@class (exact) ItemComponent.partial
 ---@field item_name string? the name of the item
@@ -4675,7 +4675,7 @@
 ---@field enabled fun(self: ItemCostComponents, enabled: boolean): ItemCostComponents
 ---@field tagged fun(self: ItemCostComponents, tag: string): ItemCostComponents
 ---@field with_field fun(self: ItemCostComponents, field: ItemCostComponent.field, value: any): ItemCostComponents
----@field add fun(self: ItemCostComponents, fields: ItemCostComponent.partial): ItemCostComponent
+---@field add fun(self: ItemCostComponents, fields: ItemCostComponent.partial?): ItemCostComponent
 
 ---@class (exact) ItemCostComponent.partial
 ---@field cost integer? `cost = 100 [0, 3500]`
@@ -4697,7 +4697,7 @@
 ---@field enabled fun(self: ItemPickUpperComponents, enabled: boolean): ItemPickUpperComponents
 ---@field tagged fun(self: ItemPickUpperComponents, tag: string): ItemPickUpperComponents
 ---@field with_field fun(self: ItemPickUpperComponents, field: ItemPickUpperComponent.field, value: any): ItemPickUpperComponents
----@field add fun(self: ItemPickUpperComponents, fields: ItemPickUpperComponent.partial): ItemPickUpperComponent
+---@field add fun(self: ItemPickUpperComponents, fields: ItemPickUpperComponent.partial?): ItemPickUpperComponent
 
 ---@class (exact) ItemPickUpperComponent.partial
 ---@field is_in_npc boolean? `is_in_npc = 0 [0, 1]`
@@ -4728,7 +4728,7 @@
 ---@field enabled fun(self: ItemRechargeNearGroundComponents, enabled: boolean): ItemRechargeNearGroundComponents
 ---@field tagged fun(self: ItemRechargeNearGroundComponents, tag: string): ItemRechargeNearGroundComponents
 ---@field with_field fun(self: ItemRechargeNearGroundComponents, field: ItemRechargeNearGroundComponent.field, value: any): ItemRechargeNearGroundComponents
----@field add fun(self: ItemRechargeNearGroundComponents, fields: ItemRechargeNearGroundComponent.partial): ItemRechargeNearGroundComponent
+---@field add fun(self: ItemRechargeNearGroundComponents, fields: ItemRechargeNearGroundComponent.partial?): ItemRechargeNearGroundComponent
 
 ---@class (exact) ItemRechargeNearGroundComponent.partial
 ---@field TEMP_TEMPY number? `TEMP_TEMPY = 0 [0, 3.5]`
@@ -4747,7 +4747,7 @@
 ---@field enabled fun(self: ItemStashComponents, enabled: boolean): ItemStashComponents
 ---@field tagged fun(self: ItemStashComponents, tag: string): ItemStashComponents
 ---@field with_field fun(self: ItemStashComponents, field: ItemStashComponent.field, value: any): ItemStashComponents
----@field add fun(self: ItemStashComponents, fields: ItemStashComponent.partial): ItemStashComponent
+---@field add fun(self: ItemStashComponents, fields: ItemStashComponent.partial?): ItemStashComponent
 
 ---@class (exact) ItemStashComponent.partial
 ---@field throw_openable_cooldown_frames integer? `throw_openable_cooldown_frames = 30 [0, 180]`
@@ -4772,7 +4772,7 @@
 ---@field enabled fun(self: KickComponents, enabled: boolean): KickComponents
 ---@field tagged fun(self: KickComponents, tag: string): KickComponents
 ---@field with_field fun(self: KickComponents, field: KickComponent.field, value: any): KickComponents
----@field add fun(self: KickComponents, fields: KickComponent.partial): KickComponent
+---@field add fun(self: KickComponents, fields: KickComponent.partial?): KickComponent
 
 ---@class (exact) KickComponent.partial
 ---@field can_kick boolean? `can_kick = 1 [0, 1]` e.g. telekinetic kick disables this
@@ -4809,7 +4809,7 @@
 ---@field enabled fun(self: LaserEmitterComponents, enabled: boolean): LaserEmitterComponents
 ---@field tagged fun(self: LaserEmitterComponents, tag: string): LaserEmitterComponents
 ---@field with_field fun(self: LaserEmitterComponents, field: LaserEmitterComponent.field, value: any): LaserEmitterComponents
----@field add fun(self: LaserEmitterComponents, fields: LaserEmitterComponent.partial): LaserEmitterComponent
+---@field add fun(self: LaserEmitterComponents, fields: LaserEmitterComponent.partial?): LaserEmitterComponent
 
 ---@class (exact) LaserEmitterComponent.partial
 ---@field is_emitting boolean? `is_emitting = 1 [0, 1]` If 1, will emit all the time
@@ -4834,7 +4834,7 @@
 ---@field enabled fun(self: LevitationComponents, enabled: boolean): LevitationComponents
 ---@field tagged fun(self: LevitationComponents, tag: string): LevitationComponents
 ---@field with_field fun(self: LevitationComponents, field: LevitationComponent.field, value: any): LevitationComponents
----@field add fun(self: LevitationComponents, fields: LevitationComponent.partial): LevitationComponent
+---@field add fun(self: LevitationComponents, fields: LevitationComponent.partial?): LevitationComponent
 
 ---@class (exact) LevitationComponent.partial
 ---@field radius number? `radius = 20 [1, 50]` the radius in which we look for entities / bodies to float
@@ -4859,7 +4859,7 @@
 ---@field enabled fun(self: LifetimeComponents, enabled: boolean): LifetimeComponents
 ---@field tagged fun(self: LifetimeComponents, tag: string): LifetimeComponents
 ---@field with_field fun(self: LifetimeComponents, field: LifetimeComponent.field, value: any): LifetimeComponents
----@field add fun(self: LifetimeComponents, fields: LifetimeComponent.partial): LifetimeComponent
+---@field add fun(self: LifetimeComponents, fields: LifetimeComponent.partial?): LifetimeComponent
 
 ---@class (exact) LifetimeComponent.partial
 ---@field lifetime integer? `lifetime = -1 [0, 1]` if anything else than -1 will kill this entity when this many frames have passed
@@ -4902,7 +4902,7 @@
 ---@field enabled fun(self: LightComponents, enabled: boolean): LightComponents
 ---@field tagged fun(self: LightComponents, tag: string): LightComponents
 ---@field with_field fun(self: LightComponents, field: LightComponent.field, value: any): LightComponents
----@field add fun(self: LightComponents, fields: LightComponent.partial): LightComponent
+---@field add fun(self: LightComponents, fields: LightComponent.partial?): LightComponent
 
 ---@class (exact) LightComponent.partial
 ---@field update_properties boolean? `update_properties = 0 [0, 1]` turn this on if you expect this to function like the other components
@@ -4948,7 +4948,7 @@
 ---@field enabled fun(self: LightningComponents, enabled: boolean): LightningComponents
 ---@field tagged fun(self: LightningComponents, tag: string): LightningComponents
 ---@field with_field fun(self: LightningComponents, field: LightningComponent.field, value: any): LightningComponents
----@field add fun(self: LightningComponents, fields: LightningComponent.partial): LightningComponent
+---@field add fun(self: LightningComponents, fields: LightningComponent.partial?): LightningComponent
 
 ---@class (exact) LightningComponent.partial
 ---@field sprite_lightning_file string? `sprite_lightning_file = data/particles/lightning_ray.png [0, 1]` particle effect, from where the file is loaded that lightning is generated from
@@ -4982,7 +4982,7 @@
 ---@field enabled fun(self: LimbBossComponents, enabled: boolean): LimbBossComponents
 ---@field tagged fun(self: LimbBossComponents, tag: string): LimbBossComponents
 ---@field with_field fun(self: LimbBossComponents, field: LimbBossComponent.field, value: any): LimbBossComponents
----@field add fun(self: LimbBossComponents, fields: LimbBossComponent.partial): LimbBossComponent
+---@field add fun(self: LimbBossComponents, fields: LimbBossComponent.partial?): LimbBossComponent
 
 ---@class (exact) LimbBossComponent.partial
 ---@field state integer? `state = 0 [0, 1]`
@@ -5007,7 +5007,7 @@
 ---@field enabled fun(self: LiquidDisplacerComponents, enabled: boolean): LiquidDisplacerComponents
 ---@field tagged fun(self: LiquidDisplacerComponents, tag: string): LiquidDisplacerComponents
 ---@field with_field fun(self: LiquidDisplacerComponents, field: LiquidDisplacerComponent.field, value: any): LiquidDisplacerComponents
----@field add fun(self: LiquidDisplacerComponents, fields: LiquidDisplacerComponent.partial): LiquidDisplacerComponent
+---@field add fun(self: LiquidDisplacerComponents, fields: LiquidDisplacerComponent.partial?): LiquidDisplacerComponent
 
 ---@class (exact) LiquidDisplacerComponent.partial
 ---@field radius integer? `radius = 1 [0, 20]`
@@ -5035,7 +5035,7 @@
 ---@field enabled fun(self: LoadEntitiesComponents, enabled: boolean): LoadEntitiesComponents
 ---@field tagged fun(self: LoadEntitiesComponents, tag: string): LoadEntitiesComponents
 ---@field with_field fun(self: LoadEntitiesComponents, field: LoadEntitiesComponent.field, value: any): LoadEntitiesComponents
----@field add fun(self: LoadEntitiesComponents, fields: LoadEntitiesComponent.partial): LoadEntitiesComponent
+---@field add fun(self: LoadEntitiesComponents, fields: LoadEntitiesComponent.partial?): LoadEntitiesComponent
 
 ---@class (exact) LoadEntitiesComponent.partial
 ---@field entity_file string? path to the entity file we should load
@@ -5063,7 +5063,7 @@
 ---@field enabled fun(self: LocationMarkerComponents, enabled: boolean): LocationMarkerComponents
 ---@field tagged fun(self: LocationMarkerComponents, tag: string): LocationMarkerComponents
 ---@field with_field fun(self: LocationMarkerComponents, field: LocationMarkerComponent.field, value: any): LocationMarkerComponents
----@field add fun(self: LocationMarkerComponents, fields: LocationMarkerComponent.partial): LocationMarkerComponent
+---@field add fun(self: LocationMarkerComponents, fields: LocationMarkerComponent.partial?): LocationMarkerComponent
 
 ---@class (exact) LocationMarkerComponent.partial
 ---@field id integer? `id = 0 [0, 3]`
@@ -5079,7 +5079,7 @@
 ---@field enabled fun(self: LooseGroundComponents, enabled: boolean): LooseGroundComponents
 ---@field tagged fun(self: LooseGroundComponents, tag: string): LooseGroundComponents
 ---@field with_field fun(self: LooseGroundComponents, field: LooseGroundComponent.field, value: any): LooseGroundComponents
----@field add fun(self: LooseGroundComponents, fields: LooseGroundComponent.partial): LooseGroundComponent
+---@field add fun(self: LooseGroundComponents, fields: LooseGroundComponent.partial?): LooseGroundComponent
 
 ---@class (exact) LooseGroundComponent.partial
 ---@field probability number? `probability = 0 [0, 1]` how often do we do this... shoots a ray in random direction and does the loosening
@@ -5128,7 +5128,7 @@
 ---@field enabled fun(self: LuaComponents, enabled: boolean): LuaComponents
 ---@field tagged fun(self: LuaComponents, tag: string): LuaComponents
 ---@field with_field fun(self: LuaComponents, field: LuaComponent.field, value: any): LuaComponents
----@field add fun(self: LuaComponents, fields: LuaComponent.partial): LuaComponent
+---@field add fun(self: LuaComponents, fields: LuaComponent.partial?): LuaComponent
 
 ---@class (exact) LuaComponent.partial
 ---@field script_source_file string?
@@ -5270,7 +5270,7 @@
 ---@field enabled fun(self: MagicConvertMaterialComponents, enabled: boolean): MagicConvertMaterialComponents
 ---@field tagged fun(self: MagicConvertMaterialComponents, tag: string): MagicConvertMaterialComponents
 ---@field with_field fun(self: MagicConvertMaterialComponents, field: MagicConvertMaterialComponent.field, value: any): MagicConvertMaterialComponents
----@field add fun(self: MagicConvertMaterialComponents, fields: MagicConvertMaterialComponent.partial): MagicConvertMaterialComponent
+---@field add fun(self: MagicConvertMaterialComponents, fields: MagicConvertMaterialComponent.partial?): MagicConvertMaterialComponent
 
 ---@class (exact) MagicConvertMaterialComponent.partial
 ---@field radius integer? `radius = 256 [0, 512]`
@@ -5358,7 +5358,7 @@
 ---@field enabled fun(self: MagicXRayComponents, enabled: boolean): MagicXRayComponents
 ---@field tagged fun(self: MagicXRayComponents, tag: string): MagicXRayComponents
 ---@field with_field fun(self: MagicXRayComponents, field: MagicXRayComponent.field, value: any): MagicXRayComponents
----@field add fun(self: MagicXRayComponents, fields: MagicXRayComponent.partial): MagicXRayComponent
+---@field add fun(self: MagicXRayComponents, fields: MagicXRayComponent.partial?): MagicXRayComponent
 
 ---@class (exact) MagicXRayComponent.partial
 ---@field radius integer? `radius = 256 [0, 512]`
@@ -5383,7 +5383,7 @@
 ---@field enabled fun(self: ManaReloaderComponents, enabled: boolean): ManaReloaderComponents
 ---@field tagged fun(self: ManaReloaderComponents, tag: string): ManaReloaderComponents
 
----@field add fun(self: ManaReloaderComponents, fields: ManaReloaderComponent.partial): ManaReloaderComponent
+---@field add fun(self: ManaReloaderComponents, fields: ManaReloaderComponent.partial?): ManaReloaderComponent
 
 ---@class (exact) ManaReloaderComponent.partial
 
@@ -5396,7 +5396,7 @@
 ---@field enabled fun(self: MaterialAreaCheckerComponents, enabled: boolean): MaterialAreaCheckerComponents
 ---@field tagged fun(self: MaterialAreaCheckerComponents, tag: string): MaterialAreaCheckerComponents
 ---@field with_field fun(self: MaterialAreaCheckerComponents, field: MaterialAreaCheckerComponent.field, value: any): MaterialAreaCheckerComponents
----@field add fun(self: MaterialAreaCheckerComponents, fields: MaterialAreaCheckerComponent.partial): MaterialAreaCheckerComponent
+---@field add fun(self: MaterialAreaCheckerComponents, fields: MaterialAreaCheckerComponent.partial?): MaterialAreaCheckerComponent
 
 ---@class (exact) MaterialAreaCheckerComponent.partial
 ---@field update_every_x_frame integer? `update_every_x_frame = 0 [0, 1]` if something other than 0 or 1, will only update_every_x_frames
@@ -5439,7 +5439,7 @@
 ---@field enabled fun(self: MaterialInventoryComponents, enabled: boolean): MaterialInventoryComponents
 ---@field tagged fun(self: MaterialInventoryComponents, tag: string): MaterialInventoryComponents
 ---@field with_field fun(self: MaterialInventoryComponents, field: MaterialInventoryComponent.field, value: any): MaterialInventoryComponents
----@field add fun(self: MaterialInventoryComponents, fields: MaterialInventoryComponent.partial): MaterialInventoryComponent
+---@field add fun(self: MaterialInventoryComponents, fields: MaterialInventoryComponent.partial?): MaterialInventoryComponent
 
 ---@class (exact) MaterialInventoryComponent.partial
 ---@field drop_as_item boolean? `drop_as_item = 1 [0, 1]` if true, drops a bag that the player can big up
@@ -5521,7 +5521,7 @@
 ---@field enabled fun(self: MaterialSeaSpawnerComponents, enabled: boolean): MaterialSeaSpawnerComponents
 ---@field tagged fun(self: MaterialSeaSpawnerComponents, tag: string): MaterialSeaSpawnerComponents
 ---@field with_field fun(self: MaterialSeaSpawnerComponents, field: MaterialSeaSpawnerComponent.field, value: any): MaterialSeaSpawnerComponents
----@field add fun(self: MaterialSeaSpawnerComponents, fields: MaterialSeaSpawnerComponent.partial): MaterialSeaSpawnerComponent
+---@field add fun(self: MaterialSeaSpawnerComponents, fields: MaterialSeaSpawnerComponent.partial?): MaterialSeaSpawnerComponent
 
 ---@class (exact) MaterialSeaSpawnerComponent.partial
 ---@field speed integer? `speed = 10 [1, 100]` How many pixels to cover per one direction per one frame
@@ -5564,7 +5564,7 @@
 ---@field enabled fun(self: MaterialSuckerComponents, enabled: boolean): MaterialSuckerComponents
 ---@field tagged fun(self: MaterialSuckerComponents, tag: string): MaterialSuckerComponents
 ---@field with_field fun(self: MaterialSuckerComponents, field: MaterialSuckerComponent.field, value: any): MaterialSuckerComponents
----@field add fun(self: MaterialSuckerComponents, fields: MaterialSuckerComponent.partial): MaterialSuckerComponent
+---@field add fun(self: MaterialSuckerComponents, fields: MaterialSuckerComponent.partial?): MaterialSuckerComponent
 
 ---@class (exact) MaterialSuckerComponent.partial
 ---@field material_type integer? `material_type = 0 [0, 3]` 0 = liquid, 1 = sand, 2 = gas (arbitary order)
@@ -5616,7 +5616,7 @@
 ---@field enabled fun(self: MusicEnergyAffectorComponents, enabled: boolean): MusicEnergyAffectorComponents
 ---@field tagged fun(self: MusicEnergyAffectorComponents, tag: string): MusicEnergyAffectorComponents
 ---@field with_field fun(self: MusicEnergyAffectorComponents, field: MusicEnergyAffectorComponent.field, value: any): MusicEnergyAffectorComponents
----@field add fun(self: MusicEnergyAffectorComponents, fields: MusicEnergyAffectorComponent.partial): MusicEnergyAffectorComponent
+---@field add fun(self: MusicEnergyAffectorComponents, fields: MusicEnergyAffectorComponent.partial?): MusicEnergyAffectorComponent
 
 ---@class (exact) MusicEnergyAffectorComponent.partial
 ---@field energy_target number? `energy_target = 0.5 [0, 1]` the energy this makes music go towards
@@ -5647,7 +5647,7 @@
 ---@field enabled fun(self: NullDamageComponents, enabled: boolean): NullDamageComponents
 ---@field tagged fun(self: NullDamageComponents, tag: string): NullDamageComponents
 ---@field with_field fun(self: NullDamageComponents, field: NullDamageComponent.field, value: any): NullDamageComponents
----@field add fun(self: NullDamageComponents, fields: NullDamageComponent.partial): NullDamageComponent
+---@field add fun(self: NullDamageComponents, fields: NullDamageComponent.partial?): NullDamageComponent
 
 ---@class (exact) NullDamageComponent.partial
 ---@field null_chance number? `null_chance = 1 [0, 1]` if less than 1, then will roll the die to see if it will NULL all damage. Stick this into your projectile entity
@@ -5663,7 +5663,7 @@
 ---@field enabled fun(self: OrbComponents, enabled: boolean): OrbComponents
 ---@field tagged fun(self: OrbComponents, tag: string): OrbComponents
 ---@field with_field fun(self: OrbComponents, field: OrbComponent.field, value: any): OrbComponents
----@field add fun(self: OrbComponents, fields: OrbComponent.partial): OrbComponent
+---@field add fun(self: OrbComponents, fields: OrbComponent.partial?): OrbComponent
 
 ---@class (exact) OrbComponent.partial
 ---@field orb_id integer? `orb_id = 0 [0, 20]` must be unique for every orb in the world
@@ -5679,7 +5679,7 @@
 ---@field enabled fun(self: PathFindingGridMarkerComponents, enabled: boolean): PathFindingGridMarkerComponents
 ---@field tagged fun(self: PathFindingGridMarkerComponents, tag: string): PathFindingGridMarkerComponents
 ---@field with_field fun(self: PathFindingGridMarkerComponents, field: PathFindingGridMarkerComponent.field, value: any): PathFindingGridMarkerComponents
----@field add fun(self: PathFindingGridMarkerComponents, fields: PathFindingGridMarkerComponent.partial): PathFindingGridMarkerComponent
+---@field add fun(self: PathFindingGridMarkerComponents, fields: PathFindingGridMarkerComponent.partial?): PathFindingGridMarkerComponent
 
 ---@class (exact) PathFindingGridMarkerComponent.partial
 ---@field marker_work_flag integer? `marker_work_flag = 0 [0, 255]`
@@ -5707,7 +5707,7 @@
 ---@field enabled fun(self: PhysicsAIComponents, enabled: boolean): PhysicsAIComponents
 ---@field tagged fun(self: PhysicsAIComponents, tag: string): PhysicsAIComponents
 ---@field with_field fun(self: PhysicsAIComponents, field: PhysicsAIComponent.field, value: any): PhysicsAIComponents
----@field add fun(self: PhysicsAIComponents, fields: PhysicsAIComponent.partial): PhysicsAIComponent
+---@field add fun(self: PhysicsAIComponents, fields: PhysicsAIComponent.partial?): PhysicsAIComponent
 
 ---@class (exact) PhysicsAIComponent.partial
 ---@field target_vec_max_len number? `target_vec_max_len = 5 [0, 1]`
@@ -5810,7 +5810,7 @@
 ---@field enabled fun(self: PhysicsBody2Components, enabled: boolean): PhysicsBody2Components
 ---@field tagged fun(self: PhysicsBody2Components, tag: string): PhysicsBody2Components
 ---@field with_field fun(self: PhysicsBody2Components, field: PhysicsBody2Component.field, value: any): PhysicsBody2Components
----@field add fun(self: PhysicsBody2Components, fields: PhysicsBody2Component.partial): PhysicsBody2Component
+---@field add fun(self: PhysicsBody2Components, fields: PhysicsBody2Component.partial?): PhysicsBody2Component
 
 ---@class (exact) PhysicsBody2Component.partial
 ---@field mBodyId b2ObjectID? `mBodyId = 0 [0, 1]` this is mBody->GetBodyId() - not to be confused with uid, has to be tracked separately, since the mBody pointer is not unique
@@ -5913,7 +5913,7 @@
 ---@field enabled fun(self: PhysicsBodyCollisionDamageComponents, enabled: boolean): PhysicsBodyCollisionDamageComponents
 ---@field tagged fun(self: PhysicsBodyCollisionDamageComponents, tag: string): PhysicsBodyCollisionDamageComponents
 ---@field with_field fun(self: PhysicsBodyCollisionDamageComponents, field: PhysicsBodyCollisionDamageComponent.field, value: any): PhysicsBodyCollisionDamageComponents
----@field add fun(self: PhysicsBodyCollisionDamageComponents, fields: PhysicsBodyCollisionDamageComponent.partial): PhysicsBodyCollisionDamageComponent
+---@field add fun(self: PhysicsBodyCollisionDamageComponents, fields: PhysicsBodyCollisionDamageComponent.partial?): PhysicsBodyCollisionDamageComponent
 
 ---@class (exact) PhysicsBodyCollisionDamageComponent.partial
 ---@field speed_threshold number? `speed_threshold = 60 [0, 100]`
@@ -5932,7 +5932,7 @@
 ---@field enabled fun(self: PhysicsBodyComponents, enabled: boolean): PhysicsBodyComponents
 ---@field tagged fun(self: PhysicsBodyComponents, tag: string): PhysicsBodyComponents
 ---@field with_field fun(self: PhysicsBodyComponents, field: PhysicsBodyComponent.field, value: any): PhysicsBodyComponents
----@field add fun(self: PhysicsBodyComponents, fields: PhysicsBodyComponent.partial): PhysicsBodyComponent
+---@field add fun(self: PhysicsBodyComponents, fields: PhysicsBodyComponent.partial?): PhysicsBodyComponent
 
 ---@class (exact) PhysicsBodyComponent.partial
 ---@field is_external boolean? `is_external = 0 [0, 1]` if mBody is set from outside, will ignore all the things
@@ -6044,7 +6044,7 @@
 ---@field enabled fun(self: PhysicsImageShapeComponents, enabled: boolean): PhysicsImageShapeComponents
 ---@field tagged fun(self: PhysicsImageShapeComponents, tag: string): PhysicsImageShapeComponents
 ---@field with_field fun(self: PhysicsImageShapeComponents, field: PhysicsImageShapeComponent.field, value: any): PhysicsImageShapeComponents
----@field add fun(self: PhysicsImageShapeComponents, fields: PhysicsImageShapeComponent.partial): PhysicsImageShapeComponent
+---@field add fun(self: PhysicsImageShapeComponents, fields: PhysicsImageShapeComponent.partial?): PhysicsImageShapeComponent
 
 ---@class (exact) PhysicsImageShapeComponent.partial
 ---@field is_root boolean? `is_root = 0 [0, 1]` if 1, PhysicsBody2Component will use this to figure out where the entity is located
@@ -6090,7 +6090,7 @@
 ---@field enabled fun(self: PhysicsJoint2Components, enabled: boolean): PhysicsJoint2Components
 ---@field tagged fun(self: PhysicsJoint2Components, tag: string): PhysicsJoint2Components
 ---@field with_field fun(self: PhysicsJoint2Components, field: PhysicsJoint2Component.field, value: any): PhysicsJoint2Components
----@field add fun(self: PhysicsJoint2Components, fields: PhysicsJoint2Component.partial): PhysicsJoint2Component
+---@field add fun(self: PhysicsJoint2Components, fields: PhysicsJoint2Component.partial?): PhysicsJoint2Component
 
 ---@class (exact) PhysicsJoint2Component.partial
 ---@field joint_id integer? `joint_id = 0 [0, 1000]` Use this to create a relation between PhysicsJointMutator and a joint. The PhysicsJointMutator must exist when the physics objects are initialized for the first time. This id should be unique inside one entity. Defaults to 0
@@ -6145,7 +6145,7 @@
 ---@field enabled fun(self: PhysicsJoint2MutatorComponents, enabled: boolean): PhysicsJoint2MutatorComponents
 ---@field tagged fun(self: PhysicsJoint2MutatorComponents, tag: string): PhysicsJoint2MutatorComponents
 ---@field with_field fun(self: PhysicsJoint2MutatorComponents, field: PhysicsJoint2MutatorComponent.field, value: any): PhysicsJoint2MutatorComponents
----@field add fun(self: PhysicsJoint2MutatorComponents, fields: PhysicsJoint2MutatorComponent.partial): PhysicsJoint2MutatorComponent
+---@field add fun(self: PhysicsJoint2MutatorComponents, fields: PhysicsJoint2MutatorComponent.partial?): PhysicsJoint2MutatorComponent
 
 ---@class (exact) PhysicsJoint2MutatorComponent.partial
 ---@field joint_id integer? `joint_id = 0 [0, 1000]` Use this to create a relation between PhysicsJointMutator and a joint created by PhysicsJoint2Component. The PhysicsJoint2Mutator must exist when the physics objects are initialized for the first time.
@@ -6179,7 +6179,7 @@
 ---@field enabled fun(self: PhysicsJointComponents, enabled: boolean): PhysicsJointComponents
 ---@field tagged fun(self: PhysicsJointComponents, tag: string): PhysicsJointComponents
 ---@field with_field fun(self: PhysicsJointComponents, field: PhysicsJointComponent.field, value: any): PhysicsJointComponents
----@field add fun(self: PhysicsJointComponents, fields: PhysicsJointComponent.partial): PhysicsJointComponent
+---@field add fun(self: PhysicsJointComponents, fields: PhysicsJointComponent.partial?): PhysicsJointComponent
 
 ---@class (exact) PhysicsJointComponent.partial
 ---@field nail_to_wall boolean? `nail_to_wall = 0 [0, 1]`
@@ -6234,7 +6234,7 @@
 ---@field enabled fun(self: PhysicsKeepInWorldComponents, enabled: boolean): PhysicsKeepInWorldComponents
 ---@field tagged fun(self: PhysicsKeepInWorldComponents, tag: string): PhysicsKeepInWorldComponents
 ---@field with_field fun(self: PhysicsKeepInWorldComponents, field: PhysicsKeepInWorldComponent.field, value: any): PhysicsKeepInWorldComponents
----@field add fun(self: PhysicsKeepInWorldComponents, fields: PhysicsKeepInWorldComponent.partial): PhysicsKeepInWorldComponent
+---@field add fun(self: PhysicsKeepInWorldComponents, fields: PhysicsKeepInWorldComponent.partial?): PhysicsKeepInWorldComponent
 
 ---@class (exact) PhysicsKeepInWorldComponent.partial
 ---@field check_whole_aabb boolean? `check_whole_aabb = 0 [0, 1]` All that is needed is to include one of the components with PhysicsBodyComponent or PhysicsBody2Component and it will be frozen when it hits outer edges of the world. NOTE! This will override the auto_clean variable, auto_clean will be set to false. If this is true, will check all the 4 corners of the bounding box
@@ -6262,7 +6262,7 @@
 ---@field enabled fun(self: PhysicsPickUpComponents, enabled: boolean): PhysicsPickUpComponents
 ---@field tagged fun(self: PhysicsPickUpComponents, tag: string): PhysicsPickUpComponents
 ---@field with_field fun(self: PhysicsPickUpComponents, field: PhysicsPickUpComponent.field, value: any): PhysicsPickUpComponents
----@field add fun(self: PhysicsPickUpComponents, fields: PhysicsPickUpComponent.partial): PhysicsPickUpComponent
+---@field add fun(self: PhysicsPickUpComponents, fields: PhysicsPickUpComponent.partial?): PhysicsPickUpComponent
 
 ---@class (exact) PhysicsPickUpComponent.partial
 ---@field pick_up_strength number? `pick_up_strength = 200 [0, 1]`
@@ -6302,7 +6302,7 @@
 ---@field enabled fun(self: PhysicsRagdollComponents, enabled: boolean): PhysicsRagdollComponents
 ---@field tagged fun(self: PhysicsRagdollComponents, tag: string): PhysicsRagdollComponents
 ---@field with_field fun(self: PhysicsRagdollComponents, field: PhysicsRagdollComponent.field, value: any): PhysicsRagdollComponents
----@field add fun(self: PhysicsRagdollComponents, fields: PhysicsRagdollComponent.partial): PhysicsRagdollComponent
+---@field add fun(self: PhysicsRagdollComponents, fields: PhysicsRagdollComponent.partial?): PhysicsRagdollComponent
 
 ---@class (exact) PhysicsRagdollComponent.partial
 ---@field filename string? file that should include just a list of other files, that have all the parts
@@ -6330,7 +6330,7 @@
 ---@field enabled fun(self: PhysicsShapeComponents, enabled: boolean): PhysicsShapeComponents
 ---@field tagged fun(self: PhysicsShapeComponents, tag: string): PhysicsShapeComponents
 ---@field with_field fun(self: PhysicsShapeComponents, field: PhysicsShapeComponent.field, value: any): PhysicsShapeComponents
----@field add fun(self: PhysicsShapeComponents, fields: PhysicsShapeComponent.partial): PhysicsShapeComponent
+---@field add fun(self: PhysicsShapeComponents, fields: PhysicsShapeComponent.partial?): PhysicsShapeComponent
 
 ---@class (exact) PhysicsShapeComponent.partial
 ---@field recreate boolean? `recreate = 0 [0, 1]`
@@ -6388,7 +6388,7 @@
 ---@field enabled fun(self: PhysicsThrowableComponents, enabled: boolean): PhysicsThrowableComponents
 ---@field tagged fun(self: PhysicsThrowableComponents, tag: string): PhysicsThrowableComponents
 ---@field with_field fun(self: PhysicsThrowableComponents, field: PhysicsThrowableComponent.field, value: any): PhysicsThrowableComponents
----@field add fun(self: PhysicsThrowableComponents, fields: PhysicsThrowableComponent.partial): PhysicsThrowableComponent
+---@field add fun(self: PhysicsThrowableComponents, fields: PhysicsThrowableComponent.partial?): PhysicsThrowableComponent
 
 ---@class (exact) PhysicsThrowableComponent.partial
 ---@field throw_force_coeff number? `throw_force_coeff = 1 [0, 2]`
@@ -6434,7 +6434,7 @@
 ---@field enabled fun(self: PixelSceneComponents, enabled: boolean): PixelSceneComponents
 ---@field tagged fun(self: PixelSceneComponents, tag: string): PixelSceneComponents
 ---@field with_field fun(self: PixelSceneComponents, field: PixelSceneComponent.field, value: any): PixelSceneComponents
----@field add fun(self: PixelSceneComponents, fields: PixelSceneComponent.partial): PixelSceneComponent
+---@field add fun(self: PixelSceneComponents, fields: PixelSceneComponent.partial?): PixelSceneComponent
 
 ---@class (exact) PixelSceneComponent.partial
 ---@field pixel_scene string? loads this pixel scene file
@@ -6471,7 +6471,7 @@
 ---@field enabled fun(self: PixelSpriteComponents, enabled: boolean): PixelSpriteComponents
 ---@field tagged fun(self: PixelSpriteComponents, tag: string): PixelSpriteComponents
 ---@field with_field fun(self: PixelSpriteComponents, field: PixelSpriteComponent.field, value: any): PixelSpriteComponents
----@field add fun(self: PixelSpriteComponents, fields: PixelSpriteComponent.partial): PixelSpriteComponent
+---@field add fun(self: PixelSpriteComponents, fields: PixelSpriteComponent.partial?): PixelSpriteComponent
 
 ---@class (exact) PixelSpriteComponent.partial
 ---@field image_file string? loads pixelsprite based on this file
@@ -6511,7 +6511,7 @@
 ---@field enabled fun(self: PlatformShooterPlayerComponents, enabled: boolean): PlatformShooterPlayerComponents
 ---@field tagged fun(self: PlatformShooterPlayerComponents, tag: string): PlatformShooterPlayerComponents
 ---@field with_field fun(self: PlatformShooterPlayerComponents, field: PlatformShooterPlayerComponent.field, value: any): PlatformShooterPlayerComponents
----@field add fun(self: PlatformShooterPlayerComponents, fields: PlatformShooterPlayerComponent.partial): PlatformShooterPlayerComponent
+---@field add fun(self: PlatformShooterPlayerComponents, fields: PlatformShooterPlayerComponent.partial?): PlatformShooterPlayerComponent
 
 ---@class (exact) PlatformShooterPlayerComponent.partial
 ---@field aiming_reticle_distance_from_character number? `aiming_reticle_distance_from_character = 40 [0, 1000]`
@@ -6632,7 +6632,7 @@
 ---@field enabled fun(self: PlayerCollisionComponents, enabled: boolean): PlayerCollisionComponents
 ---@field tagged fun(self: PlayerCollisionComponents, tag: string): PlayerCollisionComponents
 ---@field with_field fun(self: PlayerCollisionComponents, field: PlayerCollisionComponent.field, value: any): PlayerCollisionComponents
----@field add fun(self: PlayerCollisionComponents, fields: PlayerCollisionComponent.partial): PlayerCollisionComponent
+---@field add fun(self: PlayerCollisionComponents, fields: PlayerCollisionComponent.partial?): PlayerCollisionComponent
 
 ---@class (exact) PlayerCollisionComponent.partial
 ---@field getting_crushed_threshold integer? `getting_crushed_threshold = 5 [0, 100]`
@@ -6666,7 +6666,7 @@
 ---@field enabled fun(self: PlayerStatsComponents, enabled: boolean): PlayerStatsComponents
 ---@field tagged fun(self: PlayerStatsComponents, tag: string): PlayerStatsComponents
 ---@field with_field fun(self: PlayerStatsComponents, field: PlayerStatsComponent.field, value: any): PlayerStatsComponents
----@field add fun(self: PlayerStatsComponents, fields: PlayerStatsComponent.partial): PlayerStatsComponent
+---@field add fun(self: PlayerStatsComponents, fields: PlayerStatsComponent.partial?): PlayerStatsComponent
 
 ---@class (exact) PlayerStatsComponent.partial
 ---@field lives integer? `lives = 1 [0, 1]`
@@ -6688,7 +6688,7 @@
 ---@field enabled fun(self: PositionSeedComponents, enabled: boolean): PositionSeedComponents
 ---@field tagged fun(self: PositionSeedComponents, tag: string): PositionSeedComponents
 ---@field with_field fun(self: PositionSeedComponents, field: PositionSeedComponent.field, value: any): PositionSeedComponents
----@field add fun(self: PositionSeedComponents, fields: PositionSeedComponent.partial): PositionSeedComponent
+---@field add fun(self: PositionSeedComponents, fields: PositionSeedComponent.partial?): PositionSeedComponent
 
 ---@class (exact) PositionSeedComponent.partial
 ---@field pos_x number? `pos_x = 0 [0, 3.5]`
@@ -6707,7 +6707,7 @@
 ---@field enabled fun(self: PotionComponents, enabled: boolean): PotionComponents
 ---@field tagged fun(self: PotionComponents, tag: string): PotionComponents
 ---@field with_field fun(self: PotionComponents, field: PotionComponent.field, value: any): PotionComponents
----@field add fun(self: PotionComponents, fields: PotionComponent.partial): PotionComponent
+---@field add fun(self: PotionComponents, fields: PotionComponent.partial?): PotionComponent
 
 ---@class (exact) PotionComponent.partial
 ---@field spray_velocity_coeff number? `spray_velocity_coeff = 1 [0, 2]`
@@ -6747,7 +6747,7 @@
 ---@field enabled fun(self: PressurePlateComponents, enabled: boolean): PressurePlateComponents
 ---@field tagged fun(self: PressurePlateComponents, tag: string): PressurePlateComponents
 ---@field with_field fun(self: PressurePlateComponents, field: PressurePlateComponent.field, value: any): PressurePlateComponents
----@field add fun(self: PressurePlateComponents, fields: PressurePlateComponent.partial): PressurePlateComponent
+---@field add fun(self: PressurePlateComponents, fields: PressurePlateComponent.partial?): PressurePlateComponent
 
 ---@class (exact) PressurePlateComponent.partial
 ---@field check_every_x_frames integer? `check_every_x_frames = 30 [0, 1]` how often do we check the world
@@ -6778,7 +6778,7 @@
 ---@field enabled fun(self: ProjectileComponents, enabled: boolean): ProjectileComponents
 ---@field tagged fun(self: ProjectileComponents, tag: string): ProjectileComponents
 ---@field with_field fun(self: ProjectileComponents, field: ProjectileComponent.field, value: any): ProjectileComponents
----@field add fun(self: ProjectileComponents, fields: ProjectileComponent.partial): ProjectileComponent
+---@field add fun(self: ProjectileComponents, fields: ProjectileComponent.partial?): ProjectileComponent
 
 ---@class (exact) ProjectileComponent.partial
 ---@field lifetime integer? `lifetime = -1 [0, 1]` lifetime, -1 means it's endless, otherwise it's the frame count
@@ -7061,7 +7061,7 @@
 ---@field enabled fun(self: RotateTowardsComponents, enabled: boolean): RotateTowardsComponents
 ---@field tagged fun(self: RotateTowardsComponents, tag: string): RotateTowardsComponents
 ---@field with_field fun(self: RotateTowardsComponents, field: RotateTowardsComponent.field, value: any): RotateTowardsComponents
----@field add fun(self: RotateTowardsComponents, fields: RotateTowardsComponent.partial): RotateTowardsComponent
+---@field add fun(self: RotateTowardsComponents, fields: RotateTowardsComponent.partial?): RotateTowardsComponent
 
 ---@class (exact) RotateTowardsComponent.partial
 ---@field entity_with_tag string? `entity_with_tag = player_unit [0, 1]` will rotate this entity towards the closest entity with tag
@@ -7077,7 +7077,7 @@
 ---@field enabled fun(self: SetLightAlphaFromVelocityComponents, enabled: boolean): SetLightAlphaFromVelocityComponents
 ---@field tagged fun(self: SetLightAlphaFromVelocityComponents, tag: string): SetLightAlphaFromVelocityComponents
 ---@field with_field fun(self: SetLightAlphaFromVelocityComponents, field: SetLightAlphaFromVelocityComponent.field, value: any): SetLightAlphaFromVelocityComponents
----@field add fun(self: SetLightAlphaFromVelocityComponents, fields: SetLightAlphaFromVelocityComponent.partial): SetLightAlphaFromVelocityComponent
+---@field add fun(self: SetLightAlphaFromVelocityComponents, fields: SetLightAlphaFromVelocityComponent.partial?): SetLightAlphaFromVelocityComponent
 
 ---@class (exact) SetLightAlphaFromVelocityComponent.partial
 ---@field max_velocity number? `max_velocity = 50 [1, 150]`
@@ -7096,7 +7096,7 @@
 ---@field enabled fun(self: SetStartVelocityComponents, enabled: boolean): SetStartVelocityComponents
 ---@field tagged fun(self: SetStartVelocityComponents, tag: string): SetStartVelocityComponents
 ---@field with_field fun(self: SetStartVelocityComponents, field: SetStartVelocityComponent.field, value: any): SetStartVelocityComponents
----@field add fun(self: SetStartVelocityComponents, fields: SetStartVelocityComponent.partial): SetStartVelocityComponent
+---@field add fun(self: SetStartVelocityComponents, fields: SetStartVelocityComponent.partial?): SetStartVelocityComponent
 
 ---@class (exact) SetStartVelocityComponent.partial
 ---@field velocity Vec2? This is added together with random velocity
@@ -7118,7 +7118,7 @@
 ---@field enabled fun(self: ShotEffectComponents, enabled: boolean): ShotEffectComponents
 ---@field tagged fun(self: ShotEffectComponents, tag: string): ShotEffectComponents
 ---@field with_field fun(self: ShotEffectComponents, field: ShotEffectComponent.field, value: any): ShotEffectComponents
----@field add fun(self: ShotEffectComponents, fields: ShotEffectComponent.partial): ShotEffectComponent
+---@field add fun(self: ShotEffectComponents, fields: ShotEffectComponent.partial?): ShotEffectComponent
 
 ---@class (exact) ShotEffectComponent.partial
 ---@field extra_modifier string? name of modifier function executed per projectile from 'gun_extra_modifiers.lua'
@@ -7140,7 +7140,7 @@
 ---@field enabled fun(self: SimplePhysicsComponents, enabled: boolean): SimplePhysicsComponents
 ---@field tagged fun(self: SimplePhysicsComponents, tag: string): SimplePhysicsComponents
 ---@field with_field fun(self: SimplePhysicsComponents, field: SimplePhysicsComponent.field, value: any): SimplePhysicsComponents
----@field add fun(self: SimplePhysicsComponents, fields: SimplePhysicsComponent.partial): SimplePhysicsComponent
+---@field add fun(self: SimplePhysicsComponents, fields: SimplePhysicsComponent.partial?): SimplePhysicsComponent
 
 ---@class (exact) SimplePhysicsComponent.partial
 ---@field can_go_up boolean? `can_go_up = 1 [0, 1]` if set, will not try to move this upwards
@@ -7159,7 +7159,7 @@
 ---@field enabled fun(self: SineWaveComponents, enabled: boolean): SineWaveComponents
 ---@field tagged fun(self: SineWaveComponents, tag: string): SineWaveComponents
 ---@field with_field fun(self: SineWaveComponents, field: SineWaveComponent.field, value: any): SineWaveComponents
----@field add fun(self: SineWaveComponents, fields: SineWaveComponent.partial): SineWaveComponent
+---@field add fun(self: SineWaveComponents, fields: SineWaveComponent.partial?): SineWaveComponent
 
 ---@class (exact) SineWaveComponent.partial
 ---@field sinewave_freq number? `sinewave_freq = 1 [0, 1]` sinewave_m * sinf( sinewave_freq * lifetime++)
@@ -7181,7 +7181,7 @@
 ---@field enabled fun(self: SpriteAnimatorComponents, enabled: boolean): SpriteAnimatorComponents
 ---@field tagged fun(self: SpriteAnimatorComponents, tag: string): SpriteAnimatorComponents
 ---@field with_field fun(self: SpriteAnimatorComponents, field: SpriteAnimatorComponent.field, value: any): SpriteAnimatorComponents
----@field add fun(self: SpriteAnimatorComponents, fields: SpriteAnimatorComponent.partial): SpriteAnimatorComponent
+---@field add fun(self: SpriteAnimatorComponents, fields: SpriteAnimatorComponent.partial?): SpriteAnimatorComponent
 
 ---@class (exact) SpriteAnimatorComponent.partial
 ---@field target_sprite_comp_name string? `target_sprite_comp_name = character [0, 1]`
@@ -7209,7 +7209,7 @@
 ---@field enabled fun(self: SpriteComponents, enabled: boolean): SpriteComponents
 ---@field tagged fun(self: SpriteComponents, tag: string): SpriteComponents
 ---@field with_field fun(self: SpriteComponents, field: SpriteComponent.field, value: any): SpriteComponents
----@field add fun(self: SpriteComponents, fields: SpriteComponent.partial): SpriteComponent
+---@field add fun(self: SpriteComponents, fields: SpriteComponent.partial?): SpriteComponent
 
 ---@class (exact) SpriteComponent.partial
 ---@field image_file string? `image_file = data/temp/temp_gun.png [0, 1]`
@@ -7303,7 +7303,7 @@
 ---@field enabled fun(self: SpriteOffsetAnimatorComponents, enabled: boolean): SpriteOffsetAnimatorComponents
 ---@field tagged fun(self: SpriteOffsetAnimatorComponents, tag: string): SpriteOffsetAnimatorComponents
 ---@field with_field fun(self: SpriteOffsetAnimatorComponents, field: SpriteOffsetAnimatorComponent.field, value: any): SpriteOffsetAnimatorComponents
----@field add fun(self: SpriteOffsetAnimatorComponents, fields: SpriteOffsetAnimatorComponent.partial): SpriteOffsetAnimatorComponent
+---@field add fun(self: SpriteOffsetAnimatorComponents, fields: SpriteOffsetAnimatorComponent.partial?): SpriteOffsetAnimatorComponent
 
 ---@class (exact) SpriteOffsetAnimatorComponent.partial
 ---@field x_amount number? `x_amount = 0 [0, 5]`
@@ -7337,7 +7337,7 @@
 ---@field enabled fun(self: SpriteParticleEmitterComponents, enabled: boolean): SpriteParticleEmitterComponents
 ---@field tagged fun(self: SpriteParticleEmitterComponents, tag: string): SpriteParticleEmitterComponents
 ---@field with_field fun(self: SpriteParticleEmitterComponents, field: SpriteParticleEmitterComponent.field, value: any): SpriteParticleEmitterComponents
----@field add fun(self: SpriteParticleEmitterComponents, fields: SpriteParticleEmitterComponent.partial): SpriteParticleEmitterComponent
+---@field add fun(self: SpriteParticleEmitterComponents, fields: SpriteParticleEmitterComponent.partial?): SpriteParticleEmitterComponent
 
 ---@class (exact) SpriteParticleEmitterComponent.partial
 ---@field sprite_file string? filepath to the sprite(s), supports the $[0-3] syntax
@@ -7476,7 +7476,7 @@
 ---@field enabled fun(self: SpriteStainsComponents, enabled: boolean): SpriteStainsComponents
 ---@field tagged fun(self: SpriteStainsComponents, tag: string): SpriteStainsComponents
 ---@field with_field fun(self: SpriteStainsComponents, field: SpriteStainsComponent.field, value: any): SpriteStainsComponents
----@field add fun(self: SpriteStainsComponents, fields: SpriteStainsComponent.partial): SpriteStainsComponent
+---@field add fun(self: SpriteStainsComponents, fields: SpriteStainsComponent.partial?): SpriteStainsComponent
 
 ---@class (exact) SpriteStainsComponent.partial
 ---@field sprite_id integer? `sprite_id = 0 [0, 10]` which sprite (in the order in which they appear in the entity) are we going to stain?
@@ -7507,7 +7507,7 @@
 ---@field enabled fun(self: StatusEffectDataComponents, enabled: boolean): StatusEffectDataComponents
 ---@field tagged fun(self: StatusEffectDataComponents, tag: string): StatusEffectDataComponents
 ---@field with_field fun(self: StatusEffectDataComponents, field: StatusEffectDataComponent.field, value: any): StatusEffectDataComponents
----@field add fun(self: StatusEffectDataComponents, fields: StatusEffectDataComponent.partial): StatusEffectDataComponent
+---@field add fun(self: StatusEffectDataComponents, fields: StatusEffectDataComponent.partial?): StatusEffectDataComponent
 
 ---@class (exact) StatusEffectDataComponent.partial
 ---@field stain_effects VECTOR_FLOAT?
@@ -7547,7 +7547,7 @@
 ---@field enabled fun(self: StreamingKeepAliveComponents, enabled: boolean): StreamingKeepAliveComponents
 ---@field tagged fun(self: StreamingKeepAliveComponents, tag: string): StreamingKeepAliveComponents
 ---@field with_field fun(self: StreamingKeepAliveComponents, field: StreamingKeepAliveComponent.field, value: any): StreamingKeepAliveComponents
----@field add fun(self: StreamingKeepAliveComponents, fields: StreamingKeepAliveComponent.partial): StreamingKeepAliveComponent
+---@field add fun(self: StreamingKeepAliveComponents, fields: StreamingKeepAliveComponent.partial?): StreamingKeepAliveComponent
 
 ---@class (exact) StreamingKeepAliveComponent.partial
 ---@field TEMP_TEMPY number? `TEMP_TEMPY = 0 [0, 3.5]`
@@ -7566,7 +7566,7 @@
 ---@field enabled fun(self: TelekinesisComponents, enabled: boolean): TelekinesisComponents
 ---@field tagged fun(self: TelekinesisComponents, tag: string): TelekinesisComponents
 ---@field with_field fun(self: TelekinesisComponents, field: TelekinesisComponent.field, value: any): TelekinesisComponents
----@field add fun(self: TelekinesisComponents, fields: TelekinesisComponent.partial): TelekinesisComponent
+---@field add fun(self: TelekinesisComponents, fields: TelekinesisComponent.partial?): TelekinesisComponent
 
 ---@class (exact) TelekinesisComponent.partial
 ---@field min_size integer? `min_size = 7 [0, 1]` Minimum size of physics body that can be grabbed, in cells/pixels
@@ -7624,7 +7624,7 @@
 ---@field enabled fun(self: TeleportProjectileComponents, enabled: boolean): TeleportProjectileComponents
 ---@field tagged fun(self: TeleportProjectileComponents, tag: string): TeleportProjectileComponents
 ---@field with_field fun(self: TeleportProjectileComponents, field: TeleportProjectileComponent.field, value: any): TeleportProjectileComponents
----@field add fun(self: TeleportProjectileComponents, fields: TeleportProjectileComponent.partial): TeleportProjectileComponent
+---@field add fun(self: TeleportProjectileComponents, fields: TeleportProjectileComponent.partial?): TeleportProjectileComponent
 
 ---@class (exact) TeleportProjectileComponent.partial
 ---@field min_distance_from_wall number? `min_distance_from_wall = 16 [0, 16]`
@@ -7649,7 +7649,7 @@
 ---@field enabled fun(self: TextLogComponents, enabled: boolean): TextLogComponents
 ---@field tagged fun(self: TextLogComponents, tag: string): TextLogComponents
 ---@field with_field fun(self: TextLogComponents, field: TextLogComponent.field, value: any): TextLogComponents
----@field add fun(self: TextLogComponents, fields: TextLogComponent.partial): TextLogComponent
+---@field add fun(self: TextLogComponents, fields: TextLogComponent.partial?): TextLogComponent
 
 ---@class (exact) TextLogComponent.partial
 ---@field key string?
@@ -7671,7 +7671,7 @@
 ---@field enabled fun(self: TorchComponents, enabled: boolean): TorchComponents
 ---@field tagged fun(self: TorchComponents, tag: string): TorchComponents
 ---@field with_field fun(self: TorchComponents, field: TorchComponent.field, value: any): TorchComponents
----@field add fun(self: TorchComponents, fields: TorchComponent.partial): TorchComponent
+---@field add fun(self: TorchComponents, fields: TorchComponent.partial?): TorchComponent
 
 ---@class (exact) TorchComponent.partial
 ---@field probability_of_ignition_attempt integer? `probability_of_ignition_attempt = 15 [0, 100]` how likely are we to ignite colliding cells
@@ -7711,7 +7711,7 @@
 ---@field enabled fun(self: UIIconComponents, enabled: boolean): UIIconComponents
 ---@field tagged fun(self: UIIconComponents, tag: string): UIIconComponents
 ---@field with_field fun(self: UIIconComponents, field: UIIconComponent.field, value: any): UIIconComponents
----@field add fun(self: UIIconComponents, fields: UIIconComponent.partial): UIIconComponent
+---@field add fun(self: UIIconComponents, fields: UIIconComponent.partial?): UIIconComponent
 
 ---@class (exact) UIIconComponent.partial
 ---@field icon_sprite_file string?
@@ -7742,7 +7742,7 @@
 ---@field enabled fun(self: UIInfoComponents, enabled: boolean): UIInfoComponents
 ---@field tagged fun(self: UIInfoComponents, tag: string): UIInfoComponents
 ---@field with_field fun(self: UIInfoComponents, field: UIInfoComponent.field, value: any): UIInfoComponents
----@field add fun(self: UIInfoComponents, fields: UIInfoComponent.partial): UIInfoComponent
+---@field add fun(self: UIInfoComponents, fields: UIInfoComponent.partial?): UIInfoComponent
 
 ---@class (exact) UIInfoComponent.partial
 ---@field name string?
@@ -7758,7 +7758,7 @@
 ---@field enabled fun(self: VariableStorageComponents, enabled: boolean): VariableStorageComponents
 ---@field tagged fun(self: VariableStorageComponents, tag: string): VariableStorageComponents
 ---@field with_field fun(self: VariableStorageComponents, field: VariableStorageComponent.field, value: any): VariableStorageComponents
----@field add fun(self: VariableStorageComponents, fields: VariableStorageComponent.partial): VariableStorageComponent
+---@field add fun(self: VariableStorageComponents, fields: VariableStorageComponent.partial?): VariableStorageComponent
 
 ---@class (exact) VariableStorageComponent.partial
 ---@field name string?
@@ -7786,7 +7786,7 @@
 ---@field enabled fun(self: VelocityComponents, enabled: boolean): VelocityComponents
 ---@field tagged fun(self: VelocityComponents, tag: string): VelocityComponents
 ---@field with_field fun(self: VelocityComponents, field: VelocityComponent.field, value: any): VelocityComponents
----@field add fun(self: VelocityComponents, fields: VelocityComponent.partial): VelocityComponent
+---@field add fun(self: VelocityComponents, fields: VelocityComponent.partial?): VelocityComponent
 
 ---@class (exact) VelocityComponent.partial
 ---@field gravity_x number? `gravity_x = 0 [0, 1]`
@@ -7850,7 +7850,7 @@
 ---@field enabled fun(self: VerletPhysicsComponents, enabled: boolean): VerletPhysicsComponents
 ---@field tagged fun(self: VerletPhysicsComponents, tag: string): VerletPhysicsComponents
 ---@field with_field fun(self: VerletPhysicsComponents, field: VerletPhysicsComponent.field, value: any): VerletPhysicsComponents
----@field add fun(self: VerletPhysicsComponents, fields: VerletPhysicsComponent.partial): VerletPhysicsComponent
+---@field add fun(self: VerletPhysicsComponents, fields: VerletPhysicsComponent.partial?): VerletPhysicsComponent
 
 ---@class (exact) VerletPhysicsComponent.partial
 ---@field num_points integer? `num_points = 2 [0, 1]`
@@ -7980,7 +7980,7 @@
 ---@field enabled fun(self: VerletWeaponComponents, enabled: boolean): VerletWeaponComponents
 ---@field tagged fun(self: VerletWeaponComponents, tag: string): VerletWeaponComponents
 ---@field with_field fun(self: VerletWeaponComponents, field: VerletWeaponComponent.field, value: any): VerletWeaponComponents
----@field add fun(self: VerletWeaponComponents, fields: VerletWeaponComponent.partial): VerletWeaponComponent
+---@field add fun(self: VerletWeaponComponents, fields: VerletWeaponComponent.partial?): VerletWeaponComponent
 
 ---@class (exact) VerletWeaponComponent.partial
 ---@field damage_radius number? `damage_radius = 5 [0, 10]`
@@ -8020,7 +8020,7 @@
 ---@field enabled fun(self: VerletWorldJointComponents, enabled: boolean): VerletWorldJointComponents
 ---@field tagged fun(self: VerletWorldJointComponents, tag: string): VerletWorldJointComponents
 ---@field with_field fun(self: VerletWorldJointComponents, field: VerletWorldJointComponent.field, value: any): VerletWorldJointComponents
----@field add fun(self: VerletWorldJointComponents, fields: VerletWorldJointComponent.partial): VerletWorldJointComponent
+---@field add fun(self: VerletWorldJointComponents, fields: VerletWorldJointComponent.partial?): VerletWorldJointComponent
 
 ---@class (exact) VerletWorldJointComponent.partial
 ---@field verlet_point_index integer? `verlet_point_index = 0 [0, 32]` Index of the verlet point we attach
@@ -8045,7 +8045,7 @@
 ---@field enabled fun(self: WalletComponents, enabled: boolean): WalletComponents
 ---@field tagged fun(self: WalletComponents, tag: string): WalletComponents
 ---@field with_field fun(self: WalletComponents, field: WalletComponent.field, value: any): WalletComponents
----@field add fun(self: WalletComponents, fields: WalletComponent.partial): WalletComponent
+---@field add fun(self: WalletComponents, fields: WalletComponent.partial?): WalletComponent
 
 ---@class (exact) WalletComponent.partial
 ---@field money integer? `money = 0 [0, 10000]`
@@ -8070,7 +8070,7 @@
 ---@field enabled fun(self: WalletValuableComponents, enabled: boolean): WalletValuableComponents
 ---@field tagged fun(self: WalletValuableComponents, tag: string): WalletValuableComponents
 ---@field with_field fun(self: WalletValuableComponents, field: WalletValuableComponent.field, value: any): WalletValuableComponents
----@field add fun(self: WalletValuableComponents, fields: WalletValuableComponent.partial): WalletValuableComponent
+---@field add fun(self: WalletValuableComponents, fields: WalletValuableComponent.partial?): WalletValuableComponent
 
 ---@class (exact) WalletValuableComponent.partial
 ---@field money_value integer? `money_value = 10 [0, 100]`
@@ -8086,7 +8086,7 @@
 ---@field enabled fun(self: WorldStateComponents, enabled: boolean): WorldStateComponents
 ---@field tagged fun(self: WorldStateComponents, tag: string): WorldStateComponents
 ---@field with_field fun(self: WorldStateComponents, field: WorldStateComponent.field, value: any): WorldStateComponents
----@field add fun(self: WorldStateComponents, fields: WorldStateComponent.partial): WorldStateComponent
+---@field add fun(self: WorldStateComponents, fields: WorldStateComponent.partial?): WorldStateComponent
 
 ---@class (exact) WorldStateComponent.partial
 ---@field is_initialized boolean? `is_initialized = 0 [0, 1]`
@@ -8285,7 +8285,7 @@
 ---@field enabled fun(self: WormAIComponents, enabled: boolean): WormAIComponents
 ---@field tagged fun(self: WormAIComponents, tag: string): WormAIComponents
 ---@field with_field fun(self: WormAIComponents, field: WormAIComponent.field, value: any): WormAIComponents
----@field add fun(self: WormAIComponents, fields: WormAIComponent.partial): WormAIComponent
+---@field add fun(self: WormAIComponents, fields: WormAIComponent.partial?): WormAIComponent
 
 ---@class (exact) WormAIComponent.partial
 ---@field speed number? `speed = 1 [0, 10000]`
@@ -8364,7 +8364,7 @@
 ---@field enabled fun(self: WormAttractorComponents, enabled: boolean): WormAttractorComponents
 ---@field tagged fun(self: WormAttractorComponents, tag: string): WormAttractorComponents
 ---@field with_field fun(self: WormAttractorComponents, field: WormAttractorComponent.field, value: any): WormAttractorComponents
----@field add fun(self: WormAttractorComponents, fields: WormAttractorComponent.partial): WormAttractorComponent
+---@field add fun(self: WormAttractorComponents, fields: WormAttractorComponent.partial?): WormAttractorComponent
 
 ---@class (exact) WormAttractorComponent.partial
 ---@field direction integer? `direction = 1 [-1, 1]` 1 = attracts worms, -1 detracts worms
@@ -8383,7 +8383,7 @@
 ---@field enabled fun(self: WormComponents, enabled: boolean): WormComponents
 ---@field tagged fun(self: WormComponents, tag: string): WormComponents
 ---@field with_field fun(self: WormComponents, field: WormComponent.field, value: any): WormComponents
----@field add fun(self: WormComponents, fields: WormComponent.partial): WormComponent
+---@field add fun(self: WormComponents, fields: WormComponent.partial?): WormComponent
 
 ---@class (exact) WormComponent.partial
 ---@field speed number? `speed = 1 [0, 10000]`
@@ -8477,7 +8477,7 @@
 ---@field enabled fun(self: WormPlayerComponents, enabled: boolean): WormPlayerComponents
 ---@field tagged fun(self: WormPlayerComponents, tag: string): WormPlayerComponents
 ---@field with_field fun(self: WormPlayerComponents, field: WormPlayerComponent.field, value: any): WormPlayerComponents
----@field add fun(self: WormPlayerComponents, fields: WormPlayerComponent.partial): WormPlayerComponent
+---@field add fun(self: WormPlayerComponents, fields: WormPlayerComponent.partial?): WormPlayerComponent
 
 ---@class (exact) WormPlayerComponent.partial
 ---@field mPrevPosition Vec2?
