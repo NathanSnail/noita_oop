@@ -37,7 +37,7 @@ end
 ---@param has any
 ---@return metatable
 function M.make_tags_mt(get, add, remove, has)
-	local mt = metatable.metatable({}, {}, "Tags", function(self)
+	local mt = metatable.metatable(nil, nil, "Tags", function(self)
 		---@cast self ECS.EntityTags
 		return get(self)
 	end, {

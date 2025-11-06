@@ -9,16 +9,18 @@ local M = {}
 ---@alias ECS.metatable.index table<string, (fun(self: table): any) | (fun(...): any)[]>
 ---@alias ECS.metatable.newindex table<string, fun(self: table, value: any)>
 
+---If `__index` or `__newindex` is in defaults it is only applied if `index == nil` or `newindex == nil`
 ---@generic T
----@param index ECS.metatable.index
----@param newindex ECS.metatable.newindex
+---@param index ECS.metatable.index? if nil then `__index` must be set
+---@param newindex ECS.metatable.newindex? if nil then `__newindex` must be set
 ---@param name `T`
 ---@param info (fun(self: T): string?)?
----@param default_mt metatable?
+---@param default_mt metatable? only works as a default if that field isn't set
 ---@return metatable
 function M.metatable(index, newindex, name, info, default_mt)
 	info = typed.maybe(info, function() end)
 	default_mt = typed.maybe(default_mt, {})
+	---@cast default_mt metatable
 	-- luals cant handle my type nonsense :(
 	---@cast info fun(self: table): string?
 
@@ -59,6 +61,7 @@ function M.metatable(index, newindex, name, info, default_mt)
 		---@param key any
 		---@param value any
 		__newindex = function(self, key, value)
+			---@cast newindex -?
 			if newindex[key] then
 				newindex[key](self, value)
 				return
@@ -80,8 +83,15 @@ function M.metatable(index, newindex, name, info, default_mt)
 		end,
 	}
 
+	if not index then
+		mt.__index = default_mt.__index
+	end
+	if not newindex then
+		mt.__newindex = default_mt.__newindex
+	end
+
 	for k, v in pairs(default_mt) do
-		mt[k] = v
+		mt[k] = mt[k] or v
 	end
 
 	return mt

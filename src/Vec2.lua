@@ -22,10 +22,38 @@ local M = {}
 ---@field entity Entity
 ---@field variant ECS.TransformVec2Variant
 
+---@class (exact) ECS.ComponentVec2 : Vec2
+---@field component Component
+---@field field string
+
 -- if the index is actually used we are secretly an EntityVec2
 ---@type table<string, fun(self: ECS.EntityVec2): any>
-local index = {
+local entity_index = {
 	x = function(self)
+		if self.variant == "pos" then
+			local x = EntityGetTransform(self.entity.id)
+			return x
+		else
+			local _, _, _, scale_x = EntityGetTransform(self.entity.id)
+			return scale_x
+		end
+	end,
+	y = function(self)
+		if self.variant == "pos" then
+			local _, y = EntityGetTransform(self.entity.id)
+			return y
+		else
+			local _, _, _, _, scale_y = EntityGetTransform(self.entity.id)
+			return scale_y
+		end
+	end,
+}
+
+-- if the index is actually used we are secretly a ComponentVec2
+---@type table<string, fun(self: ECS.ComponentVec2): any>
+local component_index = {
+	x = function(self)
+		ComponentGetValue2()
 		if self.variant == "pos" then
 			local x = EntityGetTransform(self.entity.id)
 			return x
@@ -47,7 +75,7 @@ local index = {
 }
 
 ---@type table<string, fun(self: ECS.EntityVec2, value: any)>
-local newindex = {
+local entity_newindex = {
 	x = function(self, value)
 		value = typed.must(value, "number")
 		if self.variant == "pos" then
@@ -109,7 +137,7 @@ local arithmetic_mt = {
 	end,
 }
 
-local mt = metatable.metatable(index, newindex, "Vec2", function(self)
+local entity_mt = metatable.metatable(entity_index, entity_newindex, "Vec2", function(self)
 	---@cast self ECS.EntityVec2
 	local entity = ""
 	if self.entity then entity = " from " .. tostring(self.entity) end
@@ -121,7 +149,7 @@ end, arithmetic_mt)
 ---@param variant ECS.TransformVec2Variant
 ---@return Vec2
 function M.from_entity(entity, variant)
-	return setmetatable({ entity = entity, variant = variant }, mt)
+	return setmetatable({ entity = entity, variant = variant }, entity_mt)
 end
 
 ---You can also do `Vec2{x = x, y = y}` instead of `Vec2.xy(x, y)`
@@ -129,7 +157,7 @@ end
 ---@param y number
 ---@return Vec2
 function M.xy(x, y)
-	return setmetatable({ x = x, y = y }, mt)
+	return setmetatable({ x = x, y = y }, entity_mt)
 end
 
 ---@type metatable

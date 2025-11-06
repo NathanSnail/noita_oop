@@ -98,7 +98,7 @@ local specific_mt = metatable.metatable(
 	}
 )
 
-local components_mt = metatable.metatable({}, {}, "Components", nil, {
+local components_mt = metatable.metatable(nil, {}, "Components", nil, {
 	---@param self ECS.Components
 	---@param index component_type
 	---@return ECS.SpecificComponents
