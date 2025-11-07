@@ -334,4 +334,14 @@ test.test {
 			test.eq(comp.name, "bar")
 		end,
 	},
+	{
+		name = "Component custom type set",
+		body = function()
+			local entity = ecs.load("file")
+			local comp = entity.components.Controls:add({})
+			comp.mAimingVector = Vec2.xy(1, 2)
+			test.eq(comp.mAimingVector.x, 1)
+			test.eq(comp.mAimingVector.y, 2)
+		end,
+	},
 }

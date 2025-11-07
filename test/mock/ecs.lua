@@ -26,7 +26,7 @@ local typed = require "src.utils.typed"
 ---@field components component_id[]?
 
 ---@class (exact) mock.EntityComponent
----@field [string] any[]
+---@field [field_type] any[]
 ---@field _ty string
 ---@field _tags table<string, true>
 
@@ -294,4 +294,11 @@ end
 ---@param ... any
 function ComponentSetValue2(component_id, field_name, ...)
 	components[component_id][field_name] = { ... }
+end
+
+---@param component_id component_id
+---@return string
+---@nodiscard
+function ComponentGetTypeName(component_id)
+	return components[component_id]._ty
 end

@@ -48,34 +48,6 @@ local entity_index = {
 		end
 	end,
 }
-
--- if the index is actually used we are secretly a ComponentVec2
----@type table<string, fun(self: ECS.ComponentVec2): any>
-local component_index = {
-	x = function(self)
-		local x, _ = ComponentGetValue2(self.component.id, self.field)
-		return x
-	end,
-	y = function(self)
-		local _, y = ComponentGetValue2(self.component.id, self.field)
-		return y
-	end,
-}
-
----@type table<string, fun(self: ECS.ComponentVec2, value: any)>
-local component_newindex = {
-	x = function(self, value)
-		local x = typed.must(value, "number")
-		local _, y = ComponentGetValue2(self.component.id, self.field)
-		ComponentSetValue2(self.component.id, self.field, x, y)
-	end,
-	y = function(self, value)
-		local y = typed.must(value, "number")
-		local x, _ = ComponentGetValue2(self.component.id, self.field)
-		ComponentSetValue2(self.component.id, self.field, x, y)
-	end,
-}
-
 ---@type table<string, fun(self: ECS.EntityVec2, value: any)>
 local entity_newindex = {
 	x = function(self, value)
@@ -141,9 +113,43 @@ local arithmetic_mt = {
 
 local entity_mt = metatable.metatable(entity_index, entity_newindex, "Vec2", function(self)
 	---@cast self ECS.EntityVec2
-	local entity = ""
-	if self.entity then entity = " from " .. tostring(self.entity) end
-	return ("%d, %d%s"):format(self.x, self.y, entity)
+	return ("%d, %d from %s"):format(self.x, self.y, self.entity)
+end, arithmetic_mt)
+
+-- if the index is actually used we are secretly a ComponentVec2
+---@type table<string, fun(self: ECS.ComponentVec2): any>
+local component_index = {
+	x = function(self)
+		local x, _ = ComponentGetValue2(self.component.id, self.field)
+		return x
+	end,
+	y = function(self)
+		local _, y = ComponentGetValue2(self.component.id, self.field)
+		return y
+	end,
+}
+
+---@type table<string, fun(self: ECS.ComponentVec2, value: any)>
+local component_newindex = {
+	x = function(self, value)
+		local x = typed.must(value, "number")
+		local _, y = ComponentGetValue2(self.component.id, self.field)
+		ComponentSetValue2(self.component.id, self.field, x, y)
+	end,
+	y = function(self, value)
+		local y = typed.must(value, "number")
+		local x, _ = ComponentGetValue2(self.component.id, self.field)
+		ComponentSetValue2(self.component.id, self.field, x, y)
+	end,
+}
+
+local component_mt = metatable.metatable(component_index, component_newindex, "Vec2", function(self)
+	---@cast self ECS.ComponentVec2
+	return ("%d, %d from %s"):format(self.x, self.y, self.component)
+end, arithmetic_mt)
+
+local basic_mt = metatable.metatable({}, {}, "Vec2", function(self)
+	return ("%d, %d"):format(self.x, self.y)
 end, arithmetic_mt)
 
 ---For internal use only, use `entity.transform.*`
@@ -167,7 +173,7 @@ end
 ---@param y number
 ---@return Vec2
 function M.xy(x, y)
-	return setmetatable({ x = x, y = y }, entity_mt)
+	return setmetatable({ x = x, y = y }, basic_mt)
 end
 
 ---@type metatable
