@@ -53,25 +53,27 @@ local entity_index = {
 ---@type table<string, fun(self: ECS.ComponentVec2): any>
 local component_index = {
 	x = function(self)
-		ComponentGetValue2()
-		if self.variant == "pos" then
-			local x = EntityGetTransform(self.entity.id)
-			return x
-		else
-			local _, _, _, scale_x = EntityGetTransform(self.entity.id)
-			return scale_x
-		end
+		local x, _ = ComponentGetValue2(self.component.id, self.field)
+		return x
 	end,
 	y = function(self)
-		if self.variant == "pos" then
-			local _, y = EntityGetTransform(self.entity.id)
-			return y
-		else
-			local _, _, _, _, scale_y = EntityGetTransform(self.entity.id)
-			return scale_y
-		end
+		local _, y = ComponentGetValue2(self.component.id, self.field)
+		return y
 	end,
-	entity = function(_) end,
+}
+
+---@type table<string, fun(self: ECS.ComponentVec2, value: any)>
+local component_newindex = {
+	x = function(self, value)
+		local x = typed.must(value, "number")
+		local _, y = ComponentGetValue2(self.component.id, self.field)
+		ComponentSetValue2(self.component.id, self.field, x, y)
+	end,
+	y = function(self, value)
+		local y = typed.must(value, "number")
+		local x, _ = ComponentGetValue2(self.component.id, self.field)
+		ComponentSetValue2(self.component.id, self.field, x, y)
+	end,
 }
 
 ---@type table<string, fun(self: ECS.EntityVec2, value: any)>
@@ -147,9 +149,17 @@ end, arithmetic_mt)
 ---For internal use only, use `entity.transform.*`
 ---@param entity Entity
 ---@param variant ECS.TransformVec2Variant
----@return Vec2
+---@return ECS.EntityVec2
 function M.from_entity(entity, variant)
 	return setmetatable({ entity = entity, variant = variant }, entity_mt)
+end
+
+---For internal use only, use `entity.components.*.*`
+---@param component Component
+---@param field field_type
+---@return ECS.ComponentVec2
+function M.from_component_field(component, field)
+	return setmetatable({ component = component, field = field }, component_mt)
 end
 
 ---You can also do `Vec2{x = x, y = y}` instead of `Vec2.xy(x, y)`

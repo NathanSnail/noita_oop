@@ -39,11 +39,11 @@ local specific_index = {
 		---@return Component
 		function(self, fields)
 			fields = typed.maybe(fields, {})
+			local tags
+			if fields.tags then tags = typed.must(fields.tags, "string") end
+			fields.tags = nil
 			local comp = Component(EntityAddComponent2(self._entity.id, self._type, fields))
-			if fields.tags then
-				local tags = typed.must(fields.tags, "string")
-				comp.tags = tags
-			end
+			if tags then comp.tags = tags end
 			return comp
 		end,
 	},

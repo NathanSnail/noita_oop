@@ -317,4 +317,21 @@ test.test {
 			test.eq(a.tags.c, false)
 		end,
 	},
+	{
+		name = "Component value get",
+		body = function()
+			local entity = ecs.load("file")
+			local comp = entity.components.VariableStorage:add({ name = "foo" })
+			test.eq(comp.name, "foo")
+		end,
+	},
+	{
+		name = "Component value set",
+		body = function()
+			local entity = ecs.load("file")
+			local comp = entity.components.VariableStorage:add({ name = "foo" })
+			comp.name = "bar"
+			test.eq(comp.name, "bar")
+		end,
+	},
 }

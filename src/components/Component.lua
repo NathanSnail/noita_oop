@@ -18,13 +18,28 @@ local index = {
 	end,
 }
 
-local new_index = {
+local newindex = {
 	tags = tags.new_index,
 }
 
-local mt = metatable.metatable(index, new_index, "Component", function(self)
+local mt = metatable.metatable(nil, nil, "Component", function(self)
 	return tostring(self.id)
-end)
+end, {
+	---@param self Component
+	---@param key string
+	---@return any
+	__index = function(self, key)
+		if index[key] then return index[key](self) end
+		return ComponentGetValue2(self.id, key)
+	end,
+	---@param self Component
+	---@param key string
+	---@param value any
+	__newindex = function(self, key, value)
+		if newindex[key] then return newindex[key](self, value) end
+		ComponentSetValue2(self.id, key, value)
+	end,
+})
 
 ---@param component_id component_id
 ---@return Component

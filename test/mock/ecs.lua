@@ -26,7 +26,7 @@ local typed = require "src.utils.typed"
 ---@field components component_id[]?
 
 ---@class (exact) mock.EntityComponent
----@field [string] any
+---@field [string] any[]
 ---@field _ty string
 ---@field _tags table<string, true>
 
@@ -230,6 +230,11 @@ end
 ---@param table_of_component_values {[string]:any}? nil
 ---@return component_id
 function EntityAddComponent2(entity_id, component_type_name, table_of_component_values)
+	table_of_component_values = table_of_component_values or {}
+	for k, v in pairs(table_of_component_values) do
+		if type(v) == "table" then error("Can't add a table") end
+		table_of_component_values[k] = { v }
+	end
 	table_of_component_values._ty = component_type_name
 	table_of_component_values._tags = {}
 	table.insert(components, table_of_component_values)
@@ -272,4 +277,21 @@ function ComponentGetTags(component_id)
 	s = s:sub(2)
 	if s == "" then return nil end
 	return s
+end
+
+---Returns one or many values matching the type or subtypes of the requested field. Reports error and returns nil if the field type is not supported or field was not found. This is up to 7.5x faster than the old ComponentSetValue functions.
+---@param component_id component_id
+---@param field_name field_type
+---@return any ...
+---@nodiscard
+function ComponentGetValue2(component_id, field_name)
+	return unpack(components[component_id][field_name])
+end
+
+---Sets the value of a field. Value(s) should have a type matching the field type. Reports error if the values weren't given in correct type, the field type is not supported, or the component does not exist. This is up to 20x faster than the old ComponentSetValue functions.
+---@param component_id component_id
+---@param field_name field_type
+---@param ... any
+function ComponentSetValue2(component_id, field_name, ...)
+	components[component_id][field_name] = { ... }
 end
