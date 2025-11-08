@@ -273,7 +273,8 @@ def gen_component_type(component_ty: str) -> str:
 
     component_partial = f"---@class (exact) {partial_ty}"
     component_full = f"---@class (exact) {component_ty} : Component"
-    fields = f"---@alias {key_ty}" if not empty else ""
+    # too many newlines if this is empty, must be same line
+    fields = f"\n\n---@alias {key_ty}" if not empty else ""
 
     for field, ty in field_collection.items():
         suffix = f"{f"`{field} = {ty.default}{f" {ty.range}" if ty.range != "" else ""}` " if ty.default != "" else ""}{ty.comment}"
@@ -286,18 +287,21 @@ def gen_component_type(component_ty: str) -> str:
         component_full += f"\n---@field {field} {ty.ty} {suffix}".rstrip()
         fields += f"\n---| '\"{field}\"' {suffix_typed}".rstrip()
 
+    # this must be seperate because otherwise we get a newline in the def
+    with_field = (
+        f"\n---@field with_field fun(self: {components_ty}, field: {key_ty}, value: any): {components_ty}"
+        if not empty
+        else ""
+    )
     return f"""---@class (exact) {components_ty}
 ---@overload fun(): {component_ty}
 ---@field enabled fun(self: {components_ty}, enabled: boolean): {components_ty}
----@field tagged fun(self: {components_ty}, tag: string): {components_ty}
-{f"---@field with_field fun(self: {components_ty}, field: {key_ty}, value: any): {components_ty}" if not empty else ""}
+---@field tagged fun(self: {components_ty}, tag: string): {components_ty}{with_field}
 ---@field add fun(self: {components_ty}, fields: {partial_ty}?): {component_ty}
 
 {component_partial}
 
-{component_full}
-
-{fields}"""
+{component_full}{fields}"""
 
 
 def gen_component_types():

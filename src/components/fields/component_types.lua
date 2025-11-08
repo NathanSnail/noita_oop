@@ -2265,14 +2265,11 @@
 ---@overload fun(): CharacterStatsComponent
 ---@field enabled fun(self: CharacterStatsComponents, enabled: boolean): CharacterStatsComponents
 ---@field tagged fun(self: CharacterStatsComponents, tag: string): CharacterStatsComponents
-
 ---@field add fun(self: CharacterStatsComponents, fields: CharacterStatsComponent.partial?): CharacterStatsComponent
 
 ---@class (exact) CharacterStatsComponent.partial
 
 ---@class (exact) CharacterStatsComponent : Component
-
-
 
 ---@class (exact) CollisionTriggerComponents
 ---@overload fun(): CollisionTriggerComponent
@@ -3150,14 +3147,11 @@
 ---@overload fun(): DebugFollowMouseComponent
 ---@field enabled fun(self: DebugFollowMouseComponents, enabled: boolean): DebugFollowMouseComponents
 ---@field tagged fun(self: DebugFollowMouseComponents, tag: string): DebugFollowMouseComponents
-
 ---@field add fun(self: DebugFollowMouseComponents, fields: DebugFollowMouseComponent.partial?): DebugFollowMouseComponent
 
 ---@class (exact) DebugFollowMouseComponent.partial
 
 ---@class (exact) DebugFollowMouseComponent : Component
-
-
 
 ---@class (exact) DebugLogMessagesComponents
 ---@overload fun(): DebugLogMessagesComponent
@@ -3938,27 +3932,21 @@
 ---@overload fun(): GunComponent
 ---@field enabled fun(self: GunComponents, enabled: boolean): GunComponents
 ---@field tagged fun(self: GunComponents, tag: string): GunComponents
-
 ---@field add fun(self: GunComponents, fields: GunComponent.partial?): GunComponent
 
 ---@class (exact) GunComponent.partial
 
 ---@class (exact) GunComponent : Component
 
-
-
 ---@class (exact) HealthBarComponents
 ---@overload fun(): HealthBarComponent
 ---@field enabled fun(self: HealthBarComponents, enabled: boolean): HealthBarComponents
 ---@field tagged fun(self: HealthBarComponents, tag: string): HealthBarComponents
-
 ---@field add fun(self: HealthBarComponents, fields: HealthBarComponent.partial?): HealthBarComponent
 
 ---@class (exact) HealthBarComponent.partial
 
 ---@class (exact) HealthBarComponent : Component
-
-
 
 ---@class (exact) HitEffectComponents
 ---@overload fun(): HitEffectComponent
@@ -5449,14 +5437,11 @@
 ---@overload fun(): ManaReloaderComponent
 ---@field enabled fun(self: ManaReloaderComponents, enabled: boolean): ManaReloaderComponents
 ---@field tagged fun(self: ManaReloaderComponents, tag: string): ManaReloaderComponents
-
 ---@field add fun(self: ManaReloaderComponents, fields: ManaReloaderComponent.partial?): ManaReloaderComponent
 
 ---@class (exact) ManaReloaderComponent.partial
 
 ---@class (exact) ManaReloaderComponent : Component
-
-
 
 ---@class (exact) MaterialAreaCheckerComponents
 ---@overload fun(): MaterialAreaCheckerComponent
