@@ -335,12 +335,23 @@ test.test {
 		end,
 	},
 	{
-		name = "Component custom type set",
+		name = "Component custom type get / set",
 		body = function()
 			local entity = ecs.load("file")
 			local comp = entity.components.Controls:add({})
 			comp.mAimingVector = Vec2.xy(1, 2)
 			test.eq(comp.mAimingVector.x, 1)
+			test.eq(comp.mAimingVector.y, 2)
+		end,
+	},
+	{
+		name = "Component custom type field set",
+		body = function()
+			local entity = ecs.load("file")
+			local comp = entity.components.Controls:add({})
+			comp.mAimingVector = Vec2.xy(1, 2)
+			comp.mAimingVector.x = 5
+			test.eq(comp.mAimingVector.x, 5)
 			test.eq(comp.mAimingVector.y, 2)
 		end,
 	},
