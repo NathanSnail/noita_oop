@@ -25,6 +25,7 @@ local typed = require "src.utils.typed"
 ---@overload fun(component_id): Components
 local M = {}
 
+-- TODO: make :enabled() work
 ---@type ECS.metatable.index
 local specific_index = {
 	add = {
