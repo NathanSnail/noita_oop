@@ -5,24 +5,18 @@ local functional = require "src.utils.functional"
 local metatable = require "src.utils.metatable"
 local typed = require "src.utils.typed"
 
--- TODO: this needs to be generated
----@class (exact) SpecificComponents
----@overload fun(): Component?
----@field enabled fun(self: SpecificComponents, enabled: boolean): SpecificComponents
----@field tagged fun(self: SpecificComponents, tag: string): SpecificComponents
----@field with_field fun(self: SpecificComponents, field: string, value: any): SpecificComponents
----@field add fun(self: SpecificComponents, fields: table?): Component
-
----@class (exact) ECS.SpecificComponents : SpecificComponents
+-- NOTE: this type isn't actually used, its just the template for the generated types, useful for suggestions in the implementation code
+---@class (exact) ECS.SpecificComponents
+---@field enabled fun(self: ECS.SpecificComponents, enabled: boolean): ECS.SpecificComponents
+---@field tagged fun(self: ECS.SpecificComponents, tag: string): ECS.SpecificComponents
+---@field with_field fun(self: ECS.SpecificComponents, field: string, value: any): ECS.SpecificComponents
+---@field add fun(self: ECS.SpecificComponents, fields: table?): Component
 ---@field _entity Entity
 ---@field _type component_type
 ---@field _tag string?
 ---@field _enabled boolean?
 ---@field _index integer?
 ---@field _components Component[]?
-
----@class (exact) Components
----@field VariableStorage VariableStorageComponents
 
 ---@class (exact) ECS.Components : Components
 ---@field _entity Entity
