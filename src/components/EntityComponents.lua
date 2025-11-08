@@ -22,7 +22,7 @@ local typed = require "src.utils.typed"
 ---@field _components Component[]?
 
 ---@class (exact) Components
----@field VariableStorage SpecificComponents
+---@field VariableStorage VariableStorageComponents
 
 ---@class (exact) ECS.Components : Components
 ---@field _entity Entity

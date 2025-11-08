@@ -301,8 +301,16 @@ def gen_component_type(component_ty: str) -> str:
 
 
 def gen_component_types():
-    types = f"{warn}\n\n" + "\n\n".join(
-        gen_component_type(component_ty) for component_ty in components.keys()
+    types = (
+        f"{warn}\n\n---@class (exact) Components\n"
+        + "\n".join(
+            f"---@field {component_ty.replace("Component", "")} {component_ty}s"
+            for component_ty in components
+        )
+        + "\n\n"
+        + "\n\n".join(
+            gen_component_type(component_ty) for component_ty in components.keys()
+        )
     )
 
     open(OUT_DIR / "component_types.lua", "w").write(types)
