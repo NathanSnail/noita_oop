@@ -53,6 +53,14 @@ test.test {
 		end,
 	},
 	{
+		name = "Vec without class setting",
+		body = function()
+			local entity = ecs.load("something", 100, 200)
+			entity.transform.scale = { x = 5, y = 4 }
+			test.eq(entity.transform.scale.x, 5)
+		end,
+	},
+	{
 		name = "Transform rotation getting",
 		body = function()
 			local entity = ecs.load("something", 100, 200, 180)
