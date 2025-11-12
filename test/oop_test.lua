@@ -53,11 +53,12 @@ test.test {
 		end,
 	},
 	{
-		name = "Vec without class setting",
+		name = "Vec clone",
 		body = function()
-			local entity = ecs.load("something", 100, 200)
-			entity.transform.scale = { x = 5, y = 4 }
-			test.eq(entity.transform.scale.x, 5)
+			local a = Vec2 { x = 5, y = 4 }
+			local b = a:clone()
+			b.x = 1
+			test.eq(a.x, 5)
 		end,
 	},
 	{

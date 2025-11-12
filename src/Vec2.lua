@@ -10,6 +10,7 @@ local M = {}
 ---@class (exact) Vec2
 ---@field x number
 ---@field y number
+---@field clone fun(self: Vec2): Vec2
 ---@operator mul(number): Vec2
 ---@operator div(number): Vec2
 ---@operator add(Vec2): Vec2
@@ -26,51 +27,9 @@ local M = {}
 ---@field component Component
 ---@field field string
 
--- if the index is actually used we are secretly an EntityVec2
----@type table<string, fun(self: ECS.EntityVec2): any>
-local entity_index = {
-	x = function(self)
-		if self.variant == "pos" then
-			local x = EntityGetTransform(self.entity.id)
-			return x
-		else
-			local _, _, _, scale_x = EntityGetTransform(self.entity.id)
-			return scale_x
-		end
-	end,
-	y = function(self)
-		if self.variant == "pos" then
-			local _, y = EntityGetTransform(self.entity.id)
-			return y
-		else
-			local _, _, _, _, scale_y = EntityGetTransform(self.entity.id)
-			return scale_y
-		end
-	end,
-}
----@type table<string, fun(self: ECS.EntityVec2, value: any)>
-local entity_newindex = {
-	x = function(self, value)
-		value = typed.must(value, "number")
-		if self.variant == "pos" then
-			local _, y, rotation, scale_x, scale_y = EntityGetTransform(self.entity.id)
-			EntitySetTransform(self.entity.id, value, y, rotation, scale_x, scale_y)
-		else
-			local x, y, rotation, _, scale_y = EntityGetTransform(self.entity.id)
-			EntitySetTransform(self.entity.id, x, y, rotation, value, scale_y)
-		end
-	end,
-	y = function(self, value)
-		value = typed.must(value, "number")
-		if self.variant == "pos" then
-			local x, _, rotation, scale_x, scale_y = EntityGetTransform(self.entity.id)
-			EntitySetTransform(self.entity.id, x, value, rotation, scale_x, scale_y)
-		else
-			local x, y, rotation, scale_x, _ = EntityGetTransform(self.entity.id)
-			EntitySetTransform(self.entity.id, x, y, rotation, scale_x, value)
-		end
-	end,
-}
+local function clone_vec(self)
+	return M.xy(self.x, self.y)
+end
 
 ---@type metatable
 local arithmetic_mt = {
@@ -111,6 +70,54 @@ local arithmetic_mt = {
 	end,
 }
 
+-- if the index is actually used we are secretly an EntityVec2
+---@type table<string, fun(self: ECS.EntityVec2): any>
+local entity_index = {
+	x = function(self)
+		if self.variant == "pos" then
+			local x = EntityGetTransform(self.entity.id)
+			return x
+		else
+			local _, _, _, scale_x = EntityGetTransform(self.entity.id)
+			return scale_x
+		end
+	end,
+	y = function(self)
+		if self.variant == "pos" then
+			local _, y = EntityGetTransform(self.entity.id)
+			return y
+		else
+			local _, _, _, _, scale_y = EntityGetTransform(self.entity.id)
+			return scale_y
+		end
+	end,
+	clone = clone_vec,
+}
+
+---@type table<string, fun(self: ECS.EntityVec2, value: any)>
+local entity_newindex = {
+	x = function(self, value)
+		value = typed.must(value, "number")
+		if self.variant == "pos" then
+			local _, y, rotation, scale_x, scale_y = EntityGetTransform(self.entity.id)
+			EntitySetTransform(self.entity.id, value, y, rotation, scale_x, scale_y)
+		else
+			local x, y, rotation, _, scale_y = EntityGetTransform(self.entity.id)
+			EntitySetTransform(self.entity.id, x, y, rotation, value, scale_y)
+		end
+	end,
+	y = function(self, value)
+		value = typed.must(value, "number")
+		if self.variant == "pos" then
+			local x, _, rotation, scale_x, scale_y = EntityGetTransform(self.entity.id)
+			EntitySetTransform(self.entity.id, x, value, rotation, scale_x, scale_y)
+		else
+			local x, y, rotation, scale_x, _ = EntityGetTransform(self.entity.id)
+			EntitySetTransform(self.entity.id, x, y, rotation, scale_x, value)
+		end
+	end,
+}
+
 local entity_mt = metatable.metatable(entity_index, entity_newindex, "Vec2", function(self)
 	---@cast self ECS.EntityVec2
 	return ("%d, %d from %s"):format(self.x, self.y, self.entity)
@@ -127,6 +134,7 @@ local component_index = {
 		local _, y = ComponentGetValue2(self.component.id, self.field)
 		return y
 	end,
+	clone = clone_vec,
 }
 
 ---@type table<string, fun(self: ECS.ComponentVec2, value: any)>
@@ -148,7 +156,7 @@ local component_mt = metatable.metatable(component_index, component_newindex, "V
 	return ("%d, %d from %s"):format(self.x, self.y, self.component)
 end, arithmetic_mt)
 
-local basic_mt = metatable.metatable({}, {}, "Vec2", function(self)
+local basic_mt = metatable.metatable({ clone = { clone_vec } }, {}, "Vec2", function(self)
 	return ("%d, %d"):format(self.x, self.y)
 end, arithmetic_mt)
 
