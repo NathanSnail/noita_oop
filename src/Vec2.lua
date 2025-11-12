@@ -3,8 +3,14 @@ local freeze = require "src.utils.freeze"
 local metatable = require "src.utils.metatable"
 local typed = require "src.utils.typed"
 
+---@class (exact) Vec2.mimic
+---@field x number
+---@field y number
+
+---@alias Vec2.like Vec2 | Vec2.mimic
+
 ---@class ECS.Vec2Lib
----@overload fun(Vec2): Vec2
+---@overload fun(Vec2.like): Vec2
 local M = {}
 
 ---@class (exact) Vec2
@@ -13,8 +19,8 @@ local M = {}
 ---@field clone fun(self: Vec2): Vec2
 ---@operator mul(number): Vec2
 ---@operator div(number): Vec2
----@operator add(Vec2): Vec2
----@operator sub(Vec2): Vec2
+---@operator add(Vec2.like): Vec2
+---@operator sub(Vec2.like): Vec2
 ---@operator unm: Vec2
 
 ---@alias ECS.TransformVec2Variant "pos" | "scale"
