@@ -3,15 +3,15 @@ local freeze = require "src.utils.freeze"
 local metatable = require "src.utils.metatable"
 local typed = require "src.utils.typed"
 
+---@class ECS.Vec2Lib
+---@overload fun(Vec2.like): Vec2
+local M = {}
+
 ---@class (exact) Vec2.mimic
 ---@field x number
 ---@field y number
 
 ---@alias Vec2.like Vec2 | Vec2.mimic
-
----@class ECS.Vec2Lib
----@overload fun(Vec2.like): Vec2
-local M = {}
 
 ---@class (exact) Vec2
 ---@field x number
