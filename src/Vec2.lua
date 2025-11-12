@@ -71,7 +71,7 @@ local arithmetic_mt = {
 }
 
 -- if the index is actually used we are secretly an EntityVec2
----@type table<string, fun(self: ECS.EntityVec2): any>
+---@type table<string, (fun(self: ECS.EntityVec2): any) | (fun(self: ECS.EntityVec2): any)[]>
 local entity_index = {
 	x = function(self)
 		if self.variant == "pos" then
@@ -91,7 +91,7 @@ local entity_index = {
 			return scale_y
 		end
 	end,
-	clone = clone_vec,
+	clone = { clone_vec },
 }
 
 ---@type table<string, fun(self: ECS.EntityVec2, value: any)>
@@ -124,7 +124,7 @@ local entity_mt = metatable.metatable(entity_index, entity_newindex, "Vec2", fun
 end, arithmetic_mt)
 
 -- if the index is actually used we are secretly a ComponentVec2
----@type table<string, fun(self: ECS.ComponentVec2): any>
+---@type table<string, (fun(self: ECS.ComponentVec2): any) | (fun(self: ECS.ComponentVec2): any)[]>
 local component_index = {
 	x = function(self)
 		local x, _ = ComponentGetValue2(self.component.id, self.field)
@@ -134,7 +134,7 @@ local component_index = {
 		local _, y = ComponentGetValue2(self.component.id, self.field)
 		return y
 	end,
-	clone = clone_vec,
+	clone = { clone_vec },
 }
 
 ---@type table<string, fun(self: ECS.ComponentVec2, value: any)>
