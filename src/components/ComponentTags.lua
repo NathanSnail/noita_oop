@@ -2,6 +2,9 @@ local require = require
 local freeze = require "src.utils.freeze"
 local tags = require "src.utils.tags"
 
+---@class ECS.ComponentTagsLib
+local M = {}
+
 ---@class (exact) ECS.ComponentTags : Tags
 ---@field [1] ECS.ComponentTagsBacking
 
@@ -9,9 +12,6 @@ local tags = require "src.utils.tags"
 ---@field component Component
 ---@field tags string[]?
 ---@field index integer
-
----@class ECS.ComponentTagsLib
-local M = {}
 
 local mt = tags.make_tags_mt(function(self)
 	return ComponentGetTags(self[1].component.id) or ""

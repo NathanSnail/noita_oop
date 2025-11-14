@@ -4,6 +4,9 @@ local functional = require "src.utils.functional"
 local metatable = require "src.utils.metatable"
 local typed = require "src.utils.typed"
 
+---@class ECS.EntityChildrenLib
+local M = {}
+
 ---@class (exact) EntityChildren
 ---@overload fun(): (fun(): Entity?)
 ---@field tagged fun(self: EntityChildren, tag: string): EntityChildren
@@ -15,9 +18,6 @@ local typed = require "src.utils.typed"
 ---@field name string?
 ---@field children Entity[]?
 ---@field index integer
-
----@class ECS.EntityChildrenLib
-local M = {}
 
 ---@type ECS.metatable.index
 local index = {

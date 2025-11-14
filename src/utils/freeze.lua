@@ -1,5 +1,6 @@
 local require = require
 
+---@class freeze
 local M = {}
 
 ---Freezes a table and returns it, table must not already have a metatable

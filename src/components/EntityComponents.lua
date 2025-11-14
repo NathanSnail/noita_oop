@@ -5,6 +5,10 @@ local functional = require "src.utils.functional"
 local metatable = require "src.utils.metatable"
 local typed = require "src.utils.typed"
 
+---@class ECS.EntityComponentsLib
+---@overload fun(component_id): Components
+local M = {}
+
 -- NOTE: this type isn't actually used, its just the template for the generated types, useful for suggestions in the implementation code
 ---@class (exact) ECS.SpecificComponents
 ---@field enabled fun(self: ECS.SpecificComponents, enabled: boolean): ECS.SpecificComponents
@@ -20,10 +24,6 @@ local typed = require "src.utils.typed"
 
 ---@class (exact) ECS.Components : Components
 ---@field _entity Entity
-
----@class ECS.EntityComponentsLib
----@overload fun(component_id): Components
-local M = {}
 
 -- TODO: make :enabled() work
 ---@type ECS.metatable.index

@@ -5,14 +5,14 @@ local metatable = require "src.utils.metatable"
 local special_component_fields = require "src.components.fields.special_component_fields"
 local tags = require "src.utils.tags"
 
+---@class ECS.ComponentLib
+---@overload fun(component_id: component_id): Component
+local M = {}
+
 ---@class (exact) Component
 ---@field id component_id readonly
 ---@field tags Tags | string
 ---@field type component_type readonly
-
----@class ECS.ComponentLib
----@overload fun(component_id: component_id): Component
-local M = {}
 
 ---@class (exact) ECS.CustomType
 ---@field get fun(component: Component, field: string): any

@@ -2,6 +2,9 @@ local require = require
 local freeze = require "src.utils.freeze"
 local tags = require "src.utils.tags"
 
+---@class ECS.EntityTagsLib
+local M = {}
+
 ---@class (exact) ECS.EntityTags : Tags
 ---@field [1] ECS.EntityTagsBacking
 
@@ -9,9 +12,6 @@ local tags = require "src.utils.tags"
 ---@field entity Entity
 ---@field tags string[]?
 ---@field index integer
-
----@class ECS.EntityTagsLib
-local M = {}
 
 local mt = tags.make_tags_mt(function(self)
 	return EntityGetTags(self[1].entity.id)
