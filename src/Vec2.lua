@@ -7,20 +7,18 @@ local typed = require "src.utils.typed"
 ---@overload fun(Vec2.like): Vec2
 local M = {}
 
----@class (exact) Vec2.mimic
+---@class (exact) Vec2.basic
 ---@field x number
 ---@field y number
 
----@alias Vec2.like Vec2 | Vec2.mimic
-
----@class (exact) Vec2
+---@class (exact) Vec2 : Vec2.basic
 ---@field x number
 ---@field y number
 ---@field clone fun(self: Vec2): Vec2
 ---@operator mul(number): Vec2
 ---@operator div(number): Vec2
----@operator add(Vec2.like): Vec2
----@operator sub(Vec2.like): Vec2
+---@operator add(Vec2.basic): Vec2
+---@operator sub(Vec2.basic): Vec2
 ---@operator unm: Vec2
 
 ---@alias ECS.TransformVec2Variant "pos" | "scale"
