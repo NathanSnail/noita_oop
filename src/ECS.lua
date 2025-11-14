@@ -1,5 +1,4 @@
 local require = require
-
 local Entity = require "src.entity.Entity"
 local freeze = require "src.utils.freeze"
 local metatable = require "src.utils.metatable"

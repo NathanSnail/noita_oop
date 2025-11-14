@@ -2,16 +2,15 @@ local require = require
 local EntityComponents = require "src.components.EntityComponents"
 local EntityTags = require "src.entity.EntityTags"
 local tags = require "src.utils.tags"
-
----@class ECS.EntityLib
----@overload fun(entity_id): Entity
-local M = {}
-
 local EntityChildren = require "src.entity.EntityChildren"
 local Transform = require "src.Transform"
 local freeze = require "src.utils.freeze"
 local metatable = require "src.utils.metatable"
 local typed = require "src.utils.typed"
+
+---@class ECS.EntityLib
+---@overload fun(entity_id): Entity
+local M = {}
 
 ---@class (exact) Entity
 ---@field id entity_id do not write to this!
