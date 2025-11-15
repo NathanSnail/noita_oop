@@ -138,6 +138,15 @@ test.test {
 		end,
 	},
 	{
+		name = "Vector like arithmetic",
+		body = function()
+			local v1 = Vec2.xy(3, 4)
+			v1 = v1 + { x = 4, y = -7 }
+			test.eq(v1.x, 7)
+			test.eq(v1.y, -3)
+		end,
+	},
+	{
 		name = "Entity parent get / set",
 		body = function()
 			local child = ecs.load("file")
