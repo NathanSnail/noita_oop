@@ -315,6 +315,7 @@ def gen_component_types():
         + "\n\n".join(
             gen_component_type(component_ty) for component_ty in components.keys()
         )
+        + "\n"
     )
 
     open(OUT_DIR / "component_types.lua", "w").write(types)

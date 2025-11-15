@@ -1,6 +1,6 @@
 local require = require
-local null = require "src.utils.null"
 local freeze = require "src.utils.freeze"
+local null = require "src.utils.null"
 local typed = require "src.utils.typed"
 
 ---@class ECS.metatable
@@ -83,12 +83,8 @@ function M.metatable(index, newindex, name, info, default_mt)
 		end,
 	}
 
-	if not index then
-		mt.__index = default_mt.__index
-	end
-	if not newindex then
-		mt.__newindex = default_mt.__newindex
-	end
+	if not index then mt.__index = default_mt.__index end
+	if not newindex then mt.__newindex = default_mt.__newindex end
 
 	for k, v in pairs(default_mt) do
 		mt[k] = mt[k] or v

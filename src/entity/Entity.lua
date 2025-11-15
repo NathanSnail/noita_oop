@@ -1,11 +1,11 @@
 local require = require
+local EntityChildren = require "src.entity.EntityChildren"
 local EntityComponents = require "src.components.EntityComponents"
 local EntityTags = require "src.entity.EntityTags"
-local tags = require "src.utils.tags"
-local EntityChildren = require "src.entity.EntityChildren"
 local Transform = require "src.Transform"
 local freeze = require "src.utils.freeze"
 local metatable = require "src.utils.metatable"
+local tags = require "src.utils.tags"
 local typed = require "src.utils.typed"
 
 ---@class ECS.EntityLib

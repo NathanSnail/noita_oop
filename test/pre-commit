@@ -4,7 +4,7 @@ luajit test/oop_test.lua
 files=$(find . -type f | rg \.lua$ | rg -v "src/components/fields/component_fields.lua")
 stylua -c $files
 bad=false
-for file in $(echo $files | sed 's/ /\n/g' | rg "src");
+for file in $(echo $files | sed 's/ /\n/g' | rg "src" | rg -v "src/components/fields/special_component_fields.lua" | rg -v "src/components/fields/component_types.lua");
 do
 	first=$(head -n 1 < $file)
 	if [ "$first" != "local require = require" ]; then
